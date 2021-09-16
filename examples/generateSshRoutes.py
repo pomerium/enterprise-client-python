@@ -60,7 +60,7 @@ def getPols(policies, ns):
     thesePols = []
     for x in policies:
         resp = client.PolicyService.ListPolicies(
-            ListPoliciesRequest(query='Deny anyone but Alex', namespace=ns.id)
+            ListPoliciesRequest(query=x, namespace=ns.id)
         )
         thesePols.append(resp.policies[0])
     return thesePols
