@@ -78,7 +78,11 @@ def main():
 
     for namespace in data_routes["namespaces"]:
         ns = getNS(namespace["name"])
-        policies = getPols(namespace["policies", ns)
+        print('In Namespace "' + ns.name + '" ('+ ns.id +'):')
+        policies = getPols(namespace["policies", ns])
+        print('With policies:')
+        for policy in policies:
+            print('  ' + policy.name)
         hosts = namespace["hosts"]
         for host in hosts:
             route = Route(**{
@@ -86,7 +90,7 @@ def main():
                 'name': stripHost(host),
                 'from': 'tcp+https://' + stripHost(host) + '.localhost.pomerium.io' + stripPort(host), #Change the last string to your domain space
                 'to': ['tcp://' + host],
-                'policy_ids': [policies],
+                'policy_ids': [str(policies)],
                 'pass_identity_headers': True,
             })
             resp = client.RouteService.SetRoute(SetRouteRequest(route=route))
