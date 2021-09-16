@@ -2,6 +2,7 @@
 
 import os
 import io
+import re
 import yaml #pip install pyyaml
 from pomerium.client import Client
 from pomerium.pb.policy_pb2 import ListPoliciesRequest
@@ -21,6 +22,11 @@ console_api = 'console-api.localhost.pomerium.io'
 # If your Pomerium proxy uses an untrusted certificate, specify the CA cert as an environment variable
 # ca_cert = os.getenv('CA_CERT', '').encode('utf-8')
 
+# If you specify a ca_cert, include it when defining the client
+#client = Client(console_api, sa, root_certificates=ca_cert)
+client = Client(console_api, sa)
+
+
 ####################
 # Helper functions #
 ####################
@@ -29,15 +35,17 @@ console_api = 'console-api.localhost.pomerium.io'
 # Expects input of 'host', i.e. foo.local.domain:22
 # Returns a string of 'host' up to but not including the first '.'
 def stripHost(host):
-    hostname = ''#Regex host to pull "foo" from "foo.local.domain:22"
-    return hostname
+    hostname = re.search("[^.]*", host)
+    if hostname is not None:
+        return hostname.group(0)
 
 # Function stripPort to strip the port from items in hosts list:
 # Expects input of 'host', i.e. foo.local.domain
 # Returns a string of 'hosts after but not including the ':'
 def stripPort(host):
-    port = ''#Regex host to pull ":22" from "foo.local.domain:22"
-    return port
+    port = re.search("(?:.(?!\:))+$", host)
+    if port is not None:
+        return port.group(0)
 
 # Function getNS expects an input of 'name' and returns a dictionary object for
 # the Namespace with a matching name:
@@ -63,11 +71,6 @@ def getPols(policies, ns):
 #################
 
 def main():
-
-    # If you specify a ca_cert, include it when defining the client
-    #client = Client(console_api, sa, root_certificates=ca_cert)
-    client = Client(console_api, sa)
-
     # Read the file specifying the routes to create.
     with io.open('example-ssh-routes.yaml', 'r') as file:
         data_routes = yaml.safe_load(file)
@@ -75,7 +78,7 @@ def main():
 
     for namespace in data_routes["namespaces"]:
         ns = getNS(namespace["name"])
-        policies = getPols(namespace["policies"])
+        policies = getPols(namespace["policies", ns)
         hosts = namespace["hosts"]
         for host in hosts:
             route = Route(**{
@@ -88,3 +91,5 @@ def main():
             })
             resp = client.RouteService.SetRoute(SetRouteRequest(route=route))
             print(resp)
+
+main()
