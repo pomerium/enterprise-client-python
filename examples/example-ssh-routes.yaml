@@ -1,0 +1,11 @@
+namespaces:
+  - name: my namespace
+    policies: ["policyA","GlobalPolicy"]
+    hosts:
+      - foo.local.domain:22
+      - bar.local.domain:22
+      - baz.local.domain:22
+
+# foo.local.domain:22 -> to: foo.local.domain:22
+#                     -> from: foo.external.domain:22
+# "my namespace"      -> ${uuid}
