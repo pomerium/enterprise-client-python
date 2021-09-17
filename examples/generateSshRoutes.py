@@ -54,7 +54,7 @@ def getNS(name):
     ns = [n for n in resp.namespaces if n.name == name][0]
     return ns
 
-# Function getPol expects and list input of policy names and a namespace object.
+# Function getPol expects a list input of policy names and a namespace object.
 # It returns an array of the matching policies by name:
 def getPols(policies, ns):
     thesePols = []
@@ -64,6 +64,14 @@ def getPols(policies, ns):
         )
         thesePols.append(resp.policies[0])
     return thesePols
+
+# Function listPols returns the ID from the policies provided as a single array.
+def listPols(policies):
+    p = []
+    for policy in policies:
+        p.append(policy.id)
+    print(p)
+    return p
 
 
 #################
@@ -78,20 +86,19 @@ def main():
 
     for namespace in data_routes["namespaces"]:
         ns = getNS(namespace["name"])
-        print('In Namespace "' + ns.name + '" ('+ ns.id +'):')
         policies = getPols(namespace["policies", ns])
+        hosts = namespace["hosts"]
+        print('In Namespace "' + ns.name + '" ('+ ns.id +'):')
         print('With policies:')
         for policy in policies:
             print('  ' + policy.name)
-        hosts = namespace["hosts"]
         for host in hosts:
             route = Route(**{
                 'namespace_id': ns.id,
                 'name': stripHost(host),
                 'from': 'tcp+https://' + stripHost(host) + '.localhost.pomerium.io' + stripPort(host), #Change the last string to your domain space
                 'to': ['tcp://' + host],
-                'policy_ids': [str(policies)],
-                'pass_identity_headers': True,
+                'policy_ids': listPols(policies),
             })
             resp = client.RouteService.SetRoute(SetRouteRequest(route=route))
             print(resp)
