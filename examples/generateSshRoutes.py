@@ -77,29 +77,26 @@ def getPolIDs(policies):
 # Main function #
 #################
 
-def main():
-    # Read the file specifying the routes to create.
-    with io.open('example-ssh-routes.yaml', 'r') as file:
-        data_routes = yaml.safe_load(file)
-    #print(data_routes["namespaces"][0]["name"]) # For Debugging
+# Read the file specifying the routes to create.
+with io.open('example-ssh-routes.yaml', 'r') as file:
+    data_routes = yaml.safe_load(file)
+#print(data_routes["namespaces"][0]["name"]) # For Debugging
 
-    for namespace in data_routes["namespaces"]:
-        ns = getNS(namespace["name"])
-        policies = getPols(namespace["policies", ns])
-        hosts = namespace["hosts"]
-        print('In Namespace "' + ns.name + '" ('+ ns.id +'):')
-        print('With policies:')
-        for policy in policies:
-            print('  ' + policy.name)
-        for host in hosts:
-            route = Route(**{
-                'namespace_id': ns.id,
-                'name': stripHost(host),
-                'from': 'tcp+https://' + stripHost(host) + '.localhost.pomerium.io' + stripPort(host), #Change the last string to your domain space
-                'to': ['tcp://' + host],
-                'policy_ids': getPolIDs(policies),
-            })
-            resp = client.RouteService.SetRoute(SetRouteRequest(route=route))
-            print(resp)
-
-main()
+for namespace in data_routes["namespaces"]:
+    ns = getNS(namespace["name"])
+    policies = getPols(namespace["policies", ns])
+    hosts = namespace["hosts"]
+    print('In Namespace "' + ns.name + '" ('+ ns.id +'):')
+    print('With policies:')
+    for policy in policies:
+        print('  ' + policy.name)
+    for host in hosts:
+        route = Route(**{
+            'namespace_id': ns.id,
+            'name': stripHost(host),
+            'from': 'tcp+https://' + stripHost(host) + '.localhost.pomerium.io' + stripPort(host), #Change the last string to your domain space
+            'to': ['tcp://' + host],
+            'policy_ids': getPolIDs(policies),
+        })
+        resp = client.RouteService.SetRoute(SetRouteRequest(route=route))
+        print(resp)
