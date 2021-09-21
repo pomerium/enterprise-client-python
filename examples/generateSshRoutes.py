@@ -65,12 +65,11 @@ def getPols(policies, ns):
         thesePols.append(resp.policies[0])
     return thesePols
 
-# Function listPols returns the ID from the policies provided as a single array.
-def listPols(policies):
+# Function getPolIDs returns the ID from the policies provided as a single array.
+def getPolIDs(policies):
     p = []
     for policy in policies:
         p.append(policy.id)
-    print(p)
     return p
 
 
@@ -98,7 +97,7 @@ def main():
                 'name': stripHost(host),
                 'from': 'tcp+https://' + stripHost(host) + '.localhost.pomerium.io' + stripPort(host), #Change the last string to your domain space
                 'to': ['tcp://' + host],
-                'policy_ids': listPols(policies),
+                'policy_ids': getPolIDs(policies),
             })
             resp = client.RouteService.SetRoute(SetRouteRequest(route=route))
             print(resp)
