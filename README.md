@@ -10,9 +10,9 @@ pip install git+https://github.com/pomerium/enterprise-client-python
 
 ## Usage
 
-[Enterprise Setup](https://docs.pomerium.io/enterprise/api.html)
+[Enterprise Setup](https://pomerium.io/enterprise/api.html)
 
-[examples](https://github.com/pomerium/enterprise-client-python/blob/master/examples/)
+[Examples](https://github.com/pomerium/enterprise-client-python/blob/master/examples/)
 
 ## Reference
 
