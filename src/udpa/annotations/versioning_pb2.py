@@ -18,9 +18,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='udpa/annotations/versioning.proto',
   package='udpa.annotations',
   syntax='proto3',
-  serialized_options=None,
+  serialized_options=b'Z\"github.com/cncf/xds/go/annotations',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n!udpa/annotations/versioning.proto\x12\x10udpa.annotations\x1a google/protobuf/descriptor.proto\"5\n\x14VersioningAnnotation\x12\x1d\n\x15previous_message_type\x18\x01 \x01(\t:^\n\nversioning\x12\x1f.google.protobuf.MessageOptions\x18\xd3\x88\xe1\x03 \x01(\x0b\x32&.udpa.annotations.VersioningAnnotationb\x06proto3'
+  serialized_pb=b'\n!udpa/annotations/versioning.proto\x12\x10udpa.annotations\x1a google/protobuf/descriptor.proto\"5\n\x14VersioningAnnotation\x12\x1d\n\x15previous_message_type\x18\x01 \x01(\t:^\n\nversioning\x12\x1f.google.protobuf.MessageOptions\x18\xd3\x88\xe1\x03 \x01(\x0b\x32&.udpa.annotations.VersioningAnnotationB$Z\"github.com/cncf/xds/go/annotationsb\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_descriptor__pb2.DESCRIPTOR,])
 
@@ -80,4 +80,5 @@ _sym_db.RegisterMessage(VersioningAnnotation)
 versioning.message_type = _VERSIONINGANNOTATION
 google_dot_protobuf_dot_descriptor__pb2.MessageOptions.RegisterExtension(versioning)
 
+DESCRIPTOR._options = None
 # @@protoc_insertion_point(module_scope)

@@ -18,9 +18,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='udpa/annotations/sensitive.proto',
   package='udpa.annotations',
   syntax='proto3',
-  serialized_options=None,
+  serialized_options=b'Z\"github.com/cncf/xds/go/annotations',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n udpa/annotations/sensitive.proto\x12\x10udpa.annotations\x1a google/protobuf/descriptor.proto:3\n\tsensitive\x12\x1d.google.protobuf.FieldOptions\x18\xf7\xb6\xc1$ \x01(\x08\x62\x06proto3'
+  serialized_pb=b'\n udpa/annotations/sensitive.proto\x12\x10udpa.annotations\x1a google/protobuf/descriptor.proto:3\n\tsensitive\x12\x1d.google.protobuf.FieldOptions\x18\xf7\xb6\xc1$ \x01(\x08\x42$Z\"github.com/cncf/xds/go/annotationsb\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_descriptor__pb2.DESCRIPTOR,])
 
@@ -39,4 +39,5 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 google_dot_protobuf_dot_descriptor__pb2.FieldOptions.RegisterExtension(sensitive)
 
+DESCRIPTOR._options = None
 # @@protoc_insertion_point(module_scope)

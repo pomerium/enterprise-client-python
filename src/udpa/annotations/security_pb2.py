@@ -12,20 +12,18 @@ _sym_db = _symbol_database.Default()
 
 
 from udpa.annotations import status_pb2 as udpa_dot_annotations_dot_status__pb2
-from google.protobuf import any_pb2 as google_dot_protobuf_dot_any__pb2
 from google.protobuf import descriptor_pb2 as google_dot_protobuf_dot_descriptor__pb2
-from validate import validate_pb2 as validate_dot_validate__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='udpa/annotations/security.proto',
   package='udpa.annotations',
   syntax='proto3',
-  serialized_options=b'\272\200\310\321\006\002\010\001',
+  serialized_options=b'Z\"github.com/cncf/xds/go/annotations\272\200\310\321\006\002\010\001',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x1fudpa/annotations/security.proto\x12\x10udpa.annotations\x1a\x1dudpa/annotations/status.proto\x1a\x19google/protobuf/any.proto\x1a google/protobuf/descriptor.proto\x1a\x17validate/validate.proto\"o\n\x17\x46ieldSecurityAnnotation\x12*\n\"configure_for_untrusted_downstream\x18\x01 \x01(\x08\x12(\n configure_for_untrusted_upstream\x18\x02 \x01(\x08:]\n\x08security\x12\x1d.google.protobuf.FieldOptions\x18\xb1\xf2\xa6\x05 \x01(\x0b\x32).udpa.annotations.FieldSecurityAnnotationB\x08\xba\x80\xc8\xd1\x06\x02\x08\x01\x62\x06proto3'
+  serialized_pb=b'\n\x1fudpa/annotations/security.proto\x12\x10udpa.annotations\x1a\x1dudpa/annotations/status.proto\x1a google/protobuf/descriptor.proto\"o\n\x17\x46ieldSecurityAnnotation\x12*\n\"configure_for_untrusted_downstream\x18\x01 \x01(\x08\x12(\n configure_for_untrusted_upstream\x18\x02 \x01(\x08:]\n\x08security\x12\x1d.google.protobuf.FieldOptions\x18\xb1\xf2\xa6\x05 \x01(\x0b\x32).udpa.annotations.FieldSecurityAnnotationB,Z\"github.com/cncf/xds/go/annotations\xba\x80\xc8\xd1\x06\x02\x08\x01\x62\x06proto3'
   ,
-  dependencies=[udpa_dot_annotations_dot_status__pb2.DESCRIPTOR,google_dot_protobuf_dot_any__pb2.DESCRIPTOR,google_dot_protobuf_dot_descriptor__pb2.DESCRIPTOR,validate_dot_validate__pb2.DESCRIPTOR,])
+  dependencies=[udpa_dot_annotations_dot_status__pb2.DESCRIPTOR,google_dot_protobuf_dot_descriptor__pb2.DESCRIPTOR,])
 
 
 SECURITY_FIELD_NUMBER = 11122993
@@ -72,8 +70,8 @@ _FIELDSECURITYANNOTATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=170,
-  serialized_end=281,
+  serialized_start=118,
+  serialized_end=229,
 )
 
 DESCRIPTOR.message_types_by_name['FieldSecurityAnnotation'] = _FIELDSECURITYANNOTATION
