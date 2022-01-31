@@ -49,7 +49,7 @@ global___ClusterCollection = ClusterCollection
 
 class Cluster(google.protobuf.message.Message):
     """Configuration for a single upstream cluster.
-    [#next-free-field: 56]
+    [#next-free-field: 57]
     """
     DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
     class DiscoveryType(_DiscoveryType, metaclass=_DiscoveryTypeEnumTypeWrapper):
@@ -164,11 +164,11 @@ class Cluster(google.protobuf.message.Message):
         """
 
         LOAD_BALANCING_POLICY_CONFIG = Cluster.LbPolicy.V(7)
-        """[#not-implemented-hide:] Use the new :ref:`load_balancing_policy
+        """Use the new :ref:`load_balancing_policy
         <envoy_v3_api_field_config.cluster.v3.Cluster.load_balancing_policy>` field to determine the LB policy.
-        [#next-major-version: In the v3 API, we should consider deprecating the lb_policy field
-        and instead using the new load_balancing_policy field as the one and only mechanism for
-        configuring this.]
+        This has been deprecated in favor of using the :ref:`load_balancing_policy
+        <envoy_v3_api_field_config.cluster.v3.Cluster.load_balancing_policy>` field without
+        setting any value in :ref:`lb_policy<envoy_v3_api_field_config.cluster.v3.Cluster.lb_policy>`.
         """
 
 
@@ -208,11 +208,11 @@ class Cluster(google.protobuf.message.Message):
     """
 
     LOAD_BALANCING_POLICY_CONFIG = Cluster.LbPolicy.V(7)
-    """[#not-implemented-hide:] Use the new :ref:`load_balancing_policy
+    """Use the new :ref:`load_balancing_policy
     <envoy_v3_api_field_config.cluster.v3.Cluster.load_balancing_policy>` field to determine the LB policy.
-    [#next-major-version: In the v3 API, we should consider deprecating the lb_policy field
-    and instead using the new load_balancing_policy field as the one and only mechanism for
-    configuring this.]
+    This has been deprecated in favor of using the :ref:`load_balancing_policy
+    <envoy_v3_api_field_config.cluster.v3.Cluster.load_balancing_policy>` field without
+    setting any value in :ref:`lb_policy<envoy_v3_api_field_config.cluster.v3.Cluster.lb_policy>`.
     """
 
 
@@ -222,11 +222,20 @@ class Cluster(google.protobuf.message.Message):
         only perform a lookup for addresses in the IPv6 family. If AUTO is
         specified, the DNS resolver will first perform a lookup for addresses in
         the IPv6 family and fallback to a lookup for addresses in the IPv4 family.
+        This is semantically equivalent to a non-existent V6_PREFERRED option.
+        AUTO is a legacy name that is more opaque than
+        necessary and will be deprecated in favor of V6_PREFERRED in a future major version of the API.
+        If V4_PREFERRED is specified, the DNS resolver will first perform a lookup for addresses in the
+        IPv4 family and fallback to a lookup for addresses in the IPv6 family. i.e., the callback
+        target will only get v6 addresses if there were NO v4 addresses to return.
+        If ALL is specified, the DNS resolver will perform a lookup for both IPv4 and IPv6 families,
+        and return all resolved addresses.
         For cluster types other than
         :ref:`STRICT_DNS<envoy_v3_api_enum_value_config.cluster.v3.Cluster.DiscoveryType.STRICT_DNS>` and
         :ref:`LOGICAL_DNS<envoy_v3_api_enum_value_config.cluster.v3.Cluster.DiscoveryType.LOGICAL_DNS>`,
         this setting is
         ignored.
+        [#next-major-version: deprecate AUTO in favor of a V6_PREFERRED option.]
         """
         pass
     class _DnsLookupFamily:
@@ -236,10 +245,14 @@ class Cluster(google.protobuf.message.Message):
         AUTO = Cluster.DnsLookupFamily.V(0)
         V4_ONLY = Cluster.DnsLookupFamily.V(1)
         V6_ONLY = Cluster.DnsLookupFamily.V(2)
+        V4_PREFERRED = Cluster.DnsLookupFamily.V(3)
+        ALL = Cluster.DnsLookupFamily.V(4)
 
     AUTO = Cluster.DnsLookupFamily.V(0)
     V4_ONLY = Cluster.DnsLookupFamily.V(1)
     V6_ONLY = Cluster.DnsLookupFamily.V(2)
+    V4_PREFERRED = Cluster.DnsLookupFamily.V(3)
+    ALL = Cluster.DnsLookupFamily.V(4)
 
     class ClusterProtocolSelection(_ClusterProtocolSelection, metaclass=_ClusterProtocolSelectionEnumTypeWrapper):
         pass
@@ -575,11 +588,65 @@ class Cluster(google.protobuf.message.Message):
         def HasField(self, field_name: typing_extensions.Literal[u"default_subset",b"default_subset"]) -> builtins.bool: ...
         def ClearField(self, field_name: typing_extensions.Literal[u"default_subset",b"default_subset",u"fallback_policy",b"fallback_policy",u"list_as_any",b"list_as_any",u"locality_weight_aware",b"locality_weight_aware",u"panic_mode_any",b"panic_mode_any",u"scale_locality_weight",b"scale_locality_weight",u"subset_selectors",b"subset_selectors"]) -> None: ...
 
+    class SlowStartConfig(google.protobuf.message.Message):
+        """Configuration for :ref:`slow start mode <arch_overview_load_balancing_slow_start>`."""
+        DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+        SLOW_START_WINDOW_FIELD_NUMBER: builtins.int
+        AGGRESSION_FIELD_NUMBER: builtins.int
+        @property
+        def slow_start_window(self) -> google.protobuf.duration_pb2.Duration:
+            """Represents the size of slow start window.
+            If set, the newly created host remains in slow start mode starting from its creation time
+            for the duration of slow start window.
+            """
+            pass
+        @property
+        def aggression(self) -> envoy.config.core.v3.base_pb2.RuntimeDouble:
+            """This parameter controls the speed of traffic increase over the slow start window. Defaults to 1.0,
+            so that endpoint would get linearly increasing amount of traffic.
+            When increasing the value for this parameter, the speed of traffic ramp-up increases non-linearly.
+            The value of aggression parameter should be greater than 0.0.
+            By tuning the parameter, is possible to achieve polynomial or exponential shape of ramp-up curve.
+
+            During slow start window, effective weight of an endpoint would be scaled with time factor and aggression:
+            `new_weight = weight * time_factor ^ (1 / aggression)`,
+            where `time_factor=(time_since_start_seconds / slow_start_time_seconds)`.
+
+            As time progresses, more and more traffic would be sent to endpoint, which is in slow start window.
+            Once host exits slow start, time_factor and aggression no longer affect its weight.
+            """
+            pass
+        def __init__(self,
+            *,
+            slow_start_window : typing.Optional[google.protobuf.duration_pb2.Duration] = ...,
+            aggression : typing.Optional[envoy.config.core.v3.base_pb2.RuntimeDouble] = ...,
+            ) -> None: ...
+        def HasField(self, field_name: typing_extensions.Literal[u"aggression",b"aggression",u"slow_start_window",b"slow_start_window"]) -> builtins.bool: ...
+        def ClearField(self, field_name: typing_extensions.Literal[u"aggression",b"aggression",u"slow_start_window",b"slow_start_window"]) -> None: ...
+
+    class RoundRobinLbConfig(google.protobuf.message.Message):
+        """Specific configuration for the RoundRobin load balancing policy."""
+        DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+        SLOW_START_CONFIG_FIELD_NUMBER: builtins.int
+        @property
+        def slow_start_config(self) -> global___Cluster.SlowStartConfig:
+            """Configuration for slow start mode.
+            If this configuration is not set, slow start will not be not enabled.
+            """
+            pass
+        def __init__(self,
+            *,
+            slow_start_config : typing.Optional[global___Cluster.SlowStartConfig] = ...,
+            ) -> None: ...
+        def HasField(self, field_name: typing_extensions.Literal[u"slow_start_config",b"slow_start_config"]) -> builtins.bool: ...
+        def ClearField(self, field_name: typing_extensions.Literal[u"slow_start_config",b"slow_start_config"]) -> None: ...
+
     class LeastRequestLbConfig(google.protobuf.message.Message):
         """Specific configuration for the LeastRequest load balancing policy."""
         DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
         CHOICE_COUNT_FIELD_NUMBER: builtins.int
         ACTIVE_REQUEST_BIAS_FIELD_NUMBER: builtins.int
+        SLOW_START_CONFIG_FIELD_NUMBER: builtins.int
         @property
         def choice_count(self) -> google.protobuf.wrappers_pb2.UInt32Value:
             """The number of random healthy hosts from which the host with the fewest active requests will
@@ -613,13 +680,20 @@ class Cluster(google.protobuf.message.Message):
               This setting only takes effect if all host weights are not equal.
             """
             pass
+        @property
+        def slow_start_config(self) -> global___Cluster.SlowStartConfig:
+            """Configuration for slow start mode.
+            If this configuration is not set, slow start will not be not enabled.
+            """
+            pass
         def __init__(self,
             *,
             choice_count : typing.Optional[google.protobuf.wrappers_pb2.UInt32Value] = ...,
             active_request_bias : typing.Optional[envoy.config.core.v3.base_pb2.RuntimeDouble] = ...,
+            slow_start_config : typing.Optional[global___Cluster.SlowStartConfig] = ...,
             ) -> None: ...
-        def HasField(self, field_name: typing_extensions.Literal[u"active_request_bias",b"active_request_bias",u"choice_count",b"choice_count"]) -> builtins.bool: ...
-        def ClearField(self, field_name: typing_extensions.Literal[u"active_request_bias",b"active_request_bias",u"choice_count",b"choice_count"]) -> None: ...
+        def HasField(self, field_name: typing_extensions.Literal[u"active_request_bias",b"active_request_bias",u"choice_count",b"choice_count",u"slow_start_config",b"slow_start_config"]) -> builtins.bool: ...
+        def ClearField(self, field_name: typing_extensions.Literal[u"active_request_bias",b"active_request_bias",u"choice_count",b"choice_count",u"slow_start_config",b"slow_start_config"]) -> None: ...
 
     class RingHashLbConfig(google.protobuf.message.Message):
         """Specific configuration for the :ref:`RingHash<arch_overview_load_balancing_types_ring_hash>`
@@ -1040,6 +1114,7 @@ class Cluster(google.protobuf.message.Message):
     MAGLEV_LB_CONFIG_FIELD_NUMBER: builtins.int
     ORIGINAL_DST_LB_CONFIG_FIELD_NUMBER: builtins.int
     LEAST_REQUEST_LB_CONFIG_FIELD_NUMBER: builtins.int
+    ROUND_ROBIN_LB_CONFIG_FIELD_NUMBER: builtins.int
     COMMON_LB_CONFIG_FIELD_NUMBER: builtins.int
     TRANSPORT_SOCKET_FIELD_NUMBER: builtins.int
     METADATA_FIELD_NUMBER: builtins.int
@@ -1156,7 +1231,6 @@ class Cluster(google.protobuf.message.Message):
     lb_policy: global___Cluster.LbPolicy.V = ...
     """The :ref:`load balancer type <arch_overview_load_balancing_types>` to use
     when picking a host in the cluster.
-    [#comment:TODO: Remove enum constraint :ref:`LOAD_BALANCING_POLICY_CONFIG<envoy_v3_api_enum_value_config.cluster.v3.Cluster.LbPolicy.LOAD_BALANCING_POLICY_CONFIG>` when implemented.]
     """
 
     @property
@@ -1227,7 +1301,7 @@ class Cluster(google.protobuf.message.Message):
     @property
     def http_protocol_options(self) -> envoy.config.core.v3.protocol_pb2.Http1ProtocolOptions:
         """Additional options when handling HTTP1 requests.
-        This has been deprecated in favor of http_protocol_options fields in the in the
+        This has been deprecated in favor of http_protocol_options fields in the
         :ref:`http_protocol_options <envoy_v3_api_msg_extensions.upstreams.http.v3.HttpProtocolOptions>` message.
         http_protocol_options can be set via the cluster's
         :ref:`extension_protocol_options<envoy_v3_api_field_config.cluster.v3.Cluster.typed_extension_protocol_options>`.
@@ -1244,7 +1318,7 @@ class Cluster(google.protobuf.message.Message):
         supports prior knowledge for upstream connections. Even if TLS is used
         with ALPN, `http2_protocol_options` must be specified. As an aside this allows HTTP/2
         connections to happen over plain text.
-        This has been deprecated in favor of http2_protocol_options fields in the in the
+        This has been deprecated in favor of http2_protocol_options fields in the
         :ref:`http_protocol_options <envoy_v3_api_msg_extensions.upstreams.http.v3.HttpProtocolOptions>`
         message. http2_protocol_options can be set via the cluster's
         :ref:`extension_protocol_options<envoy_v3_api_field_config.cluster.v3.Cluster.typed_extension_protocol_options>`.
@@ -1311,18 +1385,12 @@ class Cluster(google.protobuf.message.Message):
         :ref:`STRICT_DNS<envoy_v3_api_enum_value_config.cluster.v3.Cluster.DiscoveryType.STRICT_DNS>`
         and :ref:`LOGICAL_DNS<envoy_v3_api_enum_value_config.cluster.v3.Cluster.DiscoveryType.LOGICAL_DNS>`
         this setting is ignored.
-        Setting this value causes failure if the
-        ``envoy.restart_features.use_apple_api_for_dns_lookups`` runtime value is true during
-        server startup. Apple's API only allows overriding DNS resolvers via system settings.
         This field is deprecated in favor of *dns_resolution_config*
         which aggregates all of the DNS resolver configuration in a single message.
         """
         pass
     use_tcp_for_dns_lookups: builtins.bool = ...
     """Always use TCP queries instead of UDP queries for DNS lookups.
-    Setting this value causes failure if the
-    ``envoy.restart_features.use_apple_api_for_dns_lookups`` runtime value is true during
-    server startup. Apple' API only uses UDP for DNS resolution.
     This field is deprecated in favor of *dns_resolution_config*
     which aggregates all of the DNS resolver configuration in a single message.
     """
@@ -1330,25 +1398,23 @@ class Cluster(google.protobuf.message.Message):
     @property
     def dns_resolution_config(self) -> envoy.config.core.v3.resolver_pb2.DnsResolutionConfig:
         """DNS resolution configuration which includes the underlying dns resolver addresses and options.
-        *dns_resolution_config* will be deprecated once
-        :ref:'typed_dns_resolver_config <envoy_v3_api_field_config.cluster.v3.Cluster.typed_dns_resolver_config>'
-        is fully supported.
+        This field is deprecated in favor of
+        :ref:`typed_dns_resolver_config <envoy_v3_api_field_config.cluster.v3.Cluster.typed_dns_resolver_config>`.
         """
         pass
     @property
     def typed_dns_resolver_config(self) -> envoy.config.core.v3.extension_pb2.TypedExtensionConfig:
         """DNS resolver type configuration extension. This extension can be used to configure c-ares, apple,
         or any other DNS resolver types and the related parameters.
-        For example, an object of :ref:`DnsResolutionConfig <envoy_v3_api_msg_config.core.v3.DnsResolutionConfig>`
-        can be packed into this *typed_dns_resolver_config*. This configuration will replace the
-        :ref:'dns_resolution_config <envoy_v3_api_field_config.cluster.v3.Cluster.dns_resolution_config>'
-        configuration eventually.
-        TODO(yanjunxiang): Investigate the deprecation plan for *dns_resolution_config*.
+        For example, an object of
+        :ref:`CaresDnsResolverConfig <envoy_v3_api_msg_extensions.network.dns_resolver.cares.v3.CaresDnsResolverConfig>`
+        can be packed into this *typed_dns_resolver_config*. This configuration replaces the
+        :ref:`dns_resolution_config <envoy_v3_api_field_config.cluster.v3.Cluster.dns_resolution_config>`
+        configuration.
         During the transition period when both *dns_resolution_config* and *typed_dns_resolver_config* exists,
-        this configuration is optional.
-        When *typed_dns_resolver_config* is in place, Envoy will use it and ignore *dns_resolution_config*.
+        when *typed_dns_resolver_config* is in place, Envoy will use it and ignore *dns_resolution_config*.
         When *typed_dns_resolver_config* is missing, the default behavior is in place.
-        [#not-implemented-hide:]
+        [#extension-category: envoy.network.dns_resolver]
         """
         pass
     @property
@@ -1410,6 +1476,10 @@ class Cluster(google.protobuf.message.Message):
     @property
     def least_request_lb_config(self) -> global___Cluster.LeastRequestLbConfig:
         """Optional configuration for the LeastRequest load balancing policy."""
+        pass
+    @property
+    def round_robin_lb_config(self) -> global___Cluster.RoundRobinLbConfig:
+        """Optional configuration for the RoundRobin load balancing policy."""
         pass
     @property
     def common_lb_config(self) -> global___Cluster.CommonLbConfig:
@@ -1477,9 +1547,8 @@ class Cluster(google.protobuf.message.Message):
         pass
     @property
     def load_balancing_policy(self) -> global___LoadBalancingPolicy:
-        """[#not-implemented-hide:] New mechanism for LB policy configuration. Used only if the
-        :ref:`lb_policy<envoy_v3_api_field_config.cluster.v3.Cluster.lb_policy>` field has the value
-        :ref:`LOAD_BALANCING_POLICY_CONFIG<envoy_v3_api_enum_value_config.cluster.v3.Cluster.LbPolicy.LOAD_BALANCING_POLICY_CONFIG>`.
+        """If this field is set and is supported by the client, it will supersede the value of
+        :ref:`lb_policy<envoy_v3_api_field_config.cluster.v3.Cluster.lb_policy>`.
         """
         pass
     @property
@@ -1585,6 +1654,7 @@ class Cluster(google.protobuf.message.Message):
         maglev_lb_config : typing.Optional[global___Cluster.MaglevLbConfig] = ...,
         original_dst_lb_config : typing.Optional[global___Cluster.OriginalDstLbConfig] = ...,
         least_request_lb_config : typing.Optional[global___Cluster.LeastRequestLbConfig] = ...,
+        round_robin_lb_config : typing.Optional[global___Cluster.RoundRobinLbConfig] = ...,
         common_lb_config : typing.Optional[global___Cluster.CommonLbConfig] = ...,
         transport_socket : typing.Optional[envoy.config.core.v3.base_pb2.TransportSocket] = ...,
         metadata : typing.Optional[envoy.config.core.v3.base_pb2.Metadata] = ...,
@@ -1601,16 +1671,16 @@ class Cluster(google.protobuf.message.Message):
         preconnect_policy : typing.Optional[global___Cluster.PreconnectPolicy] = ...,
         connection_pool_per_downstream_connection : builtins.bool = ...,
         ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"circuit_breakers",b"circuit_breakers",u"cleanup_interval",b"cleanup_interval",u"cluster_discovery_type",b"cluster_discovery_type",u"cluster_type",b"cluster_type",u"common_http_protocol_options",b"common_http_protocol_options",u"common_lb_config",b"common_lb_config",u"connect_timeout",b"connect_timeout",u"dns_failure_refresh_rate",b"dns_failure_refresh_rate",u"dns_refresh_rate",b"dns_refresh_rate",u"dns_resolution_config",b"dns_resolution_config",u"eds_cluster_config",b"eds_cluster_config",u"http2_protocol_options",b"http2_protocol_options",u"http_protocol_options",b"http_protocol_options",u"lb_config",b"lb_config",u"lb_subset_config",b"lb_subset_config",u"least_request_lb_config",b"least_request_lb_config",u"load_assignment",b"load_assignment",u"load_balancing_policy",b"load_balancing_policy",u"lrs_server",b"lrs_server",u"maglev_lb_config",b"maglev_lb_config",u"max_requests_per_connection",b"max_requests_per_connection",u"metadata",b"metadata",u"original_dst_lb_config",b"original_dst_lb_config",u"outlier_detection",b"outlier_detection",u"per_connection_buffer_limit_bytes",b"per_connection_buffer_limit_bytes",u"preconnect_policy",b"preconnect_policy",u"ring_hash_lb_config",b"ring_hash_lb_config",u"track_cluster_stats",b"track_cluster_stats",u"transport_socket",b"transport_socket",u"type",b"type",u"typed_dns_resolver_config",b"typed_dns_resolver_config",u"upstream_bind_config",b"upstream_bind_config",u"upstream_config",b"upstream_config",u"upstream_connection_options",b"upstream_connection_options",u"upstream_http_protocol_options",b"upstream_http_protocol_options",u"wait_for_warm_on_init",b"wait_for_warm_on_init"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"alt_stat_name",b"alt_stat_name",u"circuit_breakers",b"circuit_breakers",u"cleanup_interval",b"cleanup_interval",u"close_connections_on_host_health_failure",b"close_connections_on_host_health_failure",u"cluster_discovery_type",b"cluster_discovery_type",u"cluster_type",b"cluster_type",u"common_http_protocol_options",b"common_http_protocol_options",u"common_lb_config",b"common_lb_config",u"connect_timeout",b"connect_timeout",u"connection_pool_per_downstream_connection",b"connection_pool_per_downstream_connection",u"dns_failure_refresh_rate",b"dns_failure_refresh_rate",u"dns_lookup_family",b"dns_lookup_family",u"dns_refresh_rate",b"dns_refresh_rate",u"dns_resolution_config",b"dns_resolution_config",u"dns_resolvers",b"dns_resolvers",u"eds_cluster_config",b"eds_cluster_config",u"filters",b"filters",u"health_checks",b"health_checks",u"http2_protocol_options",b"http2_protocol_options",u"http_protocol_options",b"http_protocol_options",u"ignore_health_on_host_removal",b"ignore_health_on_host_removal",u"lb_config",b"lb_config",u"lb_policy",b"lb_policy",u"lb_subset_config",b"lb_subset_config",u"least_request_lb_config",b"least_request_lb_config",u"load_assignment",b"load_assignment",u"load_balancing_policy",b"load_balancing_policy",u"lrs_server",b"lrs_server",u"maglev_lb_config",b"maglev_lb_config",u"max_requests_per_connection",b"max_requests_per_connection",u"metadata",b"metadata",u"name",b"name",u"original_dst_lb_config",b"original_dst_lb_config",u"outlier_detection",b"outlier_detection",u"per_connection_buffer_limit_bytes",b"per_connection_buffer_limit_bytes",u"preconnect_policy",b"preconnect_policy",u"protocol_selection",b"protocol_selection",u"respect_dns_ttl",b"respect_dns_ttl",u"ring_hash_lb_config",b"ring_hash_lb_config",u"track_cluster_stats",b"track_cluster_stats",u"track_timeout_budgets",b"track_timeout_budgets",u"transport_socket",b"transport_socket",u"transport_socket_matches",b"transport_socket_matches",u"type",b"type",u"typed_dns_resolver_config",b"typed_dns_resolver_config",u"typed_extension_protocol_options",b"typed_extension_protocol_options",u"upstream_bind_config",b"upstream_bind_config",u"upstream_config",b"upstream_config",u"upstream_connection_options",b"upstream_connection_options",u"upstream_http_protocol_options",b"upstream_http_protocol_options",u"use_tcp_for_dns_lookups",b"use_tcp_for_dns_lookups",u"wait_for_warm_on_init",b"wait_for_warm_on_init"]) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal[u"circuit_breakers",b"circuit_breakers",u"cleanup_interval",b"cleanup_interval",u"cluster_discovery_type",b"cluster_discovery_type",u"cluster_type",b"cluster_type",u"common_http_protocol_options",b"common_http_protocol_options",u"common_lb_config",b"common_lb_config",u"connect_timeout",b"connect_timeout",u"dns_failure_refresh_rate",b"dns_failure_refresh_rate",u"dns_refresh_rate",b"dns_refresh_rate",u"dns_resolution_config",b"dns_resolution_config",u"eds_cluster_config",b"eds_cluster_config",u"http2_protocol_options",b"http2_protocol_options",u"http_protocol_options",b"http_protocol_options",u"lb_config",b"lb_config",u"lb_subset_config",b"lb_subset_config",u"least_request_lb_config",b"least_request_lb_config",u"load_assignment",b"load_assignment",u"load_balancing_policy",b"load_balancing_policy",u"lrs_server",b"lrs_server",u"maglev_lb_config",b"maglev_lb_config",u"max_requests_per_connection",b"max_requests_per_connection",u"metadata",b"metadata",u"original_dst_lb_config",b"original_dst_lb_config",u"outlier_detection",b"outlier_detection",u"per_connection_buffer_limit_bytes",b"per_connection_buffer_limit_bytes",u"preconnect_policy",b"preconnect_policy",u"ring_hash_lb_config",b"ring_hash_lb_config",u"round_robin_lb_config",b"round_robin_lb_config",u"track_cluster_stats",b"track_cluster_stats",u"transport_socket",b"transport_socket",u"type",b"type",u"typed_dns_resolver_config",b"typed_dns_resolver_config",u"upstream_bind_config",b"upstream_bind_config",u"upstream_config",b"upstream_config",u"upstream_connection_options",b"upstream_connection_options",u"upstream_http_protocol_options",b"upstream_http_protocol_options",u"wait_for_warm_on_init",b"wait_for_warm_on_init"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal[u"alt_stat_name",b"alt_stat_name",u"circuit_breakers",b"circuit_breakers",u"cleanup_interval",b"cleanup_interval",u"close_connections_on_host_health_failure",b"close_connections_on_host_health_failure",u"cluster_discovery_type",b"cluster_discovery_type",u"cluster_type",b"cluster_type",u"common_http_protocol_options",b"common_http_protocol_options",u"common_lb_config",b"common_lb_config",u"connect_timeout",b"connect_timeout",u"connection_pool_per_downstream_connection",b"connection_pool_per_downstream_connection",u"dns_failure_refresh_rate",b"dns_failure_refresh_rate",u"dns_lookup_family",b"dns_lookup_family",u"dns_refresh_rate",b"dns_refresh_rate",u"dns_resolution_config",b"dns_resolution_config",u"dns_resolvers",b"dns_resolvers",u"eds_cluster_config",b"eds_cluster_config",u"filters",b"filters",u"health_checks",b"health_checks",u"http2_protocol_options",b"http2_protocol_options",u"http_protocol_options",b"http_protocol_options",u"ignore_health_on_host_removal",b"ignore_health_on_host_removal",u"lb_config",b"lb_config",u"lb_policy",b"lb_policy",u"lb_subset_config",b"lb_subset_config",u"least_request_lb_config",b"least_request_lb_config",u"load_assignment",b"load_assignment",u"load_balancing_policy",b"load_balancing_policy",u"lrs_server",b"lrs_server",u"maglev_lb_config",b"maglev_lb_config",u"max_requests_per_connection",b"max_requests_per_connection",u"metadata",b"metadata",u"name",b"name",u"original_dst_lb_config",b"original_dst_lb_config",u"outlier_detection",b"outlier_detection",u"per_connection_buffer_limit_bytes",b"per_connection_buffer_limit_bytes",u"preconnect_policy",b"preconnect_policy",u"protocol_selection",b"protocol_selection",u"respect_dns_ttl",b"respect_dns_ttl",u"ring_hash_lb_config",b"ring_hash_lb_config",u"round_robin_lb_config",b"round_robin_lb_config",u"track_cluster_stats",b"track_cluster_stats",u"track_timeout_budgets",b"track_timeout_budgets",u"transport_socket",b"transport_socket",u"transport_socket_matches",b"transport_socket_matches",u"type",b"type",u"typed_dns_resolver_config",b"typed_dns_resolver_config",u"typed_extension_protocol_options",b"typed_extension_protocol_options",u"upstream_bind_config",b"upstream_bind_config",u"upstream_config",b"upstream_config",u"upstream_connection_options",b"upstream_connection_options",u"upstream_http_protocol_options",b"upstream_http_protocol_options",u"use_tcp_for_dns_lookups",b"use_tcp_for_dns_lookups",u"wait_for_warm_on_init",b"wait_for_warm_on_init"]) -> None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing_extensions.Literal[u"cluster_discovery_type",b"cluster_discovery_type"]) -> typing.Optional[typing_extensions.Literal["type","cluster_type"]]: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"lb_config",b"lb_config"]) -> typing.Optional[typing_extensions.Literal["ring_hash_lb_config","maglev_lb_config","original_dst_lb_config","least_request_lb_config"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"lb_config",b"lb_config"]) -> typing.Optional[typing_extensions.Literal["ring_hash_lb_config","maglev_lb_config","original_dst_lb_config","least_request_lb_config","round_robin_lb_config"]]: ...
 global___Cluster = Cluster
 
 class LoadBalancingPolicy(google.protobuf.message.Message):
-    """[#not-implemented-hide:] Extensible load balancing policy configuration.
+    """Extensible load balancing policy configuration.
 
     Every LB policy defined via this mechanism will be identified via a unique name using reverse
     DNS notation. If the policy needs configuration parameters, it must define a message for its
@@ -1633,20 +1703,15 @@ class LoadBalancingPolicy(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
     class Policy(google.protobuf.message.Message):
         DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
-        NAME_FIELD_NUMBER: builtins.int
-        TYPED_CONFIG_FIELD_NUMBER: builtins.int
-        name: typing.Text = ...
-        """Required. The name of the LB policy."""
-
+        TYPED_EXTENSION_CONFIG_FIELD_NUMBER: builtins.int
         @property
-        def typed_config(self) -> google.protobuf.any_pb2.Any: ...
+        def typed_extension_config(self) -> envoy.config.core.v3.extension_pb2.TypedExtensionConfig: ...
         def __init__(self,
             *,
-            name : typing.Text = ...,
-            typed_config : typing.Optional[google.protobuf.any_pb2.Any] = ...,
+            typed_extension_config : typing.Optional[envoy.config.core.v3.extension_pb2.TypedExtensionConfig] = ...,
             ) -> None: ...
-        def HasField(self, field_name: typing_extensions.Literal[u"typed_config",b"typed_config"]) -> builtins.bool: ...
-        def ClearField(self, field_name: typing_extensions.Literal[u"name",b"name",u"typed_config",b"typed_config"]) -> None: ...
+        def HasField(self, field_name: typing_extensions.Literal[u"typed_extension_config",b"typed_extension_config"]) -> builtins.bool: ...
+        def ClearField(self, field_name: typing_extensions.Literal[u"typed_extension_config",b"typed_extension_config"]) -> None: ...
 
     POLICIES_FIELD_NUMBER: builtins.int
     @property

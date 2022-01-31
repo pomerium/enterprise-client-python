@@ -19,9 +19,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='envoy/type/matcher/v3/http_inputs.proto',
   package='envoy.type.matcher.v3',
   syntax='proto3',
-  serialized_options=b'\n#io.envoyproxy.envoy.type.matcher.v3B\017HttpInputsProtoP\001\272\200\310\321\006\002\020\002',
+  serialized_options=b'\n#io.envoyproxy.envoy.type.matcher.v3B\017HttpInputsProtoP\001ZFgithub.com/envoyproxy/go-control-plane/envoy/type/matcher/v3;matcherv3\272\200\310\321\006\002\020\002',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\'envoy/type/matcher/v3/http_inputs.proto\x12\x15\x65nvoy.type.matcher.v3\x1a\x1dudpa/annotations/status.proto\x1a\x17validate/validate.proto\"?\n\x1bHttpRequestHeaderMatchInput\x12 \n\x0bheader_name\x18\x01 \x01(\tB\x0b\xfa\x42\x08r\x06\xc0\x01\x01\xc8\x01\x00\"@\n\x1cHttpRequestTrailerMatchInput\x12 \n\x0bheader_name\x18\x01 \x01(\tB\x0b\xfa\x42\x08r\x06\xc0\x01\x01\xc8\x01\x00\"@\n\x1cHttpResponseHeaderMatchInput\x12 \n\x0bheader_name\x18\x01 \x01(\tB\x0b\xfa\x42\x08r\x06\xc0\x01\x01\xc8\x01\x00\"A\n\x1dHttpResponseTrailerMatchInput\x12 \n\x0bheader_name\x18\x01 \x01(\tB\x0b\xfa\x42\x08r\x06\xc0\x01\x01\xc8\x01\x00\x42@\n#io.envoyproxy.envoy.type.matcher.v3B\x0fHttpInputsProtoP\x01\xba\x80\xc8\xd1\x06\x02\x10\x02\x62\x06proto3'
+  serialized_pb=b'\n\'envoy/type/matcher/v3/http_inputs.proto\x12\x15\x65nvoy.type.matcher.v3\x1a\x1dudpa/annotations/status.proto\x1a\x17validate/validate.proto\"?\n\x1bHttpRequestHeaderMatchInput\x12 \n\x0bheader_name\x18\x01 \x01(\tB\x0b\xfa\x42\x08r\x06\xc0\x01\x01\xc8\x01\x00\"@\n\x1cHttpRequestTrailerMatchInput\x12 \n\x0bheader_name\x18\x01 \x01(\tB\x0b\xfa\x42\x08r\x06\xc0\x01\x01\xc8\x01\x00\"@\n\x1cHttpResponseHeaderMatchInput\x12 \n\x0bheader_name\x18\x01 \x01(\tB\x0b\xfa\x42\x08r\x06\xc0\x01\x01\xc8\x01\x00\"A\n\x1dHttpResponseTrailerMatchInput\x12 \n\x0bheader_name\x18\x01 \x01(\tB\x0b\xfa\x42\x08r\x06\xc0\x01\x01\xc8\x01\x00\x42\x88\x01\n#io.envoyproxy.envoy.type.matcher.v3B\x0fHttpInputsProtoP\x01ZFgithub.com/envoyproxy/go-control-plane/envoy/type/matcher/v3;matcherv3\xba\x80\xc8\xd1\x06\x02\x10\x02\x62\x06proto3'
   ,
   dependencies=[udpa_dot_annotations_dot_status__pb2.DESCRIPTOR,validate_dot_validate__pb2.DESCRIPTOR,])
 

@@ -18,9 +18,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='envoy/annotations/resource.proto',
   package='envoy.annotations',
   syntax='proto3',
-  serialized_options=None,
+  serialized_options=b'Z8github.com/envoyproxy/go-control-plane/envoy/annotations',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n envoy/annotations/resource.proto\x12\x11\x65nvoy.annotations\x1a google/protobuf/descriptor.proto\"\"\n\x12ResourceAnnotation\x12\x0c\n\x04type\x18\x01 \x01(\t:[\n\x08resource\x12\x1f.google.protobuf.ServiceOptions\x18\xc1\xe4\xb2~ \x01(\x0b\x32%.envoy.annotations.ResourceAnnotationb\x06proto3'
+  serialized_pb=b'\n envoy/annotations/resource.proto\x12\x11\x65nvoy.annotations\x1a google/protobuf/descriptor.proto\"\"\n\x12ResourceAnnotation\x12\x0c\n\x04type\x18\x01 \x01(\t:[\n\x08resource\x12\x1f.google.protobuf.ServiceOptions\x18\xc1\xe4\xb2~ \x01(\x0b\x32%.envoy.annotations.ResourceAnnotationB:Z8github.com/envoyproxy/go-control-plane/envoy/annotationsb\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_descriptor__pb2.DESCRIPTOR,])
 
@@ -80,4 +80,5 @@ _sym_db.RegisterMessage(ResourceAnnotation)
 resource.message_type = _RESOURCEANNOTATION
 google_dot_protobuf_dot_descriptor__pb2.ServiceOptions.RegisterExtension(resource)
 
+DESCRIPTOR._options = None
 # @@protoc_insertion_point(module_scope)

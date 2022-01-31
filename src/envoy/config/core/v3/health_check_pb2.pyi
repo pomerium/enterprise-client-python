@@ -112,7 +112,7 @@ class HealthCheck(google.protobuf.message.Message):
         def WhichOneof(self, oneof_group: typing_extensions.Literal[u"payload",b"payload"]) -> typing.Optional[typing_extensions.Literal["text","binary"]]: ...
 
     class HttpHealthCheck(google.protobuf.message.Message):
-        """[#next-free-field: 12]"""
+        """[#next-free-field: 13]"""
         DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
         HOST_FIELD_NUMBER: builtins.int
         PATH_FIELD_NUMBER: builtins.int
@@ -121,6 +121,7 @@ class HealthCheck(google.protobuf.message.Message):
         REQUEST_HEADERS_TO_ADD_FIELD_NUMBER: builtins.int
         REQUEST_HEADERS_TO_REMOVE_FIELD_NUMBER: builtins.int
         EXPECTED_STATUSES_FIELD_NUMBER: builtins.int
+        RETRIABLE_STATUSES_FIELD_NUMBER: builtins.int
         CODEC_CLIENT_TYPE_FIELD_NUMBER: builtins.int
         SERVICE_NAME_MATCHER_FIELD_NUMBER: builtins.int
         host: typing.Text = ...
@@ -165,6 +166,20 @@ class HealthCheck(google.protobuf.message.Message):
             range are required. Only statuses in the range [100, 600) are allowed.
             """
             pass
+        @property
+        def retriable_statuses(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[envoy.type.v3.range_pb2.Int64Range]:
+            """Specifies a list of HTTP response statuses considered retriable. If provided, responses in this range
+            will count towards the configured :ref:`unhealthy_threshold <envoy_v3_api_field_config.core.v3.HealthCheck.unhealthy_threshold>`,
+            but will not result in the host being considered immediately unhealthy. Ranges follow half-open semantics of
+            :ref:`Int64Range <envoy_v3_api_msg_type.v3.Int64Range>`. The start and end of each range are required.
+            Only statuses in the range [100, 600) are allowed. The :ref:`expected_statuses <envoy_v3_api_field_config.core.v3.HealthCheck.HttpHealthCheck.expected_statuses>`
+            field takes precedence for any range overlaps with this field i.e. if status code 200 is both retriable and expected, a 200 response will
+            be considered a successful health check. By default all responses not in
+            :ref:`expected_statuses <envoy_v3_api_field_config.core.v3.HealthCheck.HttpHealthCheck.expected_statuses>` will result in
+            the host being considered immediately unhealthy i.e. if status code 200 is expected and there are no configured retriable statuses, any
+            non-200 response will result in the host being marked unhealthy.
+            """
+            pass
         codec_client_type: envoy.type.v3.http_pb2.CodecClientType.V = ...
         """Use specified application protocol for health checks."""
 
@@ -185,11 +200,12 @@ class HealthCheck(google.protobuf.message.Message):
             request_headers_to_add : typing.Optional[typing.Iterable[envoy.config.core.v3.base_pb2.HeaderValueOption]] = ...,
             request_headers_to_remove : typing.Optional[typing.Iterable[typing.Text]] = ...,
             expected_statuses : typing.Optional[typing.Iterable[envoy.type.v3.range_pb2.Int64Range]] = ...,
+            retriable_statuses : typing.Optional[typing.Iterable[envoy.type.v3.range_pb2.Int64Range]] = ...,
             codec_client_type : envoy.type.v3.http_pb2.CodecClientType.V = ...,
             service_name_matcher : typing.Optional[envoy.type.matcher.v3.string_pb2.StringMatcher] = ...,
             ) -> None: ...
         def HasField(self, field_name: typing_extensions.Literal[u"receive",b"receive",u"send",b"send",u"service_name_matcher",b"service_name_matcher"]) -> builtins.bool: ...
-        def ClearField(self, field_name: typing_extensions.Literal[u"codec_client_type",b"codec_client_type",u"expected_statuses",b"expected_statuses",u"host",b"host",u"path",b"path",u"receive",b"receive",u"request_headers_to_add",b"request_headers_to_add",u"request_headers_to_remove",b"request_headers_to_remove",u"send",b"send",u"service_name_matcher",b"service_name_matcher"]) -> None: ...
+        def ClearField(self, field_name: typing_extensions.Literal[u"codec_client_type",b"codec_client_type",u"expected_statuses",b"expected_statuses",u"host",b"host",u"path",b"path",u"receive",b"receive",u"request_headers_to_add",b"request_headers_to_add",u"request_headers_to_remove",b"request_headers_to_remove",u"retriable_statuses",b"retriable_statuses",u"send",b"send",u"service_name_matcher",b"service_name_matcher"]) -> None: ...
 
     class TcpHealthCheck(google.protobuf.message.Message):
         DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
@@ -360,8 +376,10 @@ class HealthCheck(google.protobuf.message.Message):
     @property
     def unhealthy_threshold(self) -> google.protobuf.wrappers_pb2.UInt32Value:
         """The number of unhealthy health checks required before a host is marked
-        unhealthy. Note that for *http* health checking if a host responds with 503
-        this threshold is ignored and the host is considered unhealthy immediately.
+        unhealthy. Note that for *http* health checking if a host responds with a code not in
+        :ref:`expected_statuses <envoy_v3_api_field_config.core.v3.HealthCheck.HttpHealthCheck.expected_statuses>`
+        or :ref:`retriable_statuses <envoy_v3_api_field_config.core.v3.HealthCheck.HttpHealthCheck.retriable_statuses>`,
+        this threshold is ignored and the host is considered immediately unhealthy.
         """
         pass
     @property

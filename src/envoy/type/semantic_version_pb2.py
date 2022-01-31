@@ -18,9 +18,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='envoy/type/semantic_version.proto',
   package='envoy.type',
   syntax='proto3',
-  serialized_options=b'\n\030io.envoyproxy.envoy.typeB\024SemanticVersionProtoP\001\272\200\310\321\006\002\020\001',
+  serialized_options=b'\n\030io.envoyproxy.envoy.typeB\024SemanticVersionProtoP\001Z1github.com/envoyproxy/go-control-plane/envoy/type\272\200\310\321\006\002\020\001',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n!envoy/type/semantic_version.proto\x12\nenvoy.type\x1a\x1dudpa/annotations/status.proto\"L\n\x0fSemanticVersion\x12\x14\n\x0cmajor_number\x18\x01 \x01(\r\x12\x14\n\x0cminor_number\x18\x02 \x01(\r\x12\r\n\x05patch\x18\x03 \x01(\rB:\n\x18io.envoyproxy.envoy.typeB\x14SemanticVersionProtoP\x01\xba\x80\xc8\xd1\x06\x02\x10\x01\x62\x06proto3'
+  serialized_pb=b'\n!envoy/type/semantic_version.proto\x12\nenvoy.type\x1a\x1dudpa/annotations/status.proto\"L\n\x0fSemanticVersion\x12\x14\n\x0cmajor_number\x18\x01 \x01(\r\x12\x14\n\x0cminor_number\x18\x02 \x01(\r\x12\r\n\x05patch\x18\x03 \x01(\rBm\n\x18io.envoyproxy.envoy.typeB\x14SemanticVersionProtoP\x01Z1github.com/envoyproxy/go-control-plane/envoy/type\xba\x80\xc8\xd1\x06\x02\x10\x01\x62\x06proto3'
   ,
   dependencies=[udpa_dot_annotations_dot_status__pb2.DESCRIPTOR,])
 

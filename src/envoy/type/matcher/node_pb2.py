@@ -20,9 +20,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='envoy/type/matcher/node.proto',
   package='envoy.type.matcher',
   syntax='proto3',
-  serialized_options=b'\n io.envoyproxy.envoy.type.matcherB\tNodeProtoP\001\272\200\310\321\006\002\020\001',
+  serialized_options=b'\n io.envoyproxy.envoy.type.matcherB\tNodeProtoP\001Z9github.com/envoyproxy/go-control-plane/envoy/type/matcher\272\200\310\321\006\002\020\001',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x1d\x65nvoy/type/matcher/node.proto\x12\x12\x65nvoy.type.matcher\x1a\x1f\x65nvoy/type/matcher/string.proto\x1a\x1f\x65nvoy/type/matcher/struct.proto\x1a\x1dudpa/annotations/status.proto\"|\n\x0bNodeMatcher\x12\x32\n\x07node_id\x18\x01 \x01(\x0b\x32!.envoy.type.matcher.StringMatcher\x12\x39\n\x0enode_metadatas\x18\x02 \x03(\x0b\x32!.envoy.type.matcher.StructMatcherB7\n io.envoyproxy.envoy.type.matcherB\tNodeProtoP\x01\xba\x80\xc8\xd1\x06\x02\x10\x01\x62\x06proto3'
+  serialized_pb=b'\n\x1d\x65nvoy/type/matcher/node.proto\x12\x12\x65nvoy.type.matcher\x1a\x1f\x65nvoy/type/matcher/string.proto\x1a\x1f\x65nvoy/type/matcher/struct.proto\x1a\x1dudpa/annotations/status.proto\"|\n\x0bNodeMatcher\x12\x32\n\x07node_id\x18\x01 \x01(\x0b\x32!.envoy.type.matcher.StringMatcher\x12\x39\n\x0enode_metadatas\x18\x02 \x03(\x0b\x32!.envoy.type.matcher.StructMatcherBr\n io.envoyproxy.envoy.type.matcherB\tNodeProtoP\x01Z9github.com/envoyproxy/go-control-plane/envoy/type/matcher\xba\x80\xc8\xd1\x06\x02\x10\x01\x62\x06proto3'
   ,
   dependencies=[envoy_dot_type_dot_matcher_dot_string__pb2.DESCRIPTOR,envoy_dot_type_dot_matcher_dot_struct__pb2.DESCRIPTOR,udpa_dot_annotations_dot_status__pb2.DESCRIPTOR,])
 

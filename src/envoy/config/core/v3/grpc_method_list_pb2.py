@@ -20,9 +20,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='envoy/config/core/v3/grpc_method_list.proto',
   package='envoy.config.core.v3',
   syntax='proto3',
-  serialized_options=b'\n\"io.envoyproxy.envoy.config.core.v3B\023GrpcMethodListProtoP\001\272\200\310\321\006\002\020\002',
+  serialized_options=b'\n\"io.envoyproxy.envoy.config.core.v3B\023GrpcMethodListProtoP\001ZBgithub.com/envoyproxy/go-control-plane/envoy/config/core/v3;corev3\272\200\310\321\006\002\020\002',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n+envoy/config/core/v3/grpc_method_list.proto\x12\x14\x65nvoy.config.core.v3\x1a\x1dudpa/annotations/status.proto\x1a!udpa/annotations/versioning.proto\x1a\x17validate/validate.proto\"\xec\x01\n\x0eGrpcMethodList\x12>\n\x08services\x18\x01 \x03(\x0b\x32,.envoy.config.core.v3.GrpcMethodList.Service\x1aq\n\x07Service\x12\x15\n\x04name\x18\x01 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01\x12\x1e\n\x0cmethod_names\x18\x02 \x03(\tB\x08\xfa\x42\x05\x92\x01\x02\x08\x01:/\x9a\xc5\x88\x1e*\n(envoy.api.v2.core.GrpcMethodList.Service:\'\x9a\xc5\x88\x1e\"\n envoy.api.v2.core.GrpcMethodListBC\n\"io.envoyproxy.envoy.config.core.v3B\x13GrpcMethodListProtoP\x01\xba\x80\xc8\xd1\x06\x02\x10\x02\x62\x06proto3'
+  serialized_pb=b'\n+envoy/config/core/v3/grpc_method_list.proto\x12\x14\x65nvoy.config.core.v3\x1a\x1dudpa/annotations/status.proto\x1a!udpa/annotations/versioning.proto\x1a\x17validate/validate.proto\"\xec\x01\n\x0eGrpcMethodList\x12>\n\x08services\x18\x01 \x03(\x0b\x32,.envoy.config.core.v3.GrpcMethodList.Service\x1aq\n\x07Service\x12\x15\n\x04name\x18\x01 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01\x12\x1e\n\x0cmethod_names\x18\x02 \x03(\tB\x08\xfa\x42\x05\x92\x01\x02\x08\x01:/\x9a\xc5\x88\x1e*\n(envoy.api.v2.core.GrpcMethodList.Service:\'\x9a\xc5\x88\x1e\"\n envoy.api.v2.core.GrpcMethodListB\x87\x01\n\"io.envoyproxy.envoy.config.core.v3B\x13GrpcMethodListProtoP\x01ZBgithub.com/envoyproxy/go-control-plane/envoy/config/core/v3;corev3\xba\x80\xc8\xd1\x06\x02\x10\x02\x62\x06proto3'
   ,
   dependencies=[udpa_dot_annotations_dot_status__pb2.DESCRIPTOR,udpa_dot_annotations_dot_versioning__pb2.DESCRIPTOR,validate_dot_validate__pb2.DESCRIPTOR,])
 

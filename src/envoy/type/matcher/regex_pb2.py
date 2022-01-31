@@ -20,9 +20,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='envoy/type/matcher/regex.proto',
   package='envoy.type.matcher',
   syntax='proto3',
-  serialized_options=b'\n io.envoyproxy.envoy.type.matcherB\nRegexProtoP\001\272\200\310\321\006\002\020\001',
+  serialized_options=b'\n io.envoyproxy.envoy.type.matcherB\nRegexProtoP\001Z9github.com/envoyproxy/go-control-plane/envoy/type/matcher\272\200\310\321\006\002\020\001',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x1e\x65nvoy/type/matcher/regex.proto\x12\x12\x65nvoy.type.matcher\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1dudpa/annotations/status.proto\x1a\x17validate/validate.proto\"\xcf\x01\n\x0cRegexMatcher\x12J\n\ngoogle_re2\x18\x01 \x01(\x0b\x32*.envoy.type.matcher.RegexMatcher.GoogleRE2B\x08\xfa\x42\x05\x8a\x01\x02\x10\x01H\x00\x12\x16\n\x05regex\x18\x02 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01\x1aG\n\tGoogleRE2\x12:\n\x10max_program_size\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.UInt32ValueB\x02\x18\x01\x42\x12\n\x0b\x65ngine_type\x12\x03\xf8\x42\x01\"b\n\x17RegexMatchAndSubstitute\x12\x31\n\x07pattern\x18\x01 \x01(\x0b\x32 .envoy.type.matcher.RegexMatcher\x12\x14\n\x0csubstitution\x18\x02 \x01(\tB8\n io.envoyproxy.envoy.type.matcherB\nRegexProtoP\x01\xba\x80\xc8\xd1\x06\x02\x10\x01\x62\x06proto3'
+  serialized_pb=b'\n\x1e\x65nvoy/type/matcher/regex.proto\x12\x12\x65nvoy.type.matcher\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1dudpa/annotations/status.proto\x1a\x17validate/validate.proto\"\xcf\x01\n\x0cRegexMatcher\x12J\n\ngoogle_re2\x18\x01 \x01(\x0b\x32*.envoy.type.matcher.RegexMatcher.GoogleRE2B\x08\xfa\x42\x05\x8a\x01\x02\x10\x01H\x00\x12\x16\n\x05regex\x18\x02 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01\x1aG\n\tGoogleRE2\x12:\n\x10max_program_size\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.UInt32ValueB\x02\x18\x01\x42\x12\n\x0b\x65ngine_type\x12\x03\xf8\x42\x01\"b\n\x17RegexMatchAndSubstitute\x12\x31\n\x07pattern\x18\x01 \x01(\x0b\x32 .envoy.type.matcher.RegexMatcher\x12\x14\n\x0csubstitution\x18\x02 \x01(\tBs\n io.envoyproxy.envoy.type.matcherB\nRegexProtoP\x01Z9github.com/envoyproxy/go-control-plane/envoy/type/matcher\xba\x80\xc8\xd1\x06\x02\x10\x01\x62\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_wrappers__pb2.DESCRIPTOR,udpa_dot_annotations_dot_status__pb2.DESCRIPTOR,validate_dot_validate__pb2.DESCRIPTOR,])
 

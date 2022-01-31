@@ -43,6 +43,11 @@ class RegexMatcher(google.protobuf.message.Message):
 
             This field is deprecated; regexp validation should be performed on the management server
             instead of being done by each individual client.
+
+            .. note::
+
+             Although this field is deprecated, the program size will still be checked against the
+             global ``re2.max_program_size.error_level`` runtime value.
             """
             pass
         def __init__(self,

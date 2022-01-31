@@ -16,7 +16,6 @@ from envoy.config.core.v3 import base_pb2 as envoy_dot_config_dot_core_dot_v3_do
 from envoy.config.core.v3 import config_source_pb2 as envoy_dot_config_dot_core_dot_v3_dot_config__source__pb2
 from envoy.config.core.v3 import health_check_pb2 as envoy_dot_config_dot_core_dot_v3_dot_health__check__pb2
 from google.protobuf import wrappers_pb2 as google_dot_protobuf_dot_wrappers__pb2
-from udpa.annotations import migrate_pb2 as udpa_dot_annotations_dot_migrate__pb2
 from udpa.annotations import status_pb2 as udpa_dot_annotations_dot_status__pb2
 from udpa.annotations import versioning_pb2 as udpa_dot_annotations_dot_versioning__pb2
 from validate import validate_pb2 as validate_dot_validate__pb2
@@ -26,11 +25,11 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='envoy/config/endpoint/v3/endpoint_components.proto',
   package='envoy.config.endpoint.v3',
   syntax='proto3',
-  serialized_options=b'\n&io.envoyproxy.envoy.config.endpoint.v3B\027EndpointComponentsProtoP\001\272\200\310\321\006\002\020\002',
+  serialized_options=b'\n&io.envoyproxy.envoy.config.endpoint.v3B\027EndpointComponentsProtoP\001ZJgithub.com/envoyproxy/go-control-plane/envoy/config/endpoint/v3;endpointv3\272\200\310\321\006\002\020\002',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n2envoy/config/endpoint/v3/endpoint_components.proto\x12\x18\x65nvoy.config.endpoint.v3\x1a\"envoy/config/core/v3/address.proto\x1a\x1f\x65nvoy/config/core/v3/base.proto\x1a(envoy/config/core/v3/config_source.proto\x1a\'envoy/config/core/v3/health_check.proto\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1eudpa/annotations/migrate.proto\x1a\x1dudpa/annotations/status.proto\x1a!udpa/annotations/versioning.proto\x1a\x17validate/validate.proto\"\xc5\x02\n\x08\x45ndpoint\x12.\n\x07\x61\x64\x64ress\x18\x01 \x01(\x0b\x32\x1d.envoy.config.core.v3.Address\x12Q\n\x13health_check_config\x18\x02 \x01(\x0b\x32\x34.envoy.config.endpoint.v3.Endpoint.HealthCheckConfig\x12\x10\n\x08hostname\x18\x03 \x01(\t\x1a}\n\x11HealthCheckConfig\x12\x1d\n\nport_value\x18\x01 \x01(\rB\t\xfa\x42\x06*\x04\x18\xff\xff\x03\x12\x10\n\x08hostname\x18\x02 \x01(\t:7\x9a\xc5\x88\x1e\x32\n0envoy.api.v2.endpoint.Endpoint.HealthCheckConfig:%\x9a\xc5\x88\x1e \n\x1e\x65nvoy.api.v2.endpoint.Endpoint\"\xcc\x02\n\nLbEndpoint\x12\x36\n\x08\x65ndpoint\x18\x01 \x01(\x0b\x32\".envoy.config.endpoint.v3.EndpointH\x00\x12\x17\n\rendpoint_name\x18\x05 \x01(\tH\x00\x12\x39\n\rhealth_status\x18\x02 \x01(\x0e\x32\".envoy.config.core.v3.HealthStatus\x12\x30\n\x08metadata\x18\x03 \x01(\x0b\x32\x1e.envoy.config.core.v3.Metadata\x12\x44\n\x15load_balancing_weight\x18\x04 \x01(\x0b\x32\x1c.google.protobuf.UInt32ValueB\x07\xfa\x42\x04*\x02(\x01:\'\x9a\xc5\x88\x1e\"\n envoy.api.v2.endpoint.LbEndpointB\x11\n\x0fhost_identifier\"r\n\x19LedsClusterLocalityConfig\x12\x37\n\x0bleds_config\x18\x01 \x01(\x0b\x32\".envoy.config.core.v3.ConfigSource\x12\x1c\n\x14leds_collection_name\x18\x02 \x01(\t\"\xdb\x04\n\x13LocalityLbEndpoints\x12\x30\n\x08locality\x18\x01 \x01(\x0b\x32\x1e.envoy.config.core.v3.Locality\x12:\n\x0clb_endpoints\x18\x02 \x03(\x0b\x32$.envoy.config.endpoint.v3.LbEndpoint\x12Y\n\x11lb_endpoints_list\x18\x07 \x01(\x0b\x32<.envoy.config.endpoint.v3.LocalityLbEndpoints.LbEndpointListH\x00\x12[\n\x1cleds_cluster_locality_config\x18\x08 \x01(\x0b\x32\x33.envoy.config.endpoint.v3.LedsClusterLocalityConfigH\x00\x12\x44\n\x15load_balancing_weight\x18\x03 \x01(\x0b\x32\x1c.google.protobuf.UInt32ValueB\x07\xfa\x42\x04*\x02(\x01\x12\x1a\n\x08priority\x18\x05 \x01(\rB\x08\xfa\x42\x05*\x03\x18\x80\x01\x12/\n\tproximity\x18\x06 \x01(\x0b\x32\x1c.google.protobuf.UInt32Value\x1aL\n\x0eLbEndpointList\x12:\n\x0clb_endpoints\x18\x01 \x03(\x0b\x32$.envoy.config.endpoint.v3.LbEndpoint:0\x9a\xc5\x88\x1e+\n)envoy.api.v2.endpoint.LocalityLbEndpointsB\x0b\n\tlb_configBK\n&io.envoyproxy.envoy.config.endpoint.v3B\x17\x45ndpointComponentsProtoP\x01\xba\x80\xc8\xd1\x06\x02\x10\x02\x62\x06proto3'
+  serialized_pb=b'\n2envoy/config/endpoint/v3/endpoint_components.proto\x12\x18\x65nvoy.config.endpoint.v3\x1a\"envoy/config/core/v3/address.proto\x1a\x1f\x65nvoy/config/core/v3/base.proto\x1a(envoy/config/core/v3/config_source.proto\x1a\'envoy/config/core/v3/health_check.proto\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1dudpa/annotations/status.proto\x1a!udpa/annotations/versioning.proto\x1a\x17validate/validate.proto\"\xc5\x02\n\x08\x45ndpoint\x12.\n\x07\x61\x64\x64ress\x18\x01 \x01(\x0b\x32\x1d.envoy.config.core.v3.Address\x12Q\n\x13health_check_config\x18\x02 \x01(\x0b\x32\x34.envoy.config.endpoint.v3.Endpoint.HealthCheckConfig\x12\x10\n\x08hostname\x18\x03 \x01(\t\x1a}\n\x11HealthCheckConfig\x12\x1d\n\nport_value\x18\x01 \x01(\rB\t\xfa\x42\x06*\x04\x18\xff\xff\x03\x12\x10\n\x08hostname\x18\x02 \x01(\t:7\x9a\xc5\x88\x1e\x32\n0envoy.api.v2.endpoint.Endpoint.HealthCheckConfig:%\x9a\xc5\x88\x1e \n\x1e\x65nvoy.api.v2.endpoint.Endpoint\"\xcc\x02\n\nLbEndpoint\x12\x36\n\x08\x65ndpoint\x18\x01 \x01(\x0b\x32\".envoy.config.endpoint.v3.EndpointH\x00\x12\x17\n\rendpoint_name\x18\x05 \x01(\tH\x00\x12\x39\n\rhealth_status\x18\x02 \x01(\x0e\x32\".envoy.config.core.v3.HealthStatus\x12\x30\n\x08metadata\x18\x03 \x01(\x0b\x32\x1e.envoy.config.core.v3.Metadata\x12\x44\n\x15load_balancing_weight\x18\x04 \x01(\x0b\x32\x1c.google.protobuf.UInt32ValueB\x07\xfa\x42\x04*\x02(\x01:\'\x9a\xc5\x88\x1e\"\n envoy.api.v2.endpoint.LbEndpointB\x11\n\x0fhost_identifier\"r\n\x19LedsClusterLocalityConfig\x12\x37\n\x0bleds_config\x18\x01 \x01(\x0b\x32\".envoy.config.core.v3.ConfigSource\x12\x1c\n\x14leds_collection_name\x18\x02 \x01(\t\"\xe1\x04\n\x13LocalityLbEndpoints\x12\x30\n\x08locality\x18\x01 \x01(\x0b\x32\x1e.envoy.config.core.v3.Locality\x12:\n\x0clb_endpoints\x18\x02 \x03(\x0b\x32$.envoy.config.endpoint.v3.LbEndpoint\x12_\n\x17load_balancer_endpoints\x18\x07 \x01(\x0b\x32<.envoy.config.endpoint.v3.LocalityLbEndpoints.LbEndpointListH\x00\x12[\n\x1cleds_cluster_locality_config\x18\x08 \x01(\x0b\x32\x33.envoy.config.endpoint.v3.LedsClusterLocalityConfigH\x00\x12\x44\n\x15load_balancing_weight\x18\x03 \x01(\x0b\x32\x1c.google.protobuf.UInt32ValueB\x07\xfa\x42\x04*\x02(\x01\x12\x1a\n\x08priority\x18\x05 \x01(\rB\x08\xfa\x42\x05*\x03\x18\x80\x01\x12/\n\tproximity\x18\x06 \x01(\x0b\x32\x1c.google.protobuf.UInt32Value\x1aL\n\x0eLbEndpointList\x12:\n\x0clb_endpoints\x18\x01 \x03(\x0b\x32$.envoy.config.endpoint.v3.LbEndpoint:0\x9a\xc5\x88\x1e+\n)envoy.api.v2.endpoint.LocalityLbEndpointsB\x0b\n\tlb_configB\x97\x01\n&io.envoyproxy.envoy.config.endpoint.v3B\x17\x45ndpointComponentsProtoP\x01ZJgithub.com/envoyproxy/go-control-plane/envoy/config/endpoint/v3;endpointv3\xba\x80\xc8\xd1\x06\x02\x10\x02\x62\x06proto3'
   ,
-  dependencies=[envoy_dot_config_dot_core_dot_v3_dot_address__pb2.DESCRIPTOR,envoy_dot_config_dot_core_dot_v3_dot_base__pb2.DESCRIPTOR,envoy_dot_config_dot_core_dot_v3_dot_config__source__pb2.DESCRIPTOR,envoy_dot_config_dot_core_dot_v3_dot_health__check__pb2.DESCRIPTOR,google_dot_protobuf_dot_wrappers__pb2.DESCRIPTOR,udpa_dot_annotations_dot_migrate__pb2.DESCRIPTOR,udpa_dot_annotations_dot_status__pb2.DESCRIPTOR,udpa_dot_annotations_dot_versioning__pb2.DESCRIPTOR,validate_dot_validate__pb2.DESCRIPTOR,])
+  dependencies=[envoy_dot_config_dot_core_dot_v3_dot_address__pb2.DESCRIPTOR,envoy_dot_config_dot_core_dot_v3_dot_base__pb2.DESCRIPTOR,envoy_dot_config_dot_core_dot_v3_dot_config__source__pb2.DESCRIPTOR,envoy_dot_config_dot_core_dot_v3_dot_health__check__pb2.DESCRIPTOR,google_dot_protobuf_dot_wrappers__pb2.DESCRIPTOR,udpa_dot_annotations_dot_status__pb2.DESCRIPTOR,udpa_dot_annotations_dot_versioning__pb2.DESCRIPTOR,validate_dot_validate__pb2.DESCRIPTOR,])
 
 
 
@@ -69,8 +68,8 @@ _ENDPOINT_HEALTHCHECKCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=549,
-  serialized_end=674,
+  serialized_start=517,
+  serialized_end=642,
 )
 
 _ENDPOINT = _descriptor.Descriptor(
@@ -114,8 +113,8 @@ _ENDPOINT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=388,
-  serialized_end=713,
+  serialized_start=356,
+  serialized_end=681,
 )
 
 
@@ -179,8 +178,8 @@ _LBENDPOINT = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=716,
-  serialized_end=1048,
+  serialized_start=684,
+  serialized_end=1016,
 )
 
 
@@ -218,8 +217,8 @@ _LEDSCLUSTERLOCALITYCONFIG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1050,
-  serialized_end=1164,
+  serialized_start=1018,
+  serialized_end=1132,
 )
 
 
@@ -250,8 +249,8 @@ _LOCALITYLBENDPOINTS_LBENDPOINTLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1631,
-  serialized_end=1707,
+  serialized_start=1605,
+  serialized_end=1681,
 )
 
 _LOCALITYLBENDPOINTS = _descriptor.Descriptor(
@@ -277,7 +276,7 @@ _LOCALITYLBENDPOINTS = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='lb_endpoints_list', full_name='envoy.config.endpoint.v3.LocalityLbEndpoints.lb_endpoints_list', index=2,
+      name='load_balancer_endpoints', full_name='envoy.config.endpoint.v3.LocalityLbEndpoints.load_balancer_endpoints', index=2,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -328,8 +327,8 @@ _LOCALITYLBENDPOINTS = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=1167,
-  serialized_end=1770,
+  serialized_start=1135,
+  serialized_end=1744,
 )
 
 _ENDPOINT_HEALTHCHECKCONFIG.containing_type = _ENDPOINT
@@ -350,13 +349,13 @@ _LOCALITYLBENDPOINTS_LBENDPOINTLIST.fields_by_name['lb_endpoints'].message_type 
 _LOCALITYLBENDPOINTS_LBENDPOINTLIST.containing_type = _LOCALITYLBENDPOINTS
 _LOCALITYLBENDPOINTS.fields_by_name['locality'].message_type = envoy_dot_config_dot_core_dot_v3_dot_base__pb2._LOCALITY
 _LOCALITYLBENDPOINTS.fields_by_name['lb_endpoints'].message_type = _LBENDPOINT
-_LOCALITYLBENDPOINTS.fields_by_name['lb_endpoints_list'].message_type = _LOCALITYLBENDPOINTS_LBENDPOINTLIST
+_LOCALITYLBENDPOINTS.fields_by_name['load_balancer_endpoints'].message_type = _LOCALITYLBENDPOINTS_LBENDPOINTLIST
 _LOCALITYLBENDPOINTS.fields_by_name['leds_cluster_locality_config'].message_type = _LEDSCLUSTERLOCALITYCONFIG
 _LOCALITYLBENDPOINTS.fields_by_name['load_balancing_weight'].message_type = google_dot_protobuf_dot_wrappers__pb2._UINT32VALUE
 _LOCALITYLBENDPOINTS.fields_by_name['proximity'].message_type = google_dot_protobuf_dot_wrappers__pb2._UINT32VALUE
 _LOCALITYLBENDPOINTS.oneofs_by_name['lb_config'].fields.append(
-  _LOCALITYLBENDPOINTS.fields_by_name['lb_endpoints_list'])
-_LOCALITYLBENDPOINTS.fields_by_name['lb_endpoints_list'].containing_oneof = _LOCALITYLBENDPOINTS.oneofs_by_name['lb_config']
+  _LOCALITYLBENDPOINTS.fields_by_name['load_balancer_endpoints'])
+_LOCALITYLBENDPOINTS.fields_by_name['load_balancer_endpoints'].containing_oneof = _LOCALITYLBENDPOINTS.oneofs_by_name['lb_config']
 _LOCALITYLBENDPOINTS.oneofs_by_name['lb_config'].fields.append(
   _LOCALITYLBENDPOINTS.fields_by_name['leds_cluster_locality_config'])
 _LOCALITYLBENDPOINTS.fields_by_name['leds_cluster_locality_config'].containing_oneof = _LOCALITYLBENDPOINTS.oneofs_by_name['lb_config']

@@ -18,9 +18,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='envoy/annotations/deprecation.proto',
   package='envoy.annotations',
   syntax='proto3',
-  serialized_options=None,
+  serialized_options=b'Z8github.com/envoyproxy/go-control-plane/envoy/annotations',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n#envoy/annotations/deprecation.proto\x12\x11\x65nvoy.annotations\x1a google/protobuf/descriptor.proto:?\n\x15\x64isallowed_by_default\x12\x1d.google.protobuf.FieldOptions\x18\xe7\xad\xaeZ \x01(\x08:E\n\x1b\x64\x65precated_at_minor_version\x12\x1d.google.protobuf.FieldOptions\x18\xf2\xe8\x80K \x01(\t:H\n\x1a\x64isallowed_by_default_enum\x12!.google.protobuf.EnumValueOptions\x18\xf5\xce\xb6! \x01(\x08:N\n deprecated_at_minor_version_enum\x12!.google.protobuf.EnumValueOptions\x18\xc1\xbe\xb3V \x01(\tb\x06proto3'
+  serialized_pb=b'\n#envoy/annotations/deprecation.proto\x12\x11\x65nvoy.annotations\x1a google/protobuf/descriptor.proto:?\n\x15\x64isallowed_by_default\x12\x1d.google.protobuf.FieldOptions\x18\xe7\xad\xaeZ \x01(\x08:E\n\x1b\x64\x65precated_at_minor_version\x12\x1d.google.protobuf.FieldOptions\x18\xf2\xe8\x80K \x01(\t:H\n\x1a\x64isallowed_by_default_enum\x12!.google.protobuf.EnumValueOptions\x18\xf5\xce\xb6! \x01(\x08:N\n deprecated_at_minor_version_enum\x12!.google.protobuf.EnumValueOptions\x18\xc1\xbe\xb3V \x01(\tB:Z8github.com/envoyproxy/go-control-plane/envoy/annotationsb\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_descriptor__pb2.DESCRIPTOR,])
 
@@ -69,4 +69,5 @@ google_dot_protobuf_dot_descriptor__pb2.FieldOptions.RegisterExtension(deprecate
 google_dot_protobuf_dot_descriptor__pb2.EnumValueOptions.RegisterExtension(disallowed_by_default_enum)
 google_dot_protobuf_dot_descriptor__pb2.EnumValueOptions.RegisterExtension(deprecated_at_minor_version_enum)
 
+DESCRIPTOR._options = None
 # @@protoc_insertion_point(module_scope)

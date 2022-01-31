@@ -20,9 +20,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='envoy/config/core/v3/resolver.proto',
   package='envoy.config.core.v3',
   syntax='proto3',
-  serialized_options=b'\n\"io.envoyproxy.envoy.config.core.v3B\rResolverProtoP\001\272\200\310\321\006\002\020\002',
+  serialized_options=b'\n\"io.envoyproxy.envoy.config.core.v3B\rResolverProtoP\001ZBgithub.com/envoyproxy/go-control-plane/envoy/config/core/v3;corev3\272\200\310\321\006\002\020\002',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n#envoy/config/core/v3/resolver.proto\x12\x14\x65nvoy.config.core.v3\x1a\"envoy/config/core/v3/address.proto\x1a\x1dudpa/annotations/status.proto\x1a\x17validate/validate.proto\"W\n\x12\x44nsResolverOptions\x12\x1f\n\x17use_tcp_for_dns_lookups\x18\x01 \x01(\x08\x12 \n\x18no_default_search_domain\x18\x02 \x01(\x08\"\x99\x01\n\x13\x44nsResolutionConfig\x12:\n\tresolvers\x18\x01 \x03(\x0b\x32\x1d.envoy.config.core.v3.AddressB\x08\xfa\x42\x05\x92\x01\x02\x08\x01\x12\x46\n\x14\x64ns_resolver_options\x18\x02 \x01(\x0b\x32(.envoy.config.core.v3.DnsResolverOptionsB=\n\"io.envoyproxy.envoy.config.core.v3B\rResolverProtoP\x01\xba\x80\xc8\xd1\x06\x02\x10\x02\x62\x06proto3'
+  serialized_pb=b'\n#envoy/config/core/v3/resolver.proto\x12\x14\x65nvoy.config.core.v3\x1a\"envoy/config/core/v3/address.proto\x1a\x1dudpa/annotations/status.proto\x1a\x17validate/validate.proto\"W\n\x12\x44nsResolverOptions\x12\x1f\n\x17use_tcp_for_dns_lookups\x18\x01 \x01(\x08\x12 \n\x18no_default_search_domain\x18\x02 \x01(\x08\"\x99\x01\n\x13\x44nsResolutionConfig\x12:\n\tresolvers\x18\x01 \x03(\x0b\x32\x1d.envoy.config.core.v3.AddressB\x08\xfa\x42\x05\x92\x01\x02\x08\x01\x12\x46\n\x14\x64ns_resolver_options\x18\x02 \x01(\x0b\x32(.envoy.config.core.v3.DnsResolverOptionsB\x81\x01\n\"io.envoyproxy.envoy.config.core.v3B\rResolverProtoP\x01ZBgithub.com/envoyproxy/go-control-plane/envoy/config/core/v3;corev3\xba\x80\xc8\xd1\x06\x02\x10\x02\x62\x06proto3'
   ,
   dependencies=[envoy_dot_config_dot_core_dot_v3_dot_address__pb2.DESCRIPTOR,udpa_dot_annotations_dot_status__pb2.DESCRIPTOR,validate_dot_validate__pb2.DESCRIPTOR,])
 

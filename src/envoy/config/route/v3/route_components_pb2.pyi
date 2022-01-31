@@ -6,6 +6,7 @@ import builtins
 import envoy.config.core.v3.base_pb2
 import envoy.config.core.v3.extension_pb2
 import envoy.config.core.v3.proxy_protocol_pb2
+import envoy.type.matcher.v3.metadata_pb2
 import envoy.type.matcher.v3.regex_pb2
 import envoy.type.matcher.v3.string_pb2
 import envoy.type.metadata.v3.metadata_pb2
@@ -21,6 +22,7 @@ import google.protobuf.message
 import google.protobuf.wrappers_pb2
 import typing
 import typing_extensions
+import xds.type.matcher.v3.matcher_pb2
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor = ...
 
@@ -34,7 +36,7 @@ class VirtualHost(google.protobuf.message.Message):
     host header. This allows a single listener to service multiple top level domain path trees. Once
     a virtual host is selected based on the domain, the routes are processed in order to see which
     upstream cluster to route to or whether to perform a redirect.
-    [#next-free-field: 21]
+    [#next-free-field: 22]
     """
     DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
     class TlsRequirementType(_TlsRequirementType, metaclass=_TlsRequirementTypeEnumTypeWrapper):
@@ -89,6 +91,7 @@ class VirtualHost(google.protobuf.message.Message):
     NAME_FIELD_NUMBER: builtins.int
     DOMAINS_FIELD_NUMBER: builtins.int
     ROUTES_FIELD_NUMBER: builtins.int
+    MATCHER_FIELD_NUMBER: builtins.int
     REQUIRE_TLS_FIELD_NUMBER: builtins.int
     VIRTUAL_CLUSTERS_FIELD_NUMBER: builtins.int
     RATE_LIMITS_FIELD_NUMBER: builtins.int
@@ -135,6 +138,14 @@ class VirtualHost(google.protobuf.message.Message):
     def routes(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___Route]:
         """The list of routes that will be matched, in order, for incoming requests.
         The first route that matches will be used.
+        Only one of this and `matcher` can be specified.
+        """
+        pass
+    @property
+    def matcher(self) -> xds.type.matcher.v3.matcher_pb2.Matcher:
+        """[#next-major-version: This should be included in a oneof with routes wrapped in a message.]
+        The match tree to use when resolving route actions for incoming requests. Only one of this and `routes`
+        can be specified.
         """
         pass
     require_tls: global___VirtualHost.TlsRequirementType.V = ...
@@ -261,6 +272,7 @@ class VirtualHost(google.protobuf.message.Message):
         name : typing.Text = ...,
         domains : typing.Optional[typing.Iterable[typing.Text]] = ...,
         routes : typing.Optional[typing.Iterable[global___Route]] = ...,
+        matcher : typing.Optional[xds.type.matcher.v3.matcher_pb2.Matcher] = ...,
         require_tls : global___VirtualHost.TlsRequirementType.V = ...,
         virtual_clusters : typing.Optional[typing.Iterable[global___VirtualCluster]] = ...,
         rate_limits : typing.Optional[typing.Iterable[global___RateLimit]] = ...,
@@ -277,8 +289,8 @@ class VirtualHost(google.protobuf.message.Message):
         hedge_policy : typing.Optional[global___HedgePolicy] = ...,
         per_request_buffer_limit_bytes : typing.Optional[google.protobuf.wrappers_pb2.UInt32Value] = ...,
         ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"cors",b"cors",u"hedge_policy",b"hedge_policy",u"per_request_buffer_limit_bytes",b"per_request_buffer_limit_bytes",u"retry_policy",b"retry_policy",u"retry_policy_typed_config",b"retry_policy_typed_config"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"cors",b"cors",u"domains",b"domains",u"hedge_policy",b"hedge_policy",u"include_attempt_count_in_response",b"include_attempt_count_in_response",u"include_request_attempt_count",b"include_request_attempt_count",u"name",b"name",u"per_request_buffer_limit_bytes",b"per_request_buffer_limit_bytes",u"rate_limits",b"rate_limits",u"request_headers_to_add",b"request_headers_to_add",u"request_headers_to_remove",b"request_headers_to_remove",u"require_tls",b"require_tls",u"response_headers_to_add",b"response_headers_to_add",u"response_headers_to_remove",b"response_headers_to_remove",u"retry_policy",b"retry_policy",u"retry_policy_typed_config",b"retry_policy_typed_config",u"routes",b"routes",u"typed_per_filter_config",b"typed_per_filter_config",u"virtual_clusters",b"virtual_clusters"]) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal[u"cors",b"cors",u"hedge_policy",b"hedge_policy",u"matcher",b"matcher",u"per_request_buffer_limit_bytes",b"per_request_buffer_limit_bytes",u"retry_policy",b"retry_policy",u"retry_policy_typed_config",b"retry_policy_typed_config"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal[u"cors",b"cors",u"domains",b"domains",u"hedge_policy",b"hedge_policy",u"include_attempt_count_in_response",b"include_attempt_count_in_response",u"include_request_attempt_count",b"include_request_attempt_count",u"matcher",b"matcher",u"name",b"name",u"per_request_buffer_limit_bytes",b"per_request_buffer_limit_bytes",u"rate_limits",b"rate_limits",u"request_headers_to_add",b"request_headers_to_add",u"request_headers_to_remove",b"request_headers_to_remove",u"require_tls",b"require_tls",u"response_headers_to_add",b"response_headers_to_add",u"response_headers_to_remove",b"response_headers_to_remove",u"retry_policy",b"retry_policy",u"retry_policy_typed_config",b"retry_policy_typed_config",u"routes",b"routes",u"typed_per_filter_config",b"typed_per_filter_config",u"virtual_clusters",b"virtual_clusters"]) -> None: ...
 global___VirtualHost = VirtualHost
 
 class FilterAction(google.protobuf.message.Message):
@@ -477,7 +489,7 @@ class WeightedCluster(google.protobuf.message.Message):
     """
     DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
     class ClusterWeight(google.protobuf.message.Message):
-        """[#next-free-field: 12]"""
+        """[#next-free-field: 13]"""
         DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
         class TypedPerFilterConfigEntry(google.protobuf.message.Message):
             DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
@@ -495,6 +507,7 @@ class WeightedCluster(google.protobuf.message.Message):
             def ClearField(self, field_name: typing_extensions.Literal[u"key",b"key",u"value",b"value"]) -> None: ...
 
         NAME_FIELD_NUMBER: builtins.int
+        CLUSTER_HEADER_FIELD_NUMBER: builtins.int
         WEIGHT_FIELD_NUMBER: builtins.int
         METADATA_MATCH_FIELD_NUMBER: builtins.int
         REQUEST_HEADERS_TO_ADD_FIELD_NUMBER: builtins.int
@@ -504,8 +517,28 @@ class WeightedCluster(google.protobuf.message.Message):
         TYPED_PER_FILTER_CONFIG_FIELD_NUMBER: builtins.int
         HOST_REWRITE_LITERAL_FIELD_NUMBER: builtins.int
         name: typing.Text = ...
-        """Name of the upstream cluster. The cluster must exist in the
+        """Only one of *name* and *cluster_header* may be specified.
+        [#next-major-version: Need to add back the validation rule: (validate.rules).string = {min_len: 1}]
+        Name of the upstream cluster. The cluster must exist in the
         :ref:`cluster manager configuration <config_cluster_manager>`.
+        """
+
+        cluster_header: typing.Text = ...
+        """Only one of *name* and *cluster_header* may be specified.
+        [#next-major-version: Need to add back the validation rule: (validate.rules).string = {min_len: 1 }]
+        Envoy will determine the cluster to route to by reading the value of the
+        HTTP header named by cluster_header from the request headers. If the
+        header is not found or the referenced cluster does not exist, Envoy will
+        return a 404 response.
+
+        .. attention::
+
+          Internally, Envoy always uses the HTTP/2 *:authority* header to represent the HTTP/1
+          *Host* header. Thus, if attempting to match on *Host*, match on *:authority* instead.
+
+        .. note::
+
+          If the header appears multiple times only the first value is used.
         """
 
         @property
@@ -579,6 +612,7 @@ class WeightedCluster(google.protobuf.message.Message):
         def __init__(self,
             *,
             name : typing.Text = ...,
+            cluster_header : typing.Text = ...,
             weight : typing.Optional[google.protobuf.wrappers_pb2.UInt32Value] = ...,
             metadata_match : typing.Optional[envoy.config.core.v3.base_pb2.Metadata] = ...,
             request_headers_to_add : typing.Optional[typing.Iterable[envoy.config.core.v3.base_pb2.HeaderValueOption]] = ...,
@@ -589,7 +623,7 @@ class WeightedCluster(google.protobuf.message.Message):
             host_rewrite_literal : typing.Text = ...,
             ) -> None: ...
         def HasField(self, field_name: typing_extensions.Literal[u"host_rewrite_literal",b"host_rewrite_literal",u"host_rewrite_specifier",b"host_rewrite_specifier",u"metadata_match",b"metadata_match",u"weight",b"weight"]) -> builtins.bool: ...
-        def ClearField(self, field_name: typing_extensions.Literal[u"host_rewrite_literal",b"host_rewrite_literal",u"host_rewrite_specifier",b"host_rewrite_specifier",u"metadata_match",b"metadata_match",u"name",b"name",u"request_headers_to_add",b"request_headers_to_add",u"request_headers_to_remove",b"request_headers_to_remove",u"response_headers_to_add",b"response_headers_to_add",u"response_headers_to_remove",b"response_headers_to_remove",u"typed_per_filter_config",b"typed_per_filter_config",u"weight",b"weight"]) -> None: ...
+        def ClearField(self, field_name: typing_extensions.Literal[u"cluster_header",b"cluster_header",u"host_rewrite_literal",b"host_rewrite_literal",u"host_rewrite_specifier",b"host_rewrite_specifier",u"metadata_match",b"metadata_match",u"name",b"name",u"request_headers_to_add",b"request_headers_to_add",u"request_headers_to_remove",b"request_headers_to_remove",u"response_headers_to_add",b"response_headers_to_add",u"response_headers_to_remove",b"response_headers_to_remove",u"typed_per_filter_config",b"typed_per_filter_config",u"weight",b"weight"]) -> None: ...
         def WhichOneof(self, oneof_group: typing_extensions.Literal[u"host_rewrite_specifier",b"host_rewrite_specifier"]) -> typing.Optional[typing_extensions.Literal["host_rewrite_literal"]]: ...
 
     CLUSTERS_FIELD_NUMBER: builtins.int
@@ -627,7 +661,7 @@ class WeightedCluster(google.protobuf.message.Message):
 global___WeightedCluster = WeightedCluster
 
 class RouteMatch(google.protobuf.message.Message):
-    """[#next-free-field: 13]"""
+    """[#next-free-field: 14]"""
     DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
     class GrpcRouteMatchOptions(google.protobuf.message.Message):
         DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
@@ -674,6 +708,7 @@ class RouteMatch(google.protobuf.message.Message):
     QUERY_PARAMETERS_FIELD_NUMBER: builtins.int
     GRPC_FIELD_NUMBER: builtins.int
     TLS_CONTEXT_FIELD_NUMBER: builtins.int
+    DYNAMIC_METADATA_FIELD_NUMBER: builtins.int
     prefix: typing.Text = ...
     """If specified, the route is a prefix rule meaning that the prefix must
     match the beginning of the *:path* header.
@@ -755,6 +790,14 @@ class RouteMatch(google.protobuf.message.Message):
         against all the specified query parameters. If the number of specified
         query parameters is nonzero, they all must match the *path* header's
         query string for a match to occur.
+
+        .. note::
+
+           If query parameters are used to pass request message fields when
+           `grpc_json_transcoder <https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_json_transcoder_filter>`_
+           is used, the transcoded message fields maybe different. The query parameters are
+           url encoded, but the message fields are not. For example, if a query
+           parameter is "foo%20bar", the message field will be "foo bar".
         """
         pass
     @property
@@ -772,6 +815,14 @@ class RouteMatch(google.protobuf.message.Message):
         [#next-major-version: unify with RBAC]
         """
         pass
+    @property
+    def dynamic_metadata(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[envoy.type.matcher.v3.metadata_pb2.MetadataMatcher]:
+        """Specifies a set of dynamic metadata matchers on which the route should match.
+        The router will check the dynamic metadata against all the specified dynamic metadata matchers.
+        If the number of specified dynamic metadata matchers is nonzero, they all must match the
+        dynamic metadata for a match to occur.
+        """
+        pass
     def __init__(self,
         *,
         prefix : typing.Text = ...,
@@ -784,9 +835,10 @@ class RouteMatch(google.protobuf.message.Message):
         query_parameters : typing.Optional[typing.Iterable[global___QueryParameterMatcher]] = ...,
         grpc : typing.Optional[global___RouteMatch.GrpcRouteMatchOptions] = ...,
         tls_context : typing.Optional[global___RouteMatch.TlsContextMatchOptions] = ...,
+        dynamic_metadata : typing.Optional[typing.Iterable[envoy.type.matcher.v3.metadata_pb2.MetadataMatcher]] = ...,
         ) -> None: ...
     def HasField(self, field_name: typing_extensions.Literal[u"case_sensitive",b"case_sensitive",u"connect_matcher",b"connect_matcher",u"grpc",b"grpc",u"path",b"path",u"path_specifier",b"path_specifier",u"prefix",b"prefix",u"runtime_fraction",b"runtime_fraction",u"safe_regex",b"safe_regex",u"tls_context",b"tls_context"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"case_sensitive",b"case_sensitive",u"connect_matcher",b"connect_matcher",u"grpc",b"grpc",u"headers",b"headers",u"path",b"path",u"path_specifier",b"path_specifier",u"prefix",b"prefix",u"query_parameters",b"query_parameters",u"runtime_fraction",b"runtime_fraction",u"safe_regex",b"safe_regex",u"tls_context",b"tls_context"]) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal[u"case_sensitive",b"case_sensitive",u"connect_matcher",b"connect_matcher",u"dynamic_metadata",b"dynamic_metadata",u"grpc",b"grpc",u"headers",b"headers",u"path",b"path",u"path_specifier",b"path_specifier",u"prefix",b"prefix",u"query_parameters",b"query_parameters",u"runtime_fraction",b"runtime_fraction",u"safe_regex",b"safe_regex",u"tls_context",b"tls_context"]) -> None: ...
     def WhichOneof(self, oneof_group: typing_extensions.Literal[u"path_specifier",b"path_specifier"]) -> typing.Optional[typing_extensions.Literal["prefix","path","safe_regex","connect_matcher"]]: ...
 global___RouteMatch = RouteMatch
 
@@ -864,7 +916,7 @@ class CorsPolicy(google.protobuf.message.Message):
 global___CorsPolicy = CorsPolicy
 
 class RouteAction(google.protobuf.message.Message):
-    """[#next-free-field: 38]"""
+    """[#next-free-field: 39]"""
     DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
     class ClusterNotFoundResponseCode(_ClusterNotFoundResponseCode, metaclass=_ClusterNotFoundResponseCodeEnumTypeWrapper):
         pass
@@ -1056,8 +1108,8 @@ class RouteAction(google.protobuf.message.Message):
             KEY_FIELD_NUMBER: builtins.int
             key: typing.Text = ...
             """The name of the Object in the per-request filterState, which is an
-            Envoy::Http::Hashable object. If there is no data associated with the key,
-            or the stored object is not Envoy::Http::Hashable, no hash will be produced.
+            Envoy::Hashable object. If there is no data associated with the key,
+            or the stored object is not Envoy::Hashable, no hash will be produced.
             """
 
             def __init__(self,
@@ -1244,6 +1296,7 @@ class RouteAction(google.protobuf.message.Message):
     AUTO_HOST_REWRITE_FIELD_NUMBER: builtins.int
     HOST_REWRITE_HEADER_FIELD_NUMBER: builtins.int
     HOST_REWRITE_PATH_REGEX_FIELD_NUMBER: builtins.int
+    APPEND_X_FORWARDED_HOST_FIELD_NUMBER: builtins.int
     TIMEOUT_FIELD_NUMBER: builtins.int
     IDLE_TIMEOUT_FIELD_NUMBER: builtins.int
     RETRY_POLICY_FIELD_NUMBER: builtins.int
@@ -1383,7 +1436,10 @@ class RouteAction(google.protobuf.message.Message):
         pass
     host_rewrite_literal: typing.Text = ...
     """Indicates that during forwarding, the host header will be swapped with
-    this value.
+    this value. Using this option will append the
+    :ref:`config_http_conn_man_headers_x-forwarded-host` header if
+    :ref:`append_x_forwarded_host <envoy_v3_api_field_config.route.v3.RouteAction.append_x_forwarded_host>`
+    is set.
     """
 
     @property
@@ -1391,14 +1447,20 @@ class RouteAction(google.protobuf.message.Message):
         """Indicates that during forwarding, the host header will be swapped with
         the hostname of the upstream host chosen by the cluster manager. This
         option is applicable only when the destination cluster for a route is of
-        type *strict_dns* or *logical_dns*. Setting this to true with other cluster
-        types has no effect.
+        type *strict_dns* or *logical_dns*. Setting this to true with other cluster types
+        has no effect. Using this option will append the
+        :ref:`config_http_conn_man_headers_x-forwarded-host` header if
+        :ref:`append_x_forwarded_host <envoy_v3_api_field_config.route.v3.RouteAction.append_x_forwarded_host>`
+        is set.
         """
         pass
     host_rewrite_header: typing.Text = ...
     """Indicates that during forwarding, the host header will be swapped with the content of given
     downstream or :ref:`custom <config_http_conn_man_headers_custom_request_headers>` header.
-    If header value is empty, host header is left intact.
+    If header value is empty, host header is left intact. Using this option will append the
+    :ref:`config_http_conn_man_headers_x-forwarded-host` header if
+    :ref:`append_x_forwarded_host <envoy_v3_api_field_config.route.v3.RouteAction.append_x_forwarded_host>`
+    is set.
 
     .. attention::
 
@@ -1415,6 +1477,10 @@ class RouteAction(google.protobuf.message.Message):
         """Indicates that during forwarding, the host header will be swapped with
         the result of the regex substitution executed on path value with query and fragment removed.
         This is useful for transitioning variable content between path segment and subdomain.
+        Using this option will append the
+        :ref:`config_http_conn_man_headers_x-forwarded-host` header if
+        :ref:`append_x_forwarded_host <envoy_v3_api_field_config.route.v3.RouteAction.append_x_forwarded_host>`
+        is set.
 
         For example with the following config:
 
@@ -1429,6 +1495,16 @@ class RouteAction(google.protobuf.message.Message):
         Would rewrite the host header to `envoyproxy.io` given the path `/envoyproxy.io/some/path`.
         """
         pass
+    append_x_forwarded_host: builtins.bool = ...
+    """If set, then a host rewrite action (one of
+    :ref:`host_rewrite_literal <envoy_v3_api_field_config.route.v3.RouteAction.host_rewrite_literal>`,
+    :ref:`auto_host_rewrite <envoy_v3_api_field_config.route.v3.RouteAction.auto_host_rewrite>`,
+    :ref:`host_rewrite_header <envoy_v3_api_field_config.route.v3.RouteAction.host_rewrite_header>`, or
+    :ref:`host_rewrite_path_regex <envoy_v3_api_field_config.route.v3.RouteAction.host_rewrite_path_regex>`)
+    causes the original value of the host header, if any, to be appended to the
+    :ref:`config_http_conn_man_headers_x-forwarded-host` HTTP header.
+    """
+
     @property
     def timeout(self) -> google.protobuf.duration_pb2.Duration:
         """Specifies the upstream timeout for the route. If not specified, the default is 15s. This
@@ -1619,6 +1695,7 @@ class RouteAction(google.protobuf.message.Message):
         auto_host_rewrite : typing.Optional[google.protobuf.wrappers_pb2.BoolValue] = ...,
         host_rewrite_header : typing.Text = ...,
         host_rewrite_path_regex : typing.Optional[envoy.type.matcher.v3.regex_pb2.RegexMatchAndSubstitute] = ...,
+        append_x_forwarded_host : builtins.bool = ...,
         timeout : typing.Optional[google.protobuf.duration_pb2.Duration] = ...,
         idle_timeout : typing.Optional[google.protobuf.duration_pb2.Duration] = ...,
         retry_policy : typing.Optional[global___RetryPolicy] = ...,
@@ -1639,7 +1716,7 @@ class RouteAction(google.protobuf.message.Message):
         max_stream_duration : typing.Optional[global___RouteAction.MaxStreamDuration] = ...,
         ) -> None: ...
     def HasField(self, field_name: typing_extensions.Literal[u"auto_host_rewrite",b"auto_host_rewrite",u"cluster",b"cluster",u"cluster_header",b"cluster_header",u"cluster_specifier",b"cluster_specifier",u"cluster_specifier_plugin",b"cluster_specifier_plugin",u"cors",b"cors",u"grpc_timeout_offset",b"grpc_timeout_offset",u"hedge_policy",b"hedge_policy",u"host_rewrite_header",b"host_rewrite_header",u"host_rewrite_literal",b"host_rewrite_literal",u"host_rewrite_path_regex",b"host_rewrite_path_regex",u"host_rewrite_specifier",b"host_rewrite_specifier",u"idle_timeout",b"idle_timeout",u"include_vh_rate_limits",b"include_vh_rate_limits",u"internal_redirect_policy",b"internal_redirect_policy",u"max_grpc_timeout",b"max_grpc_timeout",u"max_internal_redirects",b"max_internal_redirects",u"max_stream_duration",b"max_stream_duration",u"metadata_match",b"metadata_match",u"regex_rewrite",b"regex_rewrite",u"retry_policy",b"retry_policy",u"retry_policy_typed_config",b"retry_policy_typed_config",u"timeout",b"timeout",u"weighted_clusters",b"weighted_clusters"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"auto_host_rewrite",b"auto_host_rewrite",u"cluster",b"cluster",u"cluster_header",b"cluster_header",u"cluster_not_found_response_code",b"cluster_not_found_response_code",u"cluster_specifier",b"cluster_specifier",u"cluster_specifier_plugin",b"cluster_specifier_plugin",u"cors",b"cors",u"grpc_timeout_offset",b"grpc_timeout_offset",u"hash_policy",b"hash_policy",u"hedge_policy",b"hedge_policy",u"host_rewrite_header",b"host_rewrite_header",u"host_rewrite_literal",b"host_rewrite_literal",u"host_rewrite_path_regex",b"host_rewrite_path_regex",u"host_rewrite_specifier",b"host_rewrite_specifier",u"idle_timeout",b"idle_timeout",u"include_vh_rate_limits",b"include_vh_rate_limits",u"internal_redirect_action",b"internal_redirect_action",u"internal_redirect_policy",b"internal_redirect_policy",u"max_grpc_timeout",b"max_grpc_timeout",u"max_internal_redirects",b"max_internal_redirects",u"max_stream_duration",b"max_stream_duration",u"metadata_match",b"metadata_match",u"prefix_rewrite",b"prefix_rewrite",u"priority",b"priority",u"rate_limits",b"rate_limits",u"regex_rewrite",b"regex_rewrite",u"request_mirror_policies",b"request_mirror_policies",u"retry_policy",b"retry_policy",u"retry_policy_typed_config",b"retry_policy_typed_config",u"timeout",b"timeout",u"upgrade_configs",b"upgrade_configs",u"weighted_clusters",b"weighted_clusters"]) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal[u"append_x_forwarded_host",b"append_x_forwarded_host",u"auto_host_rewrite",b"auto_host_rewrite",u"cluster",b"cluster",u"cluster_header",b"cluster_header",u"cluster_not_found_response_code",b"cluster_not_found_response_code",u"cluster_specifier",b"cluster_specifier",u"cluster_specifier_plugin",b"cluster_specifier_plugin",u"cors",b"cors",u"grpc_timeout_offset",b"grpc_timeout_offset",u"hash_policy",b"hash_policy",u"hedge_policy",b"hedge_policy",u"host_rewrite_header",b"host_rewrite_header",u"host_rewrite_literal",b"host_rewrite_literal",u"host_rewrite_path_regex",b"host_rewrite_path_regex",u"host_rewrite_specifier",b"host_rewrite_specifier",u"idle_timeout",b"idle_timeout",u"include_vh_rate_limits",b"include_vh_rate_limits",u"internal_redirect_action",b"internal_redirect_action",u"internal_redirect_policy",b"internal_redirect_policy",u"max_grpc_timeout",b"max_grpc_timeout",u"max_internal_redirects",b"max_internal_redirects",u"max_stream_duration",b"max_stream_duration",u"metadata_match",b"metadata_match",u"prefix_rewrite",b"prefix_rewrite",u"priority",b"priority",u"rate_limits",b"rate_limits",u"regex_rewrite",b"regex_rewrite",u"request_mirror_policies",b"request_mirror_policies",u"retry_policy",b"retry_policy",u"retry_policy_typed_config",b"retry_policy_typed_config",u"timeout",b"timeout",u"upgrade_configs",b"upgrade_configs",u"weighted_clusters",b"weighted_clusters"]) -> None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing_extensions.Literal[u"cluster_specifier",b"cluster_specifier"]) -> typing.Optional[typing_extensions.Literal["cluster","cluster_header","weighted_clusters","cluster_specifier_plugin"]]: ...
     @typing.overload
@@ -1648,7 +1725,7 @@ global___RouteAction = RouteAction
 
 class RetryPolicy(google.protobuf.message.Message):
     """HTTP retry :ref:`architecture overview <arch_overview_http_routing_retry>`.
-    [#next-free-field: 12]
+    [#next-free-field: 14]
     """
     DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
     class ResetHeaderFormat(_ResetHeaderFormat, metaclass=_ResetHeaderFormatEnumTypeWrapper):
@@ -1819,8 +1896,10 @@ class RetryPolicy(google.protobuf.message.Message):
     RETRY_ON_FIELD_NUMBER: builtins.int
     NUM_RETRIES_FIELD_NUMBER: builtins.int
     PER_TRY_TIMEOUT_FIELD_NUMBER: builtins.int
+    PER_TRY_IDLE_TIMEOUT_FIELD_NUMBER: builtins.int
     RETRY_PRIORITY_FIELD_NUMBER: builtins.int
     RETRY_HOST_PREDICATE_FIELD_NUMBER: builtins.int
+    RETRY_OPTIONS_PREDICATES_FIELD_NUMBER: builtins.int
     HOST_SELECTION_RETRY_MAX_ATTEMPTS_FIELD_NUMBER: builtins.int
     RETRIABLE_STATUS_CODES_FIELD_NUMBER: builtins.int
     RETRY_BACK_OFF_FIELD_NUMBER: builtins.int
@@ -1842,8 +1921,8 @@ class RetryPolicy(google.protobuf.message.Message):
         pass
     @property
     def per_try_timeout(self) -> google.protobuf.duration_pb2.Duration:
-        """Specifies a non-zero upstream timeout per retry attempt. This parameter is optional. The
-        same conditions documented for
+        """Specifies a non-zero upstream timeout per retry attempt (including the initial attempt). This
+        parameter is optional. The same conditions documented for
         :ref:`config_http_filters_router_x-envoy-upstream-rq-per-try-timeout-ms` apply.
 
         .. note::
@@ -1853,6 +1932,29 @@ class RetryPolicy(google.protobuf.message.Message):
           Consequently, when using a :ref:`5xx <config_http_filters_router_x-envoy-retry-on>` based
           retry policy, a request that times out will not be retried as the total timeout budget
           would have been exhausted.
+        """
+        pass
+    @property
+    def per_try_idle_timeout(self) -> google.protobuf.duration_pb2.Duration:
+        """Specifies an upstream idle timeout per retry attempt (including the initial attempt). This
+        parameter is optional and if absent there is no per try idle timeout. The semantics of the per
+        try idle timeout are similar to the
+        :ref:`route idle timeout <envoy_v3_api_field_config.route.v3.RouteAction.timeout>` and
+        :ref:`stream idle timeout
+        <envoy_v3_api_field_extensions.filters.network.http_connection_manager.v3.HttpConnectionManager.stream_idle_timeout>`
+        both enforced by the HTTP connection manager. The difference is that this idle timeout
+        is enforced by the router for each individual attempt and thus after all previous filters have
+        run, as opposed to *before* all previous filters run for the other idle timeouts. This timeout
+        is useful in cases in which total request timeout is bounded by a number of retries and a
+        :ref:`per_try_timeout <envoy_v3_api_field_config.route.v3.RetryPolicy.per_try_timeout>`, but
+        there is a desire to ensure each try is making incremental progress. Note also that similar
+        to :ref:`per_try_timeout <envoy_v3_api_field_config.route.v3.RetryPolicy.per_try_timeout>`,
+        this idle timeout does not start until after both the entire request has been received by the
+        router *and* a connection pool connection has been obtained. Unlike
+        :ref:`per_try_timeout <envoy_v3_api_field_config.route.v3.RetryPolicy.per_try_timeout>`,
+        the idle timer continues once the response starts streaming back to the downstream client.
+        This ensures that response data continues to make progress without using one of the HTTP
+        connection manager idle timeouts.
         """
         pass
     @property
@@ -1868,6 +1970,13 @@ class RetryPolicy(google.protobuf.message.Message):
         for retries. If any of the predicates reject the host, host selection will be reattempted.
         Refer to :ref:`retry plugin configuration <arch_overview_http_retry_plugins>` for more
         details.
+        """
+        pass
+    @property
+    def retry_options_predicates(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[envoy.config.core.v3.extension_pb2.TypedExtensionConfig]:
+        """Retry options predicates that will be applied prior to retrying a request. These predicates
+        allow customizing request behavior between retries.
+        [#comment: add [#extension-category: envoy.retry_options_predicates] when there are built-in extensions]
         """
         pass
     host_selection_retry_max_attempts: builtins.int = ...
@@ -1916,8 +2025,10 @@ class RetryPolicy(google.protobuf.message.Message):
         retry_on : typing.Text = ...,
         num_retries : typing.Optional[google.protobuf.wrappers_pb2.UInt32Value] = ...,
         per_try_timeout : typing.Optional[google.protobuf.duration_pb2.Duration] = ...,
+        per_try_idle_timeout : typing.Optional[google.protobuf.duration_pb2.Duration] = ...,
         retry_priority : typing.Optional[global___RetryPolicy.RetryPriority] = ...,
         retry_host_predicate : typing.Optional[typing.Iterable[global___RetryPolicy.RetryHostPredicate]] = ...,
+        retry_options_predicates : typing.Optional[typing.Iterable[envoy.config.core.v3.extension_pb2.TypedExtensionConfig]] = ...,
         host_selection_retry_max_attempts : builtins.int = ...,
         retriable_status_codes : typing.Optional[typing.Iterable[builtins.int]] = ...,
         retry_back_off : typing.Optional[global___RetryPolicy.RetryBackOff] = ...,
@@ -1925,8 +2036,8 @@ class RetryPolicy(google.protobuf.message.Message):
         retriable_headers : typing.Optional[typing.Iterable[global___HeaderMatcher]] = ...,
         retriable_request_headers : typing.Optional[typing.Iterable[global___HeaderMatcher]] = ...,
         ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"num_retries",b"num_retries",u"per_try_timeout",b"per_try_timeout",u"rate_limited_retry_back_off",b"rate_limited_retry_back_off",u"retry_back_off",b"retry_back_off",u"retry_priority",b"retry_priority"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"host_selection_retry_max_attempts",b"host_selection_retry_max_attempts",u"num_retries",b"num_retries",u"per_try_timeout",b"per_try_timeout",u"rate_limited_retry_back_off",b"rate_limited_retry_back_off",u"retriable_headers",b"retriable_headers",u"retriable_request_headers",b"retriable_request_headers",u"retriable_status_codes",b"retriable_status_codes",u"retry_back_off",b"retry_back_off",u"retry_host_predicate",b"retry_host_predicate",u"retry_on",b"retry_on",u"retry_priority",b"retry_priority"]) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal[u"num_retries",b"num_retries",u"per_try_idle_timeout",b"per_try_idle_timeout",u"per_try_timeout",b"per_try_timeout",u"rate_limited_retry_back_off",b"rate_limited_retry_back_off",u"retry_back_off",b"retry_back_off",u"retry_priority",b"retry_priority"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal[u"host_selection_retry_max_attempts",b"host_selection_retry_max_attempts",u"num_retries",b"num_retries",u"per_try_idle_timeout",b"per_try_idle_timeout",u"per_try_timeout",b"per_try_timeout",u"rate_limited_retry_back_off",b"rate_limited_retry_back_off",u"retriable_headers",b"retriable_headers",u"retriable_request_headers",b"retriable_request_headers",u"retriable_status_codes",b"retriable_status_codes",u"retry_back_off",b"retry_back_off",u"retry_host_predicate",b"retry_host_predicate",u"retry_on",b"retry_on",u"retry_options_predicates",b"retry_options_predicates",u"retry_priority",b"retry_priority"]) -> None: ...
 global___RetryPolicy = RetryPolicy
 
 class HedgePolicy(google.protobuf.message.Message):

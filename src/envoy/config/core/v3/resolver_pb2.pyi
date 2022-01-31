@@ -21,11 +21,7 @@ class DnsResolverOptions(google.protobuf.message.Message):
     USE_TCP_FOR_DNS_LOOKUPS_FIELD_NUMBER: builtins.int
     NO_DEFAULT_SEARCH_DOMAIN_FIELD_NUMBER: builtins.int
     use_tcp_for_dns_lookups: builtins.bool = ...
-    """Use TCP for all DNS queries instead of the default protocol UDP.
-    Setting this value causes failure if the
-    ``envoy.restart_features.use_apple_api_for_dns_lookups`` runtime value is true during
-    server startup. Apple's API only uses UDP for DNS resolution.
-    """
+    """Use TCP for all DNS queries instead of the default protocol UDP."""
 
     no_default_search_domain: builtins.bool = ...
     """Do not use the default search domains; only query hostnames as-is or as aliases."""
@@ -48,9 +44,6 @@ class DnsResolutionConfig(google.protobuf.message.Message):
         """A list of dns resolver addresses. If specified, the DNS client library will perform resolution
         via the underlying DNS resolvers. Otherwise, the default system resolvers
         (e.g., /etc/resolv.conf) will be used.
-        Setting this value causes failure if the
-        ``envoy.restart_features.use_apple_api_for_dns_lookups`` runtime value is true during
-        server startup. Apple's API only allows overriding DNS resolvers via system settings.
         """
         pass
     @property

@@ -19,9 +19,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='envoy/type/hash_policy.proto',
   package='envoy.type',
   syntax='proto3',
-  serialized_options=b'\n\030io.envoyproxy.envoy.typeB\017HashPolicyProtoP\001\272\200\310\321\006\002\020\001',
+  serialized_options=b'\n\030io.envoyproxy.envoy.typeB\017HashPolicyProtoP\001Z1github.com/envoyproxy/go-control-plane/envoy/type\272\200\310\321\006\002\020\001',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x1c\x65nvoy/type/hash_policy.proto\x12\nenvoy.type\x1a\x1dudpa/annotations/status.proto\x1a\x17validate/validate.proto\"g\n\nHashPolicy\x12\x34\n\tsource_ip\x18\x01 \x01(\x0b\x32\x1f.envoy.type.HashPolicy.SourceIpH\x00\x1a\n\n\x08SourceIpB\x17\n\x10policy_specifier\x12\x03\xf8\x42\x01\x42\x35\n\x18io.envoyproxy.envoy.typeB\x0fHashPolicyProtoP\x01\xba\x80\xc8\xd1\x06\x02\x10\x01\x62\x06proto3'
+  serialized_pb=b'\n\x1c\x65nvoy/type/hash_policy.proto\x12\nenvoy.type\x1a\x1dudpa/annotations/status.proto\x1a\x17validate/validate.proto\"g\n\nHashPolicy\x12\x34\n\tsource_ip\x18\x01 \x01(\x0b\x32\x1f.envoy.type.HashPolicy.SourceIpH\x00\x1a\n\n\x08SourceIpB\x17\n\x10policy_specifier\x12\x03\xf8\x42\x01\x42h\n\x18io.envoyproxy.envoy.typeB\x0fHashPolicyProtoP\x01Z1github.com/envoyproxy/go-control-plane/envoy/type\xba\x80\xc8\xd1\x06\x02\x10\x01\x62\x06proto3'
   ,
   dependencies=[udpa_dot_annotations_dot_status__pb2.DESCRIPTOR,validate_dot_validate__pb2.DESCRIPTOR,])
 

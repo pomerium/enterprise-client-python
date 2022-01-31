@@ -199,7 +199,7 @@ class LocalityLbEndpoints(google.protobuf.message.Message):
 
     LOCALITY_FIELD_NUMBER: builtins.int
     LB_ENDPOINTS_FIELD_NUMBER: builtins.int
-    LB_ENDPOINTS_LIST_FIELD_NUMBER: builtins.int
+    LOAD_BALANCER_ENDPOINTS_FIELD_NUMBER: builtins.int
     LEDS_CLUSTER_LOCALITY_CONFIG_FIELD_NUMBER: builtins.int
     LOAD_BALANCING_WEIGHT_FIELD_NUMBER: builtins.int
     PRIORITY_FIELD_NUMBER: builtins.int
@@ -212,11 +212,11 @@ class LocalityLbEndpoints(google.protobuf.message.Message):
     def lb_endpoints(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___LbEndpoint]:
         """The group of endpoints belonging to the locality specified.
         [#comment:TODO(adisuissa): Once LEDS is implemented this field needs to be
-        deprecated and replaced by *lb_endpoints_list*.]
+        deprecated and replaced by *load_balancer_endpoints*.]
         """
         pass
     @property
-    def lb_endpoints_list(self) -> global___LocalityLbEndpoints.LbEndpointList:
+    def load_balancer_endpoints(self) -> global___LocalityLbEndpoints.LbEndpointList:
         """The group of endpoints belonging to the locality.
         [#comment:TODO(adisuissa): Once LEDS is implemented the *lb_endpoints* field
         needs to be deprecated.]
@@ -267,13 +267,13 @@ class LocalityLbEndpoints(google.protobuf.message.Message):
         *,
         locality : typing.Optional[envoy.config.core.v3.base_pb2.Locality] = ...,
         lb_endpoints : typing.Optional[typing.Iterable[global___LbEndpoint]] = ...,
-        lb_endpoints_list : typing.Optional[global___LocalityLbEndpoints.LbEndpointList] = ...,
+        load_balancer_endpoints : typing.Optional[global___LocalityLbEndpoints.LbEndpointList] = ...,
         leds_cluster_locality_config : typing.Optional[global___LedsClusterLocalityConfig] = ...,
         load_balancing_weight : typing.Optional[google.protobuf.wrappers_pb2.UInt32Value] = ...,
         priority : builtins.int = ...,
         proximity : typing.Optional[google.protobuf.wrappers_pb2.UInt32Value] = ...,
         ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"lb_config",b"lb_config",u"lb_endpoints_list",b"lb_endpoints_list",u"leds_cluster_locality_config",b"leds_cluster_locality_config",u"load_balancing_weight",b"load_balancing_weight",u"locality",b"locality",u"proximity",b"proximity"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"lb_config",b"lb_config",u"lb_endpoints",b"lb_endpoints",u"lb_endpoints_list",b"lb_endpoints_list",u"leds_cluster_locality_config",b"leds_cluster_locality_config",u"load_balancing_weight",b"load_balancing_weight",u"locality",b"locality",u"priority",b"priority",u"proximity",b"proximity"]) -> None: ...
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"lb_config",b"lb_config"]) -> typing.Optional[typing_extensions.Literal["lb_endpoints_list","leds_cluster_locality_config"]]: ...
+    def HasField(self, field_name: typing_extensions.Literal[u"lb_config",b"lb_config",u"leds_cluster_locality_config",b"leds_cluster_locality_config",u"load_balancer_endpoints",b"load_balancer_endpoints",u"load_balancing_weight",b"load_balancing_weight",u"locality",b"locality",u"proximity",b"proximity"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal[u"lb_config",b"lb_config",u"lb_endpoints",b"lb_endpoints",u"leds_cluster_locality_config",b"leds_cluster_locality_config",u"load_balancer_endpoints",b"load_balancer_endpoints",u"load_balancing_weight",b"load_balancing_weight",u"locality",b"locality",u"priority",b"priority",u"proximity",b"proximity"]) -> None: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"lb_config",b"lb_config"]) -> typing.Optional[typing_extensions.Literal["load_balancer_endpoints","leds_cluster_locality_config"]]: ...
 global___LocalityLbEndpoints = LocalityLbEndpoints

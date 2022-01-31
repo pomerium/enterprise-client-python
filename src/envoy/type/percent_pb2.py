@@ -19,9 +19,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='envoy/type/percent.proto',
   package='envoy.type',
   syntax='proto3',
-  serialized_options=b'\n\030io.envoyproxy.envoy.typeB\014PercentProtoP\001\272\200\310\321\006\002\020\001',
+  serialized_options=b'\n\030io.envoyproxy.envoy.typeB\014PercentProtoP\001Z1github.com/envoyproxy/go-control-plane/envoy/type\272\200\310\321\006\002\020\001',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x18\x65nvoy/type/percent.proto\x12\nenvoy.type\x1a\x1dudpa/annotations/status.proto\x1a\x17validate/validate.proto\"1\n\x07Percent\x12&\n\x05value\x18\x01 \x01(\x01\x42\x17\xfa\x42\x14\x12\x12\x19\x00\x00\x00\x00\x00\x00Y@)\x00\x00\x00\x00\x00\x00\x00\x00\"\xb3\x01\n\x11\x46ractionalPercent\x12\x11\n\tnumerator\x18\x01 \x01(\r\x12L\n\x0b\x64\x65nominator\x18\x02 \x01(\x0e\x32-.envoy.type.FractionalPercent.DenominatorTypeB\x08\xfa\x42\x05\x82\x01\x02\x10\x01\"=\n\x0f\x44\x65nominatorType\x12\x0b\n\x07HUNDRED\x10\x00\x12\x10\n\x0cTEN_THOUSAND\x10\x01\x12\x0b\n\x07MILLION\x10\x02\x42\x32\n\x18io.envoyproxy.envoy.typeB\x0cPercentProtoP\x01\xba\x80\xc8\xd1\x06\x02\x10\x01\x62\x06proto3'
+  serialized_pb=b'\n\x18\x65nvoy/type/percent.proto\x12\nenvoy.type\x1a\x1dudpa/annotations/status.proto\x1a\x17validate/validate.proto\"1\n\x07Percent\x12&\n\x05value\x18\x01 \x01(\x01\x42\x17\xfa\x42\x14\x12\x12\x19\x00\x00\x00\x00\x00\x00Y@)\x00\x00\x00\x00\x00\x00\x00\x00\"\xb3\x01\n\x11\x46ractionalPercent\x12\x11\n\tnumerator\x18\x01 \x01(\r\x12L\n\x0b\x64\x65nominator\x18\x02 \x01(\x0e\x32-.envoy.type.FractionalPercent.DenominatorTypeB\x08\xfa\x42\x05\x82\x01\x02\x10\x01\"=\n\x0f\x44\x65nominatorType\x12\x0b\n\x07HUNDRED\x10\x00\x12\x10\n\x0cTEN_THOUSAND\x10\x01\x12\x0b\n\x07MILLION\x10\x02\x42\x65\n\x18io.envoyproxy.envoy.typeB\x0cPercentProtoP\x01Z1github.com/envoyproxy/go-control-plane/envoy/type\xba\x80\xc8\xd1\x06\x02\x10\x01\x62\x06proto3'
   ,
   dependencies=[udpa_dot_annotations_dot_status__pb2.DESCRIPTOR,validate_dot_validate__pb2.DESCRIPTOR,])
 

@@ -18,9 +18,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='envoy/config/core/v3/proxy_protocol.proto',
   package='envoy.config.core.v3',
   syntax='proto3',
-  serialized_options=b'\n\"io.envoyproxy.envoy.config.core.v3B\022ProxyProtocolProtoP\001\272\200\310\321\006\002\020\002',
+  serialized_options=b'\n\"io.envoyproxy.envoy.config.core.v3B\022ProxyProtocolProtoP\001ZBgithub.com/envoyproxy/go-control-plane/envoy/config/core/v3;corev3\272\200\310\321\006\002\020\002',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n)envoy/config/core/v3/proxy_protocol.proto\x12\x14\x65nvoy.config.core.v3\x1a\x1dudpa/annotations/status.proto\"t\n\x13ProxyProtocolConfig\x12\x42\n\x07version\x18\x01 \x01(\x0e\x32\x31.envoy.config.core.v3.ProxyProtocolConfig.Version\"\x19\n\x07Version\x12\x06\n\x02V1\x10\x00\x12\x06\n\x02V2\x10\x01\x42\x42\n\"io.envoyproxy.envoy.config.core.v3B\x12ProxyProtocolProtoP\x01\xba\x80\xc8\xd1\x06\x02\x10\x02\x62\x06proto3'
+  serialized_pb=b'\n)envoy/config/core/v3/proxy_protocol.proto\x12\x14\x65nvoy.config.core.v3\x1a\x1dudpa/annotations/status.proto\"t\n\x13ProxyProtocolConfig\x12\x42\n\x07version\x18\x01 \x01(\x0e\x32\x31.envoy.config.core.v3.ProxyProtocolConfig.Version\"\x19\n\x07Version\x12\x06\n\x02V1\x10\x00\x12\x06\n\x02V2\x10\x01\x42\x86\x01\n\"io.envoyproxy.envoy.config.core.v3B\x12ProxyProtocolProtoP\x01ZBgithub.com/envoyproxy/go-control-plane/envoy/config/core/v3;corev3\xba\x80\xc8\xd1\x06\x02\x10\x02\x62\x06proto3'
   ,
   dependencies=[udpa_dot_annotations_dot_status__pb2.DESCRIPTOR,])
 

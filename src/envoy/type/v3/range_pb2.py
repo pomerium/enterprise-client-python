@@ -19,9 +19,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='envoy/type/v3/range.proto',
   package='envoy.type.v3',
   syntax='proto3',
-  serialized_options=b'\n\033io.envoyproxy.envoy.type.v3B\nRangeProtoP\001\272\200\310\321\006\002\020\002',
+  serialized_options=b'\n\033io.envoyproxy.envoy.type.v3B\nRangeProtoP\001Z;github.com/envoyproxy/go-control-plane/envoy/type/v3;typev3\272\200\310\321\006\002\020\002',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x19\x65nvoy/type/v3/range.proto\x12\renvoy.type.v3\x1a\x1dudpa/annotations/status.proto\x1a!udpa/annotations/versioning.proto\"F\n\nInt64Range\x12\r\n\x05start\x18\x01 \x01(\x03\x12\x0b\n\x03\x65nd\x18\x02 \x01(\x03:\x1c\x9a\xc5\x88\x1e\x17\n\x15\x65nvoy.type.Int64Range\"F\n\nInt32Range\x12\r\n\x05start\x18\x01 \x01(\x05\x12\x0b\n\x03\x65nd\x18\x02 \x01(\x05:\x1c\x9a\xc5\x88\x1e\x17\n\x15\x65nvoy.type.Int32Range\"H\n\x0b\x44oubleRange\x12\r\n\x05start\x18\x01 \x01(\x01\x12\x0b\n\x03\x65nd\x18\x02 \x01(\x01:\x1d\x9a\xc5\x88\x1e\x18\n\x16\x65nvoy.type.DoubleRangeB3\n\x1bio.envoyproxy.envoy.type.v3B\nRangeProtoP\x01\xba\x80\xc8\xd1\x06\x02\x10\x02\x62\x06proto3'
+  serialized_pb=b'\n\x19\x65nvoy/type/v3/range.proto\x12\renvoy.type.v3\x1a\x1dudpa/annotations/status.proto\x1a!udpa/annotations/versioning.proto\"F\n\nInt64Range\x12\r\n\x05start\x18\x01 \x01(\x03\x12\x0b\n\x03\x65nd\x18\x02 \x01(\x03:\x1c\x9a\xc5\x88\x1e\x17\n\x15\x65nvoy.type.Int64Range\"F\n\nInt32Range\x12\r\n\x05start\x18\x01 \x01(\x05\x12\x0b\n\x03\x65nd\x18\x02 \x01(\x05:\x1c\x9a\xc5\x88\x1e\x17\n\x15\x65nvoy.type.Int32Range\"H\n\x0b\x44oubleRange\x12\r\n\x05start\x18\x01 \x01(\x01\x12\x0b\n\x03\x65nd\x18\x02 \x01(\x01:\x1d\x9a\xc5\x88\x1e\x18\n\x16\x65nvoy.type.DoubleRangeBp\n\x1bio.envoyproxy.envoy.type.v3B\nRangeProtoP\x01Z;github.com/envoyproxy/go-control-plane/envoy/type/v3;typev3\xba\x80\xc8\xd1\x06\x02\x10\x02\x62\x06proto3'
   ,
   dependencies=[udpa_dot_annotations_dot_status__pb2.DESCRIPTOR,udpa_dot_annotations_dot_versioning__pb2.DESCRIPTOR,])
 

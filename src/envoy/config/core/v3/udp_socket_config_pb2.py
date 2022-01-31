@@ -20,9 +20,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='envoy/config/core/v3/udp_socket_config.proto',
   package='envoy.config.core.v3',
   syntax='proto3',
-  serialized_options=b'\n\"io.envoyproxy.envoy.config.core.v3B\024UdpSocketConfigProtoP\001\272\200\310\321\006\002\020\002',
+  serialized_options=b'\n\"io.envoyproxy.envoy.config.core.v3B\024UdpSocketConfigProtoP\001ZBgithub.com/envoyproxy/go-control-plane/envoy/config/core/v3;corev3\272\200\310\321\006\002\020\002',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n,envoy/config/core/v3/udp_socket_config.proto\x12\x14\x65nvoy.config.core.v3\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1dudpa/annotations/status.proto\x1a\x17validate/validate.proto\"\x8a\x01\n\x0fUdpSocketConfig\x12G\n\x14max_rx_datagram_size\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.UInt64ValueB\x0b\xfa\x42\x08\x32\x06\x10\x80\x80\x04 \x00\x12.\n\nprefer_gro\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.BoolValueBD\n\"io.envoyproxy.envoy.config.core.v3B\x14UdpSocketConfigProtoP\x01\xba\x80\xc8\xd1\x06\x02\x10\x02\x62\x06proto3'
+  serialized_pb=b'\n,envoy/config/core/v3/udp_socket_config.proto\x12\x14\x65nvoy.config.core.v3\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1dudpa/annotations/status.proto\x1a\x17validate/validate.proto\"\x8a\x01\n\x0fUdpSocketConfig\x12G\n\x14max_rx_datagram_size\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.UInt64ValueB\x0b\xfa\x42\x08\x32\x06\x10\x80\x80\x04 \x00\x12.\n\nprefer_gro\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.BoolValueB\x88\x01\n\"io.envoyproxy.envoy.config.core.v3B\x14UdpSocketConfigProtoP\x01ZBgithub.com/envoyproxy/go-control-plane/envoy/config/core/v3;corev3\xba\x80\xc8\xd1\x06\x02\x10\x02\x62\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_wrappers__pb2.DESCRIPTOR,udpa_dot_annotations_dot_status__pb2.DESCRIPTOR,validate_dot_validate__pb2.DESCRIPTOR,])
 

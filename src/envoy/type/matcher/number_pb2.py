@@ -20,9 +20,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='envoy/type/matcher/number.proto',
   package='envoy.type.matcher',
   syntax='proto3',
-  serialized_options=b'\n io.envoyproxy.envoy.type.matcherB\013NumberProtoP\001\272\200\310\321\006\002\020\001',
+  serialized_options=b'\n io.envoyproxy.envoy.type.matcherB\013NumberProtoP\001Z9github.com/envoyproxy/go-control-plane/envoy/type/matcher\272\200\310\321\006\002\020\001',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x1f\x65nvoy/type/matcher/number.proto\x12\x12\x65nvoy.type.matcher\x1a\x16\x65nvoy/type/range.proto\x1a\x1dudpa/annotations/status.proto\x1a\x17validate/validate.proto\"`\n\rDoubleMatcher\x12(\n\x05range\x18\x01 \x01(\x0b\x32\x17.envoy.type.DoubleRangeH\x00\x12\x0f\n\x05\x65xact\x18\x02 \x01(\x01H\x00\x42\x14\n\rmatch_pattern\x12\x03\xf8\x42\x01\x42\x39\n io.envoyproxy.envoy.type.matcherB\x0bNumberProtoP\x01\xba\x80\xc8\xd1\x06\x02\x10\x01\x62\x06proto3'
+  serialized_pb=b'\n\x1f\x65nvoy/type/matcher/number.proto\x12\x12\x65nvoy.type.matcher\x1a\x16\x65nvoy/type/range.proto\x1a\x1dudpa/annotations/status.proto\x1a\x17validate/validate.proto\"`\n\rDoubleMatcher\x12(\n\x05range\x18\x01 \x01(\x0b\x32\x17.envoy.type.DoubleRangeH\x00\x12\x0f\n\x05\x65xact\x18\x02 \x01(\x01H\x00\x42\x14\n\rmatch_pattern\x12\x03\xf8\x42\x01\x42t\n io.envoyproxy.envoy.type.matcherB\x0bNumberProtoP\x01Z9github.com/envoyproxy/go-control-plane/envoy/type/matcher\xba\x80\xc8\xd1\x06\x02\x10\x01\x62\x06proto3'
   ,
   dependencies=[envoy_dot_type_dot_range__pb2.DESCRIPTOR,udpa_dot_annotations_dot_status__pb2.DESCRIPTOR,validate_dot_validate__pb2.DESCRIPTOR,])
 

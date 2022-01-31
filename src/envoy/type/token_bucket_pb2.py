@@ -21,9 +21,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='envoy/type/token_bucket.proto',
   package='envoy.type',
   syntax='proto3',
-  serialized_options=b'\n\030io.envoyproxy.envoy.typeB\020TokenBucketProtoP\001\272\200\310\321\006\002\020\001',
+  serialized_options=b'\n\030io.envoyproxy.envoy.typeB\020TokenBucketProtoP\001Z1github.com/envoyproxy/go-control-plane/envoy/type\272\200\310\321\006\002\020\001',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x1d\x65nvoy/type/token_bucket.proto\x12\nenvoy.type\x1a\x1egoogle/protobuf/duration.proto\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1dudpa/annotations/status.proto\x1a\x17validate/validate.proto\"\xa8\x01\n\x0bTokenBucket\x12\x1b\n\nmax_tokens\x18\x01 \x01(\rB\x07\xfa\x42\x04*\x02 \x00\x12>\n\x0ftokens_per_fill\x18\x02 \x01(\x0b\x32\x1c.google.protobuf.UInt32ValueB\x07\xfa\x42\x04*\x02 \x00\x12<\n\rfill_interval\x18\x03 \x01(\x0b\x32\x19.google.protobuf.DurationB\n\xfa\x42\x07\xaa\x01\x04\x08\x01*\x00\x42\x36\n\x18io.envoyproxy.envoy.typeB\x10TokenBucketProtoP\x01\xba\x80\xc8\xd1\x06\x02\x10\x01\x62\x06proto3'
+  serialized_pb=b'\n\x1d\x65nvoy/type/token_bucket.proto\x12\nenvoy.type\x1a\x1egoogle/protobuf/duration.proto\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1dudpa/annotations/status.proto\x1a\x17validate/validate.proto\"\xa8\x01\n\x0bTokenBucket\x12\x1b\n\nmax_tokens\x18\x01 \x01(\rB\x07\xfa\x42\x04*\x02 \x00\x12>\n\x0ftokens_per_fill\x18\x02 \x01(\x0b\x32\x1c.google.protobuf.UInt32ValueB\x07\xfa\x42\x04*\x02 \x00\x12<\n\rfill_interval\x18\x03 \x01(\x0b\x32\x19.google.protobuf.DurationB\n\xfa\x42\x07\xaa\x01\x04\x08\x01*\x00\x42i\n\x18io.envoyproxy.envoy.typeB\x10TokenBucketProtoP\x01Z1github.com/envoyproxy/go-control-plane/envoy/type\xba\x80\xc8\xd1\x06\x02\x10\x01\x62\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_duration__pb2.DESCRIPTOR,google_dot_protobuf_dot_wrappers__pb2.DESCRIPTOR,udpa_dot_annotations_dot_status__pb2.DESCRIPTOR,validate_dot_validate__pb2.DESCRIPTOR,])
 

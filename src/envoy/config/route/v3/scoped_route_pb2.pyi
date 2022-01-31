@@ -3,6 +3,7 @@
 isort:skip_file
 """
 import builtins
+import envoy.config.route.v3.route_pb2
 import google.protobuf.descriptor
 import google.protobuf.internal.containers
 import google.protobuf.message
@@ -17,7 +18,10 @@ class ScopedRouteConfiguration(google.protobuf.message.Message):
 
     Specifies a routing scope, which associates a
     :ref:`Key<envoy_v3_api_msg_config.route.v3.ScopedRouteConfiguration.Key>` to a
-    :ref:`envoy_v3_api_msg_config.route.v3.RouteConfiguration` (identified by its resource name).
+    :ref:`envoy_v3_api_msg_config.route.v3.RouteConfiguration`.
+    The :ref:`envoy_v3_api_msg_config.route.v3.RouteConfiguration` can be obtained dynamically
+    via RDS (:ref:`route_configuration_name<envoy_v3_api_field_config.route.v3.ScopedRouteConfiguration.route_configuration_name>`)
+    or specified inline (:ref:`route_configuration<envoy_v3_api_field_config.route.v3.ScopedRouteConfiguration.route_configuration>`).
 
     The HTTP connection manager builds up a table consisting of these Key to
     RouteConfiguration mappings, and looks up the RouteConfiguration to use per
@@ -73,6 +77,8 @@ class ScopedRouteConfiguration(google.protobuf.message.Message):
 
     would result in the routing table defined by the `route-config1`
     RouteConfiguration being assigned to the HTTP request/stream.
+
+    [#next-free-field: 6]
     """
     DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
     class Key(google.protobuf.message.Message):
@@ -114,6 +120,7 @@ class ScopedRouteConfiguration(google.protobuf.message.Message):
     ON_DEMAND_FIELD_NUMBER: builtins.int
     NAME_FIELD_NUMBER: builtins.int
     ROUTE_CONFIGURATION_NAME_FIELD_NUMBER: builtins.int
+    ROUTE_CONFIGURATION_FIELD_NUMBER: builtins.int
     KEY_FIELD_NUMBER: builtins.int
     on_demand: builtins.bool = ...
     """Whether the RouteConfiguration should be loaded on demand."""
@@ -128,6 +135,10 @@ class ScopedRouteConfiguration(google.protobuf.message.Message):
     """
 
     @property
+    def route_configuration(self) -> envoy.config.route.v3.route_pb2.RouteConfiguration:
+        """The :ref:`envoy_v3_api_msg_config.route.v3.RouteConfiguration` associated with the scope."""
+        pass
+    @property
     def key(self) -> global___ScopedRouteConfiguration.Key:
         """The key to match against."""
         pass
@@ -136,8 +147,9 @@ class ScopedRouteConfiguration(google.protobuf.message.Message):
         on_demand : builtins.bool = ...,
         name : typing.Text = ...,
         route_configuration_name : typing.Text = ...,
+        route_configuration : typing.Optional[envoy.config.route.v3.route_pb2.RouteConfiguration] = ...,
         key : typing.Optional[global___ScopedRouteConfiguration.Key] = ...,
         ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"key",b"key"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"key",b"key",u"name",b"name",u"on_demand",b"on_demand",u"route_configuration_name",b"route_configuration_name"]) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal[u"key",b"key",u"route_configuration",b"route_configuration"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal[u"key",b"key",u"name",b"name",u"on_demand",b"on_demand",u"route_configuration",b"route_configuration",u"route_configuration_name",b"route_configuration_name"]) -> None: ...
 global___ScopedRouteConfiguration = ScopedRouteConfiguration

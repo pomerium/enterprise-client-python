@@ -515,6 +515,25 @@ class RuntimeFeatureFlag(google.protobuf.message.Message):
     def ClearField(self, field_name: typing_extensions.Literal[u"default_value",b"default_value",u"runtime_key",b"runtime_key"]) -> None: ...
 global___RuntimeFeatureFlag = RuntimeFeatureFlag
 
+class QueryParameter(google.protobuf.message.Message):
+    """Query parameter name/value pair."""
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    KEY_FIELD_NUMBER: builtins.int
+    VALUE_FIELD_NUMBER: builtins.int
+    key: typing.Text = ...
+    """The key of the query parameter. Case sensitive."""
+
+    value: typing.Text = ...
+    """The value of the query parameter."""
+
+    def __init__(self,
+        *,
+        key : typing.Text = ...,
+        value : typing.Text = ...,
+        ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal[u"key",b"key",u"value",b"value"]) -> None: ...
+global___QueryParameter = QueryParameter
+
 class HeaderValue(google.protobuf.message.Message):
     """Header name/value pair."""
     DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
@@ -542,8 +561,52 @@ global___HeaderValue = HeaderValue
 class HeaderValueOption(google.protobuf.message.Message):
     """Header name/value pair plus option to control append behavior."""
     DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    class HeaderAppendAction(_HeaderAppendAction, metaclass=_HeaderAppendActionEnumTypeWrapper):
+        """Describes the supported actions types for header append action."""
+        pass
+    class _HeaderAppendAction:
+        V = typing.NewType('V', builtins.int)
+    class _HeaderAppendActionEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_HeaderAppendAction.V], builtins.type):
+        DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor = ...
+        APPEND_IF_EXISTS_OR_ADD = HeaderValueOption.HeaderAppendAction.V(0)
+        """This action will append the specified value to the existing values if the header
+        already exists. If the header doesn't exist then this will add the header with
+        specified key and value.
+        """
+
+        ADD_IF_ABSENT = HeaderValueOption.HeaderAppendAction.V(1)
+        """This action will add the header if it doesn't already exist. If the header
+        already exists then this will be a no-op.
+        """
+
+        OVERWRITE_IF_EXISTS_OR_ADD = HeaderValueOption.HeaderAppendAction.V(2)
+        """This action will overwrite the specified value by discarding any existing values if
+        the header already exists. If the header doesn't exist then this will add the header
+        with specified key and value.
+        """
+
+
+    APPEND_IF_EXISTS_OR_ADD = HeaderValueOption.HeaderAppendAction.V(0)
+    """This action will append the specified value to the existing values if the header
+    already exists. If the header doesn't exist then this will add the header with
+    specified key and value.
+    """
+
+    ADD_IF_ABSENT = HeaderValueOption.HeaderAppendAction.V(1)
+    """This action will add the header if it doesn't already exist. If the header
+    already exists then this will be a no-op.
+    """
+
+    OVERWRITE_IF_EXISTS_OR_ADD = HeaderValueOption.HeaderAppendAction.V(2)
+    """This action will overwrite the specified value by discarding any existing values if
+    the header already exists. If the header doesn't exist then this will add the header
+    with specified key and value.
+    """
+
+
     HEADER_FIELD_NUMBER: builtins.int
     APPEND_FIELD_NUMBER: builtins.int
+    APPEND_ACTION_FIELD_NUMBER: builtins.int
     @property
     def header(self) -> global___HeaderValue:
         """Header name/value pair that this option applies to."""
@@ -554,13 +617,19 @@ class HeaderValueOption(google.protobuf.message.Message):
         existing values. Otherwise it replaces any existing values.
         """
         pass
+    append_action: global___HeaderValueOption.HeaderAppendAction.V = ...
+    """[#not-implemented-hide:] Describes the action taken to append/overwrite the given value for an existing header
+    or to only add this header if it's absent. Value defaults to :ref:`APPEND_IF_EXISTS_OR_ADD<envoy_v3_api_enum_value_config.core.v3.HeaderValueOption.HeaderAppendAction.APPEND_IF_EXISTS_OR_ADD>`.
+    """
+
     def __init__(self,
         *,
         header : typing.Optional[global___HeaderValue] = ...,
         append : typing.Optional[google.protobuf.wrappers_pb2.BoolValue] = ...,
+        append_action : global___HeaderValueOption.HeaderAppendAction.V = ...,
         ) -> None: ...
     def HasField(self, field_name: typing_extensions.Literal[u"append",b"append",u"header",b"header"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"append",b"append",u"header",b"header"]) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal[u"append",b"append",u"append_action",b"append_action",u"header",b"header"]) -> None: ...
 global___HeaderValueOption = HeaderValueOption
 
 class HeaderMap(google.protobuf.message.Message):
@@ -593,11 +662,12 @@ class WatchedDirectory(google.protobuf.message.Message):
 global___WatchedDirectory = WatchedDirectory
 
 class DataSource(google.protobuf.message.Message):
-    """Data source consisting of either a file or an inline value."""
+    """Data source consisting of a file, an inline value, or an environment variable."""
     DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
     FILENAME_FIELD_NUMBER: builtins.int
     INLINE_BYTES_FIELD_NUMBER: builtins.int
     INLINE_STRING_FIELD_NUMBER: builtins.int
+    ENVIRONMENT_VARIABLE_FIELD_NUMBER: builtins.int
     filename: typing.Text = ...
     """Local filesystem data source."""
 
@@ -607,15 +677,19 @@ class DataSource(google.protobuf.message.Message):
     inline_string: typing.Text = ...
     """String inlined in the configuration."""
 
+    environment_variable: typing.Text = ...
+    """Environment variable data source."""
+
     def __init__(self,
         *,
         filename : typing.Text = ...,
         inline_bytes : builtins.bytes = ...,
         inline_string : typing.Text = ...,
+        environment_variable : typing.Text = ...,
         ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"filename",b"filename",u"inline_bytes",b"inline_bytes",u"inline_string",b"inline_string",u"specifier",b"specifier"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"filename",b"filename",u"inline_bytes",b"inline_bytes",u"inline_string",b"inline_string",u"specifier",b"specifier"]) -> None: ...
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"specifier",b"specifier"]) -> typing.Optional[typing_extensions.Literal["filename","inline_bytes","inline_string"]]: ...
+    def HasField(self, field_name: typing_extensions.Literal[u"environment_variable",b"environment_variable",u"filename",b"filename",u"inline_bytes",b"inline_bytes",u"inline_string",b"inline_string",u"specifier",b"specifier"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal[u"environment_variable",b"environment_variable",u"filename",b"filename",u"inline_bytes",b"inline_bytes",u"inline_string",b"inline_string",u"specifier",b"specifier"]) -> None: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"specifier",b"specifier"]) -> typing.Optional[typing_extensions.Literal["filename","inline_bytes","inline_string","environment_variable"]]: ...
 global___DataSource = DataSource
 
 class RetryPolicy(google.protobuf.message.Message):

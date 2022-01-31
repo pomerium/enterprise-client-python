@@ -20,9 +20,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='envoy/type/matcher/metadata.proto',
   package='envoy.type.matcher',
   syntax='proto3',
-  serialized_options=b'\n io.envoyproxy.envoy.type.matcherB\rMetadataProtoP\001\272\200\310\321\006\002\020\001',
+  serialized_options=b'\n io.envoyproxy.envoy.type.matcherB\rMetadataProtoP\001Z9github.com/envoyproxy/go-control-plane/envoy/type/matcher\272\200\310\321\006\002\020\001',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n!envoy/type/matcher/metadata.proto\x12\x12\x65nvoy.type.matcher\x1a\x1e\x65nvoy/type/matcher/value.proto\x1a\x1dudpa/annotations/status.proto\x1a\x17validate/validate.proto\"\xe5\x01\n\x0fMetadataMatcher\x12\x17\n\x06\x66ilter\x18\x01 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01\x12G\n\x04path\x18\x02 \x03(\x0b\x32/.envoy.type.matcher.MetadataMatcher.PathSegmentB\x08\xfa\x42\x05\x92\x01\x02\x08\x01\x12\x39\n\x05value\x18\x03 \x01(\x0b\x32 .envoy.type.matcher.ValueMatcherB\x08\xfa\x42\x05\x8a\x01\x02\x10\x01\x1a\x35\n\x0bPathSegment\x12\x16\n\x03key\x18\x01 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01H\x00\x42\x0e\n\x07segment\x12\x03\xf8\x42\x01\x42;\n io.envoyproxy.envoy.type.matcherB\rMetadataProtoP\x01\xba\x80\xc8\xd1\x06\x02\x10\x01\x62\x06proto3'
+  serialized_pb=b'\n!envoy/type/matcher/metadata.proto\x12\x12\x65nvoy.type.matcher\x1a\x1e\x65nvoy/type/matcher/value.proto\x1a\x1dudpa/annotations/status.proto\x1a\x17validate/validate.proto\"\xe5\x01\n\x0fMetadataMatcher\x12\x17\n\x06\x66ilter\x18\x01 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01\x12G\n\x04path\x18\x02 \x03(\x0b\x32/.envoy.type.matcher.MetadataMatcher.PathSegmentB\x08\xfa\x42\x05\x92\x01\x02\x08\x01\x12\x39\n\x05value\x18\x03 \x01(\x0b\x32 .envoy.type.matcher.ValueMatcherB\x08\xfa\x42\x05\x8a\x01\x02\x10\x01\x1a\x35\n\x0bPathSegment\x12\x16\n\x03key\x18\x01 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01H\x00\x42\x0e\n\x07segment\x12\x03\xf8\x42\x01\x42v\n io.envoyproxy.envoy.type.matcherB\rMetadataProtoP\x01Z9github.com/envoyproxy/go-control-plane/envoy/type/matcher\xba\x80\xc8\xd1\x06\x02\x10\x01\x62\x06proto3'
   ,
   dependencies=[envoy_dot_type_dot_matcher_dot_value__pb2.DESCRIPTOR,udpa_dot_annotations_dot_status__pb2.DESCRIPTOR,validate_dot_validate__pb2.DESCRIPTOR,])
 

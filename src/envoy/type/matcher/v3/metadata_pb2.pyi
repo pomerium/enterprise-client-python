@@ -98,6 +98,7 @@ class MetadataMatcher(google.protobuf.message.Message):
     FILTER_FIELD_NUMBER: builtins.int
     PATH_FIELD_NUMBER: builtins.int
     VALUE_FIELD_NUMBER: builtins.int
+    INVERT_FIELD_NUMBER: builtins.int
     filter: typing.Text = ...
     """The filter name to retrieve the Struct from the Metadata."""
 
@@ -109,12 +110,16 @@ class MetadataMatcher(google.protobuf.message.Message):
     def value(self) -> envoy.type.matcher.v3.value_pb2.ValueMatcher:
         """The MetadataMatcher is matched if the value retrieved by path is matched to this value."""
         pass
+    invert: builtins.bool = ...
+    """If true, the match result will be inverted."""
+
     def __init__(self,
         *,
         filter : typing.Text = ...,
         path : typing.Optional[typing.Iterable[global___MetadataMatcher.PathSegment]] = ...,
         value : typing.Optional[envoy.type.matcher.v3.value_pb2.ValueMatcher] = ...,
+        invert : builtins.bool = ...,
         ) -> None: ...
     def HasField(self, field_name: typing_extensions.Literal[u"value",b"value"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"filter",b"filter",u"path",b"path",u"value",b"value"]) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal[u"filter",b"filter",u"invert",b"invert",u"path",b"path",u"value",b"value"]) -> None: ...
 global___MetadataMatcher = MetadataMatcher

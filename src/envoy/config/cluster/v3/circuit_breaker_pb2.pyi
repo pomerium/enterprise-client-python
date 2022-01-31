@@ -79,12 +79,14 @@ class CircuitBreakers(google.protobuf.message.Message):
         def max_pending_requests(self) -> google.protobuf.wrappers_pb2.UInt32Value:
             """The maximum number of pending requests that Envoy will allow to the
             upstream cluster. If not specified, the default is 1024.
+            This limit is applied as a connection limit for non-HTTP traffic.
             """
             pass
         @property
         def max_requests(self) -> google.protobuf.wrappers_pb2.UInt32Value:
             """The maximum number of parallel requests that Envoy will make to the
             upstream cluster. If not specified, the default is 1024.
+            This limit does not apply to non-HTTP traffic.
             """
             pass
         @property

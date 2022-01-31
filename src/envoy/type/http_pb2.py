@@ -19,9 +19,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='envoy/type/http.proto',
   package='envoy.type',
   syntax='proto3',
-  serialized_options=b'\n\030io.envoyproxy.envoy.typeB\tHttpProtoP\001\272\200\310\321\006\002\020\001',
+  serialized_options=b'\n\030io.envoyproxy.envoy.typeB\tHttpProtoP\001Z1github.com/envoyproxy/go-control-plane/envoy/type\272\200\310\321\006\002\020\001',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x15\x65nvoy/type/http.proto\x12\nenvoy.type\x1a\x1dudpa/annotations/status.proto*2\n\x0f\x43odecClientType\x12\t\n\x05HTTP1\x10\x00\x12\t\n\x05HTTP2\x10\x01\x12\t\n\x05HTTP3\x10\x02\x42/\n\x18io.envoyproxy.envoy.typeB\tHttpProtoP\x01\xba\x80\xc8\xd1\x06\x02\x10\x01\x62\x06proto3'
+  serialized_pb=b'\n\x15\x65nvoy/type/http.proto\x12\nenvoy.type\x1a\x1dudpa/annotations/status.proto*2\n\x0f\x43odecClientType\x12\t\n\x05HTTP1\x10\x00\x12\t\n\x05HTTP2\x10\x01\x12\t\n\x05HTTP3\x10\x02\x42\x62\n\x18io.envoyproxy.envoy.typeB\tHttpProtoP\x01Z1github.com/envoyproxy/go-control-plane/envoy/type\xba\x80\xc8\xd1\x06\x02\x10\x01\x62\x06proto3'
   ,
   dependencies=[udpa_dot_annotations_dot_status__pb2.DESCRIPTOR,])
 
