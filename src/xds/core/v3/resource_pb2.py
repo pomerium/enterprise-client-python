@@ -12,7 +12,7 @@ _sym_db = _symbol_database.Default()
 
 
 from google.protobuf import any_pb2 as google_dot_protobuf_dot_any__pb2
-from udpa.annotations import status_pb2 as udpa_dot_annotations_dot_status__pb2
+from xds.annotations.v3 import status_pb2 as xds_dot_annotations_dot_v3_dot_status__pb2
 from xds.core.v3 import resource_name_pb2 as xds_dot_core_dot_v3_dot_resource__name__pb2
 
 
@@ -20,11 +20,11 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='xds/core/v3/resource.proto',
   package='xds.core.v3',
   syntax='proto3',
-  serialized_options=b'\n\033com.github.udpa.xds.core.v3B\rResourceProtoP\001\272\200\310\321\006\002\010\001',
+  serialized_options=b'\n\026com.github.xds.core.v3B\rResourceProtoP\001Z\"github.com/cncf/xds/go/xds/core/v3\322\306\244\341\006\002\010\001',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x1axds/core/v3/resource.proto\x12\x0bxds.core.v3\x1a\x19google/protobuf/any.proto\x1a\x1dudpa/annotations/status.proto\x1a\x1fxds/core/v3/resource_name.proto\"l\n\x08Resource\x12\'\n\x04name\x18\x01 \x01(\x0b\x32\x19.xds.core.v3.ResourceName\x12\x0f\n\x07version\x18\x02 \x01(\t\x12&\n\x08resource\x18\x03 \x01(\x0b\x32\x14.google.protobuf.AnyB6\n\x1b\x63om.github.udpa.xds.core.v3B\rResourceProtoP\x01\xba\x80\xc8\xd1\x06\x02\x08\x01\x62\x06proto3'
+  serialized_pb=b'\n\x1axds/core/v3/resource.proto\x12\x0bxds.core.v3\x1a\x19google/protobuf/any.proto\x1a\x1fxds/annotations/v3/status.proto\x1a\x1fxds/core/v3/resource_name.proto\"l\n\x08Resource\x12\'\n\x04name\x18\x01 \x01(\x0b\x32\x19.xds.core.v3.ResourceName\x12\x0f\n\x07version\x18\x02 \x01(\t\x12&\n\x08resource\x18\x03 \x01(\x0b\x32\x14.google.protobuf.AnyBU\n\x16\x63om.github.xds.core.v3B\rResourceProtoP\x01Z\"github.com/cncf/xds/go/xds/core/v3\xd2\xc6\xa4\xe1\x06\x02\x08\x01\x62\x06proto3'
   ,
-  dependencies=[google_dot_protobuf_dot_any__pb2.DESCRIPTOR,udpa_dot_annotations_dot_status__pb2.DESCRIPTOR,xds_dot_core_dot_v3_dot_resource__name__pb2.DESCRIPTOR,])
+  dependencies=[google_dot_protobuf_dot_any__pb2.DESCRIPTOR,xds_dot_annotations_dot_v3_dot_status__pb2.DESCRIPTOR,xds_dot_core_dot_v3_dot_resource__name__pb2.DESCRIPTOR,])
 
 
 
@@ -70,8 +70,8 @@ _RESOURCE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=134,
-  serialized_end=242,
+  serialized_start=136,
+  serialized_end=244,
 )
 
 _RESOURCE.fields_by_name['name'].message_type = xds_dot_core_dot_v3_dot_resource__name__pb2._RESOURCENAME

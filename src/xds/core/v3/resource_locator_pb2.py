@@ -11,7 +11,7 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-from udpa.annotations import status_pb2 as udpa_dot_annotations_dot_status__pb2
+from xds.annotations.v3 import status_pb2 as xds_dot_annotations_dot_v3_dot_status__pb2
 from xds.core.v3 import context_params_pb2 as xds_dot_core_dot_v3_dot_context__params__pb2
 from validate import validate_pb2 as validate_dot_validate__pb2
 
@@ -20,11 +20,11 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='xds/core/v3/resource_locator.proto',
   package='xds.core.v3',
   syntax='proto3',
-  serialized_options=b'\n\033com.github.udpa.xds.core.v3B\024ResourceLocatorProtoP\001\272\200\310\321\006\002\010\001',
+  serialized_options=b'\n\026com.github.xds.core.v3B\024ResourceLocatorProtoP\001Z\"github.com/cncf/xds/go/xds/core/v3\322\306\244\341\006\002\010\001',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\"xds/core/v3/resource_locator.proto\x12\x0bxds.core.v3\x1a\x1dudpa/annotations/status.proto\x1a xds/core/v3/context_params.proto\x1a\x17validate/validate.proto\"\xc2\x03\n\x0fResourceLocator\x12=\n\x06scheme\x18\x01 \x01(\x0e\x32#.xds.core.v3.ResourceLocator.SchemeB\x08\xfa\x42\x05\x82\x01\x02\x10\x01\x12\n\n\x02id\x18\x02 \x01(\t\x12\x11\n\tauthority\x18\x03 \x01(\t\x12\x1e\n\rresource_type\x18\x04 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01\x12\x33\n\rexact_context\x18\x05 \x01(\x0b\x32\x1a.xds.core.v3.ContextParamsH\x00\x12:\n\ndirectives\x18\x06 \x03(\x0b\x32&.xds.core.v3.ResourceLocator.Directive\x1a|\n\tDirective\x12+\n\x03\x61lt\x18\x01 \x01(\x0b\x32\x1c.xds.core.v3.ResourceLocatorH\x00\x12\x30\n\x05\x65ntry\x18\x02 \x01(\tB\x1f\xfa\x42\x1cr\x1a\x10\x01\x32\x16^[0-9a-zA-Z_\\-\\./~:]+$H\x00\x42\x10\n\tdirective\x12\x03\xf8\x42\x01\"\'\n\x06Scheme\x12\t\n\x05XDSTP\x10\x00\x12\x08\n\x04HTTP\x10\x01\x12\x08\n\x04\x46ILE\x10\x02\x42\x19\n\x17\x63ontext_param_specifierB=\n\x1b\x63om.github.udpa.xds.core.v3B\x14ResourceLocatorProtoP\x01\xba\x80\xc8\xd1\x06\x02\x08\x01\x62\x06proto3'
+  serialized_pb=b'\n\"xds/core/v3/resource_locator.proto\x12\x0bxds.core.v3\x1a\x1fxds/annotations/v3/status.proto\x1a xds/core/v3/context_params.proto\x1a\x17validate/validate.proto\"\xc2\x03\n\x0fResourceLocator\x12=\n\x06scheme\x18\x01 \x01(\x0e\x32#.xds.core.v3.ResourceLocator.SchemeB\x08\xfa\x42\x05\x82\x01\x02\x10\x01\x12\n\n\x02id\x18\x02 \x01(\t\x12\x11\n\tauthority\x18\x03 \x01(\t\x12\x1e\n\rresource_type\x18\x04 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01\x12\x33\n\rexact_context\x18\x05 \x01(\x0b\x32\x1a.xds.core.v3.ContextParamsH\x00\x12:\n\ndirectives\x18\x06 \x03(\x0b\x32&.xds.core.v3.ResourceLocator.Directive\x1a|\n\tDirective\x12+\n\x03\x61lt\x18\x01 \x01(\x0b\x32\x1c.xds.core.v3.ResourceLocatorH\x00\x12\x30\n\x05\x65ntry\x18\x02 \x01(\tB\x1f\xfa\x42\x1cr\x1a\x10\x01\x32\x16^[0-9a-zA-Z_\\-\\./~:]+$H\x00\x42\x10\n\tdirective\x12\x03\xf8\x42\x01\"\'\n\x06Scheme\x12\t\n\x05XDSTP\x10\x00\x12\x08\n\x04HTTP\x10\x01\x12\x08\n\x04\x46ILE\x10\x02\x42\x19\n\x17\x63ontext_param_specifierB\\\n\x16\x63om.github.xds.core.v3B\x14ResourceLocatorProtoP\x01Z\"github.com/cncf/xds/go/xds/core/v3\xd2\xc6\xa4\xe1\x06\x02\x08\x01\x62\x06proto3'
   ,
-  dependencies=[udpa_dot_annotations_dot_status__pb2.DESCRIPTOR,xds_dot_core_dot_v3_dot_context__params__pb2.DESCRIPTOR,validate_dot_validate__pb2.DESCRIPTOR,])
+  dependencies=[xds_dot_annotations_dot_v3_dot_status__pb2.DESCRIPTOR,xds_dot_core_dot_v3_dot_context__params__pb2.DESCRIPTOR,validate_dot_validate__pb2.DESCRIPTOR,])
 
 
 
@@ -53,8 +53,8 @@ _RESOURCELOCATOR_SCHEME = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=526,
-  serialized_end=565,
+  serialized_start=528,
+  serialized_end=567,
 )
 _sym_db.RegisterEnumDescriptor(_RESOURCELOCATOR_SCHEME)
 
@@ -98,8 +98,8 @@ _RESOURCELOCATOR_DIRECTIVE = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[], serialized_options=b'\370B\001'),
   ],
-  serialized_start=400,
-  serialized_end=524,
+  serialized_start=402,
+  serialized_end=526,
 )
 
 _RESOURCELOCATOR = _descriptor.Descriptor(
@@ -170,8 +170,8 @@ _RESOURCELOCATOR = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=142,
-  serialized_end=592,
+  serialized_start=144,
+  serialized_end=594,
 )
 
 _RESOURCELOCATOR_DIRECTIVE.fields_by_name['alt'].message_type = _RESOURCELOCATOR

@@ -11,7 +11,7 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-from udpa.annotations import status_pb2 as udpa_dot_annotations_dot_status__pb2
+from xds.annotations.v3 import status_pb2 as xds_dot_annotations_dot_v3_dot_status__pb2
 from xds.core.v3 import context_params_pb2 as xds_dot_core_dot_v3_dot_context__params__pb2
 from validate import validate_pb2 as validate_dot_validate__pb2
 
@@ -20,11 +20,11 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='xds/core/v3/resource_name.proto',
   package='xds.core.v3',
   syntax='proto3',
-  serialized_options=b'\n\033com.github.udpa.xds.core.v3B\021ResourceNameProtoP\001\272\200\310\321\006\002\010\001',
+  serialized_options=b'\n\026com.github.xds.core.v3B\021ResourceNameProtoP\001Z\"github.com/cncf/xds/go/xds/core/v3\322\306\244\341\006\002\010\001',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x1fxds/core/v3/resource_name.proto\x12\x0bxds.core.v3\x1a\x1dudpa/annotations/status.proto\x1a xds/core/v3/context_params.proto\x1a\x17validate/validate.proto\"z\n\x0cResourceName\x12\n\n\x02id\x18\x01 \x01(\t\x12\x11\n\tauthority\x18\x02 \x01(\t\x12\x1e\n\rresource_type\x18\x03 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01\x12+\n\x07\x63ontext\x18\x04 \x01(\x0b\x32\x1a.xds.core.v3.ContextParamsB:\n\x1b\x63om.github.udpa.xds.core.v3B\x11ResourceNameProtoP\x01\xba\x80\xc8\xd1\x06\x02\x08\x01\x62\x06proto3'
+  serialized_pb=b'\n\x1fxds/core/v3/resource_name.proto\x12\x0bxds.core.v3\x1a\x1fxds/annotations/v3/status.proto\x1a xds/core/v3/context_params.proto\x1a\x17validate/validate.proto\"z\n\x0cResourceName\x12\n\n\x02id\x18\x01 \x01(\t\x12\x11\n\tauthority\x18\x02 \x01(\t\x12\x1e\n\rresource_type\x18\x03 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01\x12+\n\x07\x63ontext\x18\x04 \x01(\x0b\x32\x1a.xds.core.v3.ContextParamsBY\n\x16\x63om.github.xds.core.v3B\x11ResourceNameProtoP\x01Z\"github.com/cncf/xds/go/xds/core/v3\xd2\xc6\xa4\xe1\x06\x02\x08\x01\x62\x06proto3'
   ,
-  dependencies=[udpa_dot_annotations_dot_status__pb2.DESCRIPTOR,xds_dot_core_dot_v3_dot_context__params__pb2.DESCRIPTOR,validate_dot_validate__pb2.DESCRIPTOR,])
+  dependencies=[xds_dot_annotations_dot_v3_dot_status__pb2.DESCRIPTOR,xds_dot_core_dot_v3_dot_context__params__pb2.DESCRIPTOR,validate_dot_validate__pb2.DESCRIPTOR,])
 
 
 
@@ -77,8 +77,8 @@ _RESOURCENAME = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=138,
-  serialized_end=260,
+  serialized_start=140,
+  serialized_end=262,
 )
 
 _RESOURCENAME.fields_by_name['context'].message_type = xds_dot_core_dot_v3_dot_context__params__pb2._CONTEXTPARAMS

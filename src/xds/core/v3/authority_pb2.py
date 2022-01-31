@@ -11,7 +11,7 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-from udpa.annotations import status_pb2 as udpa_dot_annotations_dot_status__pb2
+from xds.annotations.v3 import status_pb2 as xds_dot_annotations_dot_v3_dot_status__pb2
 from validate import validate_pb2 as validate_dot_validate__pb2
 
 
@@ -19,11 +19,11 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='xds/core/v3/authority.proto',
   package='xds.core.v3',
   syntax='proto3',
-  serialized_options=b'\n\033com.github.udpa.xds.core.v3B\016AuthorityProtoP\001\272\200\310\321\006\002\010\001',
+  serialized_options=b'\n\026com.github.xds.core.v3B\016AuthorityProtoP\001Z\"github.com/cncf/xds/go/xds/core/v3\322\306\244\341\006\002\010\001',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x1bxds/core/v3/authority.proto\x12\x0bxds.core.v3\x1a\x1dudpa/annotations/status.proto\x1a\x17validate/validate.proto\"\"\n\tAuthority\x12\x15\n\x04name\x18\x01 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01\x42\x37\n\x1b\x63om.github.udpa.xds.core.v3B\x0e\x41uthorityProtoP\x01\xba\x80\xc8\xd1\x06\x02\x08\x01\x62\x06proto3'
+  serialized_pb=b'\n\x1bxds/core/v3/authority.proto\x12\x0bxds.core.v3\x1a\x1fxds/annotations/v3/status.proto\x1a\x17validate/validate.proto\"\"\n\tAuthority\x12\x15\n\x04name\x18\x01 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01\x42V\n\x16\x63om.github.xds.core.v3B\x0e\x41uthorityProtoP\x01Z\"github.com/cncf/xds/go/xds/core/v3\xd2\xc6\xa4\xe1\x06\x02\x08\x01\x62\x06proto3'
   ,
-  dependencies=[udpa_dot_annotations_dot_status__pb2.DESCRIPTOR,validate_dot_validate__pb2.DESCRIPTOR,])
+  dependencies=[xds_dot_annotations_dot_v3_dot_status__pb2.DESCRIPTOR,validate_dot_validate__pb2.DESCRIPTOR,])
 
 
 
@@ -55,8 +55,8 @@ _AUTHORITY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=100,
-  serialized_end=134,
+  serialized_start=102,
+  serialized_end=136,
 )
 
 DESCRIPTOR.message_types_by_name['Authority'] = _AUTHORITY

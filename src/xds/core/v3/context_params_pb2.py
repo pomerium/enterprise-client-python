@@ -11,18 +11,18 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-from udpa.annotations import status_pb2 as udpa_dot_annotations_dot_status__pb2
+from xds.annotations.v3 import status_pb2 as xds_dot_annotations_dot_v3_dot_status__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='xds/core/v3/context_params.proto',
   package='xds.core.v3',
   syntax='proto3',
-  serialized_options=b'\n\033com.github.udpa.xds.core.v3B\022ContextParamsProtoP\001\272\200\310\321\006\002\010\001',
+  serialized_options=b'\n\026com.github.xds.core.v3B\022ContextParamsProtoP\001Z\"github.com/cncf/xds/go/xds/core/v3\322\306\244\341\006\002\010\001',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n xds/core/v3/context_params.proto\x12\x0bxds.core.v3\x1a\x1dudpa/annotations/status.proto\"v\n\rContextParams\x12\x36\n\x06params\x18\x01 \x03(\x0b\x32&.xds.core.v3.ContextParams.ParamsEntry\x1a-\n\x0bParamsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42;\n\x1b\x63om.github.udpa.xds.core.v3B\x12\x43ontextParamsProtoP\x01\xba\x80\xc8\xd1\x06\x02\x08\x01\x62\x06proto3'
+  serialized_pb=b'\n xds/core/v3/context_params.proto\x12\x0bxds.core.v3\x1a\x1fxds/annotations/v3/status.proto\"v\n\rContextParams\x12\x36\n\x06params\x18\x01 \x03(\x0b\x32&.xds.core.v3.ContextParams.ParamsEntry\x1a-\n\x0bParamsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42Z\n\x16\x63om.github.xds.core.v3B\x12\x43ontextParamsProtoP\x01Z\"github.com/cncf/xds/go/xds/core/v3\xd2\xc6\xa4\xe1\x06\x02\x08\x01\x62\x06proto3'
   ,
-  dependencies=[udpa_dot_annotations_dot_status__pb2.DESCRIPTOR,])
+  dependencies=[xds_dot_annotations_dot_v3_dot_status__pb2.DESCRIPTOR,])
 
 
 
@@ -61,8 +61,8 @@ _CONTEXTPARAMS_PARAMSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=153,
-  serialized_end=198,
+  serialized_start=155,
+  serialized_end=200,
 )
 
 _CONTEXTPARAMS = _descriptor.Descriptor(
@@ -92,8 +92,8 @@ _CONTEXTPARAMS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=80,
-  serialized_end=198,
+  serialized_start=82,
+  serialized_end=200,
 )
 
 _CONTEXTPARAMS_PARAMSENTRY.containing_type = _CONTEXTPARAMS
