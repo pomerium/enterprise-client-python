@@ -946,9 +946,7 @@ class StringRules(google.protobuf.message.Message):
     """
 
     len_bytes: builtins.int = ...
-    """LenBytes specifies that this field must be the specified number of bytes
-    at a minimum
-    """
+    """LenBytes specifies that this field must be the specified number of bytes"""
 
     min_bytes: builtins.int = ...
     """MinBytes specifies that this field must be the specified number of bytes
