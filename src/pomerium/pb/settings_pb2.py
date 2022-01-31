@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z+github.com/pomerium/pomerium-console/pkg/pb',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0esettings.proto\x12\x12pomerium.dashboard\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa0\x1d\n\x08Settings\x12/\n\x0bmodified_at\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x1c\n\x0finstallation_id\x18\x44 \x01(\tH\x00\x88\x01\x01\x12\x12\n\x05\x64\x65\x62ug\x18\x02 \x01(\x08H\x01\x88\x01\x01\x12\x16\n\tlog_level\x18\x03 \x01(\tH\x02\x88\x01\x01\x12\x1c\n\x0fproxy_log_level\x18\x04 \x01(\tH\x03\x88\x01\x01\x12\x1a\n\rshared_secret\x18\x05 \x01(\tH\x04\x88\x01\x01\x12\x15\n\x08services\x18\x06 \x01(\tH\x05\x88\x01\x01\x12\x14\n\x07\x61\x64\x64ress\x18\x07 \x01(\tH\x06\x88\x01\x01\x12\x1c\n\x0finsecure_server\x18\x08 \x01(\x08H\x07\x88\x01\x01\x12\x1e\n\x11\x64ns_lookup_family\x18< \x01(\tH\x08\x88\x01\x01\x12>\n\x0c\x63\x65rtificates\x18\t \x03(\x0b\x32(.pomerium.dashboard.Settings.Certificate\x12\x1f\n\x12http_redirect_addr\x18\n \x01(\tH\t\x88\x01\x01\x12\x34\n\x0ctimeout_read\x18\x0b \x01(\x0b\x32\x19.google.protobuf.DurationH\n\x88\x01\x01\x12\x35\n\rtimeout_write\x18\x0c \x01(\x0b\x32\x19.google.protobuf.DurationH\x0b\x88\x01\x01\x12\x34\n\x0ctimeout_idle\x18\r \x01(\x0b\x32\x19.google.protobuf.DurationH\x0c\x88\x01\x01\x12%\n\x18\x61uthenticate_service_url\x18\x0e \x01(\tH\r\x88\x01\x01\x12\'\n\x1a\x61uthenticate_callback_path\x18\x0f \x01(\tH\x0e\x88\x01\x01\x12\x18\n\x0b\x63ookie_name\x18\x10 \x01(\tH\x0f\x88\x01\x01\x12\x1a\n\rcookie_secret\x18\x11 \x01(\tH\x10\x88\x01\x01\x12\x1a\n\rcookie_domain\x18\x12 \x01(\tH\x11\x88\x01\x01\x12\x1a\n\rcookie_secure\x18\x13 \x01(\x08H\x12\x88\x01\x01\x12\x1d\n\x10\x63ookie_http_only\x18\x14 \x01(\x08H\x13\x88\x01\x01\x12\x35\n\rcookie_expire\x18\x15 \x01(\x0b\x32\x19.google.protobuf.DurationH\x14\x88\x01\x01\x12\x1a\n\ridp_client_id\x18\x16 \x01(\tH\x15\x88\x01\x01\x12\x1e\n\x11idp_client_secret\x18\x17 \x01(\tH\x16\x88\x01\x01\x12\x19\n\x0cidp_provider\x18\x18 \x01(\tH\x17\x88\x01\x01\x12\x1d\n\x10idp_provider_url\x18\x19 \x01(\tH\x18\x88\x01\x01\x12\x0e\n\x06scopes\x18\x1a \x03(\t\x12 \n\x13idp_service_account\x18\x1b \x01(\tH\x19\x88\x01\x01\x12\x45\n\x1didp_refresh_directory_timeout\x18\x1c \x01(\x0b\x32\x19.google.protobuf.DurationH\x1a\x88\x01\x01\x12\x46\n\x1eidp_refresh_directory_interval\x18\x1d \x01(\x0b\x32\x19.google.protobuf.DurationH\x1b\x88\x01\x01\x12G\n\x0erequest_params\x18\x1e \x03(\x0b\x32/.pomerium.dashboard.Settings.RequestParamsEntry\x12\"\n\x15\x61uthorize_service_url\x18  \x01(\tH\x1c\x88\x01\x01\x12\"\n\x15\x63\x65rtificate_authority\x18\" \x01(\tH\x1d\x88\x01\x01\x12\'\n\x1a\x63\x65rtificate_authority_file\x18# \x01(\tH\x1e\x88\x01\x01\x12.\n!certificate_authority_key_pair_id\x18@ \x01(\tH\x1f\x88\x01\x01\x12R\n\x14set_response_headers\x18\x43 \x03(\x0b\x32\x34.pomerium.dashboard.Settings.SetResponseHeadersEntry\x12N\n\x12jwt_claims_headers\x18\x42 \x03(\x0b\x32\x32.pomerium.dashboard.Settings.JwtClaimsHeadersEntry\x12@\n\x18\x64\x65\x66\x61ult_upstream_timeout\x18\' \x01(\x0b\x32\x19.google.protobuf.DurationH \x88\x01\x01\x12\x1c\n\x0fmetrics_address\x18( \x01(\tH!\x88\x01\x01\x12\x1d\n\x10tracing_provider\x18) \x01(\tH\"\x88\x01\x01\x12 \n\x13tracing_sample_rate\x18* \x01(\x01H#\x88\x01\x01\x12.\n!tracing_jaeger_collector_endpoint\x18+ \x01(\tH$\x88\x01\x01\x12*\n\x1dtracing_jaeger_agent_endpoint\x18, \x01(\tH%\x88\x01\x01\x12$\n\x17tracing_zipkin_endpoint\x18- \x01(\tH&\x88\x01\x01\x12\x19\n\x0cgrpc_address\x18. \x01(\tH\'\x88\x01\x01\x12\x1a\n\rgrpc_insecure\x18/ \x01(\x08H(\x88\x01\x01\x12\x1d\n\x10\x66orward_auth_url\x18\x32 \x01(\tH)\x88\x01\x01\x12\x1e\n\x11\x63\x61\x63he_service_url\x18\x33 \x01(\tH*\x88\x01\x01\x12#\n\x16\x64\x61tabroker_service_url\x18\x34 \x01(\tH+\x88\x01\x01\x12\x16\n\tclient_ca\x18\x35 \x01(\tH,\x88\x01\x01\x12\x1b\n\x0e\x63lient_ca_file\x18\x36 \x01(\tH-\x88\x01\x01\x12\"\n\x15\x63lient_ca_key_pair_id\x18\x41 \x01(\tH.\x88\x01\x01\x12\x43\n6google_cloud_serverless_authentication_service_account\x18\x37 \x01(\tH/\x88\x01\x01\x12\x15\n\x08\x61utocert\x18\x38 \x01(\x08H0\x88\x01\x01\x12!\n\x14\x61utocert_use_staging\x18\x39 \x01(\x08H1\x88\x01\x01\x12!\n\x14\x61utocert_must_staple\x18: \x01(\x08H2\x88\x01\x01\x12\x19\n\x0c\x61utocert_dir\x18; \x01(\tH3\x88\x01\x01\x12\x1c\n\x0fskip_xff_append\x18? \x01(\x08H4\x88\x01\x01\x1aI\n\x0b\x43\x65rtificate\x12\x12\n\ncert_bytes\x18\x03 \x01(\x0c\x12\x11\n\tkey_bytes\x18\x04 \x01(\x0c\x12\x13\n\x0bkey_pair_id\x18\x05 \x01(\t\x1a\x34\n\x12RequestParamsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x39\n\x17SetResponseHeadersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x37\n\x15JwtClaimsHeadersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\x12\n\x10_installation_idB\x08\n\x06_debugB\x0c\n\n_log_levelB\x12\n\x10_proxy_log_levelB\x10\n\x0e_shared_secretB\x0b\n\t_servicesB\n\n\x08_addressB\x12\n\x10_insecure_serverB\x14\n\x12_dns_lookup_familyB\x15\n\x13_http_redirect_addrB\x0f\n\r_timeout_readB\x10\n\x0e_timeout_writeB\x0f\n\r_timeout_idleB\x1b\n\x19_authenticate_service_urlB\x1d\n\x1b_authenticate_callback_pathB\x0e\n\x0c_cookie_nameB\x10\n\x0e_cookie_secretB\x10\n\x0e_cookie_domainB\x10\n\x0e_cookie_secureB\x13\n\x11_cookie_http_onlyB\x10\n\x0e_cookie_expireB\x10\n\x0e_idp_client_idB\x14\n\x12_idp_client_secretB\x0f\n\r_idp_providerB\x13\n\x11_idp_provider_urlB\x16\n\x14_idp_service_accountB \n\x1e_idp_refresh_directory_timeoutB!\n\x1f_idp_refresh_directory_intervalB\x18\n\x16_authorize_service_urlB\x18\n\x16_certificate_authorityB\x1d\n\x1b_certificate_authority_fileB$\n\"_certificate_authority_key_pair_idB\x1b\n\x19_default_upstream_timeoutB\x12\n\x10_metrics_addressB\x13\n\x11_tracing_providerB\x16\n\x14_tracing_sample_rateB$\n\"_tracing_jaeger_collector_endpointB \n\x1e_tracing_jaeger_agent_endpointB\x1a\n\x18_tracing_zipkin_endpointB\x0f\n\r_grpc_addressB\x10\n\x0e_grpc_insecureB\x13\n\x11_forward_auth_urlB\x14\n\x12_cache_service_urlB\x19\n\x17_databroker_service_urlB\x0c\n\n_client_caB\x11\n\x0f_client_ca_fileB\x18\n\x16_client_ca_key_pair_idB9\n7_google_cloud_serverless_authentication_service_accountB\x0b\n\t_autocertB\x17\n\x15_autocert_use_stagingB\x17\n\x15_autocert_must_stapleB\x0f\n\r_autocert_dirB\x12\n\x10_skip_xff_append\"\x14\n\x12GetSettingsRequest\"E\n\x13GetSettingsResponse\x12.\n\x08settings\x18\x01 \x01(\x0b\x32\x1c.pomerium.dashboard.Settings\"D\n\x12SetSettingsRequest\x12.\n\x08settings\x18\x01 \x01(\x0b\x32\x1c.pomerium.dashboard.Settings\"E\n\x13SetSettingsResponse\x12.\n\x08settings\x18\x01 \x01(\x0b\x32\x1c.pomerium.dashboard.Settings2\xd1\x01\n\x0fSettingsService\x12^\n\x0bGetSettings\x12&.pomerium.dashboard.GetSettingsRequest\x1a\'.pomerium.dashboard.GetSettingsResponse\x12^\n\x0bSetSettings\x12&.pomerium.dashboard.SetSettingsRequest\x1a\'.pomerium.dashboard.SetSettingsResponseB-Z+github.com/pomerium/pomerium-console/pkg/pbb\x06proto3'
+  serialized_pb=b'\n\x0esettings.proto\x12\x12pomerium.dashboard\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xec\x1c\n\x08Settings\x12/\n\x0bmodified_at\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x1c\n\x0finstallation_id\x18\x44 \x01(\tH\x00\x88\x01\x01\x12\x12\n\x05\x64\x65\x62ug\x18\x02 \x01(\x08H\x01\x88\x01\x01\x12\x16\n\tlog_level\x18\x03 \x01(\tH\x02\x88\x01\x01\x12\x1c\n\x0fproxy_log_level\x18\x04 \x01(\tH\x03\x88\x01\x01\x12\x1a\n\rshared_secret\x18\x05 \x01(\tH\x04\x88\x01\x01\x12\x15\n\x08services\x18\x06 \x01(\tH\x05\x88\x01\x01\x12\x14\n\x07\x61\x64\x64ress\x18\x07 \x01(\tH\x06\x88\x01\x01\x12\x1c\n\x0finsecure_server\x18\x08 \x01(\x08H\x07\x88\x01\x01\x12\x1e\n\x11\x64ns_lookup_family\x18< \x01(\tH\x08\x88\x01\x01\x12>\n\x0c\x63\x65rtificates\x18\t \x03(\x0b\x32(.pomerium.dashboard.Settings.Certificate\x12\x1f\n\x12http_redirect_addr\x18\n \x01(\tH\t\x88\x01\x01\x12\x34\n\x0ctimeout_read\x18\x0b \x01(\x0b\x32\x19.google.protobuf.DurationH\n\x88\x01\x01\x12\x35\n\rtimeout_write\x18\x0c \x01(\x0b\x32\x19.google.protobuf.DurationH\x0b\x88\x01\x01\x12\x34\n\x0ctimeout_idle\x18\r \x01(\x0b\x32\x19.google.protobuf.DurationH\x0c\x88\x01\x01\x12%\n\x18\x61uthenticate_service_url\x18\x0e \x01(\tH\r\x88\x01\x01\x12\'\n\x1a\x61uthenticate_callback_path\x18\x0f \x01(\tH\x0e\x88\x01\x01\x12\x18\n\x0b\x63ookie_name\x18\x10 \x01(\tH\x0f\x88\x01\x01\x12\x1a\n\rcookie_secret\x18\x11 \x01(\tH\x10\x88\x01\x01\x12\x1a\n\rcookie_domain\x18\x12 \x01(\tH\x11\x88\x01\x01\x12\x1a\n\rcookie_secure\x18\x13 \x01(\x08H\x12\x88\x01\x01\x12\x1d\n\x10\x63ookie_http_only\x18\x14 \x01(\x08H\x13\x88\x01\x01\x12\x35\n\rcookie_expire\x18\x15 \x01(\x0b\x32\x19.google.protobuf.DurationH\x14\x88\x01\x01\x12\x1a\n\ridp_client_id\x18\x16 \x01(\tH\x15\x88\x01\x01\x12\x1e\n\x11idp_client_secret\x18\x17 \x01(\tH\x16\x88\x01\x01\x12\x19\n\x0cidp_provider\x18\x18 \x01(\tH\x17\x88\x01\x01\x12\x1d\n\x10idp_provider_url\x18\x19 \x01(\tH\x18\x88\x01\x01\x12\x0e\n\x06scopes\x18\x1a \x03(\t\x12 \n\x13idp_service_account\x18\x1b \x01(\tH\x19\x88\x01\x01\x12\x45\n\x1didp_refresh_directory_timeout\x18\x1c \x01(\x0b\x32\x19.google.protobuf.DurationH\x1a\x88\x01\x01\x12\x46\n\x1eidp_refresh_directory_interval\x18\x1d \x01(\x0b\x32\x19.google.protobuf.DurationH\x1b\x88\x01\x01\x12G\n\x0erequest_params\x18\x1e \x03(\x0b\x32/.pomerium.dashboard.Settings.RequestParamsEntry\x12\"\n\x15\x61uthorize_service_url\x18  \x01(\tH\x1c\x88\x01\x01\x12\"\n\x15\x63\x65rtificate_authority\x18\" \x01(\tH\x1d\x88\x01\x01\x12\'\n\x1a\x63\x65rtificate_authority_file\x18# \x01(\tH\x1e\x88\x01\x01\x12.\n!certificate_authority_key_pair_id\x18@ \x01(\tH\x1f\x88\x01\x01\x12R\n\x14set_response_headers\x18\x43 \x03(\x0b\x32\x34.pomerium.dashboard.Settings.SetResponseHeadersEntry\x12N\n\x12jwt_claims_headers\x18\x42 \x03(\x0b\x32\x32.pomerium.dashboard.Settings.JwtClaimsHeadersEntry\x12@\n\x18\x64\x65\x66\x61ult_upstream_timeout\x18\' \x01(\x0b\x32\x19.google.protobuf.DurationH \x88\x01\x01\x12\x1c\n\x0fmetrics_address\x18( \x01(\tH!\x88\x01\x01\x12\x1d\n\x10tracing_provider\x18) \x01(\tH\"\x88\x01\x01\x12 \n\x13tracing_sample_rate\x18* \x01(\x01H#\x88\x01\x01\x12.\n!tracing_jaeger_collector_endpoint\x18+ \x01(\tH$\x88\x01\x01\x12*\n\x1dtracing_jaeger_agent_endpoint\x18, \x01(\tH%\x88\x01\x01\x12$\n\x17tracing_zipkin_endpoint\x18- \x01(\tH&\x88\x01\x01\x12\x19\n\x0cgrpc_address\x18. \x01(\tH\'\x88\x01\x01\x12\x1a\n\rgrpc_insecure\x18/ \x01(\x08H(\x88\x01\x01\x12\x1e\n\x11\x63\x61\x63he_service_url\x18\x33 \x01(\tH)\x88\x01\x01\x12#\n\x16\x64\x61tabroker_service_url\x18\x34 \x01(\tH*\x88\x01\x01\x12\x16\n\tclient_ca\x18\x35 \x01(\tH+\x88\x01\x01\x12\x1b\n\x0e\x63lient_ca_file\x18\x36 \x01(\tH,\x88\x01\x01\x12\"\n\x15\x63lient_ca_key_pair_id\x18\x41 \x01(\tH-\x88\x01\x01\x12\x43\n6google_cloud_serverless_authentication_service_account\x18\x37 \x01(\tH.\x88\x01\x01\x12\x15\n\x08\x61utocert\x18\x38 \x01(\x08H/\x88\x01\x01\x12!\n\x14\x61utocert_use_staging\x18\x39 \x01(\x08H0\x88\x01\x01\x12!\n\x14\x61utocert_must_staple\x18: \x01(\x08H1\x88\x01\x01\x12\x19\n\x0c\x61utocert_dir\x18; \x01(\tH2\x88\x01\x01\x12\x1c\n\x0fskip_xff_append\x18? \x01(\x08H3\x88\x01\x01\x1aI\n\x0b\x43\x65rtificate\x12\x12\n\ncert_bytes\x18\x03 \x01(\x0c\x12\x11\n\tkey_bytes\x18\x04 \x01(\x0c\x12\x13\n\x0bkey_pair_id\x18\x05 \x01(\t\x1a\x34\n\x12RequestParamsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x39\n\x17SetResponseHeadersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x1a\x37\n\x15JwtClaimsHeadersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\x12\n\x10_installation_idB\x08\n\x06_debugB\x0c\n\n_log_levelB\x12\n\x10_proxy_log_levelB\x10\n\x0e_shared_secretB\x0b\n\t_servicesB\n\n\x08_addressB\x12\n\x10_insecure_serverB\x14\n\x12_dns_lookup_familyB\x15\n\x13_http_redirect_addrB\x0f\n\r_timeout_readB\x10\n\x0e_timeout_writeB\x0f\n\r_timeout_idleB\x1b\n\x19_authenticate_service_urlB\x1d\n\x1b_authenticate_callback_pathB\x0e\n\x0c_cookie_nameB\x10\n\x0e_cookie_secretB\x10\n\x0e_cookie_domainB\x10\n\x0e_cookie_secureB\x13\n\x11_cookie_http_onlyB\x10\n\x0e_cookie_expireB\x10\n\x0e_idp_client_idB\x14\n\x12_idp_client_secretB\x0f\n\r_idp_providerB\x13\n\x11_idp_provider_urlB\x16\n\x14_idp_service_accountB \n\x1e_idp_refresh_directory_timeoutB!\n\x1f_idp_refresh_directory_intervalB\x18\n\x16_authorize_service_urlB\x18\n\x16_certificate_authorityB\x1d\n\x1b_certificate_authority_fileB$\n\"_certificate_authority_key_pair_idB\x1b\n\x19_default_upstream_timeoutB\x12\n\x10_metrics_addressB\x13\n\x11_tracing_providerB\x16\n\x14_tracing_sample_rateB$\n\"_tracing_jaeger_collector_endpointB \n\x1e_tracing_jaeger_agent_endpointB\x1a\n\x18_tracing_zipkin_endpointB\x0f\n\r_grpc_addressB\x10\n\x0e_grpc_insecureB\x14\n\x12_cache_service_urlB\x19\n\x17_databroker_service_urlB\x0c\n\n_client_caB\x11\n\x0f_client_ca_fileB\x18\n\x16_client_ca_key_pair_idB9\n7_google_cloud_serverless_authentication_service_accountB\x0b\n\t_autocertB\x17\n\x15_autocert_use_stagingB\x17\n\x15_autocert_must_stapleB\x0f\n\r_autocert_dirB\x12\n\x10_skip_xff_append\"\x14\n\x12GetSettingsRequest\"E\n\x13GetSettingsResponse\x12.\n\x08settings\x18\x01 \x01(\x0b\x32\x1c.pomerium.dashboard.Settings\"D\n\x12SetSettingsRequest\x12.\n\x08settings\x18\x01 \x01(\x0b\x32\x1c.pomerium.dashboard.Settings\"E\n\x13SetSettingsResponse\x12.\n\x08settings\x18\x01 \x01(\x0b\x32\x1c.pomerium.dashboard.Settings2\xd1\x01\n\x0fSettingsService\x12^\n\x0bGetSettings\x12&.pomerium.dashboard.GetSettingsRequest\x1a\'.pomerium.dashboard.GetSettingsResponse\x12^\n\x0bSetSettings\x12&.pomerium.dashboard.SetSettingsRequest\x1a\'.pomerium.dashboard.SetSettingsResponseB-Z+github.com/pomerium/pomerium-console/pkg/pbb\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_duration__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
@@ -69,8 +69,8 @@ _SETTINGS_CERTIFICATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2403,
-  serialized_end=2476,
+  serialized_start=2372,
+  serialized_end=2445,
 )
 
 _SETTINGS_REQUESTPARAMSENTRY = _descriptor.Descriptor(
@@ -107,8 +107,8 @@ _SETTINGS_REQUESTPARAMSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2478,
-  serialized_end=2530,
+  serialized_start=2447,
+  serialized_end=2499,
 )
 
 _SETTINGS_SETRESPONSEHEADERSENTRY = _descriptor.Descriptor(
@@ -145,8 +145,8 @@ _SETTINGS_SETRESPONSEHEADERSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2532,
-  serialized_end=2589,
+  serialized_start=2501,
+  serialized_end=2558,
 )
 
 _SETTINGS_JWTCLAIMSHEADERSENTRY = _descriptor.Descriptor(
@@ -183,8 +183,8 @@ _SETTINGS_JWTCLAIMSHEADERSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2591,
-  serialized_end=2646,
+  serialized_start=2560,
+  serialized_end=2615,
 )
 
 _SETTINGS = _descriptor.Descriptor(
@@ -525,84 +525,77 @@ _SETTINGS = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='forward_auth_url', full_name='pomerium.dashboard.Settings.forward_auth_url', index=47,
-      number=50, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='cache_service_url', full_name='pomerium.dashboard.Settings.cache_service_url', index=48,
+      name='cache_service_url', full_name='pomerium.dashboard.Settings.cache_service_url', index=47,
       number=51, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='databroker_service_url', full_name='pomerium.dashboard.Settings.databroker_service_url', index=49,
+      name='databroker_service_url', full_name='pomerium.dashboard.Settings.databroker_service_url', index=48,
       number=52, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='client_ca', full_name='pomerium.dashboard.Settings.client_ca', index=50,
+      name='client_ca', full_name='pomerium.dashboard.Settings.client_ca', index=49,
       number=53, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='client_ca_file', full_name='pomerium.dashboard.Settings.client_ca_file', index=51,
+      name='client_ca_file', full_name='pomerium.dashboard.Settings.client_ca_file', index=50,
       number=54, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='client_ca_key_pair_id', full_name='pomerium.dashboard.Settings.client_ca_key_pair_id', index=52,
+      name='client_ca_key_pair_id', full_name='pomerium.dashboard.Settings.client_ca_key_pair_id', index=51,
       number=65, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='google_cloud_serverless_authentication_service_account', full_name='pomerium.dashboard.Settings.google_cloud_serverless_authentication_service_account', index=53,
+      name='google_cloud_serverless_authentication_service_account', full_name='pomerium.dashboard.Settings.google_cloud_serverless_authentication_service_account', index=52,
       number=55, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='autocert', full_name='pomerium.dashboard.Settings.autocert', index=54,
+      name='autocert', full_name='pomerium.dashboard.Settings.autocert', index=53,
       number=56, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='autocert_use_staging', full_name='pomerium.dashboard.Settings.autocert_use_staging', index=55,
+      name='autocert_use_staging', full_name='pomerium.dashboard.Settings.autocert_use_staging', index=54,
       number=57, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='autocert_must_staple', full_name='pomerium.dashboard.Settings.autocert_must_staple', index=56,
+      name='autocert_must_staple', full_name='pomerium.dashboard.Settings.autocert_must_staple', index=55,
       number=58, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='autocert_dir', full_name='pomerium.dashboard.Settings.autocert_dir', index=57,
+      name='autocert_dir', full_name='pomerium.dashboard.Settings.autocert_dir', index=56,
       number=59, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='skip_xff_append', full_name='pomerium.dashboard.Settings.skip_xff_append', index=58,
+      name='skip_xff_append', full_name='pomerium.dashboard.Settings.skip_xff_append', index=57,
       number=63, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
@@ -825,68 +818,63 @@ _SETTINGS = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
     _descriptor.OneofDescriptor(
-      name='_forward_auth_url', full_name='pomerium.dashboard.Settings._forward_auth_url',
+      name='_cache_service_url', full_name='pomerium.dashboard.Settings._cache_service_url',
       index=41, containing_type=None,
       create_key=_descriptor._internal_create_key,
     fields=[]),
     _descriptor.OneofDescriptor(
-      name='_cache_service_url', full_name='pomerium.dashboard.Settings._cache_service_url',
+      name='_databroker_service_url', full_name='pomerium.dashboard.Settings._databroker_service_url',
       index=42, containing_type=None,
       create_key=_descriptor._internal_create_key,
     fields=[]),
     _descriptor.OneofDescriptor(
-      name='_databroker_service_url', full_name='pomerium.dashboard.Settings._databroker_service_url',
+      name='_client_ca', full_name='pomerium.dashboard.Settings._client_ca',
       index=43, containing_type=None,
       create_key=_descriptor._internal_create_key,
     fields=[]),
     _descriptor.OneofDescriptor(
-      name='_client_ca', full_name='pomerium.dashboard.Settings._client_ca',
+      name='_client_ca_file', full_name='pomerium.dashboard.Settings._client_ca_file',
       index=44, containing_type=None,
       create_key=_descriptor._internal_create_key,
     fields=[]),
     _descriptor.OneofDescriptor(
-      name='_client_ca_file', full_name='pomerium.dashboard.Settings._client_ca_file',
+      name='_client_ca_key_pair_id', full_name='pomerium.dashboard.Settings._client_ca_key_pair_id',
       index=45, containing_type=None,
       create_key=_descriptor._internal_create_key,
     fields=[]),
     _descriptor.OneofDescriptor(
-      name='_client_ca_key_pair_id', full_name='pomerium.dashboard.Settings._client_ca_key_pair_id',
+      name='_google_cloud_serverless_authentication_service_account', full_name='pomerium.dashboard.Settings._google_cloud_serverless_authentication_service_account',
       index=46, containing_type=None,
       create_key=_descriptor._internal_create_key,
     fields=[]),
     _descriptor.OneofDescriptor(
-      name='_google_cloud_serverless_authentication_service_account', full_name='pomerium.dashboard.Settings._google_cloud_serverless_authentication_service_account',
+      name='_autocert', full_name='pomerium.dashboard.Settings._autocert',
       index=47, containing_type=None,
       create_key=_descriptor._internal_create_key,
     fields=[]),
     _descriptor.OneofDescriptor(
-      name='_autocert', full_name='pomerium.dashboard.Settings._autocert',
+      name='_autocert_use_staging', full_name='pomerium.dashboard.Settings._autocert_use_staging',
       index=48, containing_type=None,
       create_key=_descriptor._internal_create_key,
     fields=[]),
     _descriptor.OneofDescriptor(
-      name='_autocert_use_staging', full_name='pomerium.dashboard.Settings._autocert_use_staging',
+      name='_autocert_must_staple', full_name='pomerium.dashboard.Settings._autocert_must_staple',
       index=49, containing_type=None,
       create_key=_descriptor._internal_create_key,
     fields=[]),
     _descriptor.OneofDescriptor(
-      name='_autocert_must_staple', full_name='pomerium.dashboard.Settings._autocert_must_staple',
+      name='_autocert_dir', full_name='pomerium.dashboard.Settings._autocert_dir',
       index=50, containing_type=None,
       create_key=_descriptor._internal_create_key,
     fields=[]),
     _descriptor.OneofDescriptor(
-      name='_autocert_dir', full_name='pomerium.dashboard.Settings._autocert_dir',
-      index=51, containing_type=None,
-      create_key=_descriptor._internal_create_key,
-    fields=[]),
-    _descriptor.OneofDescriptor(
       name='_skip_xff_append', full_name='pomerium.dashboard.Settings._skip_xff_append',
-      index=52, containing_type=None,
+      index=51, containing_type=None,
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
   serialized_start=104,
-  serialized_end=3848,
+  serialized_end=3796,
 )
 
 
@@ -910,8 +898,8 @@ _GETSETTINGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3850,
-  serialized_end=3870,
+  serialized_start=3798,
+  serialized_end=3818,
 )
 
 
@@ -942,8 +930,8 @@ _GETSETTINGSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3872,
-  serialized_end=3941,
+  serialized_start=3820,
+  serialized_end=3889,
 )
 
 
@@ -974,8 +962,8 @@ _SETSETTINGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3943,
-  serialized_end=4011,
+  serialized_start=3891,
+  serialized_end=3959,
 )
 
 
@@ -1006,8 +994,8 @@ _SETSETTINGSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4013,
-  serialized_end=4082,
+  serialized_start=3961,
+  serialized_end=4030,
 )
 
 _SETTINGS_CERTIFICATE.containing_type = _SETTINGS
@@ -1149,9 +1137,6 @@ _SETTINGS.fields_by_name['grpc_address'].containing_oneof = _SETTINGS.oneofs_by_
 _SETTINGS.oneofs_by_name['_grpc_insecure'].fields.append(
   _SETTINGS.fields_by_name['grpc_insecure'])
 _SETTINGS.fields_by_name['grpc_insecure'].containing_oneof = _SETTINGS.oneofs_by_name['_grpc_insecure']
-_SETTINGS.oneofs_by_name['_forward_auth_url'].fields.append(
-  _SETTINGS.fields_by_name['forward_auth_url'])
-_SETTINGS.fields_by_name['forward_auth_url'].containing_oneof = _SETTINGS.oneofs_by_name['_forward_auth_url']
 _SETTINGS.oneofs_by_name['_cache_service_url'].fields.append(
   _SETTINGS.fields_by_name['cache_service_url'])
 _SETTINGS.fields_by_name['cache_service_url'].containing_oneof = _SETTINGS.oneofs_by_name['_cache_service_url']
@@ -1275,8 +1260,8 @@ _SETTINGSSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=4085,
-  serialized_end=4294,
+  serialized_start=4033,
+  serialized_end=4242,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetSettings',

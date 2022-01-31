@@ -23,7 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z+github.com/pomerium/pomerium-console/pkg/pb',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\ntsdb.proto\x12\x12pomerium.dashboard\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x17validate/validate.proto\"\xa2\x01\n\x05Range\x12\x33\n\x05start\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\x12\x31\n\x03\x65nd\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\x12\x31\n\x04step\x18\x03 \x01(\x0b\x32\x19.google.protobuf.DurationB\x08\xfa\x42\x05\xaa\x01\x02\x08\x01\"W\n\x0cRouteMatcher\x12\x1b\n\x08route_id\x18\x01 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01H\x00\x12\x1f\n\x0cnamespace_id\x18\x02 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01H\x00\x42\t\n\x07matcher\"?\n\x06String\x12\r\n\x05value\x18\x01 \x01(\t\x12&\n\x02ts\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"?\n\x06Scalar\x12\r\n\x05value\x18\x01 \x01(\x01\x12&\n\x02ts\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xa3\x01\n\nTimeSeries\x12:\n\x06labels\x18\x01 \x03(\x0b\x32*.pomerium.dashboard.TimeSeries.LabelsEntry\x12*\n\x06series\x18\x02 \x03(\x0b\x32\x1a.pomerium.dashboard.Scalar\x1a-\n\x0bLabelsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"8\n\x06Matrix\x12.\n\x06series\x18\x01 \x03(\x0b\x32\x1e.pomerium.dashboard.TimeSeries\"\x9a\x01\n\x06Sample\x12\x36\n\x06labels\x18\x01 \x03(\x0b\x32&.pomerium.dashboard.Sample.LabelsEntry\x12)\n\x05value\x18\x02 \x01(\x0b\x32\x1a.pomerium.dashboard.Scalar\x1a-\n\x0bLabelsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"5\n\x06Vector\x12+\n\x07samples\x18\x01 \x03(\x0b\x32\x1a.pomerium.dashboard.Sample\"\xc3\x01\n\x18RouteMetricSeriesRequest\x12;\n\x07matcher\x18\x01 \x01(\x0b\x32 .pomerium.dashboard.RouteMatcherB\x08\xfa\x42\x05\x8a\x01\x02\x10\x01\x12\x36\n\x06metric\x18\x02 \x01(\x0e\x32\x1a.pomerium.dashboard.MetricB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\x12\x32\n\x05range\x18\x03 \x01(\x0b\x32\x19.pomerium.dashboard.RangeB\x08\xfa\x42\x05\x8a\x01\x02\x10\x01\"\xf9\x01\n!RouteMetricSeriesHistogramRequest\x12;\n\x07matcher\x18\x01 \x01(\x0b\x32 .pomerium.dashboard.RouteMatcherB\x08\xfa\x42\x05\x8a\x01\x02\x10\x01\x12\x36\n\x06metric\x18\x02 \x01(\x0e\x32\x1a.pomerium.dashboard.MetricB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\x12\x32\n\x05range\x18\x03 \x01(\x0b\x32\x19.pomerium.dashboard.RangeB\x08\xfa\x42\x05\x8a\x01\x02\x10\x01\x12+\n\npercentile\x18\x04 \x01(\x01\x42\x17\xfa\x42\x14\x12\x12\x19\x00\x00\x00\x00\x00\x00\xf0?)\x00\x00\x00\x00\x00\x00\x00\x00\"\x90\x02\n\x19ServerMetricSeriesRequest\x12\x36\n\x06metric\x18\x02 \x01(\x0e\x32\x1a.pomerium.dashboard.MetricB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\x12\x32\n\x05range\x18\x03 \x01(\x0b\x32\x19.pomerium.dashboard.RangeB\x08\xfa\x42\x05\x8a\x01\x02\x10\x01\x12+\n\npercentile\x18\x04 \x01(\x01\x42\x17\xfa\x42\x14\x12\x12\x19\x00\x00\x00\x00\x00\x00\xf0?)\x00\x00\x00\x00\x00\x00\x00\x00\x12<\n\tcomponent\x18\x05 \x01(\x0e\x32\x1d.pomerium.dashboard.ComponentB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\x12\x1c\n\x0binstance_id\x18\x06 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01\"\xa9\x01\n\x13ServerMetricRequest\x12<\n\tcomponent\x18\x01 \x01(\x0e\x32\x1d.pomerium.dashboard.ComponentB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\x12\x1c\n\x0binstance_id\x18\x02 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01\x12\x36\n\x06metric\x18\x03 \x01(\x0e\x32\x1a.pomerium.dashboard.MetricB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\"\xf5\x01\n\x18RouteMetricChangeRequest\x12;\n\x07matcher\x18\x01 \x01(\x0b\x32 .pomerium.dashboard.RouteMatcherB\x08\xfa\x42\x05\x8a\x01\x02\x10\x01\x12\x34\n\x06metric\x18\x02 \x01(\x0e\x32\x1a.pomerium.dashboard.MetricB\x08\xfa\x42\x05\x82\x01\x02\x10\x01\x12\x33\n\x05start\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\x12\x31\n\x03\x65nd\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\"h\n\x12TimeSeriesResponse\x12&\n\x04rate\x18\x01 \x01(\x0e\x32\x18.pomerium.dashboard.Rate\x12*\n\x06series\x18\x02 \x03(\x0b\x32\x1a.pomerium.dashboard.Scalar\"q\n\x17TimeSeriesResponseMulti\x12&\n\x04rate\x18\x01 \x01(\x0e\x32\x18.pomerium.dashboard.Rate\x12.\n\x06series\x18\x02 \x03(\x0b\x32\x1e.pomerium.dashboard.TimeSeries\"\x7f\n\rScalarBuckets\x12\x39\n\x07\x62uckets\x18\x01 \x03(\x0b\x32(.pomerium.dashboard.ScalarBuckets.Bucket\x1a\x33\n\x06\x42ucket\x12\x1a\n\x12less_or_equal_than\x18\x01 \x01(\x01\x12\r\n\x05\x63ount\x18\x02 \x01(\x03\"\xd3\x01\n\rUptimeRequest\x12\x33\n\x05start\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\x12\x31\n\x03\x65nd\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\x12<\n\tcomponent\x18\x03 \x01(\x0e\x32\x1d.pomerium.dashboard.ComponentB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\x12\x1c\n\x0binstance_id\x18\x04 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01\"\xb6\x02\n\x0eUptimeResponse\x12=\n\tintervals\x18\x01 \x03(\x0b\x32*.pomerium.dashboard.UptimeResponse.Summary\x1a\x98\x01\n\x07Summary\x12)\n\x05start\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\'\n\x03\x65nd\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x39\n\x06status\x18\x03 \x01(\x0e\x32).pomerium.dashboard.UptimeResponse.Status\"J\n\x06Status\x12\x1f\n\x1bUNDEFINED_STATUS_DO_NOT_USE\x10\x00\x12\x08\n\x04LIVE\x10\x01\x12\x0b\n\x07NO_DATA\x10\x02\x12\x08\n\x04\x44OWN\x10\x03\"}\n\x13GetInstancesRequest\x12\x33\n\x05start\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\x12\x31\n\x03\x65nd\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\"\x9e\x01\n\tInstances\x12\x39\n\tinstances\x18\x01 \x03(\x0b\x32&.pomerium.dashboard.Instances.Instance\x1aV\n\x08Instance\x12\x30\n\tcomponent\x18\x01 \x01(\x0e\x32\x1d.pomerium.dashboard.Component\x12\n\n\x02id\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\"t\n\x16GetInstanceInfoRequest\x12<\n\tcomponent\x18\x03 \x01(\x0e\x32\x1d.pomerium.dashboard.ComponentB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\x12\x1c\n\x0binstance_id\x18\x04 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01\"\x12\n\x10GetStatusRequest\"\x90\x03\n\x11GetStatusResponse\x12=\n\x07targets\x18\x01 \x03(\x0b\x32,.pomerium.dashboard.GetStatusResponse.Target\x12\x0c\n\x02ok\x18\x02 \x01(\x08H\x00\x12\x14\n\nlast_error\x18\x03 \x01(\tH\x00\x1a\x8d\x02\n\x06Target\x12\x12\n\nscrape_url\x18\x01 \x01(\t\x12\x12\n\nglobal_url\x18\x02 \x01(\t\x12\x12\n\nlast_error\x18\x03 \x01(\t\x12/\n\x0blast_scrape\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x43\n\x06health\x18\x05 \x01(\x0e\x32\x33.pomerium.dashboard.GetStatusResponse.Target.Health\"Q\n\x06Health\x12\x19\n\x15TARGET_HEALTH_UNKNOWN\x10\x00\x12\x14\n\x10TARGET_HEALTH_UP\x10\x01\x12\x16\n\x12TARGET_HEALTH_DOWN\x10\x02\x42\x08\n\x06status\"o\n\x06Labels\x12\x36\n\x06labels\x18\x01 \x03(\x0b\x32&.pomerium.dashboard.Labels.LabelsEntry\x1a-\n\x0bLabelsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01* \n\x04Rate\x12\x08\n\x04NONE\x10\x00\x12\x0e\n\nPER_SECOND\x10\x01*\x85\x05\n\x06Metric\x12\x1f\n\x1bUNDEFINED_METRIC_DO_NOT_USE\x10\x00\x12\x0c\n\x08REQUESTS\x10\x01\x12\x11\n\rREQUESTS_RATE\x10\x02\x12\x18\n\x14REQUESTS_DURATION_MS\x10\x03\x12\x12\n\x0eRESPONSE_CODES\x10\x04\x12\x0c\n\x08\x41UTHZ_OK\x10\x14\x12\x10\n\x0c\x41UTHZ_DENIED\x10\x15\x12\x0f\n\x0b\x41UTHZ_ERROR\x10\x16\x12\x12\n\x0e\x41UTHZ_DISABLED\x10\x17\x12\x1e\n\x1a\x41UTHZ_FAILURE_MODE_ALLOWED\x10\x18\x12\x16\n\x12MEMBERSHIP_HEALTHY\x10\x1e\x12\x17\n\x13MEMBERSHIP_DEGRADED\x10\x1f\x12\x17\n\x13MEMBERSHIP_EXCLUDED\x10 \x12\x14\n\x10MEMBERSHIP_TOTAL\x10!\x12\x0c\n\x08RX_BYTES\x10(\x12\x0c\n\x08TX_BYTES\x10)\x12\x0f\n\x0bTOTAL_BYTES\x10*\x12\x14\n\x10MEMORY_ALLOCATED\x10\x33\x12\r\n\tCPU_USAGE\x10\x34\x12\x1e\n\x1aIDP_LAST_REFRESH_TIMESTAMP\x10<\x12(\n$CONFIG_LAST_RELOAD_SUCCESS_TIMESTAMP\x10\x46\x12\x0e\n\nBUILD_INFO\x10G\x12\x19\n\x15\x43ONFIG_CHECKSUM_LOCAL\x10H\x12\x1e\n\x1a\x43ONFIG_CHECKSUM_DATABROKER\x10I\x12\x12\n\x0e\x43ONFIG_VERSION\x10J\x12\x11\n\rCONFIG_ERRORS\x10K\x12\x1a\n\x16\x43ONFIG_CONSOLE_VERSION\x10L\x12\x1c\n\x18PROMETHEUS_STORAGE_BYTES\x10P*\x9d\x01\n\tComponent\x12\x16\n\x12UNKNOWN_DO_NOT_USE\x10\x00\x12\x10\n\x0c\x41UTHENTICATE\x10\x01\x12\r\n\tAUTHORIZE\x10\x02\x12\x0e\n\nDATABROKER\x10\x03\x12\x0b\n\x07\x43ONSOLE\x10\x04\x12\t\n\x05PROXY\x10\x05\x12\x0e\n\nALL_IN_ONE\x10\x06\x12\x0f\n\x0bPROXY_ENVOY\x10\x07\x12\x0e\n\nPROMETHEUS\x10\x08\x32\x96\x08\n\x0cTimeSeriesDB\x12`\n\x14GetRouteMetricChange\x12,.pomerium.dashboard.RouteMetricChangeRequest\x1a\x1a.pomerium.dashboard.Scalar\x12p\n\x1dGetRouteMetricChangeHistogram\x12,.pomerium.dashboard.RouteMetricChangeRequest\x1a!.pomerium.dashboard.ScalarBuckets\x12l\n\x14GetRouteMetricSeries\x12,.pomerium.dashboard.RouteMetricSeriesRequest\x1a&.pomerium.dashboard.TimeSeriesResponse\x12~\n\x1dGetRouteMetricSeriesHistogram\x12\x35.pomerium.dashboard.RouteMetricSeriesHistogramRequest\x1a&.pomerium.dashboard.TimeSeriesResponse\x12v\n\x19GetRouteMetricSeriesMulti\x12,.pomerium.dashboard.RouteMetricSeriesRequest\x1a+.pomerium.dashboard.TimeSeriesResponseMulti\x12R\n\tGetUptime\x12!.pomerium.dashboard.UptimeRequest\x1a\".pomerium.dashboard.UptimeResponse\x12V\n\x0cGetInstances\x12\'.pomerium.dashboard.GetInstancesRequest\x1a\x1d.pomerium.dashboard.Instances\x12n\n\x15GetServerMetricSeries\x12-.pomerium.dashboard.ServerMetricSeriesRequest\x1a&.pomerium.dashboard.TimeSeriesResponse\x12V\n\x0fGetServerMetric\x12\'.pomerium.dashboard.ServerMetricRequest\x1a\x1a.pomerium.dashboard.Sample\x12X\n\tGetStatus\x12$.pomerium.dashboard.GetStatusRequest\x1a%.pomerium.dashboard.GetStatusResponseB-Z+github.com/pomerium/pomerium-console/pkg/pbb\x06proto3'
+  serialized_pb=b'\n\ntsdb.proto\x12\x12pomerium.dashboard\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x17validate/validate.proto\"\xa2\x01\n\x05Range\x12\x33\n\x05start\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\x12\x31\n\x03\x65nd\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\x12\x31\n\x04step\x18\x03 \x01(\x0b\x32\x19.google.protobuf.DurationB\x08\xfa\x42\x05\xaa\x01\x02\x08\x01\"W\n\x0cRouteMatcher\x12\x1b\n\x08route_id\x18\x01 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01H\x00\x12\x1f\n\x0cnamespace_id\x18\x02 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01H\x00\x42\t\n\x07matcher\"?\n\x06String\x12\r\n\x05value\x18\x01 \x01(\t\x12&\n\x02ts\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"?\n\x06Scalar\x12\r\n\x05value\x18\x01 \x01(\x01\x12&\n\x02ts\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xa3\x01\n\nTimeSeries\x12:\n\x06labels\x18\x01 \x03(\x0b\x32*.pomerium.dashboard.TimeSeries.LabelsEntry\x12*\n\x06series\x18\x02 \x03(\x0b\x32\x1a.pomerium.dashboard.Scalar\x1a-\n\x0bLabelsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"8\n\x06Matrix\x12.\n\x06series\x18\x01 \x03(\x0b\x32\x1e.pomerium.dashboard.TimeSeries\"\x9a\x01\n\x06Sample\x12\x36\n\x06labels\x18\x01 \x03(\x0b\x32&.pomerium.dashboard.Sample.LabelsEntry\x12)\n\x05value\x18\x02 \x01(\x0b\x32\x1a.pomerium.dashboard.Scalar\x1a-\n\x0bLabelsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"5\n\x06Vector\x12+\n\x07samples\x18\x01 \x03(\x0b\x32\x1a.pomerium.dashboard.Sample\"\xc3\x01\n\x18RouteMetricSeriesRequest\x12;\n\x07matcher\x18\x01 \x01(\x0b\x32 .pomerium.dashboard.RouteMatcherB\x08\xfa\x42\x05\x8a\x01\x02\x10\x01\x12\x36\n\x06metric\x18\x02 \x01(\x0e\x32\x1a.pomerium.dashboard.MetricB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\x12\x32\n\x05range\x18\x03 \x01(\x0b\x32\x19.pomerium.dashboard.RangeB\x08\xfa\x42\x05\x8a\x01\x02\x10\x01\"\xf9\x01\n!RouteMetricSeriesHistogramRequest\x12;\n\x07matcher\x18\x01 \x01(\x0b\x32 .pomerium.dashboard.RouteMatcherB\x08\xfa\x42\x05\x8a\x01\x02\x10\x01\x12\x36\n\x06metric\x18\x02 \x01(\x0e\x32\x1a.pomerium.dashboard.MetricB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\x12\x32\n\x05range\x18\x03 \x01(\x0b\x32\x19.pomerium.dashboard.RangeB\x08\xfa\x42\x05\x8a\x01\x02\x10\x01\x12+\n\npercentile\x18\x04 \x01(\x01\x42\x17\xfa\x42\x14\x12\x12\x19\x00\x00\x00\x00\x00\x00\xf0?)\x00\x00\x00\x00\x00\x00\x00\x00\"\x90\x02\n\x19ServerMetricSeriesRequest\x12\x36\n\x06metric\x18\x02 \x01(\x0e\x32\x1a.pomerium.dashboard.MetricB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\x12\x32\n\x05range\x18\x03 \x01(\x0b\x32\x19.pomerium.dashboard.RangeB\x08\xfa\x42\x05\x8a\x01\x02\x10\x01\x12+\n\npercentile\x18\x04 \x01(\x01\x42\x17\xfa\x42\x14\x12\x12\x19\x00\x00\x00\x00\x00\x00\xf0?)\x00\x00\x00\x00\x00\x00\x00\x00\x12<\n\tcomponent\x18\x05 \x01(\x0e\x32\x1d.pomerium.dashboard.ComponentB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\x12\x1c\n\x0binstance_id\x18\x06 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01\"\xa9\x01\n\x13ServerMetricRequest\x12<\n\tcomponent\x18\x01 \x01(\x0e\x32\x1d.pomerium.dashboard.ComponentB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\x12\x1c\n\x0binstance_id\x18\x02 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01\x12\x36\n\x06metric\x18\x03 \x01(\x0e\x32\x1a.pomerium.dashboard.MetricB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\"\xf5\x01\n\x18RouteMetricChangeRequest\x12;\n\x07matcher\x18\x01 \x01(\x0b\x32 .pomerium.dashboard.RouteMatcherB\x08\xfa\x42\x05\x8a\x01\x02\x10\x01\x12\x34\n\x06metric\x18\x02 \x01(\x0e\x32\x1a.pomerium.dashboard.MetricB\x08\xfa\x42\x05\x82\x01\x02\x10\x01\x12\x33\n\x05start\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\x12\x31\n\x03\x65nd\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\"h\n\x12TimeSeriesResponse\x12&\n\x04rate\x18\x01 \x01(\x0e\x32\x18.pomerium.dashboard.Rate\x12*\n\x06series\x18\x02 \x03(\x0b\x32\x1a.pomerium.dashboard.Scalar\"q\n\x17TimeSeriesResponseMulti\x12&\n\x04rate\x18\x01 \x01(\x0e\x32\x18.pomerium.dashboard.Rate\x12.\n\x06series\x18\x02 \x03(\x0b\x32\x1e.pomerium.dashboard.TimeSeries\"\x7f\n\rScalarBuckets\x12\x39\n\x07\x62uckets\x18\x01 \x03(\x0b\x32(.pomerium.dashboard.ScalarBuckets.Bucket\x1a\x33\n\x06\x42ucket\x12\x1a\n\x12less_or_equal_than\x18\x01 \x01(\x01\x12\r\n\x05\x63ount\x18\x02 \x01(\x03\"\xd3\x01\n\rUptimeRequest\x12\x33\n\x05start\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\x12\x31\n\x03\x65nd\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\x12<\n\tcomponent\x18\x03 \x01(\x0e\x32\x1d.pomerium.dashboard.ComponentB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\x12\x1c\n\x0binstance_id\x18\x04 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01\"\xb6\x02\n\x0eUptimeResponse\x12=\n\tintervals\x18\x01 \x03(\x0b\x32*.pomerium.dashboard.UptimeResponse.Summary\x1a\x98\x01\n\x07Summary\x12)\n\x05start\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\'\n\x03\x65nd\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x39\n\x06status\x18\x03 \x01(\x0e\x32).pomerium.dashboard.UptimeResponse.Status\"J\n\x06Status\x12\x1f\n\x1bUNDEFINED_STATUS_DO_NOT_USE\x10\x00\x12\x08\n\x04LIVE\x10\x01\x12\x0b\n\x07NO_DATA\x10\x02\x12\x08\n\x04\x44OWN\x10\x03\"}\n\x13GetInstancesRequest\x12\x33\n\x05start\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\x12\x31\n\x03\x65nd\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\"\x9e\x01\n\tInstances\x12\x39\n\tinstances\x18\x01 \x03(\x0b\x32&.pomerium.dashboard.Instances.Instance\x1aV\n\x08Instance\x12\x30\n\tcomponent\x18\x01 \x01(\x0e\x32\x1d.pomerium.dashboard.Component\x12\n\n\x02id\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\"t\n\x16GetInstanceInfoRequest\x12<\n\tcomponent\x18\x03 \x01(\x0e\x32\x1d.pomerium.dashboard.ComponentB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\x12\x1c\n\x0binstance_id\x18\x04 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01\"\x12\n\x10GetStatusRequest\"\x90\x03\n\x11GetStatusResponse\x12=\n\x07targets\x18\x01 \x03(\x0b\x32,.pomerium.dashboard.GetStatusResponse.Target\x12\x0c\n\x02ok\x18\x02 \x01(\x08H\x00\x12\x14\n\nlast_error\x18\x03 \x01(\tH\x00\x1a\x8d\x02\n\x06Target\x12\x12\n\nscrape_url\x18\x01 \x01(\t\x12\x12\n\nglobal_url\x18\x02 \x01(\t\x12\x12\n\nlast_error\x18\x03 \x01(\t\x12/\n\x0blast_scrape\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x43\n\x06health\x18\x05 \x01(\x0e\x32\x33.pomerium.dashboard.GetStatusResponse.Target.Health\"Q\n\x06Health\x12\x19\n\x15TARGET_HEALTH_UNKNOWN\x10\x00\x12\x14\n\x10TARGET_HEALTH_UP\x10\x01\x12\x16\n\x12TARGET_HEALTH_DOWN\x10\x02\x42\x08\n\x06status\"o\n\x06Labels\x12\x36\n\x06labels\x18\x01 \x03(\x0b\x32&.pomerium.dashboard.Labels.LabelsEntry\x1a-\n\x0bLabelsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01* \n\x04Rate\x12\x08\n\x04NONE\x10\x00\x12\x0e\n\nPER_SECOND\x10\x01*\xfd\x08\n\x06Metric\x12\x1f\n\x1bUNDEFINED_METRIC_DO_NOT_USE\x10\x00\x12\x0c\n\x08REQUESTS\x10\x01\x12\x11\n\rREQUESTS_RATE\x10\x02\x12\x18\n\x14REQUESTS_DURATION_MS\x10\x03\x12\x12\n\x0eRESPONSE_CODES\x10\x04\x12\x0c\n\x08\x41UTHZ_OK\x10\x14\x12\x10\n\x0c\x41UTHZ_DENIED\x10\x15\x12\x0f\n\x0b\x41UTHZ_ERROR\x10\x16\x12\x12\n\x0e\x41UTHZ_DISABLED\x10\x17\x12\x1e\n\x1a\x41UTHZ_FAILURE_MODE_ALLOWED\x10\x18\x12\x16\n\x12MEMBERSHIP_HEALTHY\x10\x1e\x12\x17\n\x13MEMBERSHIP_DEGRADED\x10\x1f\x12\x17\n\x13MEMBERSHIP_EXCLUDED\x10 \x12\x14\n\x10MEMBERSHIP_TOTAL\x10!\x12\x0c\n\x08RX_BYTES\x10(\x12\x0c\n\x08TX_BYTES\x10)\x12\x0f\n\x0bTOTAL_BYTES\x10*\x12\x14\n\x10MEMORY_ALLOCATED\x10\x33\x12\r\n\tCPU_USAGE\x10\x34\x12\x1e\n\x1aIDP_LAST_REFRESH_TIMESTAMP\x10<\x12+\n\'IDP_LAST_USER_REFRESH_SUCCESS_TIMESTAMP\x10\x64\x12)\n%IDP_LAST_USER_REFRESH_ERROR_TIMESTAMP\x10\x65\x12\x1f\n\x1bIDP_LAST_USER_REFRESH_ERROR\x10\x66\x12!\n\x1dIDP_LAST_USER_REFRESH_SUCCESS\x10g\x12\x31\n-IDP_LAST_USER_GROUP_REFRESH_SUCCESS_TIMESTAMP\x10h\x12/\n+IDP_LAST_USER_GROUP_REFRESH_ERROR_TIMESTAMP\x10i\x12%\n!IDP_LAST_USER_GROUP_REFRESH_ERROR\x10j\x12\'\n#IDP_LAST_USER_GROUP_REFRESH_SUCCESS\x10k\x12.\n*IDP_LAST_SESSION_REFRESH_SUCCESS_TIMESTAMP\x10l\x12,\n(IDP_LAST_SESSION_REFRESH_ERROR_TIMESTAMP\x10m\x12\"\n\x1eIDP_LAST_SESSION_REFRESH_ERROR\x10n\x12$\n IDP_LAST_SESSION_REFRESH_SUCCESS\x10o\x12(\n$CONFIG_LAST_RELOAD_SUCCESS_TIMESTAMP\x10\x46\x12\x0e\n\nBUILD_INFO\x10G\x12\x19\n\x15\x43ONFIG_CHECKSUM_LOCAL\x10H\x12\x1e\n\x1a\x43ONFIG_CHECKSUM_DATABROKER\x10I\x12\x12\n\x0e\x43ONFIG_VERSION\x10J\x12\x11\n\rCONFIG_ERRORS\x10K\x12\x1a\n\x16\x43ONFIG_CONSOLE_VERSION\x10L\x12\x1c\n\x18PROMETHEUS_STORAGE_BYTES\x10P*\x9d\x01\n\tComponent\x12\x16\n\x12UNKNOWN_DO_NOT_USE\x10\x00\x12\x10\n\x0c\x41UTHENTICATE\x10\x01\x12\r\n\tAUTHORIZE\x10\x02\x12\x0e\n\nDATABROKER\x10\x03\x12\x0b\n\x07\x43ONSOLE\x10\x04\x12\t\n\x05PROXY\x10\x05\x12\x0e\n\nALL_IN_ONE\x10\x06\x12\x0f\n\x0bPROXY_ENVOY\x10\x07\x12\x0e\n\nPROMETHEUS\x10\x08\x32\x96\x08\n\x0cTimeSeriesDB\x12`\n\x14GetRouteMetricChange\x12,.pomerium.dashboard.RouteMetricChangeRequest\x1a\x1a.pomerium.dashboard.Scalar\x12p\n\x1dGetRouteMetricChangeHistogram\x12,.pomerium.dashboard.RouteMetricChangeRequest\x1a!.pomerium.dashboard.ScalarBuckets\x12l\n\x14GetRouteMetricSeries\x12,.pomerium.dashboard.RouteMetricSeriesRequest\x1a&.pomerium.dashboard.TimeSeriesResponse\x12~\n\x1dGetRouteMetricSeriesHistogram\x12\x35.pomerium.dashboard.RouteMetricSeriesHistogramRequest\x1a&.pomerium.dashboard.TimeSeriesResponse\x12v\n\x19GetRouteMetricSeriesMulti\x12,.pomerium.dashboard.RouteMetricSeriesRequest\x1a+.pomerium.dashboard.TimeSeriesResponseMulti\x12R\n\tGetUptime\x12!.pomerium.dashboard.UptimeRequest\x1a\".pomerium.dashboard.UptimeResponse\x12V\n\x0cGetInstances\x12\'.pomerium.dashboard.GetInstancesRequest\x1a\x1d.pomerium.dashboard.Instances\x12n\n\x15GetServerMetricSeries\x12-.pomerium.dashboard.ServerMetricSeriesRequest\x1a&.pomerium.dashboard.TimeSeriesResponse\x12V\n\x0fGetServerMetric\x12\'.pomerium.dashboard.ServerMetricRequest\x1a\x1a.pomerium.dashboard.Sample\x12X\n\tGetStatus\x12$.pomerium.dashboard.GetStatusRequest\x1a%.pomerium.dashboard.GetStatusResponseB-Z+github.com/pomerium/pomerium-console/pkg/pbb\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,google_dot_protobuf_dot_duration__pb2.DESCRIPTOR,validate_dot_validate__pb2.DESCRIPTOR,])
 
@@ -161,42 +161,102 @@ _METRIC = _descriptor.EnumDescriptor(
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='CONFIG_LAST_RELOAD_SUCCESS_TIMESTAMP', index=20, number=70,
+      name='IDP_LAST_USER_REFRESH_SUCCESS_TIMESTAMP', index=20, number=100,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='BUILD_INFO', index=21, number=71,
+      name='IDP_LAST_USER_REFRESH_ERROR_TIMESTAMP', index=21, number=101,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='CONFIG_CHECKSUM_LOCAL', index=22, number=72,
+      name='IDP_LAST_USER_REFRESH_ERROR', index=22, number=102,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='CONFIG_CHECKSUM_DATABROKER', index=23, number=73,
+      name='IDP_LAST_USER_REFRESH_SUCCESS', index=23, number=103,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='CONFIG_VERSION', index=24, number=74,
+      name='IDP_LAST_USER_GROUP_REFRESH_SUCCESS_TIMESTAMP', index=24, number=104,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='CONFIG_ERRORS', index=25, number=75,
+      name='IDP_LAST_USER_GROUP_REFRESH_ERROR_TIMESTAMP', index=25, number=105,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='CONFIG_CONSOLE_VERSION', index=26, number=76,
+      name='IDP_LAST_USER_GROUP_REFRESH_ERROR', index=26, number=106,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
     _descriptor.EnumValueDescriptor(
-      name='PROMETHEUS_STORAGE_BYTES', index=27, number=80,
+      name='IDP_LAST_USER_GROUP_REFRESH_SUCCESS', index=27, number=107,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='IDP_LAST_SESSION_REFRESH_SUCCESS_TIMESTAMP', index=28, number=108,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='IDP_LAST_SESSION_REFRESH_ERROR_TIMESTAMP', index=29, number=109,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='IDP_LAST_SESSION_REFRESH_ERROR', index=30, number=110,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='IDP_LAST_SESSION_REFRESH_SUCCESS', index=31, number=111,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='CONFIG_LAST_RELOAD_SUCCESS_TIMESTAMP', index=32, number=70,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='BUILD_INFO', index=33, number=71,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='CONFIG_CHECKSUM_LOCAL', index=34, number=72,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='CONFIG_CHECKSUM_DATABROKER', index=35, number=73,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='CONFIG_VERSION', index=36, number=74,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='CONFIG_ERRORS', index=37, number=75,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='CONFIG_CONSOLE_VERSION', index=38, number=76,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='PROMETHEUS_STORAGE_BYTES', index=39, number=80,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
@@ -204,7 +264,7 @@ _METRIC = _descriptor.EnumDescriptor(
   containing_type=None,
   serialized_options=None,
   serialized_start=3943,
-  serialized_end=4588,
+  serialized_end=5092,
 )
 _sym_db.RegisterEnumDescriptor(_METRIC)
 
@@ -264,8 +324,8 @@ _COMPONENT = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=4591,
-  serialized_end=4748,
+  serialized_start=5095,
+  serialized_end=5252,
 )
 _sym_db.RegisterEnumDescriptor(_COMPONENT)
 
@@ -292,6 +352,18 @@ TOTAL_BYTES = 42
 MEMORY_ALLOCATED = 51
 CPU_USAGE = 52
 IDP_LAST_REFRESH_TIMESTAMP = 60
+IDP_LAST_USER_REFRESH_SUCCESS_TIMESTAMP = 100
+IDP_LAST_USER_REFRESH_ERROR_TIMESTAMP = 101
+IDP_LAST_USER_REFRESH_ERROR = 102
+IDP_LAST_USER_REFRESH_SUCCESS = 103
+IDP_LAST_USER_GROUP_REFRESH_SUCCESS_TIMESTAMP = 104
+IDP_LAST_USER_GROUP_REFRESH_ERROR_TIMESTAMP = 105
+IDP_LAST_USER_GROUP_REFRESH_ERROR = 106
+IDP_LAST_USER_GROUP_REFRESH_SUCCESS = 107
+IDP_LAST_SESSION_REFRESH_SUCCESS_TIMESTAMP = 108
+IDP_LAST_SESSION_REFRESH_ERROR_TIMESTAMP = 109
+IDP_LAST_SESSION_REFRESH_ERROR = 110
+IDP_LAST_SESSION_REFRESH_SUCCESS = 111
 CONFIG_LAST_RELOAD_SUCCESS_TIMESTAMP = 70
 BUILD_INFO = 71
 CONFIG_CHECKSUM_LOCAL = 72
@@ -2026,8 +2098,8 @@ _TIMESERIESDB = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=4751,
-  serialized_end=5797,
+  serialized_start=5255,
+  serialized_end=6301,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetRouteMetricChange',

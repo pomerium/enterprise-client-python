@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z+github.com/pomerium/pomerium-console/pkg/pb',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0fkey_chain.proto\x12\x12pomerium.dashboard\x1a\x1fgoogle/protobuf/timestamp.proto\"\xbc\x01\n\x07KeyPair\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x14\n\x0cnamespace_id\x18\x03 \x01(\t\x12.\n\ncreated_at\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bmodified_at\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x13\n\x0b\x63\x65rtificate\x18\x07 \x01(\x0c\x12\x0b\n\x03key\x18\x08 \x01(\x0c\"\x8a\x02\n\x08KeyUsage\x12\x19\n\x11\x64igital_signature\x18\x01 \x01(\x08\x12\x1a\n\x12\x63ontent_commitment\x18\x02 \x01(\x08\x12\x18\n\x10key_encipherment\x18\x03 \x01(\x08\x12\x19\n\x11\x64\x61ta_encipherment\x18\x04 \x01(\x08\x12\x15\n\rkey_agreement\x18\x05 \x01(\x08\x12\x11\n\tcert_sign\x18\x06 \x01(\x08\x12\x10\n\x08\x63rl_sign\x18\x07 \x01(\x08\x12\x15\n\rencipher_only\x18\x08 \x01(\x08\x12\x15\n\rdecipher_only\x18\t \x01(\x08\x12\x13\n\x0bserver_auth\x18\n \x01(\x08\x12\x13\n\x0b\x63lient_auth\x18\x0b \x01(\x08\"\xc7\x01\n\x04Name\x12\x0f\n\x07\x63ountry\x18\x01 \x03(\t\x12\x14\n\x0corganization\x18\x02 \x03(\t\x12\x1b\n\x13organizational_unit\x18\x03 \x03(\t\x12\x10\n\x08locality\x18\x04 \x03(\t\x12\x10\n\x08province\x18\x05 \x03(\t\x12\x16\n\x0estreet_address\x18\x06 \x03(\t\x12\x13\n\x0bpostal_code\x18\x07 \x03(\t\x12\x15\n\rserial_number\x18\x08 \x01(\t\x12\x13\n\x0b\x63ommon_name\x18\t \x01(\t\"\x87\x05\n\x0f\x43\x65rtificateInfo\x12\x0f\n\x07version\x18\x01 \x01(\x03\x12\x0e\n\x06serial\x18\x02 \x01(\t\x12(\n\x06issuer\x18\x03 \x01(\x0b\x32\x18.pomerium.dashboard.Name\x12)\n\x07subject\x18\x04 \x01(\x0b\x32\x18.pomerium.dashboard.Name\x12.\n\nnot_before\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12-\n\tnot_after\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\tkey_usage\x18\x07 \x01(\x0b\x32\x1c.pomerium.dashboard.KeyUsage\x12\x11\n\tdns_names\x18\n \x03(\t\x12\x17\n\x0f\x65mail_addresses\x18\x0b \x03(\t\x12\x14\n\x0cip_addresses\x18\x0c \x03(\t\x12\x0c\n\x04uris\x18\r \x03(\t\x12&\n\x1epermitted_dns_domains_critical\x18\x0e \x01(\x08\x12\x1d\n\x15permitted_dns_domains\x18\x0f \x03(\t\x12\x1c\n\x14\x65xcluded_dns_domains\x18\x10 \x03(\t\x12\x1b\n\x13permitted_ip_ranges\x18\x11 \x03(\t\x12\x1a\n\x12\x65xcluded_ip_ranges\x18\x12 \x03(\t\x12!\n\x19permitted_email_addresses\x18\x13 \x03(\t\x12 \n\x18\x65xcluded_email_addresses\x18\x14 \x03(\t\x12\x1d\n\x15permitted_uri_domains\x18\x15 \x03(\t\x12\x1c\n\x14\x65xcluded_uri_domains\x18\x16 \x03(\t\"\xf1\x01\n\rKeyPairRecord\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x14\n\x0cnamespace_id\x18\x03 \x01(\t\x12.\n\ncreated_at\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bmodified_at\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x36\n\tcert_info\x18\x07 \x01(\x0b\x32#.pomerium.dashboard.CertificateInfo\x12\x17\n\x0fhas_private_key\x18\x08 \x01(\x08\"\"\n\x14\x44\x65leteKeyPairRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\x17\n\x15\x44\x65leteKeyPairResponse\"\x1f\n\x11GetKeyPairRequest\x12\n\n\x02id\x18\x01 \x01(\t\"I\n\x12GetKeyPairResponse\x12\x33\n\x08key_pair\x18\x01 \x01(\x0b\x32!.pomerium.dashboard.KeyPairRecord\"\xab\x01\n\x13ListKeyPairsRequest\x12\x14\n\x0cnamespace_id\x18\x01 \x01(\t\x12\x12\n\x05query\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x13\n\x06offset\x18\x03 \x01(\x03H\x01\x88\x01\x01\x12\x12\n\x05limit\x18\x04 \x01(\x03H\x02\x88\x01\x01\x12\x15\n\x08order_by\x18\x05 \x01(\tH\x03\x88\x01\x01\x42\x08\n\x06_queryB\t\n\x07_offsetB\x08\n\x06_limitB\x0b\n\t_order_by\"a\n\x14ListKeyPairsResponse\x12\x34\n\tkey_pairs\x18\x01 \x03(\x0b\x32!.pomerium.dashboard.KeyPairRecord\x12\x13\n\x0btotal_count\x18\x02 \x01(\x03\"\x88\x01\n\x14\x43reateKeyPairRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0cnamespace_id\x18\x02 \x01(\t\x12*\n\x06\x66ormat\x18\x03 \x01(\x0e\x32\x1a.pomerium.dashboard.Format\x12\x13\n\x0b\x63\x65rtificate\x18\x04 \x01(\x0c\x12\x0b\n\x03key\x18\x05 \x01(\x0c\"L\n\x15\x43reateKeyPairResponse\x12\x33\n\x08key_pair\x18\x01 \x01(\x0b\x32!.pomerium.dashboard.KeyPairRecord\"p\n\x14UpdateKeyPairRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12*\n\x06\x66ormat\x18\x03 \x01(\x0e\x32\x1a.pomerium.dashboard.Format\x12\x13\n\x0b\x63\x65rtificate\x18\x04 \x01(\x0c\x12\x0b\n\x03key\x18\x05 \x01(\x0c\"L\n\x15UpdateKeyPairResponse\x12\x33\n\x08key_pair\x18\x01 \x01(\x0b\x32!.pomerium.dashboard.KeyPairRecord*Z\n\x12PublicKeyAlgorithm\x12\x1a\n\x16PKA_UNKNOWN_DO_NOT_USE\x10\x00\x12\x07\n\x03RSA\x10\x01\x12\x07\n\x03\x44SA\x10\x02\x12\t\n\x05\x45\x43\x44SA\x10\x03\x12\x0b\n\x07\x45\x44\x32\x35\x35\x31\x39\x10\x04*2\n\x06\x46ormat\x12\x1f\n\x1b\x46ORMAT_UNDEFINED_DO_NOT_USE\x10\x00\x12\x07\n\x03PEM\x10\x01\x32\x83\x04\n\x0fKeyChainService\x12\x64\n\rDeleteKeyPair\x12(.pomerium.dashboard.DeleteKeyPairRequest\x1a).pomerium.dashboard.DeleteKeyPairResponse\x12[\n\nGetKeyPair\x12%.pomerium.dashboard.GetKeyPairRequest\x1a&.pomerium.dashboard.GetKeyPairResponse\x12\x61\n\x0cListKeyPairs\x12\'.pomerium.dashboard.ListKeyPairsRequest\x1a(.pomerium.dashboard.ListKeyPairsResponse\x12\x64\n\rCreateKeyPair\x12(.pomerium.dashboard.CreateKeyPairRequest\x1a).pomerium.dashboard.CreateKeyPairResponse\x12\x64\n\rUpdateKeyPair\x12(.pomerium.dashboard.UpdateKeyPairRequest\x1a).pomerium.dashboard.UpdateKeyPairResponseB-Z+github.com/pomerium/pomerium-console/pkg/pbb\x06proto3'
+  serialized_pb=b'\n\x0fkey_chain.proto\x12\x12pomerium.dashboard\x1a\x1fgoogle/protobuf/timestamp.proto\"\xbc\x01\n\x07KeyPair\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x14\n\x0cnamespace_id\x18\x03 \x01(\t\x12.\n\ncreated_at\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bmodified_at\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x13\n\x0b\x63\x65rtificate\x18\x07 \x01(\x0c\x12\x0b\n\x03key\x18\x08 \x01(\x0c\"\x8a\x02\n\x08KeyUsage\x12\x19\n\x11\x64igital_signature\x18\x01 \x01(\x08\x12\x1a\n\x12\x63ontent_commitment\x18\x02 \x01(\x08\x12\x18\n\x10key_encipherment\x18\x03 \x01(\x08\x12\x19\n\x11\x64\x61ta_encipherment\x18\x04 \x01(\x08\x12\x15\n\rkey_agreement\x18\x05 \x01(\x08\x12\x11\n\tcert_sign\x18\x06 \x01(\x08\x12\x10\n\x08\x63rl_sign\x18\x07 \x01(\x08\x12\x15\n\rencipher_only\x18\x08 \x01(\x08\x12\x15\n\rdecipher_only\x18\t \x01(\x08\x12\x13\n\x0bserver_auth\x18\n \x01(\x08\x12\x13\n\x0b\x63lient_auth\x18\x0b \x01(\x08\"\xc7\x01\n\x04Name\x12\x0f\n\x07\x63ountry\x18\x01 \x03(\t\x12\x14\n\x0corganization\x18\x02 \x03(\t\x12\x1b\n\x13organizational_unit\x18\x03 \x03(\t\x12\x10\n\x08locality\x18\x04 \x03(\t\x12\x10\n\x08province\x18\x05 \x03(\t\x12\x16\n\x0estreet_address\x18\x06 \x03(\t\x12\x13\n\x0bpostal_code\x18\x07 \x03(\t\x12\x15\n\rserial_number\x18\x08 \x01(\t\x12\x13\n\x0b\x63ommon_name\x18\t \x01(\t\"\x87\x05\n\x0f\x43\x65rtificateInfo\x12\x0f\n\x07version\x18\x01 \x01(\x03\x12\x0e\n\x06serial\x18\x02 \x01(\t\x12(\n\x06issuer\x18\x03 \x01(\x0b\x32\x18.pomerium.dashboard.Name\x12)\n\x07subject\x18\x04 \x01(\x0b\x32\x18.pomerium.dashboard.Name\x12.\n\nnot_before\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12-\n\tnot_after\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\tkey_usage\x18\x07 \x01(\x0b\x32\x1c.pomerium.dashboard.KeyUsage\x12\x11\n\tdns_names\x18\n \x03(\t\x12\x17\n\x0f\x65mail_addresses\x18\x0b \x03(\t\x12\x14\n\x0cip_addresses\x18\x0c \x03(\t\x12\x0c\n\x04uris\x18\r \x03(\t\x12&\n\x1epermitted_dns_domains_critical\x18\x0e \x01(\x08\x12\x1d\n\x15permitted_dns_domains\x18\x0f \x03(\t\x12\x1c\n\x14\x65xcluded_dns_domains\x18\x10 \x03(\t\x12\x1b\n\x13permitted_ip_ranges\x18\x11 \x03(\t\x12\x1a\n\x12\x65xcluded_ip_ranges\x18\x12 \x03(\t\x12!\n\x19permitted_email_addresses\x18\x13 \x03(\t\x12 \n\x18\x65xcluded_email_addresses\x18\x14 \x03(\t\x12\x1d\n\x15permitted_uri_domains\x18\x15 \x03(\t\x12\x1c\n\x14\x65xcluded_uri_domains\x18\x16 \x03(\t\"\xf1\x01\n\rKeyPairRecord\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x14\n\x0cnamespace_id\x18\x03 \x01(\t\x12.\n\ncreated_at\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bmodified_at\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x36\n\tcert_info\x18\x07 \x01(\x0b\x32#.pomerium.dashboard.CertificateInfo\x12\x17\n\x0fhas_private_key\x18\x08 \x01(\x08\"\"\n\x14\x44\x65leteKeyPairRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\x17\n\x15\x44\x65leteKeyPairResponse\"\x1f\n\x11GetKeyPairRequest\x12\n\n\x02id\x18\x01 \x01(\t\"I\n\x12GetKeyPairResponse\x12\x33\n\x08key_pair\x18\x01 \x01(\x0b\x32!.pomerium.dashboard.KeyPairRecord\"\xcb\x01\n\x13ListKeyPairsRequest\x12\x14\n\x0cnamespace_id\x18\x01 \x01(\t\x12\x12\n\x05query\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x13\n\x06offset\x18\x03 \x01(\x03H\x01\x88\x01\x01\x12\x12\n\x05limit\x18\x04 \x01(\x03H\x02\x88\x01\x01\x12\x15\n\x08order_by\x18\x05 \x01(\tH\x03\x88\x01\x01\x12\x13\n\x06\x64omain\x18\x06 \x01(\tH\x04\x88\x01\x01\x42\x08\n\x06_queryB\t\n\x07_offsetB\x08\n\x06_limitB\x0b\n\t_order_byB\t\n\x07_domain\"a\n\x14ListKeyPairsResponse\x12\x34\n\tkey_pairs\x18\x01 \x03(\x0b\x32!.pomerium.dashboard.KeyPairRecord\x12\x13\n\x0btotal_count\x18\x02 \x01(\x03\"\x88\x01\n\x14\x43reateKeyPairRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0cnamespace_id\x18\x02 \x01(\t\x12*\n\x06\x66ormat\x18\x03 \x01(\x0e\x32\x1a.pomerium.dashboard.Format\x12\x13\n\x0b\x63\x65rtificate\x18\x04 \x01(\x0c\x12\x0b\n\x03key\x18\x05 \x01(\x0c\"L\n\x15\x43reateKeyPairResponse\x12\x33\n\x08key_pair\x18\x01 \x01(\x0b\x32!.pomerium.dashboard.KeyPairRecord\"p\n\x14UpdateKeyPairRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12*\n\x06\x66ormat\x18\x03 \x01(\x0e\x32\x1a.pomerium.dashboard.Format\x12\x13\n\x0b\x63\x65rtificate\x18\x04 \x01(\x0c\x12\x0b\n\x03key\x18\x05 \x01(\x0c\"L\n\x15UpdateKeyPairResponse\x12\x33\n\x08key_pair\x18\x01 \x01(\x0b\x32!.pomerium.dashboard.KeyPairRecord*Z\n\x12PublicKeyAlgorithm\x12\x1a\n\x16PKA_UNKNOWN_DO_NOT_USE\x10\x00\x12\x07\n\x03RSA\x10\x01\x12\x07\n\x03\x44SA\x10\x02\x12\t\n\x05\x45\x43\x44SA\x10\x03\x12\x0b\n\x07\x45\x44\x32\x35\x35\x31\x39\x10\x04*2\n\x06\x46ormat\x12\x1f\n\x1b\x46ORMAT_UNDEFINED_DO_NOT_USE\x10\x00\x12\x07\n\x03PEM\x10\x01\x32\x83\x04\n\x0fKeyChainService\x12\x64\n\rDeleteKeyPair\x12(.pomerium.dashboard.DeleteKeyPairRequest\x1a).pomerium.dashboard.DeleteKeyPairResponse\x12[\n\nGetKeyPair\x12%.pomerium.dashboard.GetKeyPairRequest\x1a&.pomerium.dashboard.GetKeyPairResponse\x12\x61\n\x0cListKeyPairs\x12\'.pomerium.dashboard.ListKeyPairsRequest\x1a(.pomerium.dashboard.ListKeyPairsResponse\x12\x64\n\rCreateKeyPair\x12(.pomerium.dashboard.CreateKeyPairRequest\x1a).pomerium.dashboard.CreateKeyPairResponse\x12\x64\n\rUpdateKeyPair\x12(.pomerium.dashboard.UpdateKeyPairRequest\x1a).pomerium.dashboard.UpdateKeyPairResponseB-Z+github.com/pomerium/pomerium-console/pkg/pbb\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
@@ -60,8 +60,8 @@ _PUBLICKEYALGORITHM = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2479,
-  serialized_end=2569,
+  serialized_start=2511,
+  serialized_end=2601,
 )
 _sym_db.RegisterEnumDescriptor(_PUBLICKEYALGORITHM)
 
@@ -86,8 +86,8 @@ _FORMAT = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=2571,
-  serialized_end=2621,
+  serialized_start=2603,
+  serialized_end=2653,
 )
 _sym_db.RegisterEnumDescriptor(_FORMAT)
 
@@ -769,6 +769,13 @@ _LISTKEYPAIRSREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='domain', full_name='pomerium.dashboard.ListKeyPairsRequest.domain', index=5,
+      number=6, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -800,9 +807,14 @@ _LISTKEYPAIRSREQUEST = _descriptor.Descriptor(
       index=3, containing_type=None,
       create_key=_descriptor._internal_create_key,
     fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_domain', full_name='pomerium.dashboard.ListKeyPairsRequest._domain',
+      index=4, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=1798,
-  serialized_end=1969,
+  serialized_end=2001,
 )
 
 
@@ -840,8 +852,8 @@ _LISTKEYPAIRSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1971,
-  serialized_end=2068,
+  serialized_start=2003,
+  serialized_end=2100,
 )
 
 
@@ -900,8 +912,8 @@ _CREATEKEYPAIRREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2071,
-  serialized_end=2207,
+  serialized_start=2103,
+  serialized_end=2239,
 )
 
 
@@ -932,8 +944,8 @@ _CREATEKEYPAIRRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2209,
-  serialized_end=2285,
+  serialized_start=2241,
+  serialized_end=2317,
 )
 
 
@@ -985,8 +997,8 @@ _UPDATEKEYPAIRREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2287,
-  serialized_end=2399,
+  serialized_start=2319,
+  serialized_end=2431,
 )
 
 
@@ -1017,8 +1029,8 @@ _UPDATEKEYPAIRRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2401,
-  serialized_end=2477,
+  serialized_start=2433,
+  serialized_end=2509,
 )
 
 _KEYPAIR.fields_by_name['created_at'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
@@ -1044,6 +1056,9 @@ _LISTKEYPAIRSREQUEST.fields_by_name['limit'].containing_oneof = _LISTKEYPAIRSREQ
 _LISTKEYPAIRSREQUEST.oneofs_by_name['_order_by'].fields.append(
   _LISTKEYPAIRSREQUEST.fields_by_name['order_by'])
 _LISTKEYPAIRSREQUEST.fields_by_name['order_by'].containing_oneof = _LISTKEYPAIRSREQUEST.oneofs_by_name['_order_by']
+_LISTKEYPAIRSREQUEST.oneofs_by_name['_domain'].fields.append(
+  _LISTKEYPAIRSREQUEST.fields_by_name['domain'])
+_LISTKEYPAIRSREQUEST.fields_by_name['domain'].containing_oneof = _LISTKEYPAIRSREQUEST.oneofs_by_name['_domain']
 _LISTKEYPAIRSRESPONSE.fields_by_name['key_pairs'].message_type = _KEYPAIRRECORD
 _CREATEKEYPAIRREQUEST.fields_by_name['format'].enum_type = _FORMAT
 _CREATEKEYPAIRRESPONSE.fields_by_name['key_pair'].message_type = _KEYPAIRRECORD
@@ -1183,8 +1198,8 @@ _KEYCHAINSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=2624,
-  serialized_end=3139,
+  serialized_start=2656,
+  serialized_end=3171,
   methods=[
   _descriptor.MethodDescriptor(
     name='DeleteKeyPair',

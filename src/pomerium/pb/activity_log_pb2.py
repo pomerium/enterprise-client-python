@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z+github.com/pomerium/pomerium-console/pkg/pb',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x12\x61\x63tivity_log.proto\x12\x12pomerium.dashboard\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc0\x04\n\x10\x41\x63tivityLogEntry\x12\n\n\x02id\x18\x01 \x01(\t\x12\x15\n\ractivity_type\x18\x02 \x01(\t\x12.\n\ncreated_at\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x14\n\x0cnamespace_id\x18\x04 \x01(\t\x12\x16\n\x0enamespace_name\x18\x05 \x01(\t\x12\x0f\n\x07user_id\x18\x06 \x01(\t\x12\x11\n\tuser_name\x18\x07 \x01(\t\x12\x12\n\nuser_email\x18\x08 \x01(\t\x12\x13\n\x0b\x65ntity_type\x18\t \x01(\t\x12\x11\n\tentity_id\x18\n \x01(\t\x12\x13\n\x0b\x65ntity_data\x18\x0b \x01(\t\x12\x46\n\x0c\x64iff_summary\x18\x0c \x01(\x0b\x32\x30.pomerium.dashboard.ActivityLogEntry.DiffSummary\x12\x12\n\ndb_version\x18\r \x01(\x04\x12\x12\n\nsession_id\x18\x0e \x01(\t\x12\x1a\n\x12service_account_id\x18\x0f \x01(\t\x12\x1b\n\x13impersonate_user_id\x18\x10 \x01(\t\x12\x1d\n\x15impersonate_user_name\x18\x11 \x01(\t\x12\x1e\n\x16impersonate_user_email\x18\x12 \x01(\t\x12\x1f\n\x17impersonate_user_groups\x18\x13 \x03(\t\x1a-\n\x0b\x44iffSummary\x12\r\n\x05\x61\x64\x64\x65\x64\x18\x01 \x01(\x03\x12\x0f\n\x07removed\x18\x02 \x01(\x03\"(\n\x1aGetActivityLogEntryRequest\x12\n\n\x02id\x18\x01 \x01(\t\"R\n\x1bGetActivityLogEntryResponse\x12\x33\n\x05\x65ntry\x18\x01 \x01(\x0b\x32$.pomerium.dashboard.ActivityLogEntry\"\xb9\x07\n\x1dListActivityLogEntriesRequest\x12\x1a\n\ractivity_type\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\x19\n\x0cnamespace_id\x18\x02 \x01(\tH\x01\x88\x01\x01\x12\x14\n\x07user_id\x18\x03 \x01(\tH\x02\x88\x01\x01\x12\x18\n\x0b\x65ntity_type\x18\x04 \x01(\tH\x03\x88\x01\x01\x12\x16\n\tentity_id\x18\x05 \x01(\tH\x04\x88\x01\x01\x12\x12\n\x05query\x18\x06 \x01(\tH\x05\x88\x01\x01\x12\x13\n\x06offset\x18\x07 \x01(\x03H\x06\x88\x01\x01\x12\x12\n\x05limit\x18\x08 \x01(\x03H\x07\x88\x01\x01\x12\x13\n\x0b\x64\x62_versions\x18\t \x03(\x04\x12\x1e\n\x11recurse_namespace\x18\x0b \x01(\x08H\x08\x88\x01\x01\x12J\n\x08\x65ntities\x18\n \x03(\x0b\x32\x38.pomerium.dashboard.ListActivityLogEntriesRequest.Entity\x12I\n\x04sort\x18\x0c \x01(\x0b\x32\x36.pomerium.dashboard.ListActivityLogEntriesRequest.SortH\t\x88\x01\x01\x12Q\n\x0b\x64\x61te_filter\x18\r \x01(\x0b\x32<.pomerium.dashboard.ListActivityLogEntriesRequest.DateFilter\x12U\n\rstring_filter\x18\x0e \x01(\x0b\x32>.pomerium.dashboard.ListActivityLogEntriesRequest.StringFilter\x1a\"\n\x06\x45ntity\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\t\x1a)\n\x04Sort\x12\x0e\n\x06\x63olumn\x18\x01 \x01(\t\x12\x11\n\tdirection\x18\x02 \x01(\t\x1aH\n\nDateFilter\x12\x10\n\x08operator\x18\x01 \x01(\t\x12(\n\x04\x64\x61te\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x1a\x42\n\x0cStringFilter\x12\x11\n\tfieldName\x18\x01 \x01(\t\x12\x10\n\x08operator\x18\x02 \x01(\t\x12\r\n\x05value\x18\x03 \x01(\tB\x10\n\x0e_activity_typeB\x0f\n\r_namespace_idB\n\n\x08_user_idB\x0e\n\x0c_entity_typeB\x0c\n\n_entity_idB\x08\n\x06_queryB\t\n\x07_offsetB\x08\n\x06_limitB\x14\n\x12_recurse_namespaceB\x07\n\x05_sort\"l\n\x1eListActivityLogEntriesResponse\x12\x35\n\x07\x65ntries\x18\x01 \x03(\x0b\x32$.pomerium.dashboard.ActivityLogEntry\x12\x13\n\x0btotal_count\x18\x02 \x01(\x03\x32\x8d\x02\n\x12\x41\x63tivityLogService\x12v\n\x13GetActivityLogEntry\x12..pomerium.dashboard.GetActivityLogEntryRequest\x1a/.pomerium.dashboard.GetActivityLogEntryResponse\x12\x7f\n\x16ListActivityLogEntries\x12\x31.pomerium.dashboard.ListActivityLogEntriesRequest\x1a\x32.pomerium.dashboard.ListActivityLogEntriesResponseB-Z+github.com/pomerium/pomerium-console/pkg/pbb\x06proto3'
+  serialized_pb=b'\n\x12\x61\x63tivity_log.proto\x12\x12pomerium.dashboard\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc0\x04\n\x10\x41\x63tivityLogEntry\x12\n\n\x02id\x18\x01 \x01(\t\x12\x15\n\ractivity_type\x18\x02 \x01(\t\x12.\n\ncreated_at\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x14\n\x0cnamespace_id\x18\x04 \x01(\t\x12\x16\n\x0enamespace_name\x18\x05 \x01(\t\x12\x0f\n\x07user_id\x18\x06 \x01(\t\x12\x11\n\tuser_name\x18\x07 \x01(\t\x12\x12\n\nuser_email\x18\x08 \x01(\t\x12\x13\n\x0b\x65ntity_type\x18\t \x01(\t\x12\x11\n\tentity_id\x18\n \x01(\t\x12\x13\n\x0b\x65ntity_data\x18\x0b \x01(\t\x12\x46\n\x0c\x64iff_summary\x18\x0c \x01(\x0b\x32\x30.pomerium.dashboard.ActivityLogEntry.DiffSummary\x12\x12\n\ndb_version\x18\r \x01(\x04\x12\x12\n\nsession_id\x18\x0e \x01(\t\x12\x1a\n\x12service_account_id\x18\x0f \x01(\t\x12\x1b\n\x13impersonate_user_id\x18\x10 \x01(\t\x12\x1d\n\x15impersonate_user_name\x18\x11 \x01(\t\x12\x1e\n\x16impersonate_user_email\x18\x12 \x01(\t\x12\x1f\n\x17impersonate_user_groups\x18\x13 \x03(\t\x1a-\n\x0b\x44iffSummary\x12\r\n\x05\x61\x64\x64\x65\x64\x18\x01 \x01(\x03\x12\x0f\n\x07removed\x18\x02 \x01(\x03\"(\n\x1aGetActivityLogEntryRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\xb6\x01\n\x1bGetActivityLogEntryResponse\x12\x33\n\x05\x65ntry\x18\x01 \x01(\x0b\x32$.pomerium.dashboard.ActivityLogEntry\x12\x1e\n\x11previous_entry_id\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x1a\n\rnext_entry_id\x18\x03 \x01(\tH\x01\x88\x01\x01\x42\x14\n\x12_previous_entry_idB\x10\n\x0e_next_entry_id\"\xb9\x07\n\x1dListActivityLogEntriesRequest\x12\x1a\n\ractivity_type\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\x19\n\x0cnamespace_id\x18\x02 \x01(\tH\x01\x88\x01\x01\x12\x14\n\x07user_id\x18\x03 \x01(\tH\x02\x88\x01\x01\x12\x18\n\x0b\x65ntity_type\x18\x04 \x01(\tH\x03\x88\x01\x01\x12\x16\n\tentity_id\x18\x05 \x01(\tH\x04\x88\x01\x01\x12\x12\n\x05query\x18\x06 \x01(\tH\x05\x88\x01\x01\x12\x13\n\x06offset\x18\x07 \x01(\x03H\x06\x88\x01\x01\x12\x12\n\x05limit\x18\x08 \x01(\x03H\x07\x88\x01\x01\x12\x13\n\x0b\x64\x62_versions\x18\t \x03(\x04\x12\x1e\n\x11recurse_namespace\x18\x0b \x01(\x08H\x08\x88\x01\x01\x12J\n\x08\x65ntities\x18\n \x03(\x0b\x32\x38.pomerium.dashboard.ListActivityLogEntriesRequest.Entity\x12I\n\x04sort\x18\x0c \x01(\x0b\x32\x36.pomerium.dashboard.ListActivityLogEntriesRequest.SortH\t\x88\x01\x01\x12Q\n\x0b\x64\x61te_filter\x18\r \x01(\x0b\x32<.pomerium.dashboard.ListActivityLogEntriesRequest.DateFilter\x12U\n\rstring_filter\x18\x0e \x01(\x0b\x32>.pomerium.dashboard.ListActivityLogEntriesRequest.StringFilter\x1a\"\n\x06\x45ntity\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\t\x1a)\n\x04Sort\x12\x0e\n\x06\x63olumn\x18\x01 \x01(\t\x12\x11\n\tdirection\x18\x02 \x01(\t\x1aH\n\nDateFilter\x12\x10\n\x08operator\x18\x01 \x01(\t\x12(\n\x04\x64\x61te\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x1a\x42\n\x0cStringFilter\x12\x11\n\tfieldName\x18\x01 \x01(\t\x12\x10\n\x08operator\x18\x02 \x01(\t\x12\r\n\x05value\x18\x03 \x01(\tB\x10\n\x0e_activity_typeB\x0f\n\r_namespace_idB\n\n\x08_user_idB\x0e\n\x0c_entity_typeB\x0c\n\n_entity_idB\x08\n\x06_queryB\t\n\x07_offsetB\x08\n\x06_limitB\x14\n\x12_recurse_namespaceB\x07\n\x05_sort\"l\n\x1eListActivityLogEntriesResponse\x12\x35\n\x07\x65ntries\x18\x01 \x03(\x0b\x32$.pomerium.dashboard.ActivityLogEntry\x12\x13\n\x0btotal_count\x18\x02 \x01(\x03\x32\x8d\x02\n\x12\x41\x63tivityLogService\x12v\n\x13GetActivityLogEntry\x12..pomerium.dashboard.GetActivityLogEntryRequest\x1a/.pomerium.dashboard.GetActivityLogEntryResponse\x12\x7f\n\x16ListActivityLogEntries\x12\x31.pomerium.dashboard.ListActivityLogEntriesRequest\x1a\x32.pomerium.dashboard.ListActivityLogEntriesResponseB-Z+github.com/pomerium/pomerium-console/pkg/pbb\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
@@ -270,6 +270,20 @@ _GETACTIVITYLOGENTRYRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='previous_entry_id', full_name='pomerium.dashboard.GetActivityLogEntryResponse.previous_entry_id', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='next_entry_id', full_name='pomerium.dashboard.GetActivityLogEntryResponse.next_entry_id', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
   ],
   extensions=[
   ],
@@ -281,9 +295,19 @@ _GETACTIVITYLOGENTRYRESPONSE = _descriptor.Descriptor(
   syntax='proto3',
   extension_ranges=[],
   oneofs=[
+    _descriptor.OneofDescriptor(
+      name='_previous_entry_id', full_name='pomerium.dashboard.GetActivityLogEntryResponse._previous_entry_id',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_next_entry_id', full_name='pomerium.dashboard.GetActivityLogEntryResponse._next_entry_id',
+      index=1, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
-  serialized_start=696,
-  serialized_end=778,
+  serialized_start=697,
+  serialized_end=879,
 )
 
 
@@ -321,8 +345,8 @@ _LISTACTIVITYLOGENTRIESREQUEST_ENTITY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1376,
-  serialized_end=1410,
+  serialized_start=1477,
+  serialized_end=1511,
 )
 
 _LISTACTIVITYLOGENTRIESREQUEST_SORT = _descriptor.Descriptor(
@@ -359,8 +383,8 @@ _LISTACTIVITYLOGENTRIESREQUEST_SORT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1412,
-  serialized_end=1453,
+  serialized_start=1513,
+  serialized_end=1554,
 )
 
 _LISTACTIVITYLOGENTRIESREQUEST_DATEFILTER = _descriptor.Descriptor(
@@ -397,8 +421,8 @@ _LISTACTIVITYLOGENTRIESREQUEST_DATEFILTER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1455,
-  serialized_end=1527,
+  serialized_start=1556,
+  serialized_end=1628,
 )
 
 _LISTACTIVITYLOGENTRIESREQUEST_STRINGFILTER = _descriptor.Descriptor(
@@ -442,8 +466,8 @@ _LISTACTIVITYLOGENTRIESREQUEST_STRINGFILTER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1529,
-  serialized_end=1595,
+  serialized_start=1630,
+  serialized_end=1696,
 )
 
 _LISTACTIVITYLOGENTRIESREQUEST = _descriptor.Descriptor(
@@ -614,8 +638,8 @@ _LISTACTIVITYLOGENTRIESREQUEST = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=781,
-  serialized_end=1734,
+  serialized_start=882,
+  serialized_end=1835,
 )
 
 
@@ -653,14 +677,20 @@ _LISTACTIVITYLOGENTRIESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1736,
-  serialized_end=1844,
+  serialized_start=1837,
+  serialized_end=1945,
 )
 
 _ACTIVITYLOGENTRY_DIFFSUMMARY.containing_type = _ACTIVITYLOGENTRY
 _ACTIVITYLOGENTRY.fields_by_name['created_at'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _ACTIVITYLOGENTRY.fields_by_name['diff_summary'].message_type = _ACTIVITYLOGENTRY_DIFFSUMMARY
 _GETACTIVITYLOGENTRYRESPONSE.fields_by_name['entry'].message_type = _ACTIVITYLOGENTRY
+_GETACTIVITYLOGENTRYRESPONSE.oneofs_by_name['_previous_entry_id'].fields.append(
+  _GETACTIVITYLOGENTRYRESPONSE.fields_by_name['previous_entry_id'])
+_GETACTIVITYLOGENTRYRESPONSE.fields_by_name['previous_entry_id'].containing_oneof = _GETACTIVITYLOGENTRYRESPONSE.oneofs_by_name['_previous_entry_id']
+_GETACTIVITYLOGENTRYRESPONSE.oneofs_by_name['_next_entry_id'].fields.append(
+  _GETACTIVITYLOGENTRYRESPONSE.fields_by_name['next_entry_id'])
+_GETACTIVITYLOGENTRYRESPONSE.fields_by_name['next_entry_id'].containing_oneof = _GETACTIVITYLOGENTRYRESPONSE.oneofs_by_name['_next_entry_id']
 _LISTACTIVITYLOGENTRIESREQUEST_ENTITY.containing_type = _LISTACTIVITYLOGENTRIESREQUEST
 _LISTACTIVITYLOGENTRIESREQUEST_SORT.containing_type = _LISTACTIVITYLOGENTRIESREQUEST
 _LISTACTIVITYLOGENTRIESREQUEST_DATEFILTER.fields_by_name['date'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
@@ -793,8 +823,8 @@ _ACTIVITYLOGSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=1847,
-  serialized_end=2116,
+  serialized_start=1948,
+  serialized_end=2217,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetActivityLogEntry',

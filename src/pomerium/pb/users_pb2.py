@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z+github.com/pomerium/pomerium-console/pkg/pb',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0busers.proto\x12\x12pomerium.dashboard\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1cgoogle/protobuf/struct.proto\"\xd3\x01\n\rRecoveryToken\x12\n\n\x02id\x18\x01 \x01(\t\x12\x11\n\tnamespace\x18\x02 \x01(\t\x12.\n\ncreated_at\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bmodified_at\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12.\n\nexpires_at\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x12\n\npublic_key\x18\x06 \x01(\t\"%\n\tGroupInfo\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\"\xf3\x01\n\x08UserInfo\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05\x65mail\x18\x03 \x01(\t\x12\x0e\n\x06groups\x18\x04 \x03(\t\x12I\n\x0fnamespace_roles\x18\x05 \x03(\x0b\x32\x30.pomerium.dashboard.UserInfo.NamespaceRolesEntry\x12\x13\n\x0bpicture_url\x18\x06 \x01(\t\x12\x17\n\x0fis_impersonated\x18\x07 \x01(\x08\x1a\x35\n\x13NamespaceRolesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"6\n\x12GetUserInfoRequest\x12\x14\n\x07user_id\x18\x01 \x01(\tH\x00\x88\x01\x01\x42\n\n\x08_user_id\"F\n\x13GetUserInfoResponse\x12/\n\tuser_info\x18\x01 \x01(\x0b\x32\x1c.pomerium.dashboard.UserInfo\"B\n\x12QueryGroupsRequest\x12\r\n\x05query\x18\x01 \x01(\t\x12\x0e\n\x06offset\x18\x02 \x01(\x03\x12\r\n\x05limit\x18\x03 \x01(\x03\"Y\n\x13QueryGroupsResponse\x12-\n\x06groups\x18\x01 \x03(\x0b\x32\x1d.pomerium.dashboard.GroupInfo\x12\x13\n\x0btotal_count\x18\x02 \x01(\x03\"A\n\x11QueryUsersRequest\x12\r\n\x05query\x18\x01 \x01(\t\x12\x0e\n\x06offset\x18\x02 \x01(\x03\x12\r\n\x05limit\x18\x03 \x01(\x03\"V\n\x12QueryUsersResponse\x12+\n\x05users\x18\x01 \x03(\x0b\x32\x1c.pomerium.dashboard.UserInfo\x12\x13\n\x0btotal_count\x18\x02 \x01(\x03\"\xc0\x01\n\x16PomeriumServiceAccount\x12\n\n\x02id\x18\x01 \x01(\t\x12\x19\n\x0cnamespace_id\x18\x08 \x01(\tH\x00\x88\x01\x01\x12\x0f\n\x07user_id\x18\x02 \x01(\t\x12.\n\nexpires_at\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12-\n\tissued_at\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x0f\n\r_namespace_id\"g\n AddPomeriumServiceAccountRequest\x12\x43\n\x0fservice_account\x18\x01 \x01(\x0b\x32*.pomerium.dashboard.PomeriumServiceAccount\"u\n!AddPomeriumServiceAccountResponse\x12\x43\n\x0fservice_account\x18\x01 \x01(\x0b\x32*.pomerium.dashboard.PomeriumServiceAccount\x12\x0b\n\x03JWT\x18\x02 \x01(\t\"1\n#DeletePomeriumServiceAccountRequest\x12\n\n\x02id\x18\x01 \x01(\t\"&\n$DeletePomeriumServiceAccountResponse\".\n GetPomeriumServiceAccountRequest\x12\n\n\x02id\x18\x01 \x01(\t\"h\n!GetPomeriumServiceAccountResponse\x12\x43\n\x0fservice_account\x18\x01 \x01(\x0b\x32*.pomerium.dashboard.PomeriumServiceAccount\"7\n\"ListPomeriumServiceAccountsRequest\x12\x11\n\tnamespace\x18\x01 \x01(\t\"k\n#ListPomeriumServiceAccountsResponse\x12\x44\n\x10service_accounts\x18\x01 \x03(\x0b\x32*.pomerium.dashboard.PomeriumServiceAccount\"\x80\x04\n\x0fPomeriumSession\x12\n\n\x02id\x18\x01 \x01(\t\x12\x36\n\x04user\x18\x02 \x01(\x0b\x32(.pomerium.dashboard.PomeriumSession.User\x12\x39\n\x06groups\x18\x03 \x03(\x0b\x32).pomerium.dashboard.PomeriumSession.Group\x12\x0e\n\x06issuer\x18\x04 \x01(\t\x12-\n\tissued_at\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12.\n\nexpires_at\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x10\n\x08\x61udience\x18\x07 \x03(\t\x12?\n\x06\x63laims\x18\x08 \x03(\x0b\x32/.pomerium.dashboard.PomeriumSession.ClaimsEntry\x1a\x30\n\x05Group\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05\x65mail\x18\x03 \x01(\t\x1a/\n\x04User\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05\x65mail\x18\x03 \x01(\t\x1aI\n\x0b\x43laimsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12)\n\x05value\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.ListValue:\x02\x38\x01\"*\n\x1c\x44\x65letePomeriumSessionRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\x1f\n\x1d\x44\x65letePomeriumSessionResponse\"\'\n\x19GetPomeriumSessionRequest\x12\n\n\x02id\x18\x01 \x01(\t\"R\n\x1aGetPomeriumSessionResponse\x12\x34\n\x07session\x18\x01 \x01(\x0b\x32#.pomerium.dashboard.PomeriumSession\"\xbf\x01\n\x1bListPomeriumSessionsRequest\x12\x12\n\x05query\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\x13\n\x06offset\x18\x02 \x01(\x03H\x01\x88\x01\x01\x12\x12\n\x05limit\x18\x03 \x01(\x03H\x02\x88\x01\x01\x12\x15\n\x08order_by\x18\x04 \x01(\tH\x03\x88\x01\x01\x12\x14\n\x07user_id\x18\x05 \x01(\tH\x04\x88\x01\x01\x42\x08\n\x06_queryB\t\n\x07_offsetB\x08\n\x06_limitB\x0b\n\t_order_byB\n\n\x08_user_id\"j\n\x1cListPomeriumSessionsResponse\x12\x35\n\x08sessions\x18\x01 \x03(\x0b\x32#.pomerium.dashboard.PomeriumSession\x12\x13\n\x0btotal_count\x18\x02 \x01(\x03\"(\n\x12ImpersonateRequest\x12\x12\n\nsession_id\x18\x01 \x01(\t\"\x15\n\x13ImpersonateResponse2\xaa\x02\n\x0bUserService\x12^\n\x0bGetUserInfo\x12&.pomerium.dashboard.GetUserInfoRequest\x1a\'.pomerium.dashboard.GetUserInfoResponse\x12^\n\x0bQueryGroups\x12&.pomerium.dashboard.QueryGroupsRequest\x1a\'.pomerium.dashboard.QueryGroupsResponse\x12[\n\nQueryUsers\x12%.pomerium.dashboard.QueryUsersRequest\x1a&.pomerium.dashboard.QueryUsersResponse2\xda\x04\n\x1dPomeriumServiceAccountService\x12\x88\x01\n\x19\x41\x64\x64PomeriumServiceAccount\x12\x34.pomerium.dashboard.AddPomeriumServiceAccountRequest\x1a\x35.pomerium.dashboard.AddPomeriumServiceAccountResponse\x12\x91\x01\n\x1c\x44\x65letePomeriumServiceAccount\x12\x37.pomerium.dashboard.DeletePomeriumServiceAccountRequest\x1a\x38.pomerium.dashboard.DeletePomeriumServiceAccountResponse\x12\x88\x01\n\x19GetPomeriumServiceAccount\x12\x34.pomerium.dashboard.GetPomeriumServiceAccountRequest\x1a\x35.pomerium.dashboard.GetPomeriumServiceAccountResponse\x12\x8e\x01\n\x1bListPomeriumServiceAccounts\x12\x36.pomerium.dashboard.ListPomeriumServiceAccountsRequest\x1a\x37.pomerium.dashboard.ListPomeriumServiceAccountsResponse2\xe6\x03\n\x16PomeriumSessionService\x12|\n\x15\x44\x65letePomeriumSession\x12\x30.pomerium.dashboard.DeletePomeriumSessionRequest\x1a\x31.pomerium.dashboard.DeletePomeriumSessionResponse\x12s\n\x12GetPomeriumSession\x12-.pomerium.dashboard.GetPomeriumSessionRequest\x1a..pomerium.dashboard.GetPomeriumSessionResponse\x12^\n\x0bImpersonate\x12&.pomerium.dashboard.ImpersonateRequest\x1a\'.pomerium.dashboard.ImpersonateResponse\x12y\n\x14ListPomeriumSessions\x12/.pomerium.dashboard.ListPomeriumSessionsRequest\x1a\x30.pomerium.dashboard.ListPomeriumSessionsResponseB-Z+github.com/pomerium/pomerium-console/pkg/pbb\x06proto3'
+  serialized_pb=b'\n\x0busers.proto\x12\x12pomerium.dashboard\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1cgoogle/protobuf/struct.proto\"\xd3\x01\n\rRecoveryToken\x12\n\n\x02id\x18\x01 \x01(\t\x12\x11\n\tnamespace\x18\x02 \x01(\t\x12.\n\ncreated_at\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bmodified_at\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12.\n\nexpires_at\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x12\n\npublic_key\x18\x06 \x01(\t\"%\n\tGroupInfo\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\"\xf3\x01\n\x08UserInfo\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05\x65mail\x18\x03 \x01(\t\x12\x0e\n\x06groups\x18\x04 \x03(\t\x12I\n\x0fnamespace_roles\x18\x05 \x03(\x0b\x32\x30.pomerium.dashboard.UserInfo.NamespaceRolesEntry\x12\x13\n\x0bpicture_url\x18\x06 \x01(\t\x12\x17\n\x0fis_impersonated\x18\x07 \x01(\x08\x1a\x35\n\x13NamespaceRolesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"6\n\x12GetUserInfoRequest\x12\x14\n\x07user_id\x18\x01 \x01(\tH\x00\x88\x01\x01\x42\n\n\x08_user_id\"F\n\x13GetUserInfoResponse\x12/\n\tuser_info\x18\x01 \x01(\x0b\x32\x1c.pomerium.dashboard.UserInfo\"B\n\x12QueryGroupsRequest\x12\r\n\x05query\x18\x01 \x01(\t\x12\x0e\n\x06offset\x18\x02 \x01(\x03\x12\r\n\x05limit\x18\x03 \x01(\x03\"Y\n\x13QueryGroupsResponse\x12-\n\x06groups\x18\x01 \x03(\x0b\x32\x1d.pomerium.dashboard.GroupInfo\x12\x13\n\x0btotal_count\x18\x02 \x01(\x03\"A\n\x11QueryUsersRequest\x12\r\n\x05query\x18\x01 \x01(\t\x12\x0e\n\x06offset\x18\x02 \x01(\x03\x12\r\n\x05limit\x18\x03 \x01(\x03\"V\n\x12QueryUsersResponse\x12+\n\x05users\x18\x01 \x03(\x0b\x32\x1c.pomerium.dashboard.UserInfo\x12\x13\n\x0btotal_count\x18\x02 \x01(\x03\"\xea\x01\n\x16PomeriumServiceAccount\x12\n\n\x02id\x18\x01 \x01(\t\x12\x19\n\x0cnamespace_id\x18\x08 \x01(\tH\x00\x88\x01\x01\x12\x18\n\x0b\x64\x65scription\x18\t \x01(\tH\x01\x88\x01\x01\x12\x0f\n\x07user_id\x18\x02 \x01(\t\x12.\n\nexpires_at\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12-\n\tissued_at\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x0f\n\r_namespace_idB\x0e\n\x0c_description\"g\n AddPomeriumServiceAccountRequest\x12\x43\n\x0fservice_account\x18\x01 \x01(\x0b\x32*.pomerium.dashboard.PomeriumServiceAccount\"u\n!AddPomeriumServiceAccountResponse\x12\x43\n\x0fservice_account\x18\x01 \x01(\x0b\x32*.pomerium.dashboard.PomeriumServiceAccount\x12\x0b\n\x03JWT\x18\x02 \x01(\t\"1\n#DeletePomeriumServiceAccountRequest\x12\n\n\x02id\x18\x01 \x01(\t\"&\n$DeletePomeriumServiceAccountResponse\".\n GetPomeriumServiceAccountRequest\x12\n\n\x02id\x18\x01 \x01(\t\"h\n!GetPomeriumServiceAccountResponse\x12\x43\n\x0fservice_account\x18\x01 \x01(\x0b\x32*.pomerium.dashboard.PomeriumServiceAccount\"7\n\"ListPomeriumServiceAccountsRequest\x12\x11\n\tnamespace\x18\x01 \x01(\t\"k\n#ListPomeriumServiceAccountsResponse\x12\x44\n\x10service_accounts\x18\x01 \x03(\x0b\x32*.pomerium.dashboard.PomeriumServiceAccount\"\x80\x04\n\x0fPomeriumSession\x12\n\n\x02id\x18\x01 \x01(\t\x12\x36\n\x04user\x18\x02 \x01(\x0b\x32(.pomerium.dashboard.PomeriumSession.User\x12\x39\n\x06groups\x18\x03 \x03(\x0b\x32).pomerium.dashboard.PomeriumSession.Group\x12\x0e\n\x06issuer\x18\x04 \x01(\t\x12-\n\tissued_at\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12.\n\nexpires_at\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x10\n\x08\x61udience\x18\x07 \x03(\t\x12?\n\x06\x63laims\x18\x08 \x03(\x0b\x32/.pomerium.dashboard.PomeriumSession.ClaimsEntry\x1a\x30\n\x05Group\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05\x65mail\x18\x03 \x01(\t\x1a/\n\x04User\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05\x65mail\x18\x03 \x01(\t\x1aI\n\x0b\x43laimsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12)\n\x05value\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.ListValue:\x02\x38\x01\"*\n\x1c\x44\x65letePomeriumSessionRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\x1f\n\x1d\x44\x65letePomeriumSessionResponse\"\'\n\x19GetPomeriumSessionRequest\x12\n\n\x02id\x18\x01 \x01(\t\"R\n\x1aGetPomeriumSessionResponse\x12\x34\n\x07session\x18\x01 \x01(\x0b\x32#.pomerium.dashboard.PomeriumSession\"\xbf\x01\n\x1bListPomeriumSessionsRequest\x12\x12\n\x05query\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\x13\n\x06offset\x18\x02 \x01(\x03H\x01\x88\x01\x01\x12\x12\n\x05limit\x18\x03 \x01(\x03H\x02\x88\x01\x01\x12\x15\n\x08order_by\x18\x04 \x01(\tH\x03\x88\x01\x01\x12\x14\n\x07user_id\x18\x05 \x01(\tH\x04\x88\x01\x01\x42\x08\n\x06_queryB\t\n\x07_offsetB\x08\n\x06_limitB\x0b\n\t_order_byB\n\n\x08_user_id\"j\n\x1cListPomeriumSessionsResponse\x12\x35\n\x08sessions\x18\x01 \x03(\x0b\x32#.pomerium.dashboard.PomeriumSession\x12\x13\n\x0btotal_count\x18\x02 \x01(\x03\"(\n\x12ImpersonateRequest\x12\x12\n\nsession_id\x18\x01 \x01(\t\"\x15\n\x13ImpersonateResponse2\xaa\x02\n\x0bUserService\x12^\n\x0bGetUserInfo\x12&.pomerium.dashboard.GetUserInfoRequest\x1a\'.pomerium.dashboard.GetUserInfoResponse\x12^\n\x0bQueryGroups\x12&.pomerium.dashboard.QueryGroupsRequest\x1a\'.pomerium.dashboard.QueryGroupsResponse\x12[\n\nQueryUsers\x12%.pomerium.dashboard.QueryUsersRequest\x1a&.pomerium.dashboard.QueryUsersResponse2\xda\x04\n\x1dPomeriumServiceAccountService\x12\x88\x01\n\x19\x41\x64\x64PomeriumServiceAccount\x12\x34.pomerium.dashboard.AddPomeriumServiceAccountRequest\x1a\x35.pomerium.dashboard.AddPomeriumServiceAccountResponse\x12\x91\x01\n\x1c\x44\x65letePomeriumServiceAccount\x12\x37.pomerium.dashboard.DeletePomeriumServiceAccountRequest\x1a\x38.pomerium.dashboard.DeletePomeriumServiceAccountResponse\x12\x88\x01\n\x19GetPomeriumServiceAccount\x12\x34.pomerium.dashboard.GetPomeriumServiceAccountRequest\x1a\x35.pomerium.dashboard.GetPomeriumServiceAccountResponse\x12\x8e\x01\n\x1bListPomeriumServiceAccounts\x12\x36.pomerium.dashboard.ListPomeriumServiceAccountsRequest\x1a\x37.pomerium.dashboard.ListPomeriumServiceAccountsResponse2\xe6\x03\n\x16PomeriumSessionService\x12|\n\x15\x44\x65letePomeriumSession\x12\x30.pomerium.dashboard.DeletePomeriumSessionRequest\x1a\x31.pomerium.dashboard.DeletePomeriumSessionResponse\x12s\n\x12GetPomeriumSession\x12-.pomerium.dashboard.GetPomeriumSessionRequest\x1a..pomerium.dashboard.GetPomeriumSessionResponse\x12^\n\x0bImpersonate\x12&.pomerium.dashboard.ImpersonateRequest\x1a\'.pomerium.dashboard.ImpersonateResponse\x12y\n\x14ListPomeriumSessions\x12/.pomerium.dashboard.ListPomeriumSessionsRequest\x1a\x30.pomerium.dashboard.ListPomeriumSessionsResponseB-Z+github.com/pomerium/pomerium-console/pkg/pbb\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,google_dot_protobuf_dot_struct__pb2.DESCRIPTOR,])
 
@@ -508,21 +508,28 @@ _POMERIUMSERVICEACCOUNT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='user_id', full_name='pomerium.dashboard.PomeriumServiceAccount.user_id', index=2,
+      name='description', full_name='pomerium.dashboard.PomeriumServiceAccount.description', index=2,
+      number=9, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='user_id', full_name='pomerium.dashboard.PomeriumServiceAccount.user_id', index=3,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='expires_at', full_name='pomerium.dashboard.PomeriumServiceAccount.expires_at', index=3,
+      name='expires_at', full_name='pomerium.dashboard.PomeriumServiceAccount.expires_at', index=4,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='issued_at', full_name='pomerium.dashboard.PomeriumServiceAccount.issued_at', index=4,
+      name='issued_at', full_name='pomerium.dashboard.PomeriumServiceAccount.issued_at', index=5,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -544,9 +551,14 @@ _POMERIUMSERVICEACCOUNT = _descriptor.Descriptor(
       index=0, containing_type=None,
       create_key=_descriptor._internal_create_key,
     fields=[]),
+    _descriptor.OneofDescriptor(
+      name='_description', full_name='pomerium.dashboard.PomeriumServiceAccount._description',
+      index=1, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[]),
   ],
   serialized_start=1040,
-  serialized_end=1232,
+  serialized_end=1274,
 )
 
 
@@ -577,8 +589,8 @@ _ADDPOMERIUMSERVICEACCOUNTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1234,
-  serialized_end=1337,
+  serialized_start=1276,
+  serialized_end=1379,
 )
 
 
@@ -616,8 +628,8 @@ _ADDPOMERIUMSERVICEACCOUNTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1339,
-  serialized_end=1456,
+  serialized_start=1381,
+  serialized_end=1498,
 )
 
 
@@ -648,8 +660,8 @@ _DELETEPOMERIUMSERVICEACCOUNTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1458,
-  serialized_end=1507,
+  serialized_start=1500,
+  serialized_end=1549,
 )
 
 
@@ -673,8 +685,8 @@ _DELETEPOMERIUMSERVICEACCOUNTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1509,
-  serialized_end=1547,
+  serialized_start=1551,
+  serialized_end=1589,
 )
 
 
@@ -705,8 +717,8 @@ _GETPOMERIUMSERVICEACCOUNTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1549,
-  serialized_end=1595,
+  serialized_start=1591,
+  serialized_end=1637,
 )
 
 
@@ -737,8 +749,8 @@ _GETPOMERIUMSERVICEACCOUNTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1597,
-  serialized_end=1701,
+  serialized_start=1639,
+  serialized_end=1743,
 )
 
 
@@ -769,8 +781,8 @@ _LISTPOMERIUMSERVICEACCOUNTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1703,
-  serialized_end=1758,
+  serialized_start=1745,
+  serialized_end=1800,
 )
 
 
@@ -801,8 +813,8 @@ _LISTPOMERIUMSERVICEACCOUNTSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1760,
-  serialized_end=1867,
+  serialized_start=1802,
+  serialized_end=1909,
 )
 
 
@@ -847,8 +859,8 @@ _POMERIUMSESSION_GROUP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2210,
-  serialized_end=2258,
+  serialized_start=2252,
+  serialized_end=2300,
 )
 
 _POMERIUMSESSION_USER = _descriptor.Descriptor(
@@ -892,8 +904,8 @@ _POMERIUMSESSION_USER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2260,
-  serialized_end=2307,
+  serialized_start=2302,
+  serialized_end=2349,
 )
 
 _POMERIUMSESSION_CLAIMSENTRY = _descriptor.Descriptor(
@@ -930,8 +942,8 @@ _POMERIUMSESSION_CLAIMSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2309,
-  serialized_end=2382,
+  serialized_start=2351,
+  serialized_end=2424,
 )
 
 _POMERIUMSESSION = _descriptor.Descriptor(
@@ -1010,8 +1022,8 @@ _POMERIUMSESSION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1870,
-  serialized_end=2382,
+  serialized_start=1912,
+  serialized_end=2424,
 )
 
 
@@ -1042,8 +1054,8 @@ _DELETEPOMERIUMSESSIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2384,
-  serialized_end=2426,
+  serialized_start=2426,
+  serialized_end=2468,
 )
 
 
@@ -1067,8 +1079,8 @@ _DELETEPOMERIUMSESSIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2428,
-  serialized_end=2459,
+  serialized_start=2470,
+  serialized_end=2501,
 )
 
 
@@ -1099,8 +1111,8 @@ _GETPOMERIUMSESSIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2461,
-  serialized_end=2500,
+  serialized_start=2503,
+  serialized_end=2542,
 )
 
 
@@ -1131,8 +1143,8 @@ _GETPOMERIUMSESSIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2502,
-  serialized_end=2584,
+  serialized_start=2544,
+  serialized_end=2626,
 )
 
 
@@ -1216,8 +1228,8 @@ _LISTPOMERIUMSESSIONSREQUEST = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=2587,
-  serialized_end=2778,
+  serialized_start=2629,
+  serialized_end=2820,
 )
 
 
@@ -1255,8 +1267,8 @@ _LISTPOMERIUMSESSIONSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2780,
-  serialized_end=2886,
+  serialized_start=2822,
+  serialized_end=2928,
 )
 
 
@@ -1287,8 +1299,8 @@ _IMPERSONATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2888,
-  serialized_end=2928,
+  serialized_start=2930,
+  serialized_end=2970,
 )
 
 
@@ -1312,8 +1324,8 @@ _IMPERSONATERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2930,
-  serialized_end=2951,
+  serialized_start=2972,
+  serialized_end=2993,
 )
 
 _RECOVERYTOKEN.fields_by_name['created_at'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
@@ -1332,6 +1344,9 @@ _POMERIUMSERVICEACCOUNT.fields_by_name['issued_at'].message_type = google_dot_pr
 _POMERIUMSERVICEACCOUNT.oneofs_by_name['_namespace_id'].fields.append(
   _POMERIUMSERVICEACCOUNT.fields_by_name['namespace_id'])
 _POMERIUMSERVICEACCOUNT.fields_by_name['namespace_id'].containing_oneof = _POMERIUMSERVICEACCOUNT.oneofs_by_name['_namespace_id']
+_POMERIUMSERVICEACCOUNT.oneofs_by_name['_description'].fields.append(
+  _POMERIUMSERVICEACCOUNT.fields_by_name['description'])
+_POMERIUMSERVICEACCOUNT.fields_by_name['description'].containing_oneof = _POMERIUMSERVICEACCOUNT.oneofs_by_name['_description']
 _ADDPOMERIUMSERVICEACCOUNTREQUEST.fields_by_name['service_account'].message_type = _POMERIUMSERVICEACCOUNT
 _ADDPOMERIUMSERVICEACCOUNTRESPONSE.fields_by_name['service_account'].message_type = _POMERIUMSERVICEACCOUNT
 _GETPOMERIUMSERVICEACCOUNTRESPONSE.fields_by_name['service_account'].message_type = _POMERIUMSERVICEACCOUNT
@@ -1624,8 +1639,8 @@ _USERSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=2954,
-  serialized_end=3252,
+  serialized_start=2996,
+  serialized_end=3294,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetUserInfo',
@@ -1670,8 +1685,8 @@ _POMERIUMSERVICEACCOUNTSERVICE = _descriptor.ServiceDescriptor(
   index=1,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=3255,
-  serialized_end=3857,
+  serialized_start=3297,
+  serialized_end=3899,
   methods=[
   _descriptor.MethodDescriptor(
     name='AddPomeriumServiceAccount',
@@ -1726,8 +1741,8 @@ _POMERIUMSESSIONSERVICE = _descriptor.ServiceDescriptor(
   index=2,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=3860,
-  serialized_end=4346,
+  serialized_start=3902,
+  serialized_end=4388,
   methods=[
   _descriptor.MethodDescriptor(
     name='DeletePomeriumSession',
