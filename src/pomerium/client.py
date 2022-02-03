@@ -1,5 +1,6 @@
 import grpc
 from pomerium.pb.activity_log_pb2_grpc import ActivityLogServiceStub
+from pomerium.pb.devices_pb2_grpc import DeviceServiceStub
 from pomerium.pb.key_chain_pb2_grpc import KeyChainServiceStub
 from pomerium.pb.namespaces_pb2_grpc import NamespacePermissionServiceStub
 from pomerium.pb.namespaces_pb2_grpc import NamespaceServiceStub
@@ -61,6 +62,7 @@ class Client(object):
                              root_certificates, private_key, certificate_chain, options)
 
         self.ActivityLogService = ActivityLogServiceStub(self.channel)
+        self.DeviceService = DeviceServiceStub(self.channel)
         self.KeyChainService = KeyChainServiceStub(self.channel)
         self.NamespacePermissionService = NamespacePermissionServiceStub(
             self.channel)
