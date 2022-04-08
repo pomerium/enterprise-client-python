@@ -8,6 +8,7 @@ import envoy.config.route.v3.route_components_pb2
 import google.protobuf.descriptor
 import google.protobuf.duration_pb2
 import google.protobuf.internal.containers
+import google.protobuf.internal.enum_type_wrapper
 import google.protobuf.message
 import google.protobuf.timestamp_pb2
 import policy_pb2
@@ -38,6 +39,20 @@ global___RouteRewriteHeader = RouteRewriteHeader
 class Route(google.protobuf.message.Message):
     """Route defines a proxy route's settings and policy associations"""
     DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    class AuthorizationHeaderMode(_AuthorizationHeaderMode, metaclass=_AuthorizationHeaderModeEnumTypeWrapper):
+        pass
+    class _AuthorizationHeaderMode:
+        V = typing.NewType('V', builtins.int)
+    class _AuthorizationHeaderModeEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_AuthorizationHeaderMode.V], builtins.type):
+        DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor = ...
+        PASS_THROUGH = Route.AuthorizationHeaderMode.V(0)
+        ACCESS_TOKEN = Route.AuthorizationHeaderMode.V(1)
+        ID_TOKEN = Route.AuthorizationHeaderMode.V(2)
+
+    PASS_THROUGH = Route.AuthorizationHeaderMode.V(0)
+    ACCESS_TOKEN = Route.AuthorizationHeaderMode.V(1)
+    ID_TOKEN = Route.AuthorizationHeaderMode.V(2)
+
     class SetRequestHeadersEntry(google.protobuf.message.Message):
         DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
         KEY_FIELD_NUMBER: builtins.int
@@ -83,6 +98,7 @@ class Route(google.protobuf.message.Message):
     SET_REQUEST_HEADERS_FIELD_NUMBER: builtins.int
     REMOVE_REQUEST_HEADERS_FIELD_NUMBER: builtins.int
     REWRITE_RESPONSE_HEADERS_FIELD_NUMBER: builtins.int
+    SET_AUTHORIZATION_HEADER_FIELD_NUMBER: builtins.int
     PRESERVE_HOST_HEADER_FIELD_NUMBER: builtins.int
     PASS_IDENTITY_HEADERS_FIELD_NUMBER: builtins.int
     KUBERNETES_SERVICE_ACCOUNT_TOKEN_FIELD_NUMBER: builtins.int
@@ -134,6 +150,7 @@ class Route(google.protobuf.message.Message):
     def remove_request_headers(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]: ...
     @property
     def rewrite_response_headers(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___RouteRewriteHeader]: ...
+    set_authorization_header: global___Route.AuthorizationHeaderMode.V = ...
     preserve_host_header: builtins.bool = ...
     pass_identity_headers: builtins.bool = ...
     kubernetes_service_account_token: typing.Text = ...
@@ -186,6 +203,7 @@ class Route(google.protobuf.message.Message):
         set_request_headers : typing.Optional[typing.Mapping[typing.Text, typing.Text]] = ...,
         remove_request_headers : typing.Optional[typing.Iterable[typing.Text]] = ...,
         rewrite_response_headers : typing.Optional[typing.Iterable[global___RouteRewriteHeader]] = ...,
+        set_authorization_header : global___Route.AuthorizationHeaderMode.V = ...,
         preserve_host_header : builtins.bool = ...,
         pass_identity_headers : builtins.bool = ...,
         kubernetes_service_account_token : typing.Text = ...,
@@ -197,7 +215,7 @@ class Route(google.protobuf.message.Message):
         namespace_name : typing.Text = ...,
         ) -> None: ...
     def HasField(self, field_name: typing_extensions.Literal[u"_allow_spdy",b"_allow_spdy",u"_allow_websockets",b"_allow_websockets",u"_host_path_regex_rewrite_pattern",b"_host_path_regex_rewrite_pattern",u"_host_path_regex_rewrite_substitution",b"_host_path_regex_rewrite_substitution",u"_host_rewrite",b"_host_rewrite",u"_host_rewrite_header",b"_host_rewrite_header",u"_idle_timeout",b"_idle_timeout",u"_kubernetes_service_account_token",b"_kubernetes_service_account_token",u"_pass_identity_headers",b"_pass_identity_headers",u"_path",b"_path",u"_prefix",b"_prefix",u"_prefix_rewrite",b"_prefix_rewrite",u"_preserve_host_header",b"_preserve_host_header",u"_regex",b"_regex",u"_regex_priority_order",b"_regex_priority_order",u"_regex_rewrite_pattern",b"_regex_rewrite_pattern",u"_regex_rewrite_substitution",b"_regex_rewrite_substitution",u"_timeout",b"_timeout",u"_tls_client_key_pair_id",b"_tls_client_key_pair_id",u"_tls_custom_ca_key_pair_id",b"_tls_custom_ca_key_pair_id",u"_tls_downstream_client_ca_key_pair_id",b"_tls_downstream_client_ca_key_pair_id",u"_tls_server_name",b"_tls_server_name",u"_tls_skip_verify",b"_tls_skip_verify",u"allow_spdy",b"allow_spdy",u"allow_websockets",b"allow_websockets",u"created_at",b"created_at",u"deleted_at",b"deleted_at",u"envoy_opts",b"envoy_opts",u"host_path_regex_rewrite_pattern",b"host_path_regex_rewrite_pattern",u"host_path_regex_rewrite_substitution",b"host_path_regex_rewrite_substitution",u"host_rewrite",b"host_rewrite",u"host_rewrite_header",b"host_rewrite_header",u"idle_timeout",b"idle_timeout",u"kubernetes_service_account_token",b"kubernetes_service_account_token",u"modified_at",b"modified_at",u"pass_identity_headers",b"pass_identity_headers",u"path",b"path",u"prefix",b"prefix",u"prefix_rewrite",b"prefix_rewrite",u"preserve_host_header",b"preserve_host_header",u"redirect",b"redirect",u"regex",b"regex",u"regex_priority_order",b"regex_priority_order",u"regex_rewrite_pattern",b"regex_rewrite_pattern",u"regex_rewrite_substitution",b"regex_rewrite_substitution",u"timeout",b"timeout",u"tls_client_key_pair_id",b"tls_client_key_pair_id",u"tls_custom_ca_key_pair_id",b"tls_custom_ca_key_pair_id",u"tls_downstream_client_ca_key_pair_id",b"tls_downstream_client_ca_key_pair_id",u"tls_server_name",b"tls_server_name",u"tls_skip_verify",b"tls_skip_verify"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"_allow_spdy",b"_allow_spdy",u"_allow_websockets",b"_allow_websockets",u"_host_path_regex_rewrite_pattern",b"_host_path_regex_rewrite_pattern",u"_host_path_regex_rewrite_substitution",b"_host_path_regex_rewrite_substitution",u"_host_rewrite",b"_host_rewrite",u"_host_rewrite_header",b"_host_rewrite_header",u"_idle_timeout",b"_idle_timeout",u"_kubernetes_service_account_token",b"_kubernetes_service_account_token",u"_pass_identity_headers",b"_pass_identity_headers",u"_path",b"_path",u"_prefix",b"_prefix",u"_prefix_rewrite",b"_prefix_rewrite",u"_preserve_host_header",b"_preserve_host_header",u"_regex",b"_regex",u"_regex_priority_order",b"_regex_priority_order",u"_regex_rewrite_pattern",b"_regex_rewrite_pattern",u"_regex_rewrite_substitution",b"_regex_rewrite_substitution",u"_timeout",b"_timeout",u"_tls_client_key_pair_id",b"_tls_client_key_pair_id",u"_tls_custom_ca_key_pair_id",b"_tls_custom_ca_key_pair_id",u"_tls_downstream_client_ca_key_pair_id",b"_tls_downstream_client_ca_key_pair_id",u"_tls_server_name",b"_tls_server_name",u"_tls_skip_verify",b"_tls_skip_verify",u"allow_spdy",b"allow_spdy",u"allow_websockets",b"allow_websockets",u"created_at",b"created_at",u"deleted_at",b"deleted_at",u"enable_google_cloud_serverless_authentication",b"enable_google_cloud_serverless_authentication",u"envoy_opts",b"envoy_opts",u"from",b"from",u"host_path_regex_rewrite_pattern",b"host_path_regex_rewrite_pattern",u"host_path_regex_rewrite_substitution",b"host_path_regex_rewrite_substitution",u"host_rewrite",b"host_rewrite",u"host_rewrite_header",b"host_rewrite_header",u"id",b"id",u"idle_timeout",b"idle_timeout",u"kubernetes_service_account_token",b"kubernetes_service_account_token",u"modified_at",b"modified_at",u"name",b"name",u"namespace_id",b"namespace_id",u"namespace_name",b"namespace_name",u"pass_identity_headers",b"pass_identity_headers",u"path",b"path",u"policy_ids",b"policy_ids",u"policy_names",b"policy_names",u"prefix",b"prefix",u"prefix_rewrite",b"prefix_rewrite",u"preserve_host_header",b"preserve_host_header",u"redirect",b"redirect",u"regex",b"regex",u"regex_priority_order",b"regex_priority_order",u"regex_rewrite_pattern",b"regex_rewrite_pattern",u"regex_rewrite_substitution",b"regex_rewrite_substitution",u"remove_request_headers",b"remove_request_headers",u"rewrite_response_headers",b"rewrite_response_headers",u"set_request_headers",b"set_request_headers",u"stat_name",b"stat_name",u"timeout",b"timeout",u"tls_client_key_pair_id",b"tls_client_key_pair_id",u"tls_custom_ca_key_pair_id",b"tls_custom_ca_key_pair_id",u"tls_downstream_client_ca_key_pair_id",b"tls_downstream_client_ca_key_pair_id",u"tls_server_name",b"tls_server_name",u"tls_skip_verify",b"tls_skip_verify",u"to",b"to"]) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal[u"_allow_spdy",b"_allow_spdy",u"_allow_websockets",b"_allow_websockets",u"_host_path_regex_rewrite_pattern",b"_host_path_regex_rewrite_pattern",u"_host_path_regex_rewrite_substitution",b"_host_path_regex_rewrite_substitution",u"_host_rewrite",b"_host_rewrite",u"_host_rewrite_header",b"_host_rewrite_header",u"_idle_timeout",b"_idle_timeout",u"_kubernetes_service_account_token",b"_kubernetes_service_account_token",u"_pass_identity_headers",b"_pass_identity_headers",u"_path",b"_path",u"_prefix",b"_prefix",u"_prefix_rewrite",b"_prefix_rewrite",u"_preserve_host_header",b"_preserve_host_header",u"_regex",b"_regex",u"_regex_priority_order",b"_regex_priority_order",u"_regex_rewrite_pattern",b"_regex_rewrite_pattern",u"_regex_rewrite_substitution",b"_regex_rewrite_substitution",u"_timeout",b"_timeout",u"_tls_client_key_pair_id",b"_tls_client_key_pair_id",u"_tls_custom_ca_key_pair_id",b"_tls_custom_ca_key_pair_id",u"_tls_downstream_client_ca_key_pair_id",b"_tls_downstream_client_ca_key_pair_id",u"_tls_server_name",b"_tls_server_name",u"_tls_skip_verify",b"_tls_skip_verify",u"allow_spdy",b"allow_spdy",u"allow_websockets",b"allow_websockets",u"created_at",b"created_at",u"deleted_at",b"deleted_at",u"enable_google_cloud_serverless_authentication",b"enable_google_cloud_serverless_authentication",u"envoy_opts",b"envoy_opts",u"from",b"from",u"host_path_regex_rewrite_pattern",b"host_path_regex_rewrite_pattern",u"host_path_regex_rewrite_substitution",b"host_path_regex_rewrite_substitution",u"host_rewrite",b"host_rewrite",u"host_rewrite_header",b"host_rewrite_header",u"id",b"id",u"idle_timeout",b"idle_timeout",u"kubernetes_service_account_token",b"kubernetes_service_account_token",u"modified_at",b"modified_at",u"name",b"name",u"namespace_id",b"namespace_id",u"namespace_name",b"namespace_name",u"pass_identity_headers",b"pass_identity_headers",u"path",b"path",u"policy_ids",b"policy_ids",u"policy_names",b"policy_names",u"prefix",b"prefix",u"prefix_rewrite",b"prefix_rewrite",u"preserve_host_header",b"preserve_host_header",u"redirect",b"redirect",u"regex",b"regex",u"regex_priority_order",b"regex_priority_order",u"regex_rewrite_pattern",b"regex_rewrite_pattern",u"regex_rewrite_substitution",b"regex_rewrite_substitution",u"remove_request_headers",b"remove_request_headers",u"rewrite_response_headers",b"rewrite_response_headers",u"set_authorization_header",b"set_authorization_header",u"set_request_headers",b"set_request_headers",u"stat_name",b"stat_name",u"timeout",b"timeout",u"tls_client_key_pair_id",b"tls_client_key_pair_id",u"tls_custom_ca_key_pair_id",b"tls_custom_ca_key_pair_id",u"tls_downstream_client_ca_key_pair_id",b"tls_downstream_client_ca_key_pair_id",u"tls_server_name",b"tls_server_name",u"tls_skip_verify",b"tls_skip_verify",u"to",b"to"]) -> None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_allow_spdy",b"_allow_spdy"]) -> typing.Optional[typing_extensions.Literal["allow_spdy"]]: ...
     @typing.overload

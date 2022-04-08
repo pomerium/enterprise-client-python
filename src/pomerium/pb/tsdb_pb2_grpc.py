@@ -68,6 +68,16 @@ class TimeSeriesDBStub(object):
                 request_serializer=tsdb__pb2.GetStatusRequest.SerializeToString,
                 response_deserializer=tsdb__pb2.GetStatusResponse.FromString,
                 )
+        self.GetLastError = channel.unary_unary(
+                '/pomerium.dashboard.TimeSeriesDB/GetLastError',
+                request_serializer=tsdb__pb2.LastErrorRequest.SerializeToString,
+                response_deserializer=tsdb__pb2.LastErrorResponse.FromString,
+                )
+        self.GetUsageReport = channel.unary_unary(
+                '/pomerium.dashboard.TimeSeriesDB/GetUsageReport',
+                request_serializer=tsdb__pb2.UsageReportRequest.SerializeToString,
+                response_deserializer=tsdb__pb2.UsageReportResponse.FromString,
+                )
 
 
 class TimeSeriesDBServicer(object):
@@ -147,6 +157,20 @@ class TimeSeriesDBServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetLastError(self, request, context):
+        """returns last known error for a metric, if available
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetUsageReport(self, request, context):
+        """returns usage report
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_TimeSeriesDBServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -199,6 +223,16 @@ def add_TimeSeriesDBServicer_to_server(servicer, server):
                     servicer.GetStatus,
                     request_deserializer=tsdb__pb2.GetStatusRequest.FromString,
                     response_serializer=tsdb__pb2.GetStatusResponse.SerializeToString,
+            ),
+            'GetLastError': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetLastError,
+                    request_deserializer=tsdb__pb2.LastErrorRequest.FromString,
+                    response_serializer=tsdb__pb2.LastErrorResponse.SerializeToString,
+            ),
+            'GetUsageReport': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetUsageReport,
+                    request_deserializer=tsdb__pb2.UsageReportRequest.FromString,
+                    response_serializer=tsdb__pb2.UsageReportResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -381,5 +415,39 @@ class TimeSeriesDB(object):
         return grpc.experimental.unary_unary(request, target, '/pomerium.dashboard.TimeSeriesDB/GetStatus',
             tsdb__pb2.GetStatusRequest.SerializeToString,
             tsdb__pb2.GetStatusResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetLastError(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/pomerium.dashboard.TimeSeriesDB/GetLastError',
+            tsdb__pb2.LastErrorRequest.SerializeToString,
+            tsdb__pb2.LastErrorResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetUsageReport(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/pomerium.dashboard.TimeSeriesDB/GetUsageReport',
+            tsdb__pb2.UsageReportRequest.SerializeToString,
+            tsdb__pb2.UsageReportResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

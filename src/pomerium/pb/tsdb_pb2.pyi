@@ -159,6 +159,10 @@ class _MetricEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTyp
     PROMETHEUS_STORAGE_BYTES = Metric.V(80)
     """prometheus metrics"""
 
+    MONTHLY_ACTIVE_USERS_THRESHOLD = Metric.V(90)
+    """console metrics"""
+
+    MONTHLY_ACTIVE_USERS = Metric.V(91)
 
 UNDEFINED_METRIC_DO_NOT_USE = Metric.V(0)
 REQUESTS = Metric.V(1)
@@ -273,6 +277,10 @@ CONFIG_CONSOLE_VERSION = Metric.V(76)
 PROMETHEUS_STORAGE_BYTES = Metric.V(80)
 """prometheus metrics"""
 
+MONTHLY_ACTIVE_USERS_THRESHOLD = Metric.V(90)
+"""console metrics"""
+
+MONTHLY_ACTIVE_USERS = Metric.V(91)
 global___Metric = Metric
 
 
@@ -589,6 +597,73 @@ class ServerMetricRequest(google.protobuf.message.Message):
         ) -> None: ...
     def ClearField(self, field_name: typing_extensions.Literal[u"component",b"component",u"instance_id",b"instance_id",u"metric",b"metric"]) -> None: ...
 global___ServerMetricRequest = ServerMetricRequest
+
+class ConsoleMetricRequest(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    METRIC_FIELD_NUMBER: builtins.int
+    metric: global___Metric.V = ...
+    def __init__(self,
+        *,
+        metric : global___Metric.V = ...,
+        ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal[u"metric",b"metric"]) -> None: ...
+global___ConsoleMetricRequest = ConsoleMetricRequest
+
+class ConsoleMetricSeriesRequest(google.protobuf.message.Message):
+    """Requests console metric time series"""
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    METRIC_FIELD_NUMBER: builtins.int
+    START_FIELD_NUMBER: builtins.int
+    END_FIELD_NUMBER: builtins.int
+    metric: global___Metric.V = ...
+    """metric to retrieve"""
+
+    @property
+    def start(self) -> google.protobuf.timestamp_pb2.Timestamp:
+        """Start time"""
+        pass
+    @property
+    def end(self) -> google.protobuf.timestamp_pb2.Timestamp:
+        """End time"""
+        pass
+    def __init__(self,
+        *,
+        metric : global___Metric.V = ...,
+        start : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
+        end : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
+        ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal[u"end",b"end",u"start",b"start"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal[u"end",b"end",u"metric",b"metric",u"start",b"start"]) -> None: ...
+global___ConsoleMetricSeriesRequest = ConsoleMetricSeriesRequest
+
+class LastErrorRequest(google.protobuf.message.Message):
+    """LastErrorRequest will fetch last known error for certain error-related metrics"""
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    METRIC_FIELD_NUMBER: builtins.int
+    metric: global___Metric.V = ...
+    def __init__(self,
+        *,
+        metric : global___Metric.V = ...,
+        ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal[u"metric",b"metric"]) -> None: ...
+global___LastErrorRequest = LastErrorRequest
+
+class LastErrorResponse(google.protobuf.message.Message):
+    """LastErrorResponse returns last known error for certain error-related metrics"""
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    TS_FIELD_NUMBER: builtins.int
+    MESSAGE_FIELD_NUMBER: builtins.int
+    @property
+    def ts(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
+    message: typing.Text = ...
+    def __init__(self,
+        *,
+        ts : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
+        message : typing.Text = ...,
+        ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal[u"ts",b"ts"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal[u"message",b"message",u"ts",b"ts"]) -> None: ...
+global___LastErrorResponse = LastErrorResponse
 
 class RouteMetricChangeRequest(google.protobuf.message.Message):
     """Used to request a particular metric change within a given period of time"""
@@ -907,6 +982,23 @@ class GetStatusResponse(google.protobuf.message.Message):
     def ClearField(self, field_name: typing_extensions.Literal[u"last_error",b"last_error",u"ok",b"ok",u"status",b"status",u"targets",b"targets"]) -> None: ...
     def WhichOneof(self, oneof_group: typing_extensions.Literal[u"status",b"status"]) -> typing.Optional[typing_extensions.Literal["ok","last_error"]]: ...
 global___GetStatusResponse = GetStatusResponse
+
+class UsageReportRequest(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    def __init__(self,
+        ) -> None: ...
+global___UsageReportRequest = UsageReportRequest
+
+class UsageReportResponse(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    REPORT_FIELD_NUMBER: builtins.int
+    report: builtins.bytes = ...
+    def __init__(self,
+        *,
+        report : builtins.bytes = ...,
+        ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal[u"report",b"report"]) -> None: ...
+global___UsageReportResponse = UsageReportResponse
 
 class Labels(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...

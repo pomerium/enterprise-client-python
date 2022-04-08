@@ -63,6 +63,16 @@ class TimeSeriesDBStub:
         tsdb_pb2.GetStatusResponse] = ...
     """returns current status of scraping targets"""
 
+    GetLastError: grpc.UnaryUnaryMultiCallable[
+        tsdb_pb2.LastErrorRequest,
+        tsdb_pb2.LastErrorResponse] = ...
+    """returns last known error for a metric, if available"""
+
+    GetUsageReport: grpc.UnaryUnaryMultiCallable[
+        tsdb_pb2.UsageReportRequest,
+        tsdb_pb2.UsageReportResponse] = ...
+    """returns usage report"""
+
 
 class TimeSeriesDBServicer(metaclass=abc.ABCMeta):
     """TimeSeriesDB is a generic service that is meant to be able to query for
@@ -148,6 +158,22 @@ class TimeSeriesDBServicer(metaclass=abc.ABCMeta):
         context: grpc.ServicerContext,
     ) -> tsdb_pb2.GetStatusResponse:
         """returns current status of scraping targets"""
+        pass
+
+    @abc.abstractmethod
+    def GetLastError(self,
+        request: tsdb_pb2.LastErrorRequest,
+        context: grpc.ServicerContext,
+    ) -> tsdb_pb2.LastErrorResponse:
+        """returns last known error for a metric, if available"""
+        pass
+
+    @abc.abstractmethod
+    def GetUsageReport(self,
+        request: tsdb_pb2.UsageReportRequest,
+        context: grpc.ServicerContext,
+    ) -> tsdb_pb2.UsageReportResponse:
+        """returns usage report"""
         pass
 
 

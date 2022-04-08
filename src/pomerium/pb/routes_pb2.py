@@ -24,11 +24,41 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'Z+github.com/pomerium/pomerium-console/pkg/pb',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0croutes.proto\x12\x12pomerium.dashboard\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a%envoy/config/cluster/v3/cluster.proto\x1a,envoy/config/route/v3/route_components.proto\x1a\x0cpolicy.proto\"P\n\x12RouteRewriteHeader\x12\x0e\n\x06header\x18\x01 \x01(\t\x12\x10\n\x06prefix\x18\x03 \x01(\tH\x00\x12\r\n\x05value\x18\x02 \x01(\tB\t\n\x07matcher\"\xa4\x10\n\x05Route\x12\n\n\x02id\x18\x01 \x01(\t\x12\x14\n\x0cnamespace_id\x18\x1d \x01(\t\x12.\n\ncreated_at\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bmodified_at\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12.\n\ndeleted_at\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x0c\n\x04name\x18\x05 \x01(\t\x12\x11\n\tstat_name\x18/ \x01(\t\x12\x0c\n\x04\x66rom\x18\x06 \x01(\t\x12\n\n\x02to\x18\x07 \x03(\t\x12\x13\n\x06prefix\x18\x08 \x01(\tH\x00\x88\x01\x01\x12\x11\n\x04path\x18\t \x01(\tH\x01\x88\x01\x01\x12\x12\n\x05regex\x18\n \x01(\tH\x02\x88\x01\x01\x12\x1b\n\x0eprefix_rewrite\x18$ \x01(\tH\x03\x88\x01\x01\x12\"\n\x15regex_rewrite_pattern\x18% \x01(\tH\x04\x88\x01\x01\x12\'\n\x1aregex_rewrite_substitution\x18& \x01(\tH\x05\x88\x01\x01\x12\x19\n\x0chost_rewrite\x18\x1e \x01(\tH\x06\x88\x01\x01\x12 \n\x13host_rewrite_header\x18\x1f \x01(\tH\x07\x88\x01\x01\x12,\n\x1fhost_path_regex_rewrite_pattern\x18  \x01(\tH\x08\x88\x01\x01\x12\x31\n$host_path_regex_rewrite_substitution\x18! \x01(\tH\t\x88\x01\x01\x12!\n\x14regex_priority_order\x18- \x01(\x03H\n\x88\x01\x01\x12/\n\x07timeout\x18\r \x01(\x0b\x32\x19.google.protobuf.DurationH\x0b\x88\x01\x01\x12\x34\n\x0cidle_timeout\x18\x30 \x01(\x0b\x32\x19.google.protobuf.DurationH\x0c\x88\x01\x01\x12\x1d\n\x10\x61llow_websockets\x18\x0e \x01(\x08H\r\x88\x01\x01\x12\x17\n\nallow_spdy\x18\x31 \x01(\x08H\x0e\x88\x01\x01\x12\x1c\n\x0ftls_skip_verify\x18\x0f \x01(\x08H\x0f\x88\x01\x01\x12\x1c\n\x0ftls_server_name\x18\x10 \x01(\tH\x10\x88\x01\x01\x12&\n\x19tls_custom_ca_key_pair_id\x18) \x01(\tH\x11\x88\x01\x01\x12#\n\x16tls_client_key_pair_id\x18* \x01(\tH\x12\x88\x01\x01\x12\x31\n$tls_downstream_client_ca_key_pair_id\x18+ \x01(\tH\x13\x88\x01\x01\x12M\n\x13set_request_headers\x18\x17 \x03(\x0b\x32\x30.pomerium.dashboard.Route.SetRequestHeadersEntry\x12\x1e\n\x16remove_request_headers\x18\x18 \x03(\t\x12H\n\x18rewrite_response_headers\x18, \x03(\x0b\x32&.pomerium.dashboard.RouteRewriteHeader\x12!\n\x14preserve_host_header\x18\x19 \x01(\x08H\x14\x88\x01\x01\x12\"\n\x15pass_identity_headers\x18\x1a \x01(\x08H\x15\x88\x01\x01\x12-\n kubernetes_service_account_token\x18\x1b \x01(\tH\x16\x88\x01\x01\x12\x34\n\nenvoy_opts\x18\' \x01(\x0b\x32 .envoy.config.cluster.v3.Cluster\x12\x37\n\x08redirect\x18( \x01(\x0b\x32%.envoy.config.route.v3.RedirectAction\x12\x35\n-enable_google_cloud_serverless_authentication\x18. \x01(\x08\x12\x12\n\npolicy_ids\x18\x1c \x03(\t\x12\x14\n\x0cpolicy_names\x18\" \x03(\t\x12\x16\n\x0enamespace_name\x18# \x01(\t\x1a\x38\n\x16SetRequestHeadersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\t\n\x07_prefixB\x07\n\x05_pathB\x08\n\x06_regexB\x11\n\x0f_prefix_rewriteB\x18\n\x16_regex_rewrite_patternB\x1d\n\x1b_regex_rewrite_substitutionB\x0f\n\r_host_rewriteB\x16\n\x14_host_rewrite_headerB\"\n _host_path_regex_rewrite_patternB\'\n%_host_path_regex_rewrite_substitutionB\x17\n\x15_regex_priority_orderB\n\n\x08_timeoutB\x0f\n\r_idle_timeoutB\x13\n\x11_allow_websocketsB\r\n\x0b_allow_spdyB\x12\n\x10_tls_skip_verifyB\x12\n\x10_tls_server_nameB\x1c\n\x1a_tls_custom_ca_key_pair_idB\x19\n\x17_tls_client_key_pair_idB\'\n%_tls_downstream_client_ca_key_pair_idB\x17\n\x15_preserve_host_headerB\x18\n\x16_pass_identity_headersB#\n!_kubernetes_service_account_token\"k\n\x11RouteWithPolicies\x12(\n\x05route\x18\x01 \x01(\x0b\x32\x19.pomerium.dashboard.Route\x12,\n\x08policies\x18\x02 \x03(\x0b\x32\x1a.pomerium.dashboard.Policy\" \n\x12\x44\x65leteRouteRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\x15\n\x13\x44\x65leteRouteResponse\"\x1d\n\x0fGetRouteRequest\x12\n\n\x02id\x18\x01 \x01(\t\"<\n\x10GetRouteResponse\x12(\n\x05route\x18\x01 \x01(\x0b\x32\x19.pomerium.dashboard.Route\"\xa6\x01\n\x11ListRoutesRequest\x12\x11\n\tnamespace\x18\x01 \x01(\t\x12\x12\n\x05query\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x13\n\x06offset\x18\x03 \x01(\x03H\x01\x88\x01\x01\x12\x12\n\x05limit\x18\x04 \x01(\x03H\x02\x88\x01\x01\x12\x15\n\x08order_by\x18\x05 \x01(\tH\x03\x88\x01\x01\x42\x08\n\x06_queryB\t\n\x07_offsetB\x08\n\x06_limitB\x0b\n\t_order_by\"T\n\x12ListRoutesResponse\x12)\n\x06routes\x18\x01 \x03(\x0b\x32\x19.pomerium.dashboard.Route\x12\x13\n\x0btotal_count\x18\x02 \x01(\x03\"3\n\x11LoadRoutesRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08\x63ontents\x18\x02 \x01(\x0c\"K\n\x12LoadRoutesResponse\x12\x35\n\x06routes\x18\x01 \x03(\x0b\x32%.pomerium.dashboard.RouteWithPolicies\";\n\x0fSetRouteRequest\x12(\n\x05route\x18\x01 \x01(\x0b\x32\x19.pomerium.dashboard.Route\"<\n\x10SetRouteResponse\x12(\n\x05route\x18\x01 \x01(\x0b\x32\x19.pomerium.dashboard.Route\"@\n\x11MoveRoutesRequest\x12\x11\n\troute_ids\x18\x01 \x03(\t\x12\x18\n\x10new_namespace_id\x18\x02 \x01(\t\"\x14\n\x12MoveRoutesResponse2\xb3\x04\n\x0cRouteService\x12^\n\x0b\x44\x65leteRoute\x12&.pomerium.dashboard.DeleteRouteRequest\x1a\'.pomerium.dashboard.DeleteRouteResponse\x12U\n\x08GetRoute\x12#.pomerium.dashboard.GetRouteRequest\x1a$.pomerium.dashboard.GetRouteResponse\x12[\n\nListRoutes\x12%.pomerium.dashboard.ListRoutesRequest\x1a&.pomerium.dashboard.ListRoutesResponse\x12[\n\nLoadRoutes\x12%.pomerium.dashboard.LoadRoutesRequest\x1a&.pomerium.dashboard.LoadRoutesResponse\x12U\n\x08SetRoute\x12#.pomerium.dashboard.SetRouteRequest\x1a$.pomerium.dashboard.SetRouteResponse\x12[\n\nMoveRoutes\x12%.pomerium.dashboard.MoveRoutesRequest\x1a&.pomerium.dashboard.MoveRoutesResponseB-Z+github.com/pomerium/pomerium-console/pkg/pbb\x06proto3'
+  serialized_pb=b'\n\x0croutes.proto\x12\x12pomerium.dashboard\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a%envoy/config/cluster/v3/cluster.proto\x1a,envoy/config/route/v3/route_components.proto\x1a\x0cpolicy.proto\"P\n\x12RouteRewriteHeader\x12\x0e\n\x06header\x18\x01 \x01(\t\x12\x10\n\x06prefix\x18\x03 \x01(\tH\x00\x12\r\n\x05value\x18\x02 \x01(\tB\t\n\x07matcher\"\xc6\x11\n\x05Route\x12\n\n\x02id\x18\x01 \x01(\t\x12\x14\n\x0cnamespace_id\x18\x1d \x01(\t\x12.\n\ncreated_at\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bmodified_at\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12.\n\ndeleted_at\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x0c\n\x04name\x18\x05 \x01(\t\x12\x11\n\tstat_name\x18/ \x01(\t\x12\x0c\n\x04\x66rom\x18\x06 \x01(\t\x12\n\n\x02to\x18\x07 \x03(\t\x12\x13\n\x06prefix\x18\x08 \x01(\tH\x00\x88\x01\x01\x12\x11\n\x04path\x18\t \x01(\tH\x01\x88\x01\x01\x12\x12\n\x05regex\x18\n \x01(\tH\x02\x88\x01\x01\x12\x1b\n\x0eprefix_rewrite\x18$ \x01(\tH\x03\x88\x01\x01\x12\"\n\x15regex_rewrite_pattern\x18% \x01(\tH\x04\x88\x01\x01\x12\'\n\x1aregex_rewrite_substitution\x18& \x01(\tH\x05\x88\x01\x01\x12\x19\n\x0chost_rewrite\x18\x1e \x01(\tH\x06\x88\x01\x01\x12 \n\x13host_rewrite_header\x18\x1f \x01(\tH\x07\x88\x01\x01\x12,\n\x1fhost_path_regex_rewrite_pattern\x18  \x01(\tH\x08\x88\x01\x01\x12\x31\n$host_path_regex_rewrite_substitution\x18! \x01(\tH\t\x88\x01\x01\x12!\n\x14regex_priority_order\x18- \x01(\x03H\n\x88\x01\x01\x12/\n\x07timeout\x18\r \x01(\x0b\x32\x19.google.protobuf.DurationH\x0b\x88\x01\x01\x12\x34\n\x0cidle_timeout\x18\x30 \x01(\x0b\x32\x19.google.protobuf.DurationH\x0c\x88\x01\x01\x12\x1d\n\x10\x61llow_websockets\x18\x0e \x01(\x08H\r\x88\x01\x01\x12\x17\n\nallow_spdy\x18\x31 \x01(\x08H\x0e\x88\x01\x01\x12\x1c\n\x0ftls_skip_verify\x18\x0f \x01(\x08H\x0f\x88\x01\x01\x12\x1c\n\x0ftls_server_name\x18\x10 \x01(\tH\x10\x88\x01\x01\x12&\n\x19tls_custom_ca_key_pair_id\x18) \x01(\tH\x11\x88\x01\x01\x12#\n\x16tls_client_key_pair_id\x18* \x01(\tH\x12\x88\x01\x01\x12\x31\n$tls_downstream_client_ca_key_pair_id\x18+ \x01(\tH\x13\x88\x01\x01\x12M\n\x13set_request_headers\x18\x17 \x03(\x0b\x32\x30.pomerium.dashboard.Route.SetRequestHeadersEntry\x12\x1e\n\x16remove_request_headers\x18\x18 \x03(\t\x12H\n\x18rewrite_response_headers\x18, \x03(\x0b\x32&.pomerium.dashboard.RouteRewriteHeader\x12S\n\x18set_authorization_header\x18\x32 \x01(\x0e\x32\x31.pomerium.dashboard.Route.AuthorizationHeaderMode\x12!\n\x14preserve_host_header\x18\x19 \x01(\x08H\x14\x88\x01\x01\x12\"\n\x15pass_identity_headers\x18\x1a \x01(\x08H\x15\x88\x01\x01\x12-\n kubernetes_service_account_token\x18\x1b \x01(\tH\x16\x88\x01\x01\x12\x34\n\nenvoy_opts\x18\' \x01(\x0b\x32 .envoy.config.cluster.v3.Cluster\x12\x37\n\x08redirect\x18( \x01(\x0b\x32%.envoy.config.route.v3.RedirectAction\x12\x35\n-enable_google_cloud_serverless_authentication\x18. \x01(\x08\x12\x12\n\npolicy_ids\x18\x1c \x03(\t\x12\x14\n\x0cpolicy_names\x18\" \x03(\t\x12\x16\n\x0enamespace_name\x18# \x01(\t\x1a\x38\n\x16SetRequestHeadersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"K\n\x17\x41uthorizationHeaderMode\x12\x10\n\x0cPASS_THROUGH\x10\x00\x12\x10\n\x0c\x41\x43\x43\x45SS_TOKEN\x10\x01\x12\x0c\n\x08ID_TOKEN\x10\x02\x42\t\n\x07_prefixB\x07\n\x05_pathB\x08\n\x06_regexB\x11\n\x0f_prefix_rewriteB\x18\n\x16_regex_rewrite_patternB\x1d\n\x1b_regex_rewrite_substitutionB\x0f\n\r_host_rewriteB\x16\n\x14_host_rewrite_headerB\"\n _host_path_regex_rewrite_patternB\'\n%_host_path_regex_rewrite_substitutionB\x17\n\x15_regex_priority_orderB\n\n\x08_timeoutB\x0f\n\r_idle_timeoutB\x13\n\x11_allow_websocketsB\r\n\x0b_allow_spdyB\x12\n\x10_tls_skip_verifyB\x12\n\x10_tls_server_nameB\x1c\n\x1a_tls_custom_ca_key_pair_idB\x19\n\x17_tls_client_key_pair_idB\'\n%_tls_downstream_client_ca_key_pair_idB\x17\n\x15_preserve_host_headerB\x18\n\x16_pass_identity_headersB#\n!_kubernetes_service_account_token\"k\n\x11RouteWithPolicies\x12(\n\x05route\x18\x01 \x01(\x0b\x32\x19.pomerium.dashboard.Route\x12,\n\x08policies\x18\x02 \x03(\x0b\x32\x1a.pomerium.dashboard.Policy\" \n\x12\x44\x65leteRouteRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\x15\n\x13\x44\x65leteRouteResponse\"\x1d\n\x0fGetRouteRequest\x12\n\n\x02id\x18\x01 \x01(\t\"<\n\x10GetRouteResponse\x12(\n\x05route\x18\x01 \x01(\x0b\x32\x19.pomerium.dashboard.Route\"\xa6\x01\n\x11ListRoutesRequest\x12\x11\n\tnamespace\x18\x01 \x01(\t\x12\x12\n\x05query\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x13\n\x06offset\x18\x03 \x01(\x03H\x01\x88\x01\x01\x12\x12\n\x05limit\x18\x04 \x01(\x03H\x02\x88\x01\x01\x12\x15\n\x08order_by\x18\x05 \x01(\tH\x03\x88\x01\x01\x42\x08\n\x06_queryB\t\n\x07_offsetB\x08\n\x06_limitB\x0b\n\t_order_by\"T\n\x12ListRoutesResponse\x12)\n\x06routes\x18\x01 \x03(\x0b\x32\x19.pomerium.dashboard.Route\x12\x13\n\x0btotal_count\x18\x02 \x01(\x03\"3\n\x11LoadRoutesRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08\x63ontents\x18\x02 \x01(\x0c\"K\n\x12LoadRoutesResponse\x12\x35\n\x06routes\x18\x01 \x03(\x0b\x32%.pomerium.dashboard.RouteWithPolicies\";\n\x0fSetRouteRequest\x12(\n\x05route\x18\x01 \x01(\x0b\x32\x19.pomerium.dashboard.Route\"<\n\x10SetRouteResponse\x12(\n\x05route\x18\x01 \x01(\x0b\x32\x19.pomerium.dashboard.Route\"@\n\x11MoveRoutesRequest\x12\x11\n\troute_ids\x18\x01 \x03(\t\x12\x18\n\x10new_namespace_id\x18\x02 \x01(\t\"\x14\n\x12MoveRoutesResponse2\xb3\x04\n\x0cRouteService\x12^\n\x0b\x44\x65leteRoute\x12&.pomerium.dashboard.DeleteRouteRequest\x1a\'.pomerium.dashboard.DeleteRouteResponse\x12U\n\x08GetRoute\x12#.pomerium.dashboard.GetRouteRequest\x1a$.pomerium.dashboard.GetRouteResponse\x12[\n\nListRoutes\x12%.pomerium.dashboard.ListRoutesRequest\x1a&.pomerium.dashboard.ListRoutesResponse\x12[\n\nLoadRoutes\x12%.pomerium.dashboard.LoadRoutesRequest\x1a&.pomerium.dashboard.LoadRoutesResponse\x12U\n\x08SetRoute\x12#.pomerium.dashboard.SetRouteRequest\x1a$.pomerium.dashboard.SetRouteResponse\x12[\n\nMoveRoutes\x12%.pomerium.dashboard.MoveRoutesRequest\x1a&.pomerium.dashboard.MoveRoutesResponseB-Z+github.com/pomerium/pomerium-console/pkg/pbb\x06proto3'
   ,
   dependencies=[google_dot_protobuf_dot_duration__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,envoy_dot_config_dot_cluster_dot_v3_dot_cluster__pb2.DESCRIPTOR,envoy_dot_config_dot_route_dot_v3_dot_route__components__pb2.DESCRIPTOR,policy__pb2.DESCRIPTOR,])
 
 
+
+_ROUTE_AUTHORIZATIONHEADERMODE = _descriptor.EnumDescriptor(
+  name='AuthorizationHeaderMode',
+  full_name='pomerium.dashboard.Route.AuthorizationHeaderMode',
+  filename=None,
+  file=DESCRIPTOR,
+  create_key=_descriptor._internal_create_key,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='PASS_THROUGH', index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='ACCESS_TOKEN', index=1, number=1,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='ID_TOKEN', index=2, number=2,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+  ],
+  containing_type=None,
+  serialized_options=None,
+  serialized_start=1914,
+  serialized_end=1989,
+)
+_sym_db.RegisterEnumDescriptor(_ROUTE_AUTHORIZATIONHEADERMODE)
 
 
 _ROUTEREWRITEHEADER = _descriptor.Descriptor(
@@ -116,8 +146,8 @@ _ROUTE_SETREQUESTHEADERSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1771,
-  serialized_end=1827,
+  serialized_start=1856,
+  serialized_end=1912,
 )
 
 _ROUTE = _descriptor.Descriptor(
@@ -353,63 +383,70 @@ _ROUTE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='preserve_host_header', full_name='pomerium.dashboard.Route.preserve_host_header', index=32,
+      name='set_authorization_header', full_name='pomerium.dashboard.Route.set_authorization_header', index=32,
+      number=50, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='preserve_host_header', full_name='pomerium.dashboard.Route.preserve_host_header', index=33,
       number=25, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='pass_identity_headers', full_name='pomerium.dashboard.Route.pass_identity_headers', index=33,
+      name='pass_identity_headers', full_name='pomerium.dashboard.Route.pass_identity_headers', index=34,
       number=26, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='kubernetes_service_account_token', full_name='pomerium.dashboard.Route.kubernetes_service_account_token', index=34,
+      name='kubernetes_service_account_token', full_name='pomerium.dashboard.Route.kubernetes_service_account_token', index=35,
       number=27, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='envoy_opts', full_name='pomerium.dashboard.Route.envoy_opts', index=35,
+      name='envoy_opts', full_name='pomerium.dashboard.Route.envoy_opts', index=36,
       number=39, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='redirect', full_name='pomerium.dashboard.Route.redirect', index=36,
+      name='redirect', full_name='pomerium.dashboard.Route.redirect', index=37,
       number=40, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='enable_google_cloud_serverless_authentication', full_name='pomerium.dashboard.Route.enable_google_cloud_serverless_authentication', index=37,
+      name='enable_google_cloud_serverless_authentication', full_name='pomerium.dashboard.Route.enable_google_cloud_serverless_authentication', index=38,
       number=46, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='policy_ids', full_name='pomerium.dashboard.Route.policy_ids', index=38,
+      name='policy_ids', full_name='pomerium.dashboard.Route.policy_ids', index=39,
       number=28, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='policy_names', full_name='pomerium.dashboard.Route.policy_names', index=39,
+      name='policy_names', full_name='pomerium.dashboard.Route.policy_names', index=40,
       number=34, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='namespace_name', full_name='pomerium.dashboard.Route.namespace_name', index=40,
+      name='namespace_name', full_name='pomerium.dashboard.Route.namespace_name', index=41,
       number=35, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -420,6 +457,7 @@ _ROUTE = _descriptor.Descriptor(
   ],
   nested_types=[_ROUTE_SETREQUESTHEADERSENTRY, ],
   enum_types=[
+    _ROUTE_AUTHORIZATIONHEADERMODE,
   ],
   serialized_options=None,
   is_extendable=False,
@@ -543,7 +581,7 @@ _ROUTE = _descriptor.Descriptor(
     fields=[]),
   ],
   serialized_start=283,
-  serialized_end=2367,
+  serialized_end=2529,
 )
 
 
@@ -581,8 +619,8 @@ _ROUTEWITHPOLICIES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2369,
-  serialized_end=2476,
+  serialized_start=2531,
+  serialized_end=2638,
 )
 
 
@@ -613,8 +651,8 @@ _DELETEROUTEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2478,
-  serialized_end=2510,
+  serialized_start=2640,
+  serialized_end=2672,
 )
 
 
@@ -638,8 +676,8 @@ _DELETEROUTERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2512,
-  serialized_end=2533,
+  serialized_start=2674,
+  serialized_end=2695,
 )
 
 
@@ -670,8 +708,8 @@ _GETROUTEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2535,
-  serialized_end=2564,
+  serialized_start=2697,
+  serialized_end=2726,
 )
 
 
@@ -702,8 +740,8 @@ _GETROUTERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2566,
-  serialized_end=2626,
+  serialized_start=2728,
+  serialized_end=2788,
 )
 
 
@@ -782,8 +820,8 @@ _LISTROUTESREQUEST = _descriptor.Descriptor(
       create_key=_descriptor._internal_create_key,
     fields=[]),
   ],
-  serialized_start=2629,
-  serialized_end=2795,
+  serialized_start=2791,
+  serialized_end=2957,
 )
 
 
@@ -821,8 +859,8 @@ _LISTROUTESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2797,
-  serialized_end=2881,
+  serialized_start=2959,
+  serialized_end=3043,
 )
 
 
@@ -860,8 +898,8 @@ _LOADROUTESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2883,
-  serialized_end=2934,
+  serialized_start=3045,
+  serialized_end=3096,
 )
 
 
@@ -892,8 +930,8 @@ _LOADROUTESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2936,
-  serialized_end=3011,
+  serialized_start=3098,
+  serialized_end=3173,
 )
 
 
@@ -924,8 +962,8 @@ _SETROUTEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3013,
-  serialized_end=3072,
+  serialized_start=3175,
+  serialized_end=3234,
 )
 
 
@@ -956,8 +994,8 @@ _SETROUTERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3074,
-  serialized_end=3134,
+  serialized_start=3236,
+  serialized_end=3296,
 )
 
 
@@ -995,8 +1033,8 @@ _MOVEROUTESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3136,
-  serialized_end=3200,
+  serialized_start=3298,
+  serialized_end=3362,
 )
 
 
@@ -1020,8 +1058,8 @@ _MOVEROUTESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3202,
-  serialized_end=3222,
+  serialized_start=3364,
+  serialized_end=3384,
 )
 
 _ROUTEREWRITEHEADER.oneofs_by_name['matcher'].fields.append(
@@ -1035,8 +1073,10 @@ _ROUTE.fields_by_name['timeout'].message_type = google_dot_protobuf_dot_duration
 _ROUTE.fields_by_name['idle_timeout'].message_type = google_dot_protobuf_dot_duration__pb2._DURATION
 _ROUTE.fields_by_name['set_request_headers'].message_type = _ROUTE_SETREQUESTHEADERSENTRY
 _ROUTE.fields_by_name['rewrite_response_headers'].message_type = _ROUTEREWRITEHEADER
+_ROUTE.fields_by_name['set_authorization_header'].enum_type = _ROUTE_AUTHORIZATIONHEADERMODE
 _ROUTE.fields_by_name['envoy_opts'].message_type = envoy_dot_config_dot_cluster_dot_v3_dot_cluster__pb2._CLUSTER
 _ROUTE.fields_by_name['redirect'].message_type = envoy_dot_config_dot_route_dot_v3_dot_route__components__pb2._REDIRECTACTION
+_ROUTE_AUTHORIZATIONHEADERMODE.containing_type = _ROUTE
 _ROUTE.oneofs_by_name['_prefix'].fields.append(
   _ROUTE.fields_by_name['prefix'])
 _ROUTE.fields_by_name['prefix'].containing_oneof = _ROUTE.oneofs_by_name['_prefix']
@@ -1266,8 +1306,8 @@ _ROUTESERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=3225,
-  serialized_end=3788,
+  serialized_start=3387,
+  serialized_end=3950,
   methods=[
   _descriptor.MethodDescriptor(
     name='DeleteRoute',
