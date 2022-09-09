@@ -3,183 +3,206 @@
 isort:skip_file
 """
 import builtins
+import collections.abc
 import google.protobuf.descriptor
 import google.protobuf.internal.containers
 import google.protobuf.internal.enum_type_wrapper
 import google.protobuf.message
 import google.protobuf.timestamp_pb2
+import sys
 import typing
-import typing_extensions
 
-DESCRIPTOR: google.protobuf.descriptor.FileDescriptor = ...
+if sys.version_info >= (3, 10):
+    import typing as typing_extensions
+else:
+    import typing_extensions
 
-class DeviceKind(_DeviceKind, metaclass=_DeviceKindEnumTypeWrapper):
-    pass
+DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
+
 class _DeviceKind:
-    V = typing.NewType('V', builtins.int)
-class _DeviceKindEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_DeviceKind.V], builtins.type):
-    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor = ...
-    UNKNOWN = DeviceKind.V(0)
-    FIDO_U2F = DeviceKind.V(1)
-    ANDROID = DeviceKind.V(2)
-    APPLE = DeviceKind.V(3)
-    TPM = DeviceKind.V(4)
-    WINDOWS = DeviceKind.V(5)
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
 
-UNKNOWN = DeviceKind.V(0)
-FIDO_U2F = DeviceKind.V(1)
-ANDROID = DeviceKind.V(2)
-APPLE = DeviceKind.V(3)
-TPM = DeviceKind.V(4)
-WINDOWS = DeviceKind.V(5)
+class _DeviceKindEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_DeviceKind.ValueType], builtins.type):  # noqa: F821
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    UNKNOWN: _DeviceKind.ValueType  # 0
+    FIDO_U2F: _DeviceKind.ValueType  # 1
+    ANDROID: _DeviceKind.ValueType  # 2
+    APPLE: _DeviceKind.ValueType  # 3
+    TPM: _DeviceKind.ValueType  # 4
+    WINDOWS: _DeviceKind.ValueType  # 5
+
+class DeviceKind(_DeviceKind, metaclass=_DeviceKindEnumTypeWrapper): ...
+
+UNKNOWN: DeviceKind.ValueType  # 0
+FIDO_U2F: DeviceKind.ValueType  # 1
+ANDROID: DeviceKind.ValueType  # 2
+APPLE: DeviceKind.ValueType  # 3
+TPM: DeviceKind.ValueType  # 4
+WINDOWS: DeviceKind.ValueType  # 5
 global___DeviceKind = DeviceKind
 
-
 class WebAuthnOptions(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
-    class AttestationConveyancePreference(_AttestationConveyancePreference, metaclass=_AttestationConveyancePreferenceEnumTypeWrapper):
-        pass
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     class _AttestationConveyancePreference:
-        V = typing.NewType('V', builtins.int)
-    class _AttestationConveyancePreferenceEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_AttestationConveyancePreference.V], builtins.type):
-        DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor = ...
-        NONE = WebAuthnOptions.AttestationConveyancePreference.V(0)
-        INDIRECT = WebAuthnOptions.AttestationConveyancePreference.V(1)
-        DIRECT = WebAuthnOptions.AttestationConveyancePreference.V(2)
-        ENTERPRISE = WebAuthnOptions.AttestationConveyancePreference.V(3)
+        ValueType = typing.NewType("ValueType", builtins.int)
+        V: typing_extensions.TypeAlias = ValueType
 
-    NONE = WebAuthnOptions.AttestationConveyancePreference.V(0)
-    INDIRECT = WebAuthnOptions.AttestationConveyancePreference.V(1)
-    DIRECT = WebAuthnOptions.AttestationConveyancePreference.V(2)
-    ENTERPRISE = WebAuthnOptions.AttestationConveyancePreference.V(3)
+    class _AttestationConveyancePreferenceEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[WebAuthnOptions._AttestationConveyancePreference.ValueType], builtins.type):  # noqa: F821
+        DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+        NONE: WebAuthnOptions._AttestationConveyancePreference.ValueType  # 0
+        INDIRECT: WebAuthnOptions._AttestationConveyancePreference.ValueType  # 1
+        DIRECT: WebAuthnOptions._AttestationConveyancePreference.ValueType  # 2
+        ENTERPRISE: WebAuthnOptions._AttestationConveyancePreference.ValueType  # 3
 
-    class AuthenticatorAttachment(_AuthenticatorAttachment, metaclass=_AuthenticatorAttachmentEnumTypeWrapper):
-        pass
+    class AttestationConveyancePreference(_AttestationConveyancePreference, metaclass=_AttestationConveyancePreferenceEnumTypeWrapper): ...
+    NONE: WebAuthnOptions.AttestationConveyancePreference.ValueType  # 0
+    INDIRECT: WebAuthnOptions.AttestationConveyancePreference.ValueType  # 1
+    DIRECT: WebAuthnOptions.AttestationConveyancePreference.ValueType  # 2
+    ENTERPRISE: WebAuthnOptions.AttestationConveyancePreference.ValueType  # 3
+
     class _AuthenticatorAttachment:
-        V = typing.NewType('V', builtins.int)
-    class _AuthenticatorAttachmentEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_AuthenticatorAttachment.V], builtins.type):
-        DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor = ...
-        PLATFORM = WebAuthnOptions.AuthenticatorAttachment.V(0)
-        CROSS_PLATFORM = WebAuthnOptions.AuthenticatorAttachment.V(2)
+        ValueType = typing.NewType("ValueType", builtins.int)
+        V: typing_extensions.TypeAlias = ValueType
 
-    PLATFORM = WebAuthnOptions.AuthenticatorAttachment.V(0)
-    CROSS_PLATFORM = WebAuthnOptions.AuthenticatorAttachment.V(2)
+    class _AuthenticatorAttachmentEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[WebAuthnOptions._AuthenticatorAttachment.ValueType], builtins.type):  # noqa: F821
+        DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+        PLATFORM: WebAuthnOptions._AuthenticatorAttachment.ValueType  # 0
+        CROSS_PLATFORM: WebAuthnOptions._AuthenticatorAttachment.ValueType  # 2
 
-    class PublicKeyCredentialType(_PublicKeyCredentialType, metaclass=_PublicKeyCredentialTypeEnumTypeWrapper):
-        pass
+    class AuthenticatorAttachment(_AuthenticatorAttachment, metaclass=_AuthenticatorAttachmentEnumTypeWrapper): ...
+    PLATFORM: WebAuthnOptions.AuthenticatorAttachment.ValueType  # 0
+    CROSS_PLATFORM: WebAuthnOptions.AuthenticatorAttachment.ValueType  # 2
+
     class _PublicKeyCredentialType:
-        V = typing.NewType('V', builtins.int)
-    class _PublicKeyCredentialTypeEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_PublicKeyCredentialType.V], builtins.type):
-        DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor = ...
-        PUBLIC_KEY = WebAuthnOptions.PublicKeyCredentialType.V(0)
+        ValueType = typing.NewType("ValueType", builtins.int)
+        V: typing_extensions.TypeAlias = ValueType
 
-    PUBLIC_KEY = WebAuthnOptions.PublicKeyCredentialType.V(0)
+    class _PublicKeyCredentialTypeEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[WebAuthnOptions._PublicKeyCredentialType.ValueType], builtins.type):  # noqa: F821
+        DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+        PUBLIC_KEY: WebAuthnOptions._PublicKeyCredentialType.ValueType  # 0
 
-    class ResidentKeyRequirement(_ResidentKeyRequirement, metaclass=_ResidentKeyRequirementEnumTypeWrapper):
-        pass
+    class PublicKeyCredentialType(_PublicKeyCredentialType, metaclass=_PublicKeyCredentialTypeEnumTypeWrapper): ...
+    PUBLIC_KEY: WebAuthnOptions.PublicKeyCredentialType.ValueType  # 0
+
     class _ResidentKeyRequirement:
-        V = typing.NewType('V', builtins.int)
-    class _ResidentKeyRequirementEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_ResidentKeyRequirement.V], builtins.type):
-        DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor = ...
-        RESIDENT_KEY_DISCOURAGED = WebAuthnOptions.ResidentKeyRequirement.V(0)
-        RESIDENT_KEY_PREFERRED = WebAuthnOptions.ResidentKeyRequirement.V(1)
-        RESIDENT_KEY_REQUIRED = WebAuthnOptions.ResidentKeyRequirement.V(2)
+        ValueType = typing.NewType("ValueType", builtins.int)
+        V: typing_extensions.TypeAlias = ValueType
 
-    RESIDENT_KEY_DISCOURAGED = WebAuthnOptions.ResidentKeyRequirement.V(0)
-    RESIDENT_KEY_PREFERRED = WebAuthnOptions.ResidentKeyRequirement.V(1)
-    RESIDENT_KEY_REQUIRED = WebAuthnOptions.ResidentKeyRequirement.V(2)
+    class _ResidentKeyRequirementEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[WebAuthnOptions._ResidentKeyRequirement.ValueType], builtins.type):  # noqa: F821
+        DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+        RESIDENT_KEY_DISCOURAGED: WebAuthnOptions._ResidentKeyRequirement.ValueType  # 0
+        RESIDENT_KEY_PREFERRED: WebAuthnOptions._ResidentKeyRequirement.ValueType  # 1
+        RESIDENT_KEY_REQUIRED: WebAuthnOptions._ResidentKeyRequirement.ValueType  # 2
 
-    class UserVerificationRequirement(_UserVerificationRequirement, metaclass=_UserVerificationRequirementEnumTypeWrapper):
-        pass
+    class ResidentKeyRequirement(_ResidentKeyRequirement, metaclass=_ResidentKeyRequirementEnumTypeWrapper): ...
+    RESIDENT_KEY_DISCOURAGED: WebAuthnOptions.ResidentKeyRequirement.ValueType  # 0
+    RESIDENT_KEY_PREFERRED: WebAuthnOptions.ResidentKeyRequirement.ValueType  # 1
+    RESIDENT_KEY_REQUIRED: WebAuthnOptions.ResidentKeyRequirement.ValueType  # 2
+
     class _UserVerificationRequirement:
-        V = typing.NewType('V', builtins.int)
-    class _UserVerificationRequirementEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_UserVerificationRequirement.V], builtins.type):
-        DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor = ...
-        USER_VERIFICATION_DISCOURAGED = WebAuthnOptions.UserVerificationRequirement.V(0)
-        USER_VERIFICATION_PREFERRED = WebAuthnOptions.UserVerificationRequirement.V(1)
-        USER_VERIFICATION_REQUIRED = WebAuthnOptions.UserVerificationRequirement.V(2)
+        ValueType = typing.NewType("ValueType", builtins.int)
+        V: typing_extensions.TypeAlias = ValueType
 
-    USER_VERIFICATION_DISCOURAGED = WebAuthnOptions.UserVerificationRequirement.V(0)
-    USER_VERIFICATION_PREFERRED = WebAuthnOptions.UserVerificationRequirement.V(1)
-    USER_VERIFICATION_REQUIRED = WebAuthnOptions.UserVerificationRequirement.V(2)
+    class _UserVerificationRequirementEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[WebAuthnOptions._UserVerificationRequirement.ValueType], builtins.type):  # noqa: F821
+        DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+        USER_VERIFICATION_DISCOURAGED: WebAuthnOptions._UserVerificationRequirement.ValueType  # 0
+        USER_VERIFICATION_PREFERRED: WebAuthnOptions._UserVerificationRequirement.ValueType  # 1
+        USER_VERIFICATION_REQUIRED: WebAuthnOptions._UserVerificationRequirement.ValueType  # 2
+
+    class UserVerificationRequirement(_UserVerificationRequirement, metaclass=_UserVerificationRequirementEnumTypeWrapper): ...
+    USER_VERIFICATION_DISCOURAGED: WebAuthnOptions.UserVerificationRequirement.ValueType  # 0
+    USER_VERIFICATION_PREFERRED: WebAuthnOptions.UserVerificationRequirement.ValueType  # 1
+    USER_VERIFICATION_REQUIRED: WebAuthnOptions.UserVerificationRequirement.ValueType  # 2
 
     class AuthenticatorSelectionCriteria(google.protobuf.message.Message):
-        DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+        DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
         AUTHENTICATOR_ATTACHMENT_FIELD_NUMBER: builtins.int
         REQUIRE_RESIDENT_KEY_FIELD_NUMBER: builtins.int
         RESIDENT_KEY_REQUIREMENT_FIELD_NUMBER: builtins.int
         USER_VERIFICATION_FIELD_NUMBER: builtins.int
-        authenticator_attachment: global___WebAuthnOptions.AuthenticatorAttachment.V = ...
-        require_resident_key: builtins.bool = ...
-        resident_key_requirement: global___WebAuthnOptions.ResidentKeyRequirement.V = ...
-        user_verification: global___WebAuthnOptions.UserVerificationRequirement.V = ...
-        def __init__(self,
+        authenticator_attachment: global___WebAuthnOptions.AuthenticatorAttachment.ValueType
+        require_resident_key: builtins.bool
+        resident_key_requirement: global___WebAuthnOptions.ResidentKeyRequirement.ValueType
+        user_verification: global___WebAuthnOptions.UserVerificationRequirement.ValueType
+        def __init__(
+            self,
             *,
-            authenticator_attachment : global___WebAuthnOptions.AuthenticatorAttachment.V = ...,
-            require_resident_key : builtins.bool = ...,
-            resident_key_requirement : global___WebAuthnOptions.ResidentKeyRequirement.V = ...,
-            user_verification : global___WebAuthnOptions.UserVerificationRequirement.V = ...,
-            ) -> None: ...
-        def HasField(self, field_name: typing_extensions.Literal[u"_authenticator_attachment",b"_authenticator_attachment",u"_require_resident_key",b"_require_resident_key",u"_resident_key_requirement",b"_resident_key_requirement",u"_user_verification",b"_user_verification",u"authenticator_attachment",b"authenticator_attachment",u"require_resident_key",b"require_resident_key",u"resident_key_requirement",b"resident_key_requirement",u"user_verification",b"user_verification"]) -> builtins.bool: ...
-        def ClearField(self, field_name: typing_extensions.Literal[u"_authenticator_attachment",b"_authenticator_attachment",u"_require_resident_key",b"_require_resident_key",u"_resident_key_requirement",b"_resident_key_requirement",u"_user_verification",b"_user_verification",u"authenticator_attachment",b"authenticator_attachment",u"require_resident_key",b"require_resident_key",u"resident_key_requirement",b"resident_key_requirement",u"user_verification",b"user_verification"]) -> None: ...
+            authenticator_attachment: global___WebAuthnOptions.AuthenticatorAttachment.ValueType | None = ...,
+            require_resident_key: builtins.bool | None = ...,
+            resident_key_requirement: global___WebAuthnOptions.ResidentKeyRequirement.ValueType | None = ...,
+            user_verification: global___WebAuthnOptions.UserVerificationRequirement.ValueType | None = ...,
+        ) -> None: ...
+        def HasField(self, field_name: typing_extensions.Literal["_authenticator_attachment", b"_authenticator_attachment", "_require_resident_key", b"_require_resident_key", "_resident_key_requirement", b"_resident_key_requirement", "_user_verification", b"_user_verification", "authenticator_attachment", b"authenticator_attachment", "require_resident_key", b"require_resident_key", "resident_key_requirement", b"resident_key_requirement", "user_verification", b"user_verification"]) -> builtins.bool: ...
+        def ClearField(self, field_name: typing_extensions.Literal["_authenticator_attachment", b"_authenticator_attachment", "_require_resident_key", b"_require_resident_key", "_resident_key_requirement", b"_resident_key_requirement", "_user_verification", b"_user_verification", "authenticator_attachment", b"authenticator_attachment", "require_resident_key", b"require_resident_key", "resident_key_requirement", b"resident_key_requirement", "user_verification", b"user_verification"]) -> None: ...
         @typing.overload
-        def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_authenticator_attachment",b"_authenticator_attachment"]) -> typing.Optional[typing_extensions.Literal["authenticator_attachment"]]: ...
+        def WhichOneof(self, oneof_group: typing_extensions.Literal["_authenticator_attachment", b"_authenticator_attachment"]) -> typing_extensions.Literal["authenticator_attachment"] | None: ...
         @typing.overload
-        def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_require_resident_key",b"_require_resident_key"]) -> typing.Optional[typing_extensions.Literal["require_resident_key"]]: ...
+        def WhichOneof(self, oneof_group: typing_extensions.Literal["_require_resident_key", b"_require_resident_key"]) -> typing_extensions.Literal["require_resident_key"] | None: ...
         @typing.overload
-        def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_resident_key_requirement",b"_resident_key_requirement"]) -> typing.Optional[typing_extensions.Literal["resident_key_requirement"]]: ...
+        def WhichOneof(self, oneof_group: typing_extensions.Literal["_resident_key_requirement", b"_resident_key_requirement"]) -> typing_extensions.Literal["resident_key_requirement"] | None: ...
         @typing.overload
-        def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_user_verification",b"_user_verification"]) -> typing.Optional[typing_extensions.Literal["user_verification"]]: ...
+        def WhichOneof(self, oneof_group: typing_extensions.Literal["_user_verification", b"_user_verification"]) -> typing_extensions.Literal["user_verification"] | None: ...
 
     class PublicKeyCredentialParameters(google.protobuf.message.Message):
-        DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+        DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
         ALG_FIELD_NUMBER: builtins.int
         TYPE_FIELD_NUMBER: builtins.int
-        alg: builtins.int = ...
-        type: global___WebAuthnOptions.PublicKeyCredentialType.V = ...
-        def __init__(self,
+        alg: builtins.int
+        type: global___WebAuthnOptions.PublicKeyCredentialType.ValueType
+        def __init__(
+            self,
             *,
-            alg : builtins.int = ...,
-            type : global___WebAuthnOptions.PublicKeyCredentialType.V = ...,
-            ) -> None: ...
-        def ClearField(self, field_name: typing_extensions.Literal[u"alg",b"alg",u"type",b"type"]) -> None: ...
+            alg: builtins.int = ...,
+            type: global___WebAuthnOptions.PublicKeyCredentialType.ValueType = ...,
+        ) -> None: ...
+        def ClearField(self, field_name: typing_extensions.Literal["alg", b"alg", "type", b"type"]) -> None: ...
 
     ATTESTATION_FIELD_NUMBER: builtins.int
     AUTHENTICATOR_SELECTION_FIELD_NUMBER: builtins.int
     PUB_KEY_CRED_PARAMS_FIELD_NUMBER: builtins.int
-    attestation: global___WebAuthnOptions.AttestationConveyancePreference.V = ...
+    attestation: global___WebAuthnOptions.AttestationConveyancePreference.ValueType
     @property
     def authenticator_selection(self) -> global___WebAuthnOptions.AuthenticatorSelectionCriteria: ...
     @property
     def pub_key_cred_params(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___WebAuthnOptions.PublicKeyCredentialParameters]: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        attestation : global___WebAuthnOptions.AttestationConveyancePreference.V = ...,
-        authenticator_selection : typing.Optional[global___WebAuthnOptions.AuthenticatorSelectionCriteria] = ...,
-        pub_key_cred_params : typing.Optional[typing.Iterable[global___WebAuthnOptions.PublicKeyCredentialParameters]] = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"_attestation",b"_attestation",u"_authenticator_selection",b"_authenticator_selection",u"attestation",b"attestation",u"authenticator_selection",b"authenticator_selection"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"_attestation",b"_attestation",u"_authenticator_selection",b"_authenticator_selection",u"attestation",b"attestation",u"authenticator_selection",b"authenticator_selection",u"pub_key_cred_params",b"pub_key_cred_params"]) -> None: ...
+        attestation: global___WebAuthnOptions.AttestationConveyancePreference.ValueType | None = ...,
+        authenticator_selection: global___WebAuthnOptions.AuthenticatorSelectionCriteria | None = ...,
+        pub_key_cred_params: collections.abc.Iterable[global___WebAuthnOptions.PublicKeyCredentialParameters] | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["_attestation", b"_attestation", "_authenticator_selection", b"_authenticator_selection", "attestation", b"attestation", "authenticator_selection", b"authenticator_selection"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["_attestation", b"_attestation", "_authenticator_selection", b"_authenticator_selection", "attestation", b"attestation", "authenticator_selection", b"authenticator_selection", "pub_key_cred_params", b"pub_key_cred_params"]) -> None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_attestation",b"_attestation"]) -> typing.Optional[typing_extensions.Literal["attestation"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_attestation", b"_attestation"]) -> typing_extensions.Literal["attestation"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_authenticator_selection",b"_authenticator_selection"]) -> typing.Optional[typing_extensions.Literal["authenticator_selection"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_authenticator_selection", b"_authenticator_selection"]) -> typing_extensions.Literal["authenticator_selection"] | None: ...
+
 global___WebAuthnOptions = WebAuthnOptions
 
 class DeviceType(google.protobuf.message.Message):
     """A DeviceType constrains which kinds of devices are allowed to be registered."""
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     class WebAuthn(google.protobuf.message.Message):
-        DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+        DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
         OPTIONS_FIELD_NUMBER: builtins.int
         @property
         def options(self) -> global___WebAuthnOptions: ...
-        def __init__(self,
+        def __init__(
+            self,
             *,
-            options : typing.Optional[global___WebAuthnOptions] = ...,
-            ) -> None: ...
-        def HasField(self, field_name: typing_extensions.Literal[u"options",b"options"]) -> builtins.bool: ...
-        def ClearField(self, field_name: typing_extensions.Literal[u"options",b"options"]) -> None: ...
+            options: global___WebAuthnOptions | None = ...,
+        ) -> None: ...
+        def HasField(self, field_name: typing_extensions.Literal["options", b"options"]) -> builtins.bool: ...
+        def ClearField(self, field_name: typing_extensions.Literal["options", b"options"]) -> None: ...
 
     ID_FIELD_NUMBER: builtins.int
     CREATED_AT_FIELD_NUMBER: builtins.int
@@ -187,33 +210,37 @@ class DeviceType(google.protobuf.message.Message):
     DELETED_AT_FIELD_NUMBER: builtins.int
     NAME_FIELD_NUMBER: builtins.int
     WEBAUTHN_FIELD_NUMBER: builtins.int
-    id: typing.Text = ...
+    id: builtins.str
     @property
     def created_at(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
     @property
     def modified_at(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
     @property
     def deleted_at(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
-    name: typing.Text = ...
+    name: builtins.str
     @property
     def webauthn(self) -> global___DeviceType.WebAuthn: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        id : typing.Text = ...,
-        created_at : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        modified_at : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        deleted_at : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        name : typing.Text = ...,
-        webauthn : typing.Optional[global___DeviceType.WebAuthn] = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"created_at",b"created_at",u"deleted_at",b"deleted_at",u"modified_at",b"modified_at",u"specifier",b"specifier",u"webauthn",b"webauthn"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"created_at",b"created_at",u"deleted_at",b"deleted_at",u"id",b"id",u"modified_at",b"modified_at",u"name",b"name",u"specifier",b"specifier",u"webauthn",b"webauthn"]) -> None: ...
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"specifier",b"specifier"]) -> typing.Optional[typing_extensions.Literal["webauthn"]]: ...
+        id: builtins.str = ...,
+        created_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        modified_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        deleted_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        name: builtins.str = ...,
+        webauthn: global___DeviceType.WebAuthn | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["created_at", b"created_at", "deleted_at", b"deleted_at", "modified_at", b"modified_at", "specifier", b"specifier", "webauthn", b"webauthn"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["created_at", b"created_at", "deleted_at", b"deleted_at", "id", b"id", "modified_at", b"modified_at", "name", b"name", "specifier", b"specifier", "webauthn", b"webauthn"]) -> None: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["specifier", b"specifier"]) -> typing_extensions.Literal["webauthn"] | None: ...
+
 global___DeviceType = DeviceType
 
 class DeviceEnrollment(google.protobuf.message.Message):
     """A DeviceEnrollment is used to approve a user's device."""
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     ID_FIELD_NUMBER: builtins.int
     CREATED_AT_FIELD_NUMBER: builtins.int
     MODIFIED_AT_FIELD_NUMBER: builtins.int
@@ -226,73 +253,76 @@ class DeviceEnrollment(google.protobuf.message.Message):
     ENROLLED_AT_FIELD_NUMBER: builtins.int
     USER_AGENT_FIELD_NUMBER: builtins.int
     IP_ADDRESS_FIELD_NUMBER: builtins.int
-    id: typing.Text = ...
+    id: builtins.str
     @property
     def created_at(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
     @property
     def modified_at(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
     @property
     def deleted_at(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
-    device_type_id: typing.Text = ...
-    device_credential_id: typing.Text = ...
-    user_id: typing.Text = ...
+    device_type_id: builtins.str
+    device_credential_id: builtins.str
+    user_id: builtins.str
     @property
     def approved_at(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
-    approved_by_user_id: typing.Text = ...
+    approved_by_user_id: builtins.str
     @property
     def enrolled_at(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
-    user_agent: typing.Text = ...
-    ip_address: typing.Text = ...
-    def __init__(self,
+    user_agent: builtins.str
+    ip_address: builtins.str
+    def __init__(
+        self,
         *,
-        id : typing.Text = ...,
-        created_at : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        modified_at : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        deleted_at : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        device_type_id : typing.Text = ...,
-        device_credential_id : typing.Text = ...,
-        user_id : typing.Text = ...,
-        approved_at : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        approved_by_user_id : typing.Text = ...,
-        enrolled_at : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        user_agent : typing.Text = ...,
-        ip_address : typing.Text = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"approved_at",b"approved_at",u"created_at",b"created_at",u"deleted_at",b"deleted_at",u"enrolled_at",b"enrolled_at",u"modified_at",b"modified_at"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"approved_at",b"approved_at",u"approved_by_user_id",b"approved_by_user_id",u"created_at",b"created_at",u"deleted_at",b"deleted_at",u"device_credential_id",b"device_credential_id",u"device_type_id",b"device_type_id",u"enrolled_at",b"enrolled_at",u"id",b"id",u"ip_address",b"ip_address",u"modified_at",b"modified_at",u"user_agent",b"user_agent",u"user_id",b"user_id"]) -> None: ...
+        id: builtins.str = ...,
+        created_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        modified_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        deleted_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        device_type_id: builtins.str = ...,
+        device_credential_id: builtins.str = ...,
+        user_id: builtins.str = ...,
+        approved_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        approved_by_user_id: builtins.str = ...,
+        enrolled_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        user_agent: builtins.str = ...,
+        ip_address: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["approved_at", b"approved_at", "created_at", b"created_at", "deleted_at", b"deleted_at", "enrolled_at", b"enrolled_at", "modified_at", b"modified_at"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["approved_at", b"approved_at", "approved_by_user_id", b"approved_by_user_id", "created_at", b"created_at", "deleted_at", b"deleted_at", "device_credential_id", b"device_credential_id", "device_type_id", b"device_type_id", "enrolled_at", b"enrolled_at", "id", b"id", "ip_address", b"ip_address", "modified_at", b"modified_at", "user_agent", b"user_agent", "user_id", b"user_id"]) -> None: ...
+
 global___DeviceEnrollment = DeviceEnrollment
 
 class DeviceCredential(google.protobuf.message.Message):
     """A DeviceCredential is a user's device-specific credential."""
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     class WebAuthn(google.protobuf.message.Message):
-        DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+        DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
         ID_FIELD_NUMBER: builtins.int
         PUBLIC_KEY_FIELD_NUMBER: builtins.int
         REGISTER_OPTIONS_FIELD_NUMBER: builtins.int
         REGISTER_RESPONSE_FIELD_NUMBER: builtins.int
         AUTHENTICATE_RESPONSE_FIELD_NUMBER: builtins.int
-        id: builtins.bytes = ...
-        public_key: builtins.bytes = ...
-        register_options: builtins.bytes = ...
+        id: builtins.bytes
+        public_key: builtins.bytes
+        register_options: builtins.bytes
         """the options that were used to do initial registration"""
-
-        register_response: builtins.bytes = ...
+        register_response: builtins.bytes
         """the response returned from initial registration"""
-
         @property
         def authenticate_response(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.bytes]:
             """subsequent authenticate responses"""
-            pass
-        def __init__(self,
+        def __init__(
+            self,
             *,
-            id : builtins.bytes = ...,
-            public_key : builtins.bytes = ...,
-            register_options : builtins.bytes = ...,
-            register_response : builtins.bytes = ...,
-            authenticate_response : typing.Optional[typing.Iterable[builtins.bytes]] = ...,
-            ) -> None: ...
-        def ClearField(self, field_name: typing_extensions.Literal[u"authenticate_response",b"authenticate_response",u"id",b"id",u"public_key",b"public_key",u"register_options",b"register_options",u"register_response",b"register_response"]) -> None: ...
+            id: builtins.bytes = ...,
+            public_key: builtins.bytes = ...,
+            register_options: builtins.bytes = ...,
+            register_response: builtins.bytes = ...,
+            authenticate_response: collections.abc.Iterable[builtins.bytes] | None = ...,
+        ) -> None: ...
+        def ClearField(self, field_name: typing_extensions.Literal["authenticate_response", b"authenticate_response", "id", b"id", "public_key", b"public_key", "register_options", b"register_options", "register_response", b"register_response"]) -> None: ...
 
     ID_FIELD_NUMBER: builtins.int
     CREATED_AT_FIELD_NUMBER: builtins.int
@@ -302,157 +332,183 @@ class DeviceCredential(google.protobuf.message.Message):
     DEVICE_ENROLLMENT_ID_FIELD_NUMBER: builtins.int
     USER_ID_FIELD_NUMBER: builtins.int
     WEBAUTHN_FIELD_NUMBER: builtins.int
-    id: typing.Text = ...
+    id: builtins.str
     @property
     def created_at(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
     @property
     def modified_at(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
     @property
     def deleted_at(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
-    device_type_id: typing.Text = ...
-    device_enrollment_id: typing.Text = ...
-    user_id: typing.Text = ...
+    device_type_id: builtins.str
+    device_enrollment_id: builtins.str
+    user_id: builtins.str
     @property
     def webauthn(self) -> global___DeviceCredential.WebAuthn: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        id : typing.Text = ...,
-        created_at : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        modified_at : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        deleted_at : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        device_type_id : typing.Text = ...,
-        device_enrollment_id : typing.Text = ...,
-        user_id : typing.Text = ...,
-        webauthn : typing.Optional[global___DeviceCredential.WebAuthn] = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"created_at",b"created_at",u"deleted_at",b"deleted_at",u"modified_at",b"modified_at",u"specifier",b"specifier",u"webauthn",b"webauthn"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"created_at",b"created_at",u"deleted_at",b"deleted_at",u"device_enrollment_id",b"device_enrollment_id",u"device_type_id",b"device_type_id",u"id",b"id",u"modified_at",b"modified_at",u"specifier",b"specifier",u"user_id",b"user_id",u"webauthn",b"webauthn"]) -> None: ...
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"specifier",b"specifier"]) -> typing.Optional[typing_extensions.Literal["webauthn"]]: ...
+        id: builtins.str = ...,
+        created_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        modified_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        deleted_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        device_type_id: builtins.str = ...,
+        device_enrollment_id: builtins.str = ...,
+        user_id: builtins.str = ...,
+        webauthn: global___DeviceCredential.WebAuthn | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["created_at", b"created_at", "deleted_at", b"deleted_at", "modified_at", b"modified_at", "specifier", b"specifier", "webauthn", b"webauthn"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["created_at", b"created_at", "deleted_at", b"deleted_at", "device_enrollment_id", b"device_enrollment_id", "device_type_id", b"device_type_id", "id", b"id", "modified_at", b"modified_at", "specifier", b"specifier", "user_id", b"user_id", "webauthn", b"webauthn"]) -> None: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["specifier", b"specifier"]) -> typing_extensions.Literal["webauthn"] | None: ...
+
 global___DeviceCredential = DeviceCredential
 
 class DeviceOwnerCredentialRecord(google.protobuf.message.Message):
     """A DeviceOwnerCredentialRecord is used to track credential owners to prevent
     credential re-use.
     """
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     ID_FIELD_NUMBER: builtins.int
     OWNER_ID_FIELD_NUMBER: builtins.int
     PUBLIC_KEY_FIELD_NUMBER: builtins.int
-    id: builtins.bytes = ...
-    owner_id: builtins.bytes = ...
-    public_key: builtins.bytes = ...
-    def __init__(self,
+    id: builtins.bytes
+    owner_id: builtins.bytes
+    public_key: builtins.bytes
+    def __init__(
+        self,
         *,
-        id : builtins.bytes = ...,
-        owner_id : builtins.bytes = ...,
-        public_key : builtins.bytes = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"id",b"id",u"owner_id",b"owner_id",u"public_key",b"public_key"]) -> None: ...
+        id: builtins.bytes = ...,
+        owner_id: builtins.bytes = ...,
+        public_key: builtins.bytes = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["id", b"id", "owner_id", b"owner_id", "public_key", b"public_key"]) -> None: ...
+
 global___DeviceOwnerCredentialRecord = DeviceOwnerCredentialRecord
 
 class ApproveDeviceRequest(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     CREDENTIAL_ID_FIELD_NUMBER: builtins.int
     ENROLLMENT_ID_FIELD_NUMBER: builtins.int
-    credential_id: typing.Text = ...
-    enrollment_id: typing.Text = ...
-    def __init__(self,
+    credential_id: builtins.str
+    enrollment_id: builtins.str
+    def __init__(
+        self,
         *,
-        credential_id : typing.Text = ...,
-        enrollment_id : typing.Text = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"credential_id",b"credential_id",u"enrollment_id",b"enrollment_id",u"id",b"id"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"credential_id",b"credential_id",u"enrollment_id",b"enrollment_id",u"id",b"id"]) -> None: ...
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"id",b"id"]) -> typing.Optional[typing_extensions.Literal["credential_id","enrollment_id"]]: ...
+        credential_id: builtins.str = ...,
+        enrollment_id: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["credential_id", b"credential_id", "enrollment_id", b"enrollment_id", "id", b"id"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["credential_id", b"credential_id", "enrollment_id", b"enrollment_id", "id", b"id"]) -> None: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["id", b"id"]) -> typing_extensions.Literal["credential_id", "enrollment_id"] | None: ...
+
 global___ApproveDeviceRequest = ApproveDeviceRequest
 
 class CreateDeviceEnrollmentRequest(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     ENROLLMENT_FIELD_NUMBER: builtins.int
     REDIRECT_URL_FIELD_NUMBER: builtins.int
     @property
     def enrollment(self) -> global___DeviceEnrollment: ...
-    redirect_url: typing.Text = ...
-    def __init__(self,
+    redirect_url: builtins.str
+    def __init__(
+        self,
         *,
-        enrollment : typing.Optional[global___DeviceEnrollment] = ...,
-        redirect_url : typing.Text = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"enrollment",b"enrollment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"enrollment",b"enrollment",u"redirect_url",b"redirect_url"]) -> None: ...
+        enrollment: global___DeviceEnrollment | None = ...,
+        redirect_url: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["enrollment", b"enrollment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["enrollment", b"enrollment", "redirect_url", b"redirect_url"]) -> None: ...
+
 global___CreateDeviceEnrollmentRequest = CreateDeviceEnrollmentRequest
 
 class CreateDeviceEnrollmentResponse(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     ENROLLMENT_FIELD_NUMBER: builtins.int
     ENROLLMENT_URL_FIELD_NUMBER: builtins.int
     @property
     def enrollment(self) -> global___DeviceEnrollment: ...
-    enrollment_url: typing.Text = ...
-    def __init__(self,
+    enrollment_url: builtins.str
+    def __init__(
+        self,
         *,
-        enrollment : typing.Optional[global___DeviceEnrollment] = ...,
-        enrollment_url : typing.Text = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"enrollment",b"enrollment"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"enrollment",b"enrollment",u"enrollment_url",b"enrollment_url"]) -> None: ...
+        enrollment: global___DeviceEnrollment | None = ...,
+        enrollment_url: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["enrollment", b"enrollment"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["enrollment", b"enrollment", "enrollment_url", b"enrollment_url"]) -> None: ...
+
 global___CreateDeviceEnrollmentResponse = CreateDeviceEnrollmentResponse
 
 class DeleteDeviceRequest(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     CREDENTIAL_ID_FIELD_NUMBER: builtins.int
     ENROLLMENT_ID_FIELD_NUMBER: builtins.int
-    credential_id: typing.Text = ...
-    enrollment_id: typing.Text = ...
-    def __init__(self,
+    credential_id: builtins.str
+    enrollment_id: builtins.str
+    def __init__(
+        self,
         *,
-        credential_id : typing.Text = ...,
-        enrollment_id : typing.Text = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"credential_id",b"credential_id",u"enrollment_id",b"enrollment_id",u"id",b"id"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"credential_id",b"credential_id",u"enrollment_id",b"enrollment_id",u"id",b"id"]) -> None: ...
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"id",b"id"]) -> typing.Optional[typing_extensions.Literal["credential_id","enrollment_id"]]: ...
+        credential_id: builtins.str = ...,
+        enrollment_id: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["credential_id", b"credential_id", "enrollment_id", b"enrollment_id", "id", b"id"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["credential_id", b"credential_id", "enrollment_id", b"enrollment_id", "id", b"id"]) -> None: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["id", b"id"]) -> typing_extensions.Literal["credential_id", "enrollment_id"] | None: ...
+
 global___DeleteDeviceRequest = DeleteDeviceRequest
 
 class DeleteDeviceTypeRequest(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     TYPE_ID_FIELD_NUMBER: builtins.int
-    type_id: typing.Text = ...
-    def __init__(self,
+    type_id: builtins.str
+    def __init__(
+        self,
         *,
-        type_id : typing.Text = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"type_id",b"type_id"]) -> None: ...
+        type_id: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["type_id", b"type_id"]) -> None: ...
+
 global___DeleteDeviceTypeRequest = DeleteDeviceTypeRequest
 
 class ListDevicesRequest(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     TYPE_ID_FIELD_NUMBER: builtins.int
     USER_ID_FIELD_NUMBER: builtins.int
     APPROVED_BY_FIELD_NUMBER: builtins.int
-    type_id: typing.Text = ...
-    user_id: typing.Text = ...
-    approved_by: typing.Text = ...
-    def __init__(self,
+    type_id: builtins.str
+    user_id: builtins.str
+    approved_by: builtins.str
+    def __init__(
+        self,
         *,
-        type_id : typing.Text = ...,
-        user_id : typing.Text = ...,
-        approved_by : typing.Text = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"_approved_by",b"_approved_by",u"_type_id",b"_type_id",u"_user_id",b"_user_id",u"approved_by",b"approved_by",u"type_id",b"type_id",u"user_id",b"user_id"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"_approved_by",b"_approved_by",u"_type_id",b"_type_id",u"_user_id",b"_user_id",u"approved_by",b"approved_by",u"type_id",b"type_id",u"user_id",b"user_id"]) -> None: ...
+        type_id: builtins.str | None = ...,
+        user_id: builtins.str | None = ...,
+        approved_by: builtins.str | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["_approved_by", b"_approved_by", "_type_id", b"_type_id", "_user_id", b"_user_id", "approved_by", b"approved_by", "type_id", b"type_id", "user_id", b"user_id"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["_approved_by", b"_approved_by", "_type_id", b"_type_id", "_user_id", b"_user_id", "approved_by", b"approved_by", "type_id", b"type_id", "user_id", b"user_id"]) -> None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_approved_by",b"_approved_by"]) -> typing.Optional[typing_extensions.Literal["approved_by"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_approved_by", b"_approved_by"]) -> typing_extensions.Literal["approved_by"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_type_id",b"_type_id"]) -> typing.Optional[typing_extensions.Literal["type_id"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_type_id", b"_type_id"]) -> typing_extensions.Literal["type_id"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_user_id",b"_user_id"]) -> typing.Optional[typing_extensions.Literal["user_id"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_user_id", b"_user_id"]) -> typing_extensions.Literal["user_id"] | None: ...
+
 global___ListDevicesRequest = ListDevicesRequest
 
 class ListDevicesResponse(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     class Device(google.protobuf.message.Message):
-        DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+        DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
         TYPE_FIELD_NUMBER: builtins.int
         CREDENTIAL_FIELD_NUMBER: builtins.int
         ENROLLMENT_FIELD_NUMBER: builtins.int
@@ -465,65 +521,77 @@ class ListDevicesResponse(google.protobuf.message.Message):
         def credential(self) -> global___DeviceCredential: ...
         @property
         def enrollment(self) -> global___DeviceEnrollment: ...
-        kind: global___DeviceKind.V = ...
-        user_name: typing.Text = ...
-        approved_by_user_name: typing.Text = ...
-        def __init__(self,
+        kind: global___DeviceKind.ValueType
+        user_name: builtins.str
+        approved_by_user_name: builtins.str
+        def __init__(
+            self,
             *,
-            type : typing.Optional[global___DeviceType] = ...,
-            credential : typing.Optional[global___DeviceCredential] = ...,
-            enrollment : typing.Optional[global___DeviceEnrollment] = ...,
-            kind : global___DeviceKind.V = ...,
-            user_name : typing.Text = ...,
-            approved_by_user_name : typing.Text = ...,
-            ) -> None: ...
-        def HasField(self, field_name: typing_extensions.Literal[u"credential",b"credential",u"enrollment",b"enrollment",u"type",b"type"]) -> builtins.bool: ...
-        def ClearField(self, field_name: typing_extensions.Literal[u"approved_by_user_name",b"approved_by_user_name",u"credential",b"credential",u"enrollment",b"enrollment",u"kind",b"kind",u"type",b"type",u"user_name",b"user_name"]) -> None: ...
+            type: global___DeviceType | None = ...,
+            credential: global___DeviceCredential | None = ...,
+            enrollment: global___DeviceEnrollment | None = ...,
+            kind: global___DeviceKind.ValueType = ...,
+            user_name: builtins.str = ...,
+            approved_by_user_name: builtins.str = ...,
+        ) -> None: ...
+        def HasField(self, field_name: typing_extensions.Literal["credential", b"credential", "enrollment", b"enrollment", "type", b"type"]) -> builtins.bool: ...
+        def ClearField(self, field_name: typing_extensions.Literal["approved_by_user_name", b"approved_by_user_name", "credential", b"credential", "enrollment", b"enrollment", "kind", b"kind", "type", b"type", "user_name", b"user_name"]) -> None: ...
 
     DEVICES_FIELD_NUMBER: builtins.int
     @property
     def devices(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___ListDevicesResponse.Device]: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        devices : typing.Optional[typing.Iterable[global___ListDevicesResponse.Device]] = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"devices",b"devices"]) -> None: ...
+        devices: collections.abc.Iterable[global___ListDevicesResponse.Device] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["devices", b"devices"]) -> None: ...
+
 global___ListDevicesResponse = ListDevicesResponse
 
 class ListDeviceTypesResponse(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     TYPES_FIELD_NUMBER: builtins.int
     @property
     def types(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___DeviceType]: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        types : typing.Optional[typing.Iterable[global___DeviceType]] = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"types",b"types"]) -> None: ...
+        types: collections.abc.Iterable[global___DeviceType] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["types", b"types"]) -> None: ...
+
 global___ListDeviceTypesResponse = ListDeviceTypesResponse
 
 class SetDeviceTypeRequest(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     TYPE_FIELD_NUMBER: builtins.int
     @property
     def type(self) -> global___DeviceType: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        type : typing.Optional[global___DeviceType] = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"type",b"type"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"type",b"type"]) -> None: ...
+        type: global___DeviceType | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["type", b"type"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["type", b"type"]) -> None: ...
+
 global___SetDeviceTypeRequest = SetDeviceTypeRequest
 
 class SetDeviceTypeResponse(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     TYPE_FIELD_NUMBER: builtins.int
     @property
     def type(self) -> global___DeviceType: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        type : typing.Optional[global___DeviceType] = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"type",b"type"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"type",b"type"]) -> None: ...
+        type: global___DeviceType | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["type", b"type"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["type", b"type"]) -> None: ...
+
 global___SetDeviceTypeResponse = SetDeviceTypeResponse

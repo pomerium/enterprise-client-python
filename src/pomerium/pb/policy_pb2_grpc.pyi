@@ -8,69 +8,67 @@ import policy_pb2
 
 class PolicyServiceStub:
     """PolicyService manages policy creation and definition"""
+
     def __init__(self, channel: grpc.Channel) -> None: ...
     DeletePolicy: grpc.UnaryUnaryMultiCallable[
         policy_pb2.DeletePolicyRequest,
-        policy_pb2.DeletePolicyResponse] = ...
+        policy_pb2.DeletePolicyResponse,
+    ]
     """DeletePolicy deletes an existing policy"""
-
     GetPolicy: grpc.UnaryUnaryMultiCallable[
         policy_pb2.GetPolicyRequest,
-        policy_pb2.GetPolicyResponse] = ...
+        policy_pb2.GetPolicyResponse,
+    ]
     """GetPolicy retrieves an existing policy"""
-
     ListPolicies: grpc.UnaryUnaryMultiCallable[
         policy_pb2.ListPoliciesRequest,
-        policy_pb2.ListPoliciesResponse] = ...
+        policy_pb2.ListPoliciesResponse,
+    ]
     """ListPolicies lists existing policies based on the ListPoliciesRequest
     parameters
     """
-
     SetPolicy: grpc.UnaryUnaryMultiCallable[
         policy_pb2.SetPolicyRequest,
-        policy_pb2.SetPolicyResponse] = ...
+        policy_pb2.SetPolicyResponse,
+    ]
     """SetPolicy creates a new policy or, if the id is specified, updates an
     existing policy
     """
 
-
 class PolicyServiceServicer(metaclass=abc.ABCMeta):
     """PolicyService manages policy creation and definition"""
+
     @abc.abstractmethod
-    def DeletePolicy(self,
+    def DeletePolicy(
+        self,
         request: policy_pb2.DeletePolicyRequest,
         context: grpc.ServicerContext,
     ) -> policy_pb2.DeletePolicyResponse:
         """DeletePolicy deletes an existing policy"""
-        pass
-
     @abc.abstractmethod
-    def GetPolicy(self,
+    def GetPolicy(
+        self,
         request: policy_pb2.GetPolicyRequest,
         context: grpc.ServicerContext,
     ) -> policy_pb2.GetPolicyResponse:
         """GetPolicy retrieves an existing policy"""
-        pass
-
     @abc.abstractmethod
-    def ListPolicies(self,
+    def ListPolicies(
+        self,
         request: policy_pb2.ListPoliciesRequest,
         context: grpc.ServicerContext,
     ) -> policy_pb2.ListPoliciesResponse:
         """ListPolicies lists existing policies based on the ListPoliciesRequest
         parameters
         """
-        pass
-
     @abc.abstractmethod
-    def SetPolicy(self,
+    def SetPolicy(
+        self,
         request: policy_pb2.SetPolicyRequest,
         context: grpc.ServicerContext,
     ) -> policy_pb2.SetPolicyResponse:
         """SetPolicy creates a new policy or, if the id is specified, updates an
         existing policy
         """
-        pass
-
 
 def add_PolicyServiceServicer_to_server(servicer: PolicyServiceServicer, server: grpc.Server) -> None: ...

@@ -3,46 +3,58 @@
 isort:skip_file
 """
 import builtins
+import collections.abc
 import google.protobuf.descriptor
 import google.protobuf.internal.containers
 import google.protobuf.message
 import policy_pb2
 import routes_pb2
-import typing
-import typing_extensions
+import sys
 
-DESCRIPTOR: google.protobuf.descriptor.FileDescriptor = ...
+if sys.version_info >= (3, 8):
+    import typing as typing_extensions
+else:
+    import typing_extensions
+
+DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
 class PolicyReportRequest(google.protobuf.message.Message):
     """PolicyReportRequest may either specify a list of routes,
     or request to report all routes of the namespace
     """
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     ROUTE_IDS_FIELD_NUMBER: builtins.int
     NAMESPACE_ID_FIELD_NUMBER: builtins.int
     @property
-    def route_ids(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]: ...
-    namespace_id: typing.Text = ...
-    def __init__(self,
+    def route_ids(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
+    namespace_id: builtins.str
+    def __init__(
+        self,
         *,
-        route_ids : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        namespace_id : typing.Text = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"namespace_id",b"namespace_id",u"route_ids",b"route_ids"]) -> None: ...
+        route_ids: collections.abc.Iterable[builtins.str] | None = ...,
+        namespace_id: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["namespace_id", b"namespace_id", "route_ids", b"route_ids"]) -> None: ...
+
 global___PolicyReportRequest = PolicyReportRequest
 
 class PolicyReportResponse(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     ROUTES_FIELD_NUMBER: builtins.int
     POLICIES_FIELD_NUMBER: builtins.int
     @property
     def routes(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[routes_pb2.Route]: ...
     @property
     def policies(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[policy_pb2.Policy]: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        routes : typing.Optional[typing.Iterable[routes_pb2.Route]] = ...,
-        policies : typing.Optional[typing.Iterable[policy_pb2.Policy]] = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"policies",b"policies",u"routes",b"routes"]) -> None: ...
+        routes: collections.abc.Iterable[routes_pb2.Route] | None = ...,
+        policies: collections.abc.Iterable[policy_pb2.Policy] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["policies", b"policies", "routes", b"routes"]) -> None: ...
+
 global___PolicyReportResponse = PolicyReportResponse

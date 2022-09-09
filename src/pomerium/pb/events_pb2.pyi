@@ -3,42 +3,47 @@
 isort:skip_file
 """
 import builtins
+import collections.abc
 import google.protobuf.descriptor
 import google.protobuf.internal.containers
 import google.protobuf.internal.enum_type_wrapper
 import google.protobuf.message
 import google.protobuf.timestamp_pb2
+import sys
 import typing
-import typing_extensions
 
-DESCRIPTOR: google.protobuf.descriptor.FileDescriptor = ...
+if sys.version_info >= (3, 10):
+    import typing as typing_extensions
+else:
+    import typing_extensions
+
+DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
 class Event(google.protobuf.message.Message):
     """Event represents a single envoy DeltaDiscovery event"""
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
-    class EventKind(_EventKind, metaclass=_EventKindEnumTypeWrapper):
-        pass
-    class _EventKind:
-        V = typing.NewType('V', builtins.int)
-    class _EventKindEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_EventKind.V], builtins.type):
-        DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor = ...
-        EVENT_KIND_UNDEFINED = Event.EventKind.V(0)
-        EVENT_DISCOVERY_REQUEST_ACK = Event.EventKind.V(1)
-        """envoy_service_discovery_v3.DeltaDiscoveryRequest"""
 
-        EVENT_DISCOVERY_REQUEST_NACK = Event.EventKind.V(2)
-        EVENT_DISCOVERY_RESPONSE = Event.EventKind.V(3)
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    class _EventKind:
+        ValueType = typing.NewType("ValueType", builtins.int)
+        V: typing_extensions.TypeAlias = ValueType
+
+    class _EventKindEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[Event._EventKind.ValueType], builtins.type):  # noqa: F821
+        DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+        EVENT_KIND_UNDEFINED: Event._EventKind.ValueType  # 0
+        EVENT_DISCOVERY_REQUEST_ACK: Event._EventKind.ValueType  # 1
+        """envoy_service_discovery_v3.DeltaDiscoveryRequest"""
+        EVENT_DISCOVERY_REQUEST_NACK: Event._EventKind.ValueType  # 2
+        EVENT_DISCOVERY_RESPONSE: Event._EventKind.ValueType  # 3
         """envoy_service_discovery_v3.DeltaDiscoveryResponse"""
 
-
-    EVENT_KIND_UNDEFINED = Event.EventKind.V(0)
-    EVENT_DISCOVERY_REQUEST_ACK = Event.EventKind.V(1)
+    class EventKind(_EventKind, metaclass=_EventKindEnumTypeWrapper): ...
+    EVENT_KIND_UNDEFINED: Event.EventKind.ValueType  # 0
+    EVENT_DISCOVERY_REQUEST_ACK: Event.EventKind.ValueType  # 1
     """envoy_service_discovery_v3.DeltaDiscoveryRequest"""
-
-    EVENT_DISCOVERY_REQUEST_NACK = Event.EventKind.V(2)
-    EVENT_DISCOVERY_RESPONSE = Event.EventKind.V(3)
+    EVENT_DISCOVERY_REQUEST_NACK: Event.EventKind.ValueType  # 2
+    EVENT_DISCOVERY_RESPONSE: Event.EventKind.ValueType  # 3
     """envoy_service_discovery_v3.DeltaDiscoveryResponse"""
-
 
     TIME_FIELD_NUMBER: builtins.int
     MESSAGE_FIELD_NUMBER: builtins.int
@@ -54,70 +59,70 @@ class Event(google.protobuf.message.Message):
     NONCE_FIELD_NUMBER: builtins.int
     @property
     def time(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
-    message: typing.Text = ...
-    code: builtins.int = ...
+    message: builtins.str
+    code: builtins.int
     @property
-    def details(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]:
+    def details(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
         """JSON serialized details"""
-        pass
-    config_version: builtins.int = ...
+    config_version: builtins.int
     """databroker config version"""
-
-    type_url: typing.Text = ...
+    type_url: builtins.str
     """envoy resource type (i.e. listener, cluster)"""
-
-    kind: global___Event.EventKind.V = ...
+    kind: global___Event.EventKind.ValueType
     """envoy event kind"""
-
     @property
-    def resource_subscribed(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]:
+    def resource_subscribed(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
         """envoy clusters or listeners that were added to the configuration"""
-        pass
     @property
-    def resource_unsubscribed(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]:
+    def resource_unsubscribed(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
         """clusters or listeners that were removed from the envoy configuration"""
-        pass
-    instance: typing.Text = ...
+    instance: builtins.str
     """pomerium instance this event originated from"""
-
-    seq_no: builtins.int = ...
+    seq_no: builtins.int
     """databroker record version during this event"""
-
-    nonce: typing.Text = ...
-    def __init__(self,
+    nonce: builtins.str
+    def __init__(
+        self,
         *,
-        time : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        message : typing.Text = ...,
-        code : builtins.int = ...,
-        details : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        config_version : builtins.int = ...,
-        type_url : typing.Text = ...,
-        kind : global___Event.EventKind.V = ...,
-        resource_subscribed : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        resource_unsubscribed : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        instance : typing.Text = ...,
-        seq_no : builtins.int = ...,
-        nonce : typing.Text = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"time",b"time"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"code",b"code",u"config_version",b"config_version",u"details",b"details",u"instance",b"instance",u"kind",b"kind",u"message",b"message",u"nonce",b"nonce",u"resource_subscribed",b"resource_subscribed",u"resource_unsubscribed",b"resource_unsubscribed",u"seq_no",b"seq_no",u"time",b"time",u"type_url",b"type_url"]) -> None: ...
+        time: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        message: builtins.str = ...,
+        code: builtins.int = ...,
+        details: collections.abc.Iterable[builtins.str] | None = ...,
+        config_version: builtins.int = ...,
+        type_url: builtins.str = ...,
+        kind: global___Event.EventKind.ValueType = ...,
+        resource_subscribed: collections.abc.Iterable[builtins.str] | None = ...,
+        resource_unsubscribed: collections.abc.Iterable[builtins.str] | None = ...,
+        instance: builtins.str = ...,
+        seq_no: builtins.int = ...,
+        nonce: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["time", b"time"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["code", b"code", "config_version", b"config_version", "details", b"details", "instance", b"instance", "kind", b"kind", "message", b"message", "nonce", b"nonce", "resource_subscribed", b"resource_subscribed", "resource_unsubscribed", b"resource_unsubscribed", "seq_no", b"seq_no", "time", b"time", "type_url", b"type_url"]) -> None: ...
+
 global___Event = Event
 
 class SyncRequest(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
-    def __init__(self,
-        ) -> None: ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    def __init__(
+        self,
+    ) -> None: ...
+
 global___SyncRequest = SyncRequest
 
 class SyncResponse(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     EVENT_FIELD_NUMBER: builtins.int
     @property
     def event(self) -> global___Event: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        event : typing.Optional[global___Event] = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"event",b"event"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"event",b"event"]) -> None: ...
+        event: global___Event | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["event", b"event"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["event", b"event"]) -> None: ...
+
 global___SyncResponse = SyncResponse

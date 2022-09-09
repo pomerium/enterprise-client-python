@@ -4,6 +4,7 @@
 """Generated protocol buffer code."""
 from google.protobuf.internal import enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
+from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
@@ -17,328 +18,13 @@ from google.protobuf import duration_pb2 as google_dot_protobuf_dot_duration__pb
 from validate import validate_pb2 as validate_dot_validate__pb2
 
 
-DESCRIPTOR = _descriptor.FileDescriptor(
-  name='tsdb.proto',
-  package='pomerium.dashboard',
-  syntax='proto3',
-  serialized_options=b'Z+github.com/pomerium/pomerium-console/pkg/pb',
-  create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\ntsdb.proto\x12\x12pomerium.dashboard\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x17validate/validate.proto\"\xa2\x01\n\x05Range\x12\x33\n\x05start\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\x12\x31\n\x03\x65nd\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\x12\x31\n\x04step\x18\x03 \x01(\x0b\x32\x19.google.protobuf.DurationB\x08\xfa\x42\x05\xaa\x01\x02\x08\x01\"W\n\x0cRouteMatcher\x12\x1b\n\x08route_id\x18\x01 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01H\x00\x12\x1f\n\x0cnamespace_id\x18\x02 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01H\x00\x42\t\n\x07matcher\"?\n\x06String\x12\r\n\x05value\x18\x01 \x01(\t\x12&\n\x02ts\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"?\n\x06Scalar\x12\r\n\x05value\x18\x01 \x01(\x01\x12&\n\x02ts\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xa3\x01\n\nTimeSeries\x12:\n\x06labels\x18\x01 \x03(\x0b\x32*.pomerium.dashboard.TimeSeries.LabelsEntry\x12*\n\x06series\x18\x02 \x03(\x0b\x32\x1a.pomerium.dashboard.Scalar\x1a-\n\x0bLabelsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"8\n\x06Matrix\x12.\n\x06series\x18\x01 \x03(\x0b\x32\x1e.pomerium.dashboard.TimeSeries\"\x9a\x01\n\x06Sample\x12\x36\n\x06labels\x18\x01 \x03(\x0b\x32&.pomerium.dashboard.Sample.LabelsEntry\x12)\n\x05value\x18\x02 \x01(\x0b\x32\x1a.pomerium.dashboard.Scalar\x1a-\n\x0bLabelsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"5\n\x06Vector\x12+\n\x07samples\x18\x01 \x03(\x0b\x32\x1a.pomerium.dashboard.Sample\"\xc3\x01\n\x18RouteMetricSeriesRequest\x12;\n\x07matcher\x18\x01 \x01(\x0b\x32 .pomerium.dashboard.RouteMatcherB\x08\xfa\x42\x05\x8a\x01\x02\x10\x01\x12\x36\n\x06metric\x18\x02 \x01(\x0e\x32\x1a.pomerium.dashboard.MetricB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\x12\x32\n\x05range\x18\x03 \x01(\x0b\x32\x19.pomerium.dashboard.RangeB\x08\xfa\x42\x05\x8a\x01\x02\x10\x01\"\xf9\x01\n!RouteMetricSeriesHistogramRequest\x12;\n\x07matcher\x18\x01 \x01(\x0b\x32 .pomerium.dashboard.RouteMatcherB\x08\xfa\x42\x05\x8a\x01\x02\x10\x01\x12\x36\n\x06metric\x18\x02 \x01(\x0e\x32\x1a.pomerium.dashboard.MetricB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\x12\x32\n\x05range\x18\x03 \x01(\x0b\x32\x19.pomerium.dashboard.RangeB\x08\xfa\x42\x05\x8a\x01\x02\x10\x01\x12+\n\npercentile\x18\x04 \x01(\x01\x42\x17\xfa\x42\x14\x12\x12\x19\x00\x00\x00\x00\x00\x00\xf0?)\x00\x00\x00\x00\x00\x00\x00\x00\"\x90\x02\n\x19ServerMetricSeriesRequest\x12\x36\n\x06metric\x18\x02 \x01(\x0e\x32\x1a.pomerium.dashboard.MetricB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\x12\x32\n\x05range\x18\x03 \x01(\x0b\x32\x19.pomerium.dashboard.RangeB\x08\xfa\x42\x05\x8a\x01\x02\x10\x01\x12+\n\npercentile\x18\x04 \x01(\x01\x42\x17\xfa\x42\x14\x12\x12\x19\x00\x00\x00\x00\x00\x00\xf0?)\x00\x00\x00\x00\x00\x00\x00\x00\x12<\n\tcomponent\x18\x05 \x01(\x0e\x32\x1d.pomerium.dashboard.ComponentB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\x12\x1c\n\x0binstance_id\x18\x06 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01\"\xa9\x01\n\x13ServerMetricRequest\x12<\n\tcomponent\x18\x01 \x01(\x0e\x32\x1d.pomerium.dashboard.ComponentB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\x12\x1c\n\x0binstance_id\x18\x02 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01\x12\x36\n\x06metric\x18\x03 \x01(\x0e\x32\x1a.pomerium.dashboard.MetricB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\"N\n\x14\x43onsoleMetricRequest\x12\x36\n\x06metric\x18\x01 \x01(\x0e\x32\x1a.pomerium.dashboard.MetricB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\"\xbc\x01\n\x1a\x43onsoleMetricSeriesRequest\x12\x36\n\x06metric\x18\x01 \x01(\x0e\x32\x1a.pomerium.dashboard.MetricB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\x12\x33\n\x05start\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\x12\x31\n\x03\x65nd\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\"J\n\x10LastErrorRequest\x12\x36\n\x06metric\x18\x01 \x01(\x0e\x32\x1a.pomerium.dashboard.MetricB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\"L\n\x11LastErrorResponse\x12&\n\x02ts\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x0f\n\x07message\x18\x02 \x01(\t\"\xf5\x01\n\x18RouteMetricChangeRequest\x12;\n\x07matcher\x18\x01 \x01(\x0b\x32 .pomerium.dashboard.RouteMatcherB\x08\xfa\x42\x05\x8a\x01\x02\x10\x01\x12\x34\n\x06metric\x18\x02 \x01(\x0e\x32\x1a.pomerium.dashboard.MetricB\x08\xfa\x42\x05\x82\x01\x02\x10\x01\x12\x33\n\x05start\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\x12\x31\n\x03\x65nd\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\"h\n\x12TimeSeriesResponse\x12&\n\x04rate\x18\x01 \x01(\x0e\x32\x18.pomerium.dashboard.Rate\x12*\n\x06series\x18\x02 \x03(\x0b\x32\x1a.pomerium.dashboard.Scalar\"q\n\x17TimeSeriesResponseMulti\x12&\n\x04rate\x18\x01 \x01(\x0e\x32\x18.pomerium.dashboard.Rate\x12.\n\x06series\x18\x02 \x03(\x0b\x32\x1e.pomerium.dashboard.TimeSeries\"\x7f\n\rScalarBuckets\x12\x39\n\x07\x62uckets\x18\x01 \x03(\x0b\x32(.pomerium.dashboard.ScalarBuckets.Bucket\x1a\x33\n\x06\x42ucket\x12\x1a\n\x12less_or_equal_than\x18\x01 \x01(\x01\x12\r\n\x05\x63ount\x18\x02 \x01(\x03\"\xd3\x01\n\rUptimeRequest\x12\x33\n\x05start\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\x12\x31\n\x03\x65nd\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\x12<\n\tcomponent\x18\x03 \x01(\x0e\x32\x1d.pomerium.dashboard.ComponentB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\x12\x1c\n\x0binstance_id\x18\x04 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01\"\xb6\x02\n\x0eUptimeResponse\x12=\n\tintervals\x18\x01 \x03(\x0b\x32*.pomerium.dashboard.UptimeResponse.Summary\x1a\x98\x01\n\x07Summary\x12)\n\x05start\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\'\n\x03\x65nd\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x39\n\x06status\x18\x03 \x01(\x0e\x32).pomerium.dashboard.UptimeResponse.Status\"J\n\x06Status\x12\x1f\n\x1bUNDEFINED_STATUS_DO_NOT_USE\x10\x00\x12\x08\n\x04LIVE\x10\x01\x12\x0b\n\x07NO_DATA\x10\x02\x12\x08\n\x04\x44OWN\x10\x03\"}\n\x13GetInstancesRequest\x12\x33\n\x05start\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\x12\x31\n\x03\x65nd\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\"\x9e\x01\n\tInstances\x12\x39\n\tinstances\x18\x01 \x03(\x0b\x32&.pomerium.dashboard.Instances.Instance\x1aV\n\x08Instance\x12\x30\n\tcomponent\x18\x01 \x01(\x0e\x32\x1d.pomerium.dashboard.Component\x12\n\n\x02id\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\"t\n\x16GetInstanceInfoRequest\x12<\n\tcomponent\x18\x03 \x01(\x0e\x32\x1d.pomerium.dashboard.ComponentB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\x12\x1c\n\x0binstance_id\x18\x04 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01\"\x12\n\x10GetStatusRequest\"\x90\x03\n\x11GetStatusResponse\x12=\n\x07targets\x18\x01 \x03(\x0b\x32,.pomerium.dashboard.GetStatusResponse.Target\x12\x0c\n\x02ok\x18\x02 \x01(\x08H\x00\x12\x14\n\nlast_error\x18\x03 \x01(\tH\x00\x1a\x8d\x02\n\x06Target\x12\x12\n\nscrape_url\x18\x01 \x01(\t\x12\x12\n\nglobal_url\x18\x02 \x01(\t\x12\x12\n\nlast_error\x18\x03 \x01(\t\x12/\n\x0blast_scrape\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x43\n\x06health\x18\x05 \x01(\x0e\x32\x33.pomerium.dashboard.GetStatusResponse.Target.Health\"Q\n\x06Health\x12\x19\n\x15TARGET_HEALTH_UNKNOWN\x10\x00\x12\x14\n\x10TARGET_HEALTH_UP\x10\x01\x12\x16\n\x12TARGET_HEALTH_DOWN\x10\x02\x42\x08\n\x06status\"\x14\n\x12UsageReportRequest\"%\n\x13UsageReportResponse\x12\x0e\n\x06report\x18\x01 \x01(\x0c\"o\n\x06Labels\x12\x36\n\x06labels\x18\x01 \x03(\x0b\x32&.pomerium.dashboard.Labels.LabelsEntry\x1a-\n\x0bLabelsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01* \n\x04Rate\x12\x08\n\x04NONE\x10\x00\x12\x0e\n\nPER_SECOND\x10\x01*\xbb\t\n\x06Metric\x12\x1f\n\x1bUNDEFINED_METRIC_DO_NOT_USE\x10\x00\x12\x0c\n\x08REQUESTS\x10\x01\x12\x11\n\rREQUESTS_RATE\x10\x02\x12\x18\n\x14REQUESTS_DURATION_MS\x10\x03\x12\x12\n\x0eRESPONSE_CODES\x10\x04\x12\x0c\n\x08\x41UTHZ_OK\x10\x14\x12\x10\n\x0c\x41UTHZ_DENIED\x10\x15\x12\x0f\n\x0b\x41UTHZ_ERROR\x10\x16\x12\x12\n\x0e\x41UTHZ_DISABLED\x10\x17\x12\x1e\n\x1a\x41UTHZ_FAILURE_MODE_ALLOWED\x10\x18\x12\x16\n\x12MEMBERSHIP_HEALTHY\x10\x1e\x12\x17\n\x13MEMBERSHIP_DEGRADED\x10\x1f\x12\x17\n\x13MEMBERSHIP_EXCLUDED\x10 \x12\x14\n\x10MEMBERSHIP_TOTAL\x10!\x12\x0c\n\x08RX_BYTES\x10(\x12\x0c\n\x08TX_BYTES\x10)\x12\x0f\n\x0bTOTAL_BYTES\x10*\x12\x14\n\x10MEMORY_ALLOCATED\x10\x33\x12\r\n\tCPU_USAGE\x10\x34\x12\x1e\n\x1aIDP_LAST_REFRESH_TIMESTAMP\x10<\x12+\n\'IDP_LAST_USER_REFRESH_SUCCESS_TIMESTAMP\x10\x64\x12)\n%IDP_LAST_USER_REFRESH_ERROR_TIMESTAMP\x10\x65\x12\x1f\n\x1bIDP_LAST_USER_REFRESH_ERROR\x10\x66\x12!\n\x1dIDP_LAST_USER_REFRESH_SUCCESS\x10g\x12\x31\n-IDP_LAST_USER_GROUP_REFRESH_SUCCESS_TIMESTAMP\x10h\x12/\n+IDP_LAST_USER_GROUP_REFRESH_ERROR_TIMESTAMP\x10i\x12%\n!IDP_LAST_USER_GROUP_REFRESH_ERROR\x10j\x12\'\n#IDP_LAST_USER_GROUP_REFRESH_SUCCESS\x10k\x12.\n*IDP_LAST_SESSION_REFRESH_SUCCESS_TIMESTAMP\x10l\x12,\n(IDP_LAST_SESSION_REFRESH_ERROR_TIMESTAMP\x10m\x12\"\n\x1eIDP_LAST_SESSION_REFRESH_ERROR\x10n\x12$\n IDP_LAST_SESSION_REFRESH_SUCCESS\x10o\x12(\n$CONFIG_LAST_RELOAD_SUCCESS_TIMESTAMP\x10\x46\x12\x0e\n\nBUILD_INFO\x10G\x12\x19\n\x15\x43ONFIG_CHECKSUM_LOCAL\x10H\x12\x1e\n\x1a\x43ONFIG_CHECKSUM_DATABROKER\x10I\x12\x12\n\x0e\x43ONFIG_VERSION\x10J\x12\x11\n\rCONFIG_ERRORS\x10K\x12\x1a\n\x16\x43ONFIG_CONSOLE_VERSION\x10L\x12\x1c\n\x18PROMETHEUS_STORAGE_BYTES\x10P\x12\"\n\x1eMONTHLY_ACTIVE_USERS_THRESHOLD\x10Z\x12\x18\n\x14MONTHLY_ACTIVE_USERS\x10[*\x9d\x01\n\tComponent\x12\x16\n\x12UNKNOWN_DO_NOT_USE\x10\x00\x12\x10\n\x0c\x41UTHENTICATE\x10\x01\x12\r\n\tAUTHORIZE\x10\x02\x12\x0e\n\nDATABROKER\x10\x03\x12\x0b\n\x07\x43ONSOLE\x10\x04\x12\t\n\x05PROXY\x10\x05\x12\x0e\n\nALL_IN_ONE\x10\x06\x12\x0f\n\x0bPROXY_ENVOY\x10\x07\x12\x0e\n\nPROMETHEUS\x10\x08\x32\xd6\t\n\x0cTimeSeriesDB\x12`\n\x14GetRouteMetricChange\x12,.pomerium.dashboard.RouteMetricChangeRequest\x1a\x1a.pomerium.dashboard.Scalar\x12p\n\x1dGetRouteMetricChangeHistogram\x12,.pomerium.dashboard.RouteMetricChangeRequest\x1a!.pomerium.dashboard.ScalarBuckets\x12l\n\x14GetRouteMetricSeries\x12,.pomerium.dashboard.RouteMetricSeriesRequest\x1a&.pomerium.dashboard.TimeSeriesResponse\x12~\n\x1dGetRouteMetricSeriesHistogram\x12\x35.pomerium.dashboard.RouteMetricSeriesHistogramRequest\x1a&.pomerium.dashboard.TimeSeriesResponse\x12v\n\x19GetRouteMetricSeriesMulti\x12,.pomerium.dashboard.RouteMetricSeriesRequest\x1a+.pomerium.dashboard.TimeSeriesResponseMulti\x12R\n\tGetUptime\x12!.pomerium.dashboard.UptimeRequest\x1a\".pomerium.dashboard.UptimeResponse\x12V\n\x0cGetInstances\x12\'.pomerium.dashboard.GetInstancesRequest\x1a\x1d.pomerium.dashboard.Instances\x12n\n\x15GetServerMetricSeries\x12-.pomerium.dashboard.ServerMetricSeriesRequest\x1a&.pomerium.dashboard.TimeSeriesResponse\x12V\n\x0fGetServerMetric\x12\'.pomerium.dashboard.ServerMetricRequest\x1a\x1a.pomerium.dashboard.Sample\x12X\n\tGetStatus\x12$.pomerium.dashboard.GetStatusRequest\x1a%.pomerium.dashboard.GetStatusResponse\x12[\n\x0cGetLastError\x12$.pomerium.dashboard.LastErrorRequest\x1a%.pomerium.dashboard.LastErrorResponse\x12\x61\n\x0eGetUsageReport\x12&.pomerium.dashboard.UsageReportRequest\x1a\'.pomerium.dashboard.UsageReportResponseB-Z+github.com/pomerium/pomerium-console/pkg/pbb\x06proto3'
-  ,
-  dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,google_dot_protobuf_dot_duration__pb2.DESCRIPTOR,validate_dot_validate__pb2.DESCRIPTOR,])
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\ntsdb.proto\x12\x12pomerium.dashboard\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x17validate/validate.proto\"\xa2\x01\n\x05Range\x12\x33\n\x05start\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\x12\x31\n\x03\x65nd\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\x12\x31\n\x04step\x18\x03 \x01(\x0b\x32\x19.google.protobuf.DurationB\x08\xfa\x42\x05\xaa\x01\x02\x08\x01\"W\n\x0cRouteMatcher\x12\x1b\n\x08route_id\x18\x01 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01H\x00\x12\x1f\n\x0cnamespace_id\x18\x02 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01H\x00\x42\t\n\x07matcher\"?\n\x06String\x12\r\n\x05value\x18\x01 \x01(\t\x12&\n\x02ts\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"?\n\x06Scalar\x12\r\n\x05value\x18\x01 \x01(\x01\x12&\n\x02ts\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xa3\x01\n\nTimeSeries\x12:\n\x06labels\x18\x01 \x03(\x0b\x32*.pomerium.dashboard.TimeSeries.LabelsEntry\x12*\n\x06series\x18\x02 \x03(\x0b\x32\x1a.pomerium.dashboard.Scalar\x1a-\n\x0bLabelsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"8\n\x06Matrix\x12.\n\x06series\x18\x01 \x03(\x0b\x32\x1e.pomerium.dashboard.TimeSeries\"\x9a\x01\n\x06Sample\x12\x36\n\x06labels\x18\x01 \x03(\x0b\x32&.pomerium.dashboard.Sample.LabelsEntry\x12)\n\x05value\x18\x02 \x01(\x0b\x32\x1a.pomerium.dashboard.Scalar\x1a-\n\x0bLabelsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"5\n\x06Vector\x12+\n\x07samples\x18\x01 \x03(\x0b\x32\x1a.pomerium.dashboard.Sample\"\xc3\x01\n\x18RouteMetricSeriesRequest\x12;\n\x07matcher\x18\x01 \x01(\x0b\x32 .pomerium.dashboard.RouteMatcherB\x08\xfa\x42\x05\x8a\x01\x02\x10\x01\x12\x36\n\x06metric\x18\x02 \x01(\x0e\x32\x1a.pomerium.dashboard.MetricB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\x12\x32\n\x05range\x18\x03 \x01(\x0b\x32\x19.pomerium.dashboard.RangeB\x08\xfa\x42\x05\x8a\x01\x02\x10\x01\"\xf9\x01\n!RouteMetricSeriesHistogramRequest\x12;\n\x07matcher\x18\x01 \x01(\x0b\x32 .pomerium.dashboard.RouteMatcherB\x08\xfa\x42\x05\x8a\x01\x02\x10\x01\x12\x36\n\x06metric\x18\x02 \x01(\x0e\x32\x1a.pomerium.dashboard.MetricB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\x12\x32\n\x05range\x18\x03 \x01(\x0b\x32\x19.pomerium.dashboard.RangeB\x08\xfa\x42\x05\x8a\x01\x02\x10\x01\x12+\n\npercentile\x18\x04 \x01(\x01\x42\x17\xfa\x42\x14\x12\x12\x19\x00\x00\x00\x00\x00\x00\xf0?)\x00\x00\x00\x00\x00\x00\x00\x00\"\x90\x02\n\x19ServerMetricSeriesRequest\x12\x36\n\x06metric\x18\x02 \x01(\x0e\x32\x1a.pomerium.dashboard.MetricB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\x12\x32\n\x05range\x18\x03 \x01(\x0b\x32\x19.pomerium.dashboard.RangeB\x08\xfa\x42\x05\x8a\x01\x02\x10\x01\x12+\n\npercentile\x18\x04 \x01(\x01\x42\x17\xfa\x42\x14\x12\x12\x19\x00\x00\x00\x00\x00\x00\xf0?)\x00\x00\x00\x00\x00\x00\x00\x00\x12<\n\tcomponent\x18\x05 \x01(\x0e\x32\x1d.pomerium.dashboard.ComponentB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\x12\x1c\n\x0binstance_id\x18\x06 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01\"\xa9\x01\n\x13ServerMetricRequest\x12<\n\tcomponent\x18\x01 \x01(\x0e\x32\x1d.pomerium.dashboard.ComponentB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\x12\x1c\n\x0binstance_id\x18\x02 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01\x12\x36\n\x06metric\x18\x03 \x01(\x0e\x32\x1a.pomerium.dashboard.MetricB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\"N\n\x14\x43onsoleMetricRequest\x12\x36\n\x06metric\x18\x01 \x01(\x0e\x32\x1a.pomerium.dashboard.MetricB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\"\xbc\x01\n\x1a\x43onsoleMetricSeriesRequest\x12\x36\n\x06metric\x18\x01 \x01(\x0e\x32\x1a.pomerium.dashboard.MetricB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\x12\x33\n\x05start\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\x12\x31\n\x03\x65nd\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\"J\n\x10LastErrorRequest\x12\x36\n\x06metric\x18\x01 \x01(\x0e\x32\x1a.pomerium.dashboard.MetricB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\"L\n\x11LastErrorResponse\x12&\n\x02ts\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x0f\n\x07message\x18\x02 \x01(\t\"\xf5\x01\n\x18RouteMetricChangeRequest\x12;\n\x07matcher\x18\x01 \x01(\x0b\x32 .pomerium.dashboard.RouteMatcherB\x08\xfa\x42\x05\x8a\x01\x02\x10\x01\x12\x34\n\x06metric\x18\x02 \x01(\x0e\x32\x1a.pomerium.dashboard.MetricB\x08\xfa\x42\x05\x82\x01\x02\x10\x01\x12\x33\n\x05start\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\x12\x31\n\x03\x65nd\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\"h\n\x12TimeSeriesResponse\x12&\n\x04rate\x18\x01 \x01(\x0e\x32\x18.pomerium.dashboard.Rate\x12*\n\x06series\x18\x02 \x03(\x0b\x32\x1a.pomerium.dashboard.Scalar\"q\n\x17TimeSeriesResponseMulti\x12&\n\x04rate\x18\x01 \x01(\x0e\x32\x18.pomerium.dashboard.Rate\x12.\n\x06series\x18\x02 \x03(\x0b\x32\x1e.pomerium.dashboard.TimeSeries\"\x7f\n\rScalarBuckets\x12\x39\n\x07\x62uckets\x18\x01 \x03(\x0b\x32(.pomerium.dashboard.ScalarBuckets.Bucket\x1a\x33\n\x06\x42ucket\x12\x1a\n\x12less_or_equal_than\x18\x01 \x01(\x01\x12\r\n\x05\x63ount\x18\x02 \x01(\x03\"\xd3\x01\n\rUptimeRequest\x12\x33\n\x05start\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\x12\x31\n\x03\x65nd\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\x12<\n\tcomponent\x18\x03 \x01(\x0e\x32\x1d.pomerium.dashboard.ComponentB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\x12\x1c\n\x0binstance_id\x18\x04 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01\"\xb6\x02\n\x0eUptimeResponse\x12=\n\tintervals\x18\x01 \x03(\x0b\x32*.pomerium.dashboard.UptimeResponse.Summary\x1a\x98\x01\n\x07Summary\x12)\n\x05start\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\'\n\x03\x65nd\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x39\n\x06status\x18\x03 \x01(\x0e\x32).pomerium.dashboard.UptimeResponse.Status\"J\n\x06Status\x12\x1f\n\x1bUNDEFINED_STATUS_DO_NOT_USE\x10\x00\x12\x08\n\x04LIVE\x10\x01\x12\x0b\n\x07NO_DATA\x10\x02\x12\x08\n\x04\x44OWN\x10\x03\"}\n\x13GetInstancesRequest\x12\x33\n\x05start\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\x12\x31\n\x03\x65nd\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x08\xfa\x42\x05\xb2\x01\x02\x08\x01\"\x9e\x01\n\tInstances\x12\x39\n\tinstances\x18\x01 \x03(\x0b\x32&.pomerium.dashboard.Instances.Instance\x1aV\n\x08Instance\x12\x30\n\tcomponent\x18\x01 \x01(\x0e\x32\x1d.pomerium.dashboard.Component\x12\n\n\x02id\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\"t\n\x16GetInstanceInfoRequest\x12<\n\tcomponent\x18\x03 \x01(\x0e\x32\x1d.pomerium.dashboard.ComponentB\n\xfa\x42\x07\x82\x01\x04\x10\x01 \x00\x12\x1c\n\x0binstance_id\x18\x04 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01\"\x12\n\x10GetStatusRequest\"\x90\x03\n\x11GetStatusResponse\x12=\n\x07targets\x18\x01 \x03(\x0b\x32,.pomerium.dashboard.GetStatusResponse.Target\x12\x0c\n\x02ok\x18\x02 \x01(\x08H\x00\x12\x14\n\nlast_error\x18\x03 \x01(\tH\x00\x1a\x8d\x02\n\x06Target\x12\x12\n\nscrape_url\x18\x01 \x01(\t\x12\x12\n\nglobal_url\x18\x02 \x01(\t\x12\x12\n\nlast_error\x18\x03 \x01(\t\x12/\n\x0blast_scrape\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x43\n\x06health\x18\x05 \x01(\x0e\x32\x33.pomerium.dashboard.GetStatusResponse.Target.Health\"Q\n\x06Health\x12\x19\n\x15TARGET_HEALTH_UNKNOWN\x10\x00\x12\x14\n\x10TARGET_HEALTH_UP\x10\x01\x12\x16\n\x12TARGET_HEALTH_DOWN\x10\x02\x42\x08\n\x06status\"\x14\n\x12UsageReportRequest\"%\n\x13UsageReportResponse\x12\x0e\n\x06report\x18\x01 \x01(\x0c\"o\n\x06Labels\x12\x36\n\x06labels\x18\x01 \x03(\x0b\x32&.pomerium.dashboard.Labels.LabelsEntry\x1a-\n\x0bLabelsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01* \n\x04Rate\x12\x08\n\x04NONE\x10\x00\x12\x0e\n\nPER_SECOND\x10\x01*\xbb\t\n\x06Metric\x12\x1f\n\x1bUNDEFINED_METRIC_DO_NOT_USE\x10\x00\x12\x0c\n\x08REQUESTS\x10\x01\x12\x11\n\rREQUESTS_RATE\x10\x02\x12\x18\n\x14REQUESTS_DURATION_MS\x10\x03\x12\x12\n\x0eRESPONSE_CODES\x10\x04\x12\x0c\n\x08\x41UTHZ_OK\x10\x14\x12\x10\n\x0c\x41UTHZ_DENIED\x10\x15\x12\x0f\n\x0b\x41UTHZ_ERROR\x10\x16\x12\x12\n\x0e\x41UTHZ_DISABLED\x10\x17\x12\x1e\n\x1a\x41UTHZ_FAILURE_MODE_ALLOWED\x10\x18\x12\x16\n\x12MEMBERSHIP_HEALTHY\x10\x1e\x12\x17\n\x13MEMBERSHIP_DEGRADED\x10\x1f\x12\x17\n\x13MEMBERSHIP_EXCLUDED\x10 \x12\x14\n\x10MEMBERSHIP_TOTAL\x10!\x12\x0c\n\x08RX_BYTES\x10(\x12\x0c\n\x08TX_BYTES\x10)\x12\x0f\n\x0bTOTAL_BYTES\x10*\x12\x14\n\x10MEMORY_ALLOCATED\x10\x33\x12\r\n\tCPU_USAGE\x10\x34\x12\x1e\n\x1aIDP_LAST_REFRESH_TIMESTAMP\x10<\x12+\n\'IDP_LAST_USER_REFRESH_SUCCESS_TIMESTAMP\x10\x64\x12)\n%IDP_LAST_USER_REFRESH_ERROR_TIMESTAMP\x10\x65\x12\x1f\n\x1bIDP_LAST_USER_REFRESH_ERROR\x10\x66\x12!\n\x1dIDP_LAST_USER_REFRESH_SUCCESS\x10g\x12\x31\n-IDP_LAST_USER_GROUP_REFRESH_SUCCESS_TIMESTAMP\x10h\x12/\n+IDP_LAST_USER_GROUP_REFRESH_ERROR_TIMESTAMP\x10i\x12%\n!IDP_LAST_USER_GROUP_REFRESH_ERROR\x10j\x12\'\n#IDP_LAST_USER_GROUP_REFRESH_SUCCESS\x10k\x12.\n*IDP_LAST_SESSION_REFRESH_SUCCESS_TIMESTAMP\x10l\x12,\n(IDP_LAST_SESSION_REFRESH_ERROR_TIMESTAMP\x10m\x12\"\n\x1eIDP_LAST_SESSION_REFRESH_ERROR\x10n\x12$\n IDP_LAST_SESSION_REFRESH_SUCCESS\x10o\x12(\n$CONFIG_LAST_RELOAD_SUCCESS_TIMESTAMP\x10\x46\x12\x0e\n\nBUILD_INFO\x10G\x12\x19\n\x15\x43ONFIG_CHECKSUM_LOCAL\x10H\x12\x1e\n\x1a\x43ONFIG_CHECKSUM_DATABROKER\x10I\x12\x12\n\x0e\x43ONFIG_VERSION\x10J\x12\x11\n\rCONFIG_ERRORS\x10K\x12\x1a\n\x16\x43ONFIG_CONSOLE_VERSION\x10L\x12\x1c\n\x18PROMETHEUS_STORAGE_BYTES\x10P\x12\"\n\x1eMONTHLY_ACTIVE_USERS_THRESHOLD\x10Z\x12\x18\n\x14MONTHLY_ACTIVE_USERS\x10[*\x9d\x01\n\tComponent\x12\x16\n\x12UNKNOWN_DO_NOT_USE\x10\x00\x12\x10\n\x0c\x41UTHENTICATE\x10\x01\x12\r\n\tAUTHORIZE\x10\x02\x12\x0e\n\nDATABROKER\x10\x03\x12\x0b\n\x07\x43ONSOLE\x10\x04\x12\t\n\x05PROXY\x10\x05\x12\x0e\n\nALL_IN_ONE\x10\x06\x12\x0f\n\x0bPROXY_ENVOY\x10\x07\x12\x0e\n\nPROMETHEUS\x10\x08\x32\xd6\t\n\x0cTimeSeriesDB\x12`\n\x14GetRouteMetricChange\x12,.pomerium.dashboard.RouteMetricChangeRequest\x1a\x1a.pomerium.dashboard.Scalar\x12p\n\x1dGetRouteMetricChangeHistogram\x12,.pomerium.dashboard.RouteMetricChangeRequest\x1a!.pomerium.dashboard.ScalarBuckets\x12l\n\x14GetRouteMetricSeries\x12,.pomerium.dashboard.RouteMetricSeriesRequest\x1a&.pomerium.dashboard.TimeSeriesResponse\x12~\n\x1dGetRouteMetricSeriesHistogram\x12\x35.pomerium.dashboard.RouteMetricSeriesHistogramRequest\x1a&.pomerium.dashboard.TimeSeriesResponse\x12v\n\x19GetRouteMetricSeriesMulti\x12,.pomerium.dashboard.RouteMetricSeriesRequest\x1a+.pomerium.dashboard.TimeSeriesResponseMulti\x12R\n\tGetUptime\x12!.pomerium.dashboard.UptimeRequest\x1a\".pomerium.dashboard.UptimeResponse\x12V\n\x0cGetInstances\x12\'.pomerium.dashboard.GetInstancesRequest\x1a\x1d.pomerium.dashboard.Instances\x12n\n\x15GetServerMetricSeries\x12-.pomerium.dashboard.ServerMetricSeriesRequest\x1a&.pomerium.dashboard.TimeSeriesResponse\x12V\n\x0fGetServerMetric\x12\'.pomerium.dashboard.ServerMetricRequest\x1a\x1a.pomerium.dashboard.Sample\x12X\n\tGetStatus\x12$.pomerium.dashboard.GetStatusRequest\x1a%.pomerium.dashboard.GetStatusResponse\x12[\n\x0cGetLastError\x12$.pomerium.dashboard.LastErrorRequest\x1a%.pomerium.dashboard.LastErrorResponse\x12\x61\n\x0eGetUsageReport\x12&.pomerium.dashboard.UsageReportRequest\x1a\'.pomerium.dashboard.UsageReportResponseB-Z+github.com/pomerium/pomerium-console/pkg/pbb\x06proto3')
 
-_RATE = _descriptor.EnumDescriptor(
-  name='Rate',
-  full_name='pomerium.dashboard.Rate',
-  filename=None,
-  file=DESCRIPTOR,
-  create_key=_descriptor._internal_create_key,
-  values=[
-    _descriptor.EnumValueDescriptor(
-      name='NONE', index=0, number=0,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='PER_SECOND', index=1, number=1,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-  ],
-  containing_type=None,
-  serialized_options=None,
-  serialized_start=4394,
-  serialized_end=4426,
-)
-_sym_db.RegisterEnumDescriptor(_RATE)
-
+_RATE = DESCRIPTOR.enum_types_by_name['Rate']
 Rate = enum_type_wrapper.EnumTypeWrapper(_RATE)
-_METRIC = _descriptor.EnumDescriptor(
-  name='Metric',
-  full_name='pomerium.dashboard.Metric',
-  filename=None,
-  file=DESCRIPTOR,
-  create_key=_descriptor._internal_create_key,
-  values=[
-    _descriptor.EnumValueDescriptor(
-      name='UNDEFINED_METRIC_DO_NOT_USE', index=0, number=0,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='REQUESTS', index=1, number=1,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='REQUESTS_RATE', index=2, number=2,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='REQUESTS_DURATION_MS', index=3, number=3,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='RESPONSE_CODES', index=4, number=4,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='AUTHZ_OK', index=5, number=20,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='AUTHZ_DENIED', index=6, number=21,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='AUTHZ_ERROR', index=7, number=22,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='AUTHZ_DISABLED', index=8, number=23,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='AUTHZ_FAILURE_MODE_ALLOWED', index=9, number=24,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='MEMBERSHIP_HEALTHY', index=10, number=30,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='MEMBERSHIP_DEGRADED', index=11, number=31,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='MEMBERSHIP_EXCLUDED', index=12, number=32,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='MEMBERSHIP_TOTAL', index=13, number=33,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='RX_BYTES', index=14, number=40,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='TX_BYTES', index=15, number=41,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='TOTAL_BYTES', index=16, number=42,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='MEMORY_ALLOCATED', index=17, number=51,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='CPU_USAGE', index=18, number=52,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='IDP_LAST_REFRESH_TIMESTAMP', index=19, number=60,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='IDP_LAST_USER_REFRESH_SUCCESS_TIMESTAMP', index=20, number=100,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='IDP_LAST_USER_REFRESH_ERROR_TIMESTAMP', index=21, number=101,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='IDP_LAST_USER_REFRESH_ERROR', index=22, number=102,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='IDP_LAST_USER_REFRESH_SUCCESS', index=23, number=103,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='IDP_LAST_USER_GROUP_REFRESH_SUCCESS_TIMESTAMP', index=24, number=104,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='IDP_LAST_USER_GROUP_REFRESH_ERROR_TIMESTAMP', index=25, number=105,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='IDP_LAST_USER_GROUP_REFRESH_ERROR', index=26, number=106,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='IDP_LAST_USER_GROUP_REFRESH_SUCCESS', index=27, number=107,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='IDP_LAST_SESSION_REFRESH_SUCCESS_TIMESTAMP', index=28, number=108,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='IDP_LAST_SESSION_REFRESH_ERROR_TIMESTAMP', index=29, number=109,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='IDP_LAST_SESSION_REFRESH_ERROR', index=30, number=110,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='IDP_LAST_SESSION_REFRESH_SUCCESS', index=31, number=111,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='CONFIG_LAST_RELOAD_SUCCESS_TIMESTAMP', index=32, number=70,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='BUILD_INFO', index=33, number=71,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='CONFIG_CHECKSUM_LOCAL', index=34, number=72,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='CONFIG_CHECKSUM_DATABROKER', index=35, number=73,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='CONFIG_VERSION', index=36, number=74,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='CONFIG_ERRORS', index=37, number=75,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='CONFIG_CONSOLE_VERSION', index=38, number=76,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='PROMETHEUS_STORAGE_BYTES', index=39, number=80,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='MONTHLY_ACTIVE_USERS_THRESHOLD', index=40, number=90,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='MONTHLY_ACTIVE_USERS', index=41, number=91,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-  ],
-  containing_type=None,
-  serialized_options=None,
-  serialized_start=4429,
-  serialized_end=5640,
-)
-_sym_db.RegisterEnumDescriptor(_METRIC)
-
+_METRIC = DESCRIPTOR.enum_types_by_name['Metric']
 Metric = enum_type_wrapper.EnumTypeWrapper(_METRIC)
-_COMPONENT = _descriptor.EnumDescriptor(
-  name='Component',
-  full_name='pomerium.dashboard.Component',
-  filename=None,
-  file=DESCRIPTOR,
-  create_key=_descriptor._internal_create_key,
-  values=[
-    _descriptor.EnumValueDescriptor(
-      name='UNKNOWN_DO_NOT_USE', index=0, number=0,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='AUTHENTICATE', index=1, number=1,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='AUTHORIZE', index=2, number=2,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='DATABROKER', index=3, number=3,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='CONSOLE', index=4, number=4,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='PROXY', index=5, number=5,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='ALL_IN_ONE', index=6, number=6,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='PROXY_ENVOY', index=7, number=7,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='PROMETHEUS', index=8, number=8,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-  ],
-  containing_type=None,
-  serialized_options=None,
-  serialized_start=5643,
-  serialized_end=5800,
-)
-_sym_db.RegisterEnumDescriptor(_COMPONENT)
-
+_COMPONENT = DESCRIPTOR.enum_types_by_name['Component']
 Component = enum_type_wrapper.EnumTypeWrapper(_COMPONENT)
 NONE = 0
 PER_SECOND = 1
@@ -395,1670 +81,45 @@ PROXY_ENVOY = 7
 PROMETHEUS = 8
 
 
-_UPTIMERESPONSE_STATUS = _descriptor.EnumDescriptor(
-  name='Status',
-  full_name='pomerium.dashboard.UptimeResponse.Status',
-  filename=None,
-  file=DESCRIPTOR,
-  create_key=_descriptor._internal_create_key,
-  values=[
-    _descriptor.EnumValueDescriptor(
-      name='UNDEFINED_STATUS_DO_NOT_USE', index=0, number=0,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='LIVE', index=1, number=1,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='NO_DATA', index=2, number=2,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='DOWN', index=3, number=3,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-  ],
-  containing_type=None,
-  serialized_options=None,
-  serialized_start=3315,
-  serialized_end=3389,
-)
-_sym_db.RegisterEnumDescriptor(_UPTIMERESPONSE_STATUS)
-
-_GETSTATUSRESPONSE_TARGET_HEALTH = _descriptor.EnumDescriptor(
-  name='Health',
-  full_name='pomerium.dashboard.GetStatusResponse.Target.Health',
-  filename=None,
-  file=DESCRIPTOR,
-  create_key=_descriptor._internal_create_key,
-  values=[
-    _descriptor.EnumValueDescriptor(
-      name='TARGET_HEALTH_UNKNOWN', index=0, number=0,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='TARGET_HEALTH_UP', index=1, number=1,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='TARGET_HEALTH_DOWN', index=2, number=2,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-  ],
-  containing_type=None,
-  serialized_options=None,
-  serialized_start=4127,
-  serialized_end=4208,
-)
-_sym_db.RegisterEnumDescriptor(_GETSTATUSRESPONSE_TARGET_HEALTH)
-
-
-_RANGE = _descriptor.Descriptor(
-  name='Range',
-  full_name='pomerium.dashboard.Range',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='start', full_name='pomerium.dashboard.Range.start', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\005\262\001\002\010\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='end', full_name='pomerium.dashboard.Range.end', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\005\262\001\002\010\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='step', full_name='pomerium.dashboard.Range.step', index=2,
-      number=3, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\005\252\001\002\010\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=125,
-  serialized_end=287,
-)
-
-
-_ROUTEMATCHER = _descriptor.Descriptor(
-  name='RouteMatcher',
-  full_name='pomerium.dashboard.RouteMatcher',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='route_id', full_name='pomerium.dashboard.RouteMatcher.route_id', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\004r\002\020\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='namespace_id', full_name='pomerium.dashboard.RouteMatcher.namespace_id', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\004r\002\020\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-    _descriptor.OneofDescriptor(
-      name='matcher', full_name='pomerium.dashboard.RouteMatcher.matcher',
-      index=0, containing_type=None,
-      create_key=_descriptor._internal_create_key,
-    fields=[]),
-  ],
-  serialized_start=289,
-  serialized_end=376,
-)
-
-
-_STRING = _descriptor.Descriptor(
-  name='String',
-  full_name='pomerium.dashboard.String',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='value', full_name='pomerium.dashboard.String.value', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='ts', full_name='pomerium.dashboard.String.ts', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=378,
-  serialized_end=441,
-)
-
-
-_SCALAR = _descriptor.Descriptor(
-  name='Scalar',
-  full_name='pomerium.dashboard.Scalar',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='value', full_name='pomerium.dashboard.Scalar.value', index=0,
-      number=1, type=1, cpp_type=5, label=1,
-      has_default_value=False, default_value=float(0),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='ts', full_name='pomerium.dashboard.Scalar.ts', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=443,
-  serialized_end=506,
-)
-
-
-_TIMESERIES_LABELSENTRY = _descriptor.Descriptor(
-  name='LabelsEntry',
-  full_name='pomerium.dashboard.TimeSeries.LabelsEntry',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='key', full_name='pomerium.dashboard.TimeSeries.LabelsEntry.key', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='value', full_name='pomerium.dashboard.TimeSeries.LabelsEntry.value', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=b'8\001',
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=627,
-  serialized_end=672,
-)
-
-_TIMESERIES = _descriptor.Descriptor(
-  name='TimeSeries',
-  full_name='pomerium.dashboard.TimeSeries',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='labels', full_name='pomerium.dashboard.TimeSeries.labels', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='series', full_name='pomerium.dashboard.TimeSeries.series', index=1,
-      number=2, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[_TIMESERIES_LABELSENTRY, ],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=509,
-  serialized_end=672,
-)
-
-
-_MATRIX = _descriptor.Descriptor(
-  name='Matrix',
-  full_name='pomerium.dashboard.Matrix',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='series', full_name='pomerium.dashboard.Matrix.series', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=674,
-  serialized_end=730,
-)
-
-
-_SAMPLE_LABELSENTRY = _descriptor.Descriptor(
-  name='LabelsEntry',
-  full_name='pomerium.dashboard.Sample.LabelsEntry',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='key', full_name='pomerium.dashboard.Sample.LabelsEntry.key', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='value', full_name='pomerium.dashboard.Sample.LabelsEntry.value', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=b'8\001',
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=627,
-  serialized_end=672,
-)
-
-_SAMPLE = _descriptor.Descriptor(
-  name='Sample',
-  full_name='pomerium.dashboard.Sample',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='labels', full_name='pomerium.dashboard.Sample.labels', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='value', full_name='pomerium.dashboard.Sample.value', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[_SAMPLE_LABELSENTRY, ],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=733,
-  serialized_end=887,
-)
-
-
-_VECTOR = _descriptor.Descriptor(
-  name='Vector',
-  full_name='pomerium.dashboard.Vector',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='samples', full_name='pomerium.dashboard.Vector.samples', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=889,
-  serialized_end=942,
-)
-
-
-_ROUTEMETRICSERIESREQUEST = _descriptor.Descriptor(
-  name='RouteMetricSeriesRequest',
-  full_name='pomerium.dashboard.RouteMetricSeriesRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='matcher', full_name='pomerium.dashboard.RouteMetricSeriesRequest.matcher', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\005\212\001\002\020\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='metric', full_name='pomerium.dashboard.RouteMetricSeriesRequest.metric', index=1,
-      number=2, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\007\202\001\004\020\001 \000', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='range', full_name='pomerium.dashboard.RouteMetricSeriesRequest.range', index=2,
-      number=3, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\005\212\001\002\020\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=945,
-  serialized_end=1140,
-)
-
-
-_ROUTEMETRICSERIESHISTOGRAMREQUEST = _descriptor.Descriptor(
-  name='RouteMetricSeriesHistogramRequest',
-  full_name='pomerium.dashboard.RouteMetricSeriesHistogramRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='matcher', full_name='pomerium.dashboard.RouteMetricSeriesHistogramRequest.matcher', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\005\212\001\002\020\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='metric', full_name='pomerium.dashboard.RouteMetricSeriesHistogramRequest.metric', index=1,
-      number=2, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\007\202\001\004\020\001 \000', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='range', full_name='pomerium.dashboard.RouteMetricSeriesHistogramRequest.range', index=2,
-      number=3, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\005\212\001\002\020\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='percentile', full_name='pomerium.dashboard.RouteMetricSeriesHistogramRequest.percentile', index=3,
-      number=4, type=1, cpp_type=5, label=1,
-      has_default_value=False, default_value=float(0),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\024\022\022\031\000\000\000\000\000\000\360?)\000\000\000\000\000\000\000\000', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1143,
-  serialized_end=1392,
-)
-
-
-_SERVERMETRICSERIESREQUEST = _descriptor.Descriptor(
-  name='ServerMetricSeriesRequest',
-  full_name='pomerium.dashboard.ServerMetricSeriesRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='metric', full_name='pomerium.dashboard.ServerMetricSeriesRequest.metric', index=0,
-      number=2, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\007\202\001\004\020\001 \000', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='range', full_name='pomerium.dashboard.ServerMetricSeriesRequest.range', index=1,
-      number=3, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\005\212\001\002\020\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='percentile', full_name='pomerium.dashboard.ServerMetricSeriesRequest.percentile', index=2,
-      number=4, type=1, cpp_type=5, label=1,
-      has_default_value=False, default_value=float(0),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\024\022\022\031\000\000\000\000\000\000\360?)\000\000\000\000\000\000\000\000', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='component', full_name='pomerium.dashboard.ServerMetricSeriesRequest.component', index=3,
-      number=5, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\007\202\001\004\020\001 \000', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='instance_id', full_name='pomerium.dashboard.ServerMetricSeriesRequest.instance_id', index=4,
-      number=6, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\004r\002\020\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1395,
-  serialized_end=1667,
-)
-
-
-_SERVERMETRICREQUEST = _descriptor.Descriptor(
-  name='ServerMetricRequest',
-  full_name='pomerium.dashboard.ServerMetricRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='component', full_name='pomerium.dashboard.ServerMetricRequest.component', index=0,
-      number=1, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\007\202\001\004\020\001 \000', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='instance_id', full_name='pomerium.dashboard.ServerMetricRequest.instance_id', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\004r\002\020\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='metric', full_name='pomerium.dashboard.ServerMetricRequest.metric', index=2,
-      number=3, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\007\202\001\004\020\001 \000', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1670,
-  serialized_end=1839,
-)
-
-
-_CONSOLEMETRICREQUEST = _descriptor.Descriptor(
-  name='ConsoleMetricRequest',
-  full_name='pomerium.dashboard.ConsoleMetricRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='metric', full_name='pomerium.dashboard.ConsoleMetricRequest.metric', index=0,
-      number=1, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\007\202\001\004\020\001 \000', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1841,
-  serialized_end=1919,
-)
-
-
-_CONSOLEMETRICSERIESREQUEST = _descriptor.Descriptor(
-  name='ConsoleMetricSeriesRequest',
-  full_name='pomerium.dashboard.ConsoleMetricSeriesRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='metric', full_name='pomerium.dashboard.ConsoleMetricSeriesRequest.metric', index=0,
-      number=1, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\007\202\001\004\020\001 \000', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='start', full_name='pomerium.dashboard.ConsoleMetricSeriesRequest.start', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\005\262\001\002\010\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='end', full_name='pomerium.dashboard.ConsoleMetricSeriesRequest.end', index=2,
-      number=3, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\005\262\001\002\010\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1922,
-  serialized_end=2110,
-)
-
-
-_LASTERRORREQUEST = _descriptor.Descriptor(
-  name='LastErrorRequest',
-  full_name='pomerium.dashboard.LastErrorRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='metric', full_name='pomerium.dashboard.LastErrorRequest.metric', index=0,
-      number=1, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\007\202\001\004\020\001 \000', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=2112,
-  serialized_end=2186,
-)
-
-
-_LASTERRORRESPONSE = _descriptor.Descriptor(
-  name='LastErrorResponse',
-  full_name='pomerium.dashboard.LastErrorResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='ts', full_name='pomerium.dashboard.LastErrorResponse.ts', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='message', full_name='pomerium.dashboard.LastErrorResponse.message', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=2188,
-  serialized_end=2264,
-)
-
-
-_ROUTEMETRICCHANGEREQUEST = _descriptor.Descriptor(
-  name='RouteMetricChangeRequest',
-  full_name='pomerium.dashboard.RouteMetricChangeRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='matcher', full_name='pomerium.dashboard.RouteMetricChangeRequest.matcher', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\005\212\001\002\020\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='metric', full_name='pomerium.dashboard.RouteMetricChangeRequest.metric', index=1,
-      number=2, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\005\202\001\002\020\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='start', full_name='pomerium.dashboard.RouteMetricChangeRequest.start', index=2,
-      number=3, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\005\262\001\002\010\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='end', full_name='pomerium.dashboard.RouteMetricChangeRequest.end', index=3,
-      number=4, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\005\262\001\002\010\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=2267,
-  serialized_end=2512,
-)
-
-
-_TIMESERIESRESPONSE = _descriptor.Descriptor(
-  name='TimeSeriesResponse',
-  full_name='pomerium.dashboard.TimeSeriesResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='rate', full_name='pomerium.dashboard.TimeSeriesResponse.rate', index=0,
-      number=1, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='series', full_name='pomerium.dashboard.TimeSeriesResponse.series', index=1,
-      number=2, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=2514,
-  serialized_end=2618,
-)
-
-
-_TIMESERIESRESPONSEMULTI = _descriptor.Descriptor(
-  name='TimeSeriesResponseMulti',
-  full_name='pomerium.dashboard.TimeSeriesResponseMulti',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='rate', full_name='pomerium.dashboard.TimeSeriesResponseMulti.rate', index=0,
-      number=1, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='series', full_name='pomerium.dashboard.TimeSeriesResponseMulti.series', index=1,
-      number=2, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=2620,
-  serialized_end=2733,
-)
-
-
-_SCALARBUCKETS_BUCKET = _descriptor.Descriptor(
-  name='Bucket',
-  full_name='pomerium.dashboard.ScalarBuckets.Bucket',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='less_or_equal_than', full_name='pomerium.dashboard.ScalarBuckets.Bucket.less_or_equal_than', index=0,
-      number=1, type=1, cpp_type=5, label=1,
-      has_default_value=False, default_value=float(0),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='count', full_name='pomerium.dashboard.ScalarBuckets.Bucket.count', index=1,
-      number=2, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=2811,
-  serialized_end=2862,
-)
-
-_SCALARBUCKETS = _descriptor.Descriptor(
-  name='ScalarBuckets',
-  full_name='pomerium.dashboard.ScalarBuckets',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='buckets', full_name='pomerium.dashboard.ScalarBuckets.buckets', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[_SCALARBUCKETS_BUCKET, ],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=2735,
-  serialized_end=2862,
-)
-
-
-_UPTIMEREQUEST = _descriptor.Descriptor(
-  name='UptimeRequest',
-  full_name='pomerium.dashboard.UptimeRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='start', full_name='pomerium.dashboard.UptimeRequest.start', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\005\262\001\002\010\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='end', full_name='pomerium.dashboard.UptimeRequest.end', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\005\262\001\002\010\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='component', full_name='pomerium.dashboard.UptimeRequest.component', index=2,
-      number=3, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\007\202\001\004\020\001 \000', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='instance_id', full_name='pomerium.dashboard.UptimeRequest.instance_id', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\004r\002\020\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=2865,
-  serialized_end=3076,
-)
-
-
-_UPTIMERESPONSE_SUMMARY = _descriptor.Descriptor(
-  name='Summary',
-  full_name='pomerium.dashboard.UptimeResponse.Summary',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='start', full_name='pomerium.dashboard.UptimeResponse.Summary.start', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='end', full_name='pomerium.dashboard.UptimeResponse.Summary.end', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='status', full_name='pomerium.dashboard.UptimeResponse.Summary.status', index=2,
-      number=3, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=3161,
-  serialized_end=3313,
-)
-
-_UPTIMERESPONSE = _descriptor.Descriptor(
-  name='UptimeResponse',
-  full_name='pomerium.dashboard.UptimeResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='intervals', full_name='pomerium.dashboard.UptimeResponse.intervals', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[_UPTIMERESPONSE_SUMMARY, ],
-  enum_types=[
-    _UPTIMERESPONSE_STATUS,
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=3079,
-  serialized_end=3389,
-)
-
-
-_GETINSTANCESREQUEST = _descriptor.Descriptor(
-  name='GetInstancesRequest',
-  full_name='pomerium.dashboard.GetInstancesRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='start', full_name='pomerium.dashboard.GetInstancesRequest.start', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\005\262\001\002\010\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='end', full_name='pomerium.dashboard.GetInstancesRequest.end', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\005\262\001\002\010\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=3391,
-  serialized_end=3516,
-)
-
-
-_INSTANCES_INSTANCE = _descriptor.Descriptor(
-  name='Instance',
-  full_name='pomerium.dashboard.Instances.Instance',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='component', full_name='pomerium.dashboard.Instances.Instance.component', index=0,
-      number=1, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='id', full_name='pomerium.dashboard.Instances.Instance.id', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='name', full_name='pomerium.dashboard.Instances.Instance.name', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=3591,
-  serialized_end=3677,
-)
-
-_INSTANCES = _descriptor.Descriptor(
-  name='Instances',
-  full_name='pomerium.dashboard.Instances',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='instances', full_name='pomerium.dashboard.Instances.instances', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[_INSTANCES_INSTANCE, ],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=3519,
-  serialized_end=3677,
-)
-
-
-_GETINSTANCEINFOREQUEST = _descriptor.Descriptor(
-  name='GetInstanceInfoRequest',
-  full_name='pomerium.dashboard.GetInstanceInfoRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='component', full_name='pomerium.dashboard.GetInstanceInfoRequest.component', index=0,
-      number=3, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\007\202\001\004\020\001 \000', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='instance_id', full_name='pomerium.dashboard.GetInstanceInfoRequest.instance_id', index=1,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\004r\002\020\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=3679,
-  serialized_end=3795,
-)
-
-
-_GETSTATUSREQUEST = _descriptor.Descriptor(
-  name='GetStatusRequest',
-  full_name='pomerium.dashboard.GetStatusRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=3797,
-  serialized_end=3815,
-)
-
-
-_GETSTATUSRESPONSE_TARGET = _descriptor.Descriptor(
-  name='Target',
-  full_name='pomerium.dashboard.GetStatusResponse.Target',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='scrape_url', full_name='pomerium.dashboard.GetStatusResponse.Target.scrape_url', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='global_url', full_name='pomerium.dashboard.GetStatusResponse.Target.global_url', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='last_error', full_name='pomerium.dashboard.GetStatusResponse.Target.last_error', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='last_scrape', full_name='pomerium.dashboard.GetStatusResponse.Target.last_scrape', index=3,
-      number=4, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='health', full_name='pomerium.dashboard.GetStatusResponse.Target.health', index=4,
-      number=5, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-    _GETSTATUSRESPONSE_TARGET_HEALTH,
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=3939,
-  serialized_end=4208,
-)
-
-_GETSTATUSRESPONSE = _descriptor.Descriptor(
-  name='GetStatusResponse',
-  full_name='pomerium.dashboard.GetStatusResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='targets', full_name='pomerium.dashboard.GetStatusResponse.targets', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='ok', full_name='pomerium.dashboard.GetStatusResponse.ok', index=1,
-      number=2, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='last_error', full_name='pomerium.dashboard.GetStatusResponse.last_error', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[_GETSTATUSRESPONSE_TARGET, ],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-    _descriptor.OneofDescriptor(
-      name='status', full_name='pomerium.dashboard.GetStatusResponse.status',
-      index=0, containing_type=None,
-      create_key=_descriptor._internal_create_key,
-    fields=[]),
-  ],
-  serialized_start=3818,
-  serialized_end=4218,
-)
-
-
-_USAGEREPORTREQUEST = _descriptor.Descriptor(
-  name='UsageReportRequest',
-  full_name='pomerium.dashboard.UsageReportRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=4220,
-  serialized_end=4240,
-)
-
-
-_USAGEREPORTRESPONSE = _descriptor.Descriptor(
-  name='UsageReportResponse',
-  full_name='pomerium.dashboard.UsageReportResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='report', full_name='pomerium.dashboard.UsageReportResponse.report', index=0,
-      number=1, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"",
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=4242,
-  serialized_end=4279,
-)
-
-
-_LABELS_LABELSENTRY = _descriptor.Descriptor(
-  name='LabelsEntry',
-  full_name='pomerium.dashboard.Labels.LabelsEntry',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='key', full_name='pomerium.dashboard.Labels.LabelsEntry.key', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='value', full_name='pomerium.dashboard.Labels.LabelsEntry.value', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=b'8\001',
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=627,
-  serialized_end=672,
-)
-
-_LABELS = _descriptor.Descriptor(
-  name='Labels',
-  full_name='pomerium.dashboard.Labels',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='labels', full_name='pomerium.dashboard.Labels.labels', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[_LABELS_LABELSENTRY, ],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=4281,
-  serialized_end=4392,
-)
-
-_RANGE.fields_by_name['start'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_RANGE.fields_by_name['end'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_RANGE.fields_by_name['step'].message_type = google_dot_protobuf_dot_duration__pb2._DURATION
-_ROUTEMATCHER.oneofs_by_name['matcher'].fields.append(
-  _ROUTEMATCHER.fields_by_name['route_id'])
-_ROUTEMATCHER.fields_by_name['route_id'].containing_oneof = _ROUTEMATCHER.oneofs_by_name['matcher']
-_ROUTEMATCHER.oneofs_by_name['matcher'].fields.append(
-  _ROUTEMATCHER.fields_by_name['namespace_id'])
-_ROUTEMATCHER.fields_by_name['namespace_id'].containing_oneof = _ROUTEMATCHER.oneofs_by_name['matcher']
-_STRING.fields_by_name['ts'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_SCALAR.fields_by_name['ts'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_TIMESERIES_LABELSENTRY.containing_type = _TIMESERIES
-_TIMESERIES.fields_by_name['labels'].message_type = _TIMESERIES_LABELSENTRY
-_TIMESERIES.fields_by_name['series'].message_type = _SCALAR
-_MATRIX.fields_by_name['series'].message_type = _TIMESERIES
-_SAMPLE_LABELSENTRY.containing_type = _SAMPLE
-_SAMPLE.fields_by_name['labels'].message_type = _SAMPLE_LABELSENTRY
-_SAMPLE.fields_by_name['value'].message_type = _SCALAR
-_VECTOR.fields_by_name['samples'].message_type = _SAMPLE
-_ROUTEMETRICSERIESREQUEST.fields_by_name['matcher'].message_type = _ROUTEMATCHER
-_ROUTEMETRICSERIESREQUEST.fields_by_name['metric'].enum_type = _METRIC
-_ROUTEMETRICSERIESREQUEST.fields_by_name['range'].message_type = _RANGE
-_ROUTEMETRICSERIESHISTOGRAMREQUEST.fields_by_name['matcher'].message_type = _ROUTEMATCHER
-_ROUTEMETRICSERIESHISTOGRAMREQUEST.fields_by_name['metric'].enum_type = _METRIC
-_ROUTEMETRICSERIESHISTOGRAMREQUEST.fields_by_name['range'].message_type = _RANGE
-_SERVERMETRICSERIESREQUEST.fields_by_name['metric'].enum_type = _METRIC
-_SERVERMETRICSERIESREQUEST.fields_by_name['range'].message_type = _RANGE
-_SERVERMETRICSERIESREQUEST.fields_by_name['component'].enum_type = _COMPONENT
-_SERVERMETRICREQUEST.fields_by_name['component'].enum_type = _COMPONENT
-_SERVERMETRICREQUEST.fields_by_name['metric'].enum_type = _METRIC
-_CONSOLEMETRICREQUEST.fields_by_name['metric'].enum_type = _METRIC
-_CONSOLEMETRICSERIESREQUEST.fields_by_name['metric'].enum_type = _METRIC
-_CONSOLEMETRICSERIESREQUEST.fields_by_name['start'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_CONSOLEMETRICSERIESREQUEST.fields_by_name['end'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_LASTERRORREQUEST.fields_by_name['metric'].enum_type = _METRIC
-_LASTERRORRESPONSE.fields_by_name['ts'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_ROUTEMETRICCHANGEREQUEST.fields_by_name['matcher'].message_type = _ROUTEMATCHER
-_ROUTEMETRICCHANGEREQUEST.fields_by_name['metric'].enum_type = _METRIC
-_ROUTEMETRICCHANGEREQUEST.fields_by_name['start'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_ROUTEMETRICCHANGEREQUEST.fields_by_name['end'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_TIMESERIESRESPONSE.fields_by_name['rate'].enum_type = _RATE
-_TIMESERIESRESPONSE.fields_by_name['series'].message_type = _SCALAR
-_TIMESERIESRESPONSEMULTI.fields_by_name['rate'].enum_type = _RATE
-_TIMESERIESRESPONSEMULTI.fields_by_name['series'].message_type = _TIMESERIES
-_SCALARBUCKETS_BUCKET.containing_type = _SCALARBUCKETS
-_SCALARBUCKETS.fields_by_name['buckets'].message_type = _SCALARBUCKETS_BUCKET
-_UPTIMEREQUEST.fields_by_name['start'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_UPTIMEREQUEST.fields_by_name['end'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_UPTIMEREQUEST.fields_by_name['component'].enum_type = _COMPONENT
-_UPTIMERESPONSE_SUMMARY.fields_by_name['start'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_UPTIMERESPONSE_SUMMARY.fields_by_name['end'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_UPTIMERESPONSE_SUMMARY.fields_by_name['status'].enum_type = _UPTIMERESPONSE_STATUS
-_UPTIMERESPONSE_SUMMARY.containing_type = _UPTIMERESPONSE
-_UPTIMERESPONSE.fields_by_name['intervals'].message_type = _UPTIMERESPONSE_SUMMARY
-_UPTIMERESPONSE_STATUS.containing_type = _UPTIMERESPONSE
-_GETINSTANCESREQUEST.fields_by_name['start'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_GETINSTANCESREQUEST.fields_by_name['end'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_INSTANCES_INSTANCE.fields_by_name['component'].enum_type = _COMPONENT
-_INSTANCES_INSTANCE.containing_type = _INSTANCES
-_INSTANCES.fields_by_name['instances'].message_type = _INSTANCES_INSTANCE
-_GETINSTANCEINFOREQUEST.fields_by_name['component'].enum_type = _COMPONENT
-_GETSTATUSRESPONSE_TARGET.fields_by_name['last_scrape'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_GETSTATUSRESPONSE_TARGET.fields_by_name['health'].enum_type = _GETSTATUSRESPONSE_TARGET_HEALTH
-_GETSTATUSRESPONSE_TARGET.containing_type = _GETSTATUSRESPONSE
-_GETSTATUSRESPONSE_TARGET_HEALTH.containing_type = _GETSTATUSRESPONSE_TARGET
-_GETSTATUSRESPONSE.fields_by_name['targets'].message_type = _GETSTATUSRESPONSE_TARGET
-_GETSTATUSRESPONSE.oneofs_by_name['status'].fields.append(
-  _GETSTATUSRESPONSE.fields_by_name['ok'])
-_GETSTATUSRESPONSE.fields_by_name['ok'].containing_oneof = _GETSTATUSRESPONSE.oneofs_by_name['status']
-_GETSTATUSRESPONSE.oneofs_by_name['status'].fields.append(
-  _GETSTATUSRESPONSE.fields_by_name['last_error'])
-_GETSTATUSRESPONSE.fields_by_name['last_error'].containing_oneof = _GETSTATUSRESPONSE.oneofs_by_name['status']
-_LABELS_LABELSENTRY.containing_type = _LABELS
-_LABELS.fields_by_name['labels'].message_type = _LABELS_LABELSENTRY
-DESCRIPTOR.message_types_by_name['Range'] = _RANGE
-DESCRIPTOR.message_types_by_name['RouteMatcher'] = _ROUTEMATCHER
-DESCRIPTOR.message_types_by_name['String'] = _STRING
-DESCRIPTOR.message_types_by_name['Scalar'] = _SCALAR
-DESCRIPTOR.message_types_by_name['TimeSeries'] = _TIMESERIES
-DESCRIPTOR.message_types_by_name['Matrix'] = _MATRIX
-DESCRIPTOR.message_types_by_name['Sample'] = _SAMPLE
-DESCRIPTOR.message_types_by_name['Vector'] = _VECTOR
-DESCRIPTOR.message_types_by_name['RouteMetricSeriesRequest'] = _ROUTEMETRICSERIESREQUEST
-DESCRIPTOR.message_types_by_name['RouteMetricSeriesHistogramRequest'] = _ROUTEMETRICSERIESHISTOGRAMREQUEST
-DESCRIPTOR.message_types_by_name['ServerMetricSeriesRequest'] = _SERVERMETRICSERIESREQUEST
-DESCRIPTOR.message_types_by_name['ServerMetricRequest'] = _SERVERMETRICREQUEST
-DESCRIPTOR.message_types_by_name['ConsoleMetricRequest'] = _CONSOLEMETRICREQUEST
-DESCRIPTOR.message_types_by_name['ConsoleMetricSeriesRequest'] = _CONSOLEMETRICSERIESREQUEST
-DESCRIPTOR.message_types_by_name['LastErrorRequest'] = _LASTERRORREQUEST
-DESCRIPTOR.message_types_by_name['LastErrorResponse'] = _LASTERRORRESPONSE
-DESCRIPTOR.message_types_by_name['RouteMetricChangeRequest'] = _ROUTEMETRICCHANGEREQUEST
-DESCRIPTOR.message_types_by_name['TimeSeriesResponse'] = _TIMESERIESRESPONSE
-DESCRIPTOR.message_types_by_name['TimeSeriesResponseMulti'] = _TIMESERIESRESPONSEMULTI
-DESCRIPTOR.message_types_by_name['ScalarBuckets'] = _SCALARBUCKETS
-DESCRIPTOR.message_types_by_name['UptimeRequest'] = _UPTIMEREQUEST
-DESCRIPTOR.message_types_by_name['UptimeResponse'] = _UPTIMERESPONSE
-DESCRIPTOR.message_types_by_name['GetInstancesRequest'] = _GETINSTANCESREQUEST
-DESCRIPTOR.message_types_by_name['Instances'] = _INSTANCES
-DESCRIPTOR.message_types_by_name['GetInstanceInfoRequest'] = _GETINSTANCEINFOREQUEST
-DESCRIPTOR.message_types_by_name['GetStatusRequest'] = _GETSTATUSREQUEST
-DESCRIPTOR.message_types_by_name['GetStatusResponse'] = _GETSTATUSRESPONSE
-DESCRIPTOR.message_types_by_name['UsageReportRequest'] = _USAGEREPORTREQUEST
-DESCRIPTOR.message_types_by_name['UsageReportResponse'] = _USAGEREPORTRESPONSE
-DESCRIPTOR.message_types_by_name['Labels'] = _LABELS
-DESCRIPTOR.enum_types_by_name['Rate'] = _RATE
-DESCRIPTOR.enum_types_by_name['Metric'] = _METRIC
-DESCRIPTOR.enum_types_by_name['Component'] = _COMPONENT
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
-
+_RANGE = DESCRIPTOR.message_types_by_name['Range']
+_ROUTEMATCHER = DESCRIPTOR.message_types_by_name['RouteMatcher']
+_STRING = DESCRIPTOR.message_types_by_name['String']
+_SCALAR = DESCRIPTOR.message_types_by_name['Scalar']
+_TIMESERIES = DESCRIPTOR.message_types_by_name['TimeSeries']
+_TIMESERIES_LABELSENTRY = _TIMESERIES.nested_types_by_name['LabelsEntry']
+_MATRIX = DESCRIPTOR.message_types_by_name['Matrix']
+_SAMPLE = DESCRIPTOR.message_types_by_name['Sample']
+_SAMPLE_LABELSENTRY = _SAMPLE.nested_types_by_name['LabelsEntry']
+_VECTOR = DESCRIPTOR.message_types_by_name['Vector']
+_ROUTEMETRICSERIESREQUEST = DESCRIPTOR.message_types_by_name['RouteMetricSeriesRequest']
+_ROUTEMETRICSERIESHISTOGRAMREQUEST = DESCRIPTOR.message_types_by_name['RouteMetricSeriesHistogramRequest']
+_SERVERMETRICSERIESREQUEST = DESCRIPTOR.message_types_by_name['ServerMetricSeriesRequest']
+_SERVERMETRICREQUEST = DESCRIPTOR.message_types_by_name['ServerMetricRequest']
+_CONSOLEMETRICREQUEST = DESCRIPTOR.message_types_by_name['ConsoleMetricRequest']
+_CONSOLEMETRICSERIESREQUEST = DESCRIPTOR.message_types_by_name['ConsoleMetricSeriesRequest']
+_LASTERRORREQUEST = DESCRIPTOR.message_types_by_name['LastErrorRequest']
+_LASTERRORRESPONSE = DESCRIPTOR.message_types_by_name['LastErrorResponse']
+_ROUTEMETRICCHANGEREQUEST = DESCRIPTOR.message_types_by_name['RouteMetricChangeRequest']
+_TIMESERIESRESPONSE = DESCRIPTOR.message_types_by_name['TimeSeriesResponse']
+_TIMESERIESRESPONSEMULTI = DESCRIPTOR.message_types_by_name['TimeSeriesResponseMulti']
+_SCALARBUCKETS = DESCRIPTOR.message_types_by_name['ScalarBuckets']
+_SCALARBUCKETS_BUCKET = _SCALARBUCKETS.nested_types_by_name['Bucket']
+_UPTIMEREQUEST = DESCRIPTOR.message_types_by_name['UptimeRequest']
+_UPTIMERESPONSE = DESCRIPTOR.message_types_by_name['UptimeResponse']
+_UPTIMERESPONSE_SUMMARY = _UPTIMERESPONSE.nested_types_by_name['Summary']
+_GETINSTANCESREQUEST = DESCRIPTOR.message_types_by_name['GetInstancesRequest']
+_INSTANCES = DESCRIPTOR.message_types_by_name['Instances']
+_INSTANCES_INSTANCE = _INSTANCES.nested_types_by_name['Instance']
+_GETINSTANCEINFOREQUEST = DESCRIPTOR.message_types_by_name['GetInstanceInfoRequest']
+_GETSTATUSREQUEST = DESCRIPTOR.message_types_by_name['GetStatusRequest']
+_GETSTATUSRESPONSE = DESCRIPTOR.message_types_by_name['GetStatusResponse']
+_GETSTATUSRESPONSE_TARGET = _GETSTATUSRESPONSE.nested_types_by_name['Target']
+_USAGEREPORTREQUEST = DESCRIPTOR.message_types_by_name['UsageReportRequest']
+_USAGEREPORTRESPONSE = DESCRIPTOR.message_types_by_name['UsageReportResponse']
+_LABELS = DESCRIPTOR.message_types_by_name['Labels']
+_LABELS_LABELSENTRY = _LABELS.nested_types_by_name['LabelsEntry']
+_UPTIMERESPONSE_STATUS = _UPTIMERESPONSE.enum_types_by_name['Status']
+_GETSTATUSRESPONSE_TARGET_HEALTH = _GETSTATUSRESPONSE_TARGET.enum_types_by_name['Health']
 Range = _reflection.GeneratedProtocolMessageType('Range', (_message.Message,), {
   'DESCRIPTOR' : _RANGE,
   '__module__' : 'tsdb_pb2'
@@ -2325,182 +386,175 @@ Labels = _reflection.GeneratedProtocolMessageType('Labels', (_message.Message,),
 _sym_db.RegisterMessage(Labels)
 _sym_db.RegisterMessage(Labels.LabelsEntry)
 
+_TIMESERIESDB = DESCRIPTOR.services_by_name['TimeSeriesDB']
+if _descriptor._USE_C_DESCRIPTORS == False:
 
-DESCRIPTOR._options = None
-_RANGE.fields_by_name['start']._options = None
-_RANGE.fields_by_name['end']._options = None
-_RANGE.fields_by_name['step']._options = None
-_ROUTEMATCHER.fields_by_name['route_id']._options = None
-_ROUTEMATCHER.fields_by_name['namespace_id']._options = None
-_TIMESERIES_LABELSENTRY._options = None
-_SAMPLE_LABELSENTRY._options = None
-_ROUTEMETRICSERIESREQUEST.fields_by_name['matcher']._options = None
-_ROUTEMETRICSERIESREQUEST.fields_by_name['metric']._options = None
-_ROUTEMETRICSERIESREQUEST.fields_by_name['range']._options = None
-_ROUTEMETRICSERIESHISTOGRAMREQUEST.fields_by_name['matcher']._options = None
-_ROUTEMETRICSERIESHISTOGRAMREQUEST.fields_by_name['metric']._options = None
-_ROUTEMETRICSERIESHISTOGRAMREQUEST.fields_by_name['range']._options = None
-_ROUTEMETRICSERIESHISTOGRAMREQUEST.fields_by_name['percentile']._options = None
-_SERVERMETRICSERIESREQUEST.fields_by_name['metric']._options = None
-_SERVERMETRICSERIESREQUEST.fields_by_name['range']._options = None
-_SERVERMETRICSERIESREQUEST.fields_by_name['percentile']._options = None
-_SERVERMETRICSERIESREQUEST.fields_by_name['component']._options = None
-_SERVERMETRICSERIESREQUEST.fields_by_name['instance_id']._options = None
-_SERVERMETRICREQUEST.fields_by_name['component']._options = None
-_SERVERMETRICREQUEST.fields_by_name['instance_id']._options = None
-_SERVERMETRICREQUEST.fields_by_name['metric']._options = None
-_CONSOLEMETRICREQUEST.fields_by_name['metric']._options = None
-_CONSOLEMETRICSERIESREQUEST.fields_by_name['metric']._options = None
-_CONSOLEMETRICSERIESREQUEST.fields_by_name['start']._options = None
-_CONSOLEMETRICSERIESREQUEST.fields_by_name['end']._options = None
-_LASTERRORREQUEST.fields_by_name['metric']._options = None
-_ROUTEMETRICCHANGEREQUEST.fields_by_name['matcher']._options = None
-_ROUTEMETRICCHANGEREQUEST.fields_by_name['metric']._options = None
-_ROUTEMETRICCHANGEREQUEST.fields_by_name['start']._options = None
-_ROUTEMETRICCHANGEREQUEST.fields_by_name['end']._options = None
-_UPTIMEREQUEST.fields_by_name['start']._options = None
-_UPTIMEREQUEST.fields_by_name['end']._options = None
-_UPTIMEREQUEST.fields_by_name['component']._options = None
-_UPTIMEREQUEST.fields_by_name['instance_id']._options = None
-_GETINSTANCESREQUEST.fields_by_name['start']._options = None
-_GETINSTANCESREQUEST.fields_by_name['end']._options = None
-_GETINSTANCEINFOREQUEST.fields_by_name['component']._options = None
-_GETINSTANCEINFOREQUEST.fields_by_name['instance_id']._options = None
-_LABELS_LABELSENTRY._options = None
-
-_TIMESERIESDB = _descriptor.ServiceDescriptor(
-  name='TimeSeriesDB',
-  full_name='pomerium.dashboard.TimeSeriesDB',
-  file=DESCRIPTOR,
-  index=0,
-  serialized_options=None,
-  create_key=_descriptor._internal_create_key,
-  serialized_start=5803,
-  serialized_end=7041,
-  methods=[
-  _descriptor.MethodDescriptor(
-    name='GetRouteMetricChange',
-    full_name='pomerium.dashboard.TimeSeriesDB.GetRouteMetricChange',
-    index=0,
-    containing_service=None,
-    input_type=_ROUTEMETRICCHANGEREQUEST,
-    output_type=_SCALAR,
-    serialized_options=None,
-    create_key=_descriptor._internal_create_key,
-  ),
-  _descriptor.MethodDescriptor(
-    name='GetRouteMetricChangeHistogram',
-    full_name='pomerium.dashboard.TimeSeriesDB.GetRouteMetricChangeHistogram',
-    index=1,
-    containing_service=None,
-    input_type=_ROUTEMETRICCHANGEREQUEST,
-    output_type=_SCALARBUCKETS,
-    serialized_options=None,
-    create_key=_descriptor._internal_create_key,
-  ),
-  _descriptor.MethodDescriptor(
-    name='GetRouteMetricSeries',
-    full_name='pomerium.dashboard.TimeSeriesDB.GetRouteMetricSeries',
-    index=2,
-    containing_service=None,
-    input_type=_ROUTEMETRICSERIESREQUEST,
-    output_type=_TIMESERIESRESPONSE,
-    serialized_options=None,
-    create_key=_descriptor._internal_create_key,
-  ),
-  _descriptor.MethodDescriptor(
-    name='GetRouteMetricSeriesHistogram',
-    full_name='pomerium.dashboard.TimeSeriesDB.GetRouteMetricSeriesHistogram',
-    index=3,
-    containing_service=None,
-    input_type=_ROUTEMETRICSERIESHISTOGRAMREQUEST,
-    output_type=_TIMESERIESRESPONSE,
-    serialized_options=None,
-    create_key=_descriptor._internal_create_key,
-  ),
-  _descriptor.MethodDescriptor(
-    name='GetRouteMetricSeriesMulti',
-    full_name='pomerium.dashboard.TimeSeriesDB.GetRouteMetricSeriesMulti',
-    index=4,
-    containing_service=None,
-    input_type=_ROUTEMETRICSERIESREQUEST,
-    output_type=_TIMESERIESRESPONSEMULTI,
-    serialized_options=None,
-    create_key=_descriptor._internal_create_key,
-  ),
-  _descriptor.MethodDescriptor(
-    name='GetUptime',
-    full_name='pomerium.dashboard.TimeSeriesDB.GetUptime',
-    index=5,
-    containing_service=None,
-    input_type=_UPTIMEREQUEST,
-    output_type=_UPTIMERESPONSE,
-    serialized_options=None,
-    create_key=_descriptor._internal_create_key,
-  ),
-  _descriptor.MethodDescriptor(
-    name='GetInstances',
-    full_name='pomerium.dashboard.TimeSeriesDB.GetInstances',
-    index=6,
-    containing_service=None,
-    input_type=_GETINSTANCESREQUEST,
-    output_type=_INSTANCES,
-    serialized_options=None,
-    create_key=_descriptor._internal_create_key,
-  ),
-  _descriptor.MethodDescriptor(
-    name='GetServerMetricSeries',
-    full_name='pomerium.dashboard.TimeSeriesDB.GetServerMetricSeries',
-    index=7,
-    containing_service=None,
-    input_type=_SERVERMETRICSERIESREQUEST,
-    output_type=_TIMESERIESRESPONSE,
-    serialized_options=None,
-    create_key=_descriptor._internal_create_key,
-  ),
-  _descriptor.MethodDescriptor(
-    name='GetServerMetric',
-    full_name='pomerium.dashboard.TimeSeriesDB.GetServerMetric',
-    index=8,
-    containing_service=None,
-    input_type=_SERVERMETRICREQUEST,
-    output_type=_SAMPLE,
-    serialized_options=None,
-    create_key=_descriptor._internal_create_key,
-  ),
-  _descriptor.MethodDescriptor(
-    name='GetStatus',
-    full_name='pomerium.dashboard.TimeSeriesDB.GetStatus',
-    index=9,
-    containing_service=None,
-    input_type=_GETSTATUSREQUEST,
-    output_type=_GETSTATUSRESPONSE,
-    serialized_options=None,
-    create_key=_descriptor._internal_create_key,
-  ),
-  _descriptor.MethodDescriptor(
-    name='GetLastError',
-    full_name='pomerium.dashboard.TimeSeriesDB.GetLastError',
-    index=10,
-    containing_service=None,
-    input_type=_LASTERRORREQUEST,
-    output_type=_LASTERRORRESPONSE,
-    serialized_options=None,
-    create_key=_descriptor._internal_create_key,
-  ),
-  _descriptor.MethodDescriptor(
-    name='GetUsageReport',
-    full_name='pomerium.dashboard.TimeSeriesDB.GetUsageReport',
-    index=11,
-    containing_service=None,
-    input_type=_USAGEREPORTREQUEST,
-    output_type=_USAGEREPORTRESPONSE,
-    serialized_options=None,
-    create_key=_descriptor._internal_create_key,
-  ),
-])
-_sym_db.RegisterServiceDescriptor(_TIMESERIESDB)
-
-DESCRIPTOR.services_by_name['TimeSeriesDB'] = _TIMESERIESDB
-
+  DESCRIPTOR._options = None
+  DESCRIPTOR._serialized_options = b'Z+github.com/pomerium/pomerium-console/pkg/pb'
+  _RANGE.fields_by_name['start']._options = None
+  _RANGE.fields_by_name['start']._serialized_options = b'\372B\005\262\001\002\010\001'
+  _RANGE.fields_by_name['end']._options = None
+  _RANGE.fields_by_name['end']._serialized_options = b'\372B\005\262\001\002\010\001'
+  _RANGE.fields_by_name['step']._options = None
+  _RANGE.fields_by_name['step']._serialized_options = b'\372B\005\252\001\002\010\001'
+  _ROUTEMATCHER.fields_by_name['route_id']._options = None
+  _ROUTEMATCHER.fields_by_name['route_id']._serialized_options = b'\372B\004r\002\020\001'
+  _ROUTEMATCHER.fields_by_name['namespace_id']._options = None
+  _ROUTEMATCHER.fields_by_name['namespace_id']._serialized_options = b'\372B\004r\002\020\001'
+  _TIMESERIES_LABELSENTRY._options = None
+  _TIMESERIES_LABELSENTRY._serialized_options = b'8\001'
+  _SAMPLE_LABELSENTRY._options = None
+  _SAMPLE_LABELSENTRY._serialized_options = b'8\001'
+  _ROUTEMETRICSERIESREQUEST.fields_by_name['matcher']._options = None
+  _ROUTEMETRICSERIESREQUEST.fields_by_name['matcher']._serialized_options = b'\372B\005\212\001\002\020\001'
+  _ROUTEMETRICSERIESREQUEST.fields_by_name['metric']._options = None
+  _ROUTEMETRICSERIESREQUEST.fields_by_name['metric']._serialized_options = b'\372B\007\202\001\004\020\001 \000'
+  _ROUTEMETRICSERIESREQUEST.fields_by_name['range']._options = None
+  _ROUTEMETRICSERIESREQUEST.fields_by_name['range']._serialized_options = b'\372B\005\212\001\002\020\001'
+  _ROUTEMETRICSERIESHISTOGRAMREQUEST.fields_by_name['matcher']._options = None
+  _ROUTEMETRICSERIESHISTOGRAMREQUEST.fields_by_name['matcher']._serialized_options = b'\372B\005\212\001\002\020\001'
+  _ROUTEMETRICSERIESHISTOGRAMREQUEST.fields_by_name['metric']._options = None
+  _ROUTEMETRICSERIESHISTOGRAMREQUEST.fields_by_name['metric']._serialized_options = b'\372B\007\202\001\004\020\001 \000'
+  _ROUTEMETRICSERIESHISTOGRAMREQUEST.fields_by_name['range']._options = None
+  _ROUTEMETRICSERIESHISTOGRAMREQUEST.fields_by_name['range']._serialized_options = b'\372B\005\212\001\002\020\001'
+  _ROUTEMETRICSERIESHISTOGRAMREQUEST.fields_by_name['percentile']._options = None
+  _ROUTEMETRICSERIESHISTOGRAMREQUEST.fields_by_name['percentile']._serialized_options = b'\372B\024\022\022\031\000\000\000\000\000\000\360?)\000\000\000\000\000\000\000\000'
+  _SERVERMETRICSERIESREQUEST.fields_by_name['metric']._options = None
+  _SERVERMETRICSERIESREQUEST.fields_by_name['metric']._serialized_options = b'\372B\007\202\001\004\020\001 \000'
+  _SERVERMETRICSERIESREQUEST.fields_by_name['range']._options = None
+  _SERVERMETRICSERIESREQUEST.fields_by_name['range']._serialized_options = b'\372B\005\212\001\002\020\001'
+  _SERVERMETRICSERIESREQUEST.fields_by_name['percentile']._options = None
+  _SERVERMETRICSERIESREQUEST.fields_by_name['percentile']._serialized_options = b'\372B\024\022\022\031\000\000\000\000\000\000\360?)\000\000\000\000\000\000\000\000'
+  _SERVERMETRICSERIESREQUEST.fields_by_name['component']._options = None
+  _SERVERMETRICSERIESREQUEST.fields_by_name['component']._serialized_options = b'\372B\007\202\001\004\020\001 \000'
+  _SERVERMETRICSERIESREQUEST.fields_by_name['instance_id']._options = None
+  _SERVERMETRICSERIESREQUEST.fields_by_name['instance_id']._serialized_options = b'\372B\004r\002\020\001'
+  _SERVERMETRICREQUEST.fields_by_name['component']._options = None
+  _SERVERMETRICREQUEST.fields_by_name['component']._serialized_options = b'\372B\007\202\001\004\020\001 \000'
+  _SERVERMETRICREQUEST.fields_by_name['instance_id']._options = None
+  _SERVERMETRICREQUEST.fields_by_name['instance_id']._serialized_options = b'\372B\004r\002\020\001'
+  _SERVERMETRICREQUEST.fields_by_name['metric']._options = None
+  _SERVERMETRICREQUEST.fields_by_name['metric']._serialized_options = b'\372B\007\202\001\004\020\001 \000'
+  _CONSOLEMETRICREQUEST.fields_by_name['metric']._options = None
+  _CONSOLEMETRICREQUEST.fields_by_name['metric']._serialized_options = b'\372B\007\202\001\004\020\001 \000'
+  _CONSOLEMETRICSERIESREQUEST.fields_by_name['metric']._options = None
+  _CONSOLEMETRICSERIESREQUEST.fields_by_name['metric']._serialized_options = b'\372B\007\202\001\004\020\001 \000'
+  _CONSOLEMETRICSERIESREQUEST.fields_by_name['start']._options = None
+  _CONSOLEMETRICSERIESREQUEST.fields_by_name['start']._serialized_options = b'\372B\005\262\001\002\010\001'
+  _CONSOLEMETRICSERIESREQUEST.fields_by_name['end']._options = None
+  _CONSOLEMETRICSERIESREQUEST.fields_by_name['end']._serialized_options = b'\372B\005\262\001\002\010\001'
+  _LASTERRORREQUEST.fields_by_name['metric']._options = None
+  _LASTERRORREQUEST.fields_by_name['metric']._serialized_options = b'\372B\007\202\001\004\020\001 \000'
+  _ROUTEMETRICCHANGEREQUEST.fields_by_name['matcher']._options = None
+  _ROUTEMETRICCHANGEREQUEST.fields_by_name['matcher']._serialized_options = b'\372B\005\212\001\002\020\001'
+  _ROUTEMETRICCHANGEREQUEST.fields_by_name['metric']._options = None
+  _ROUTEMETRICCHANGEREQUEST.fields_by_name['metric']._serialized_options = b'\372B\005\202\001\002\020\001'
+  _ROUTEMETRICCHANGEREQUEST.fields_by_name['start']._options = None
+  _ROUTEMETRICCHANGEREQUEST.fields_by_name['start']._serialized_options = b'\372B\005\262\001\002\010\001'
+  _ROUTEMETRICCHANGEREQUEST.fields_by_name['end']._options = None
+  _ROUTEMETRICCHANGEREQUEST.fields_by_name['end']._serialized_options = b'\372B\005\262\001\002\010\001'
+  _UPTIMEREQUEST.fields_by_name['start']._options = None
+  _UPTIMEREQUEST.fields_by_name['start']._serialized_options = b'\372B\005\262\001\002\010\001'
+  _UPTIMEREQUEST.fields_by_name['end']._options = None
+  _UPTIMEREQUEST.fields_by_name['end']._serialized_options = b'\372B\005\262\001\002\010\001'
+  _UPTIMEREQUEST.fields_by_name['component']._options = None
+  _UPTIMEREQUEST.fields_by_name['component']._serialized_options = b'\372B\007\202\001\004\020\001 \000'
+  _UPTIMEREQUEST.fields_by_name['instance_id']._options = None
+  _UPTIMEREQUEST.fields_by_name['instance_id']._serialized_options = b'\372B\004r\002\020\001'
+  _GETINSTANCESREQUEST.fields_by_name['start']._options = None
+  _GETINSTANCESREQUEST.fields_by_name['start']._serialized_options = b'\372B\005\262\001\002\010\001'
+  _GETINSTANCESREQUEST.fields_by_name['end']._options = None
+  _GETINSTANCESREQUEST.fields_by_name['end']._serialized_options = b'\372B\005\262\001\002\010\001'
+  _GETINSTANCEINFOREQUEST.fields_by_name['component']._options = None
+  _GETINSTANCEINFOREQUEST.fields_by_name['component']._serialized_options = b'\372B\007\202\001\004\020\001 \000'
+  _GETINSTANCEINFOREQUEST.fields_by_name['instance_id']._options = None
+  _GETINSTANCEINFOREQUEST.fields_by_name['instance_id']._serialized_options = b'\372B\004r\002\020\001'
+  _LABELS_LABELSENTRY._options = None
+  _LABELS_LABELSENTRY._serialized_options = b'8\001'
+  _RATE._serialized_start=4394
+  _RATE._serialized_end=4426
+  _METRIC._serialized_start=4429
+  _METRIC._serialized_end=5640
+  _COMPONENT._serialized_start=5643
+  _COMPONENT._serialized_end=5800
+  _RANGE._serialized_start=125
+  _RANGE._serialized_end=287
+  _ROUTEMATCHER._serialized_start=289
+  _ROUTEMATCHER._serialized_end=376
+  _STRING._serialized_start=378
+  _STRING._serialized_end=441
+  _SCALAR._serialized_start=443
+  _SCALAR._serialized_end=506
+  _TIMESERIES._serialized_start=509
+  _TIMESERIES._serialized_end=672
+  _TIMESERIES_LABELSENTRY._serialized_start=627
+  _TIMESERIES_LABELSENTRY._serialized_end=672
+  _MATRIX._serialized_start=674
+  _MATRIX._serialized_end=730
+  _SAMPLE._serialized_start=733
+  _SAMPLE._serialized_end=887
+  _SAMPLE_LABELSENTRY._serialized_start=627
+  _SAMPLE_LABELSENTRY._serialized_end=672
+  _VECTOR._serialized_start=889
+  _VECTOR._serialized_end=942
+  _ROUTEMETRICSERIESREQUEST._serialized_start=945
+  _ROUTEMETRICSERIESREQUEST._serialized_end=1140
+  _ROUTEMETRICSERIESHISTOGRAMREQUEST._serialized_start=1143
+  _ROUTEMETRICSERIESHISTOGRAMREQUEST._serialized_end=1392
+  _SERVERMETRICSERIESREQUEST._serialized_start=1395
+  _SERVERMETRICSERIESREQUEST._serialized_end=1667
+  _SERVERMETRICREQUEST._serialized_start=1670
+  _SERVERMETRICREQUEST._serialized_end=1839
+  _CONSOLEMETRICREQUEST._serialized_start=1841
+  _CONSOLEMETRICREQUEST._serialized_end=1919
+  _CONSOLEMETRICSERIESREQUEST._serialized_start=1922
+  _CONSOLEMETRICSERIESREQUEST._serialized_end=2110
+  _LASTERRORREQUEST._serialized_start=2112
+  _LASTERRORREQUEST._serialized_end=2186
+  _LASTERRORRESPONSE._serialized_start=2188
+  _LASTERRORRESPONSE._serialized_end=2264
+  _ROUTEMETRICCHANGEREQUEST._serialized_start=2267
+  _ROUTEMETRICCHANGEREQUEST._serialized_end=2512
+  _TIMESERIESRESPONSE._serialized_start=2514
+  _TIMESERIESRESPONSE._serialized_end=2618
+  _TIMESERIESRESPONSEMULTI._serialized_start=2620
+  _TIMESERIESRESPONSEMULTI._serialized_end=2733
+  _SCALARBUCKETS._serialized_start=2735
+  _SCALARBUCKETS._serialized_end=2862
+  _SCALARBUCKETS_BUCKET._serialized_start=2811
+  _SCALARBUCKETS_BUCKET._serialized_end=2862
+  _UPTIMEREQUEST._serialized_start=2865
+  _UPTIMEREQUEST._serialized_end=3076
+  _UPTIMERESPONSE._serialized_start=3079
+  _UPTIMERESPONSE._serialized_end=3389
+  _UPTIMERESPONSE_SUMMARY._serialized_start=3161
+  _UPTIMERESPONSE_SUMMARY._serialized_end=3313
+  _UPTIMERESPONSE_STATUS._serialized_start=3315
+  _UPTIMERESPONSE_STATUS._serialized_end=3389
+  _GETINSTANCESREQUEST._serialized_start=3391
+  _GETINSTANCESREQUEST._serialized_end=3516
+  _INSTANCES._serialized_start=3519
+  _INSTANCES._serialized_end=3677
+  _INSTANCES_INSTANCE._serialized_start=3591
+  _INSTANCES_INSTANCE._serialized_end=3677
+  _GETINSTANCEINFOREQUEST._serialized_start=3679
+  _GETINSTANCEINFOREQUEST._serialized_end=3795
+  _GETSTATUSREQUEST._serialized_start=3797
+  _GETSTATUSREQUEST._serialized_end=3815
+  _GETSTATUSRESPONSE._serialized_start=3818
+  _GETSTATUSRESPONSE._serialized_end=4218
+  _GETSTATUSRESPONSE_TARGET._serialized_start=3939
+  _GETSTATUSRESPONSE_TARGET._serialized_end=4208
+  _GETSTATUSRESPONSE_TARGET_HEALTH._serialized_start=4127
+  _GETSTATUSRESPONSE_TARGET_HEALTH._serialized_end=4208
+  _USAGEREPORTREQUEST._serialized_start=4220
+  _USAGEREPORTREQUEST._serialized_end=4240
+  _USAGEREPORTRESPONSE._serialized_start=4242
+  _USAGEREPORTRESPONSE._serialized_end=4279
+  _LABELS._serialized_start=4281
+  _LABELS._serialized_end=4392
+  _LABELS_LABELSENTRY._serialized_start=627
+  _LABELS_LABELSENTRY._serialized_end=672
+  _TIMESERIESDB._serialized_start=5803
+  _TIMESERIESDB._serialized_end=7041
 # @@protoc_insertion_point(module_scope)

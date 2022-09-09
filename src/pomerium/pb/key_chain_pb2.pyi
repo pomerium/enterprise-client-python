@@ -3,55 +3,65 @@
 isort:skip_file
 """
 import builtins
+import collections.abc
 import google.protobuf.descriptor
 import google.protobuf.internal.containers
 import google.protobuf.internal.enum_type_wrapper
 import google.protobuf.message
 import google.protobuf.timestamp_pb2
+import sys
 import typing
-import typing_extensions
 
-DESCRIPTOR: google.protobuf.descriptor.FileDescriptor = ...
+if sys.version_info >= (3, 10):
+    import typing as typing_extensions
+else:
+    import typing_extensions
+
+DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
+
+class _PublicKeyAlgorithm:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _PublicKeyAlgorithmEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_PublicKeyAlgorithm.ValueType], builtins.type):  # noqa: F821
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    PKA_UNKNOWN_DO_NOT_USE: _PublicKeyAlgorithm.ValueType  # 0
+    RSA: _PublicKeyAlgorithm.ValueType  # 1
+    DSA: _PublicKeyAlgorithm.ValueType  # 2
+    ECDSA: _PublicKeyAlgorithm.ValueType  # 3
+    ED25519: _PublicKeyAlgorithm.ValueType  # 4
 
 class PublicKeyAlgorithm(_PublicKeyAlgorithm, metaclass=_PublicKeyAlgorithmEnumTypeWrapper):
     """PublicKeyAlgorithm is the algorithm of a public key"""
-    pass
-class _PublicKeyAlgorithm:
-    V = typing.NewType('V', builtins.int)
-class _PublicKeyAlgorithmEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_PublicKeyAlgorithm.V], builtins.type):
-    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor = ...
-    PKA_UNKNOWN_DO_NOT_USE = PublicKeyAlgorithm.V(0)
-    RSA = PublicKeyAlgorithm.V(1)
-    DSA = PublicKeyAlgorithm.V(2)
-    ECDSA = PublicKeyAlgorithm.V(3)
-    ED25519 = PublicKeyAlgorithm.V(4)
 
-PKA_UNKNOWN_DO_NOT_USE = PublicKeyAlgorithm.V(0)
-RSA = PublicKeyAlgorithm.V(1)
-DSA = PublicKeyAlgorithm.V(2)
-ECDSA = PublicKeyAlgorithm.V(3)
-ED25519 = PublicKeyAlgorithm.V(4)
+PKA_UNKNOWN_DO_NOT_USE: PublicKeyAlgorithm.ValueType  # 0
+RSA: PublicKeyAlgorithm.ValueType  # 1
+DSA: PublicKeyAlgorithm.ValueType  # 2
+ECDSA: PublicKeyAlgorithm.ValueType  # 3
+ED25519: PublicKeyAlgorithm.ValueType  # 4
 global___PublicKeyAlgorithm = PublicKeyAlgorithm
 
+class _Format:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _FormatEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_Format.ValueType], builtins.type):  # noqa: F821
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    FORMAT_UNDEFINED_DO_NOT_USE: _Format.ValueType  # 0
+    PEM: _Format.ValueType  # 1
 
 class Format(_Format, metaclass=_FormatEnumTypeWrapper):
     """Format specifies the encoding format of a certificate or key"""
-    pass
-class _Format:
-    V = typing.NewType('V', builtins.int)
-class _FormatEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_Format.V], builtins.type):
-    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor = ...
-    FORMAT_UNDEFINED_DO_NOT_USE = Format.V(0)
-    PEM = Format.V(1)
 
-FORMAT_UNDEFINED_DO_NOT_USE = Format.V(0)
-PEM = Format.V(1)
+FORMAT_UNDEFINED_DO_NOT_USE: Format.ValueType  # 0
+PEM: Format.ValueType  # 1
 global___Format = Format
-
 
 class KeyPair(google.protobuf.message.Message):
     """KeyPair represents raw Key Pair data for internal usage"""
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     ID_FIELD_NUMBER: builtins.int
     NAME_FIELD_NUMBER: builtins.int
     NAMESPACE_ID_FIELD_NUMBER: builtins.int
@@ -59,36 +69,38 @@ class KeyPair(google.protobuf.message.Message):
     MODIFIED_AT_FIELD_NUMBER: builtins.int
     CERTIFICATE_FIELD_NUMBER: builtins.int
     KEY_FIELD_NUMBER: builtins.int
-    id: typing.Text = ...
-    name: typing.Text = ...
-    namespace_id: typing.Text = ...
+    id: builtins.str
+    name: builtins.str
+    namespace_id: builtins.str
     @property
     def created_at(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
     @property
     def modified_at(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
-    certificate: builtins.bytes = ...
+    certificate: builtins.bytes
     """public certificate data"""
-
-    key: builtins.bytes = ...
+    key: builtins.bytes
     """private key data"""
-
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        id : typing.Text = ...,
-        name : typing.Text = ...,
-        namespace_id : typing.Text = ...,
-        created_at : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        modified_at : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        certificate : builtins.bytes = ...,
-        key : builtins.bytes = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"created_at",b"created_at",u"modified_at",b"modified_at"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"certificate",b"certificate",u"created_at",b"created_at",u"id",b"id",u"key",b"key",u"modified_at",b"modified_at",u"name",b"name",u"namespace_id",b"namespace_id"]) -> None: ...
+        id: builtins.str = ...,
+        name: builtins.str = ...,
+        namespace_id: builtins.str = ...,
+        created_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        modified_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        certificate: builtins.bytes = ...,
+        key: builtins.bytes = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["created_at", b"created_at", "modified_at", b"modified_at"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["certificate", b"certificate", "created_at", b"created_at", "id", b"id", "key", b"key", "modified_at", b"modified_at", "name", b"name", "namespace_id", b"namespace_id"]) -> None: ...
+
 global___KeyPair = KeyPair
 
 class KeyUsage(google.protobuf.message.Message):
     """KeyUsage specifies the usage flags set on a signed TLS certificate"""
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     DIGITAL_SIGNATURE_FIELD_NUMBER: builtins.int
     CONTENT_COMMITMENT_FIELD_NUMBER: builtins.int
     KEY_ENCIPHERMENT_FIELD_NUMBER: builtins.int
@@ -100,47 +112,47 @@ class KeyUsage(google.protobuf.message.Message):
     DECIPHER_ONLY_FIELD_NUMBER: builtins.int
     SERVER_AUTH_FIELD_NUMBER: builtins.int
     CLIENT_AUTH_FIELD_NUMBER: builtins.int
-    digital_signature: builtins.bool = ...
+    digital_signature: builtins.bool
     """standard key usages"""
-
-    content_commitment: builtins.bool = ...
-    key_encipherment: builtins.bool = ...
-    data_encipherment: builtins.bool = ...
-    key_agreement: builtins.bool = ...
-    cert_sign: builtins.bool = ...
+    content_commitment: builtins.bool
+    key_encipherment: builtins.bool
+    data_encipherment: builtins.bool
+    key_agreement: builtins.bool
+    cert_sign: builtins.bool
     """certificate authority"""
-
-    crl_sign: builtins.bool = ...
-    encipher_only: builtins.bool = ...
-    decipher_only: builtins.bool = ...
-    server_auth: builtins.bool = ...
+    crl_sign: builtins.bool
+    encipher_only: builtins.bool
+    decipher_only: builtins.bool
+    server_auth: builtins.bool
     """extensions derived from x509.ExtKeyUsage
     server certificate
     """
-
-    client_auth: builtins.bool = ...
+    client_auth: builtins.bool
     """client certificate"""
-
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        digital_signature : builtins.bool = ...,
-        content_commitment : builtins.bool = ...,
-        key_encipherment : builtins.bool = ...,
-        data_encipherment : builtins.bool = ...,
-        key_agreement : builtins.bool = ...,
-        cert_sign : builtins.bool = ...,
-        crl_sign : builtins.bool = ...,
-        encipher_only : builtins.bool = ...,
-        decipher_only : builtins.bool = ...,
-        server_auth : builtins.bool = ...,
-        client_auth : builtins.bool = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"cert_sign",b"cert_sign",u"client_auth",b"client_auth",u"content_commitment",b"content_commitment",u"crl_sign",b"crl_sign",u"data_encipherment",b"data_encipherment",u"decipher_only",b"decipher_only",u"digital_signature",b"digital_signature",u"encipher_only",b"encipher_only",u"key_agreement",b"key_agreement",u"key_encipherment",b"key_encipherment",u"server_auth",b"server_auth"]) -> None: ...
+        digital_signature: builtins.bool = ...,
+        content_commitment: builtins.bool = ...,
+        key_encipherment: builtins.bool = ...,
+        data_encipherment: builtins.bool = ...,
+        key_agreement: builtins.bool = ...,
+        cert_sign: builtins.bool = ...,
+        crl_sign: builtins.bool = ...,
+        encipher_only: builtins.bool = ...,
+        decipher_only: builtins.bool = ...,
+        server_auth: builtins.bool = ...,
+        client_auth: builtins.bool = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["cert_sign", b"cert_sign", "client_auth", b"client_auth", "content_commitment", b"content_commitment", "crl_sign", b"crl_sign", "data_encipherment", b"data_encipherment", "decipher_only", b"decipher_only", "digital_signature", b"digital_signature", "encipher_only", b"encipher_only", "key_agreement", b"key_agreement", "key_encipherment", b"key_encipherment", "server_auth", b"server_auth"]) -> None: ...
+
 global___KeyUsage = KeyUsage
 
 class Name(google.protobuf.message.Message):
     """Name defines the x509 identity"""
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     COUNTRY_FIELD_NUMBER: builtins.int
     ORGANIZATION_FIELD_NUMBER: builtins.int
     ORGANIZATIONAL_UNIT_FIELD_NUMBER: builtins.int
@@ -151,41 +163,45 @@ class Name(google.protobuf.message.Message):
     SERIAL_NUMBER_FIELD_NUMBER: builtins.int
     COMMON_NAME_FIELD_NUMBER: builtins.int
     @property
-    def country(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]: ...
+    def country(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
     @property
-    def organization(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]: ...
+    def organization(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
     @property
-    def organizational_unit(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]: ...
+    def organizational_unit(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
     @property
-    def locality(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]: ...
+    def locality(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
     @property
-    def province(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]: ...
+    def province(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
     @property
-    def street_address(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]: ...
+    def street_address(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
     @property
-    def postal_code(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]: ...
-    serial_number: typing.Text = ...
-    common_name: typing.Text = ...
-    def __init__(self,
+    def postal_code(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
+    serial_number: builtins.str
+    common_name: builtins.str
+    def __init__(
+        self,
         *,
-        country : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        organization : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        organizational_unit : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        locality : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        province : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        street_address : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        postal_code : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        serial_number : typing.Text = ...,
-        common_name : typing.Text = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"common_name",b"common_name",u"country",b"country",u"locality",b"locality",u"organization",b"organization",u"organizational_unit",b"organizational_unit",u"postal_code",b"postal_code",u"province",b"province",u"serial_number",b"serial_number",u"street_address",b"street_address"]) -> None: ...
+        country: collections.abc.Iterable[builtins.str] | None = ...,
+        organization: collections.abc.Iterable[builtins.str] | None = ...,
+        organizational_unit: collections.abc.Iterable[builtins.str] | None = ...,
+        locality: collections.abc.Iterable[builtins.str] | None = ...,
+        province: collections.abc.Iterable[builtins.str] | None = ...,
+        street_address: collections.abc.Iterable[builtins.str] | None = ...,
+        postal_code: collections.abc.Iterable[builtins.str] | None = ...,
+        serial_number: builtins.str = ...,
+        common_name: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["common_name", b"common_name", "country", b"country", "locality", b"locality", "organization", b"organization", "organizational_unit", b"organizational_unit", "postal_code", b"postal_code", "province", b"province", "serial_number", b"serial_number", "street_address", b"street_address"]) -> None: ...
+
 global___Name = Name
 
 class CertificateInfo(google.protobuf.message.Message):
     """CertificateInfo is a .proto reflection of
     https://golang.org/pkg/crypto/x509/#Certificate
     """
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     VERSION_FIELD_NUMBER: builtins.int
     SERIAL_FIELD_NUMBER: builtins.int
     ISSUER_FIELD_NUMBER: builtins.int
@@ -206,8 +222,8 @@ class CertificateInfo(google.protobuf.message.Message):
     EXCLUDED_EMAIL_ADDRESSES_FIELD_NUMBER: builtins.int
     PERMITTED_URI_DOMAINS_FIELD_NUMBER: builtins.int
     EXCLUDED_URI_DOMAINS_FIELD_NUMBER: builtins.int
-    version: builtins.int = ...
-    serial: typing.Text = ...
+    version: builtins.int
+    serial: builtins.str
     @property
     def issuer(self) -> global___Name: ...
     @property
@@ -219,60 +235,64 @@ class CertificateInfo(google.protobuf.message.Message):
     @property
     def key_usage(self) -> global___KeyUsage: ...
     @property
-    def dns_names(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]: ...
+    def dns_names(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
     @property
-    def email_addresses(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]: ...
+    def email_addresses(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
     @property
-    def ip_addresses(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]: ...
+    def ip_addresses(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
     @property
-    def uris(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]: ...
-    permitted_dns_domains_critical: builtins.bool = ...
+    def uris(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
+    permitted_dns_domains_critical: builtins.bool
     @property
-    def permitted_dns_domains(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]: ...
+    def permitted_dns_domains(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
     @property
-    def excluded_dns_domains(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]: ...
+    def excluded_dns_domains(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
     @property
-    def permitted_ip_ranges(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]: ...
+    def permitted_ip_ranges(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
     @property
-    def excluded_ip_ranges(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]: ...
+    def excluded_ip_ranges(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
     @property
-    def permitted_email_addresses(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]: ...
+    def permitted_email_addresses(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
     @property
-    def excluded_email_addresses(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]: ...
+    def excluded_email_addresses(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
     @property
-    def permitted_uri_domains(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]: ...
+    def permitted_uri_domains(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
     @property
-    def excluded_uri_domains(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]: ...
-    def __init__(self,
+    def excluded_uri_domains(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
+    def __init__(
+        self,
         *,
-        version : builtins.int = ...,
-        serial : typing.Text = ...,
-        issuer : typing.Optional[global___Name] = ...,
-        subject : typing.Optional[global___Name] = ...,
-        not_before : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        not_after : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        key_usage : typing.Optional[global___KeyUsage] = ...,
-        dns_names : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        email_addresses : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        ip_addresses : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        uris : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        permitted_dns_domains_critical : builtins.bool = ...,
-        permitted_dns_domains : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        excluded_dns_domains : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        permitted_ip_ranges : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        excluded_ip_ranges : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        permitted_email_addresses : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        excluded_email_addresses : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        permitted_uri_domains : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        excluded_uri_domains : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"issuer",b"issuer",u"key_usage",b"key_usage",u"not_after",b"not_after",u"not_before",b"not_before",u"subject",b"subject"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"dns_names",b"dns_names",u"email_addresses",b"email_addresses",u"excluded_dns_domains",b"excluded_dns_domains",u"excluded_email_addresses",b"excluded_email_addresses",u"excluded_ip_ranges",b"excluded_ip_ranges",u"excluded_uri_domains",b"excluded_uri_domains",u"ip_addresses",b"ip_addresses",u"issuer",b"issuer",u"key_usage",b"key_usage",u"not_after",b"not_after",u"not_before",b"not_before",u"permitted_dns_domains",b"permitted_dns_domains",u"permitted_dns_domains_critical",b"permitted_dns_domains_critical",u"permitted_email_addresses",b"permitted_email_addresses",u"permitted_ip_ranges",b"permitted_ip_ranges",u"permitted_uri_domains",b"permitted_uri_domains",u"serial",b"serial",u"subject",b"subject",u"uris",b"uris",u"version",b"version"]) -> None: ...
+        version: builtins.int = ...,
+        serial: builtins.str = ...,
+        issuer: global___Name | None = ...,
+        subject: global___Name | None = ...,
+        not_before: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        not_after: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        key_usage: global___KeyUsage | None = ...,
+        dns_names: collections.abc.Iterable[builtins.str] | None = ...,
+        email_addresses: collections.abc.Iterable[builtins.str] | None = ...,
+        ip_addresses: collections.abc.Iterable[builtins.str] | None = ...,
+        uris: collections.abc.Iterable[builtins.str] | None = ...,
+        permitted_dns_domains_critical: builtins.bool = ...,
+        permitted_dns_domains: collections.abc.Iterable[builtins.str] | None = ...,
+        excluded_dns_domains: collections.abc.Iterable[builtins.str] | None = ...,
+        permitted_ip_ranges: collections.abc.Iterable[builtins.str] | None = ...,
+        excluded_ip_ranges: collections.abc.Iterable[builtins.str] | None = ...,
+        permitted_email_addresses: collections.abc.Iterable[builtins.str] | None = ...,
+        excluded_email_addresses: collections.abc.Iterable[builtins.str] | None = ...,
+        permitted_uri_domains: collections.abc.Iterable[builtins.str] | None = ...,
+        excluded_uri_domains: collections.abc.Iterable[builtins.str] | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["issuer", b"issuer", "key_usage", b"key_usage", "not_after", b"not_after", "not_before", b"not_before", "subject", b"subject"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["dns_names", b"dns_names", "email_addresses", b"email_addresses", "excluded_dns_domains", b"excluded_dns_domains", "excluded_email_addresses", b"excluded_email_addresses", "excluded_ip_ranges", b"excluded_ip_ranges", "excluded_uri_domains", b"excluded_uri_domains", "ip_addresses", b"ip_addresses", "issuer", b"issuer", "key_usage", b"key_usage", "not_after", b"not_after", "not_before", b"not_before", "permitted_dns_domains", b"permitted_dns_domains", "permitted_dns_domains_critical", b"permitted_dns_domains_critical", "permitted_email_addresses", b"permitted_email_addresses", "permitted_ip_ranges", b"permitted_ip_ranges", "permitted_uri_domains", b"permitted_uri_domains", "serial", b"serial", "subject", b"subject", "uris", b"uris", "version", b"version"]) -> None: ...
+
 global___CertificateInfo = CertificateInfo
 
 class KeyPairRecord(google.protobuf.message.Message):
     """KeyPairRecord provides existing Key Pair metadata"""
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     ID_FIELD_NUMBER: builtins.int
     NAME_FIELD_NUMBER: builtins.int
     NAMESPACE_ID_FIELD_NUMBER: builtins.int
@@ -280,225 +300,244 @@ class KeyPairRecord(google.protobuf.message.Message):
     MODIFIED_AT_FIELD_NUMBER: builtins.int
     CERT_INFO_FIELD_NUMBER: builtins.int
     HAS_PRIVATE_KEY_FIELD_NUMBER: builtins.int
-    id: typing.Text = ...
-    name: typing.Text = ...
-    namespace_id: typing.Text = ...
+    id: builtins.str
+    name: builtins.str
+    namespace_id: builtins.str
     @property
     def created_at(self) -> google.protobuf.timestamp_pb2.Timestamp:
         """database record creation time"""
-        pass
     @property
     def modified_at(self) -> google.protobuf.timestamp_pb2.Timestamp:
         """database record modification time"""
-        pass
     @property
     def cert_info(self) -> global___CertificateInfo:
         """information about the public certificate"""
-        pass
-    has_private_key: builtins.bool = ...
+    has_private_key: builtins.bool
     """Key Pair has a private key attached"""
-
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        id : typing.Text = ...,
-        name : typing.Text = ...,
-        namespace_id : typing.Text = ...,
-        created_at : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        modified_at : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        cert_info : typing.Optional[global___CertificateInfo] = ...,
-        has_private_key : builtins.bool = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"cert_info",b"cert_info",u"created_at",b"created_at",u"modified_at",b"modified_at"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"cert_info",b"cert_info",u"created_at",b"created_at",u"has_private_key",b"has_private_key",u"id",b"id",u"modified_at",b"modified_at",u"name",b"name",u"namespace_id",b"namespace_id"]) -> None: ...
+        id: builtins.str = ...,
+        name: builtins.str = ...,
+        namespace_id: builtins.str = ...,
+        created_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        modified_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        cert_info: global___CertificateInfo | None = ...,
+        has_private_key: builtins.bool = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["cert_info", b"cert_info", "created_at", b"created_at", "modified_at", b"modified_at"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["cert_info", b"cert_info", "created_at", b"created_at", "has_private_key", b"has_private_key", "id", b"id", "modified_at", b"modified_at", "name", b"name", "namespace_id", b"namespace_id"]) -> None: ...
+
 global___KeyPairRecord = KeyPairRecord
 
 class DeleteKeyPairRequest(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     ID_FIELD_NUMBER: builtins.int
-    id: typing.Text = ...
-    def __init__(self,
+    id: builtins.str
+    def __init__(
+        self,
         *,
-        id : typing.Text = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"id",b"id"]) -> None: ...
+        id: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["id", b"id"]) -> None: ...
+
 global___DeleteKeyPairRequest = DeleteKeyPairRequest
 
 class DeleteKeyPairResponse(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
-    def __init__(self,
-        ) -> None: ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    def __init__(
+        self,
+    ) -> None: ...
+
 global___DeleteKeyPairResponse = DeleteKeyPairResponse
 
 class GetKeyPairRequest(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     ID_FIELD_NUMBER: builtins.int
-    id: typing.Text = ...
-    def __init__(self,
+    id: builtins.str
+    def __init__(
+        self,
         *,
-        id : typing.Text = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"id",b"id"]) -> None: ...
+        id: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["id", b"id"]) -> None: ...
+
 global___GetKeyPairRequest = GetKeyPairRequest
 
 class GetKeyPairResponse(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     KEY_PAIR_FIELD_NUMBER: builtins.int
     @property
     def key_pair(self) -> global___KeyPairRecord: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        key_pair : typing.Optional[global___KeyPairRecord] = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"key_pair",b"key_pair"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"key_pair",b"key_pair"]) -> None: ...
+        key_pair: global___KeyPairRecord | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["key_pair", b"key_pair"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["key_pair", b"key_pair"]) -> None: ...
+
 global___GetKeyPairResponse = GetKeyPairResponse
 
 class ListKeyPairsRequest(google.protobuf.message.Message):
     """ListKeyPairsRequest defines the types of key pairs to list"""
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     NAMESPACE_ID_FIELD_NUMBER: builtins.int
     QUERY_FIELD_NUMBER: builtins.int
     OFFSET_FIELD_NUMBER: builtins.int
     LIMIT_FIELD_NUMBER: builtins.int
     ORDER_BY_FIELD_NUMBER: builtins.int
     DOMAIN_FIELD_NUMBER: builtins.int
-    namespace_id: typing.Text = ...
-    query: typing.Text = ...
+    namespace_id: builtins.str
+    query: builtins.str
     """list Key Pairs whose name contains the query string"""
-
-    offset: builtins.int = ...
+    offset: builtins.int
     """list Key Pairs starting from an offset in the total list"""
-
-    limit: builtins.int = ...
+    limit: builtins.int
     """limit the number of entries returned"""
-
-    order_by: typing.Text = ...
+    order_by: builtins.str
     """`newest`, `oldest`, `name`, `from`"""
-
-    domain: typing.Text = ...
+    domain: builtins.str
     """return key pairs that match the given domain"""
-
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        namespace_id : typing.Text = ...,
-        query : typing.Text = ...,
-        offset : builtins.int = ...,
-        limit : builtins.int = ...,
-        order_by : typing.Text = ...,
-        domain : typing.Text = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"_domain",b"_domain",u"_limit",b"_limit",u"_offset",b"_offset",u"_order_by",b"_order_by",u"_query",b"_query",u"domain",b"domain",u"limit",b"limit",u"offset",b"offset",u"order_by",b"order_by",u"query",b"query"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"_domain",b"_domain",u"_limit",b"_limit",u"_offset",b"_offset",u"_order_by",b"_order_by",u"_query",b"_query",u"domain",b"domain",u"limit",b"limit",u"namespace_id",b"namespace_id",u"offset",b"offset",u"order_by",b"order_by",u"query",b"query"]) -> None: ...
+        namespace_id: builtins.str = ...,
+        query: builtins.str | None = ...,
+        offset: builtins.int | None = ...,
+        limit: builtins.int | None = ...,
+        order_by: builtins.str | None = ...,
+        domain: builtins.str | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["_domain", b"_domain", "_limit", b"_limit", "_offset", b"_offset", "_order_by", b"_order_by", "_query", b"_query", "domain", b"domain", "limit", b"limit", "offset", b"offset", "order_by", b"order_by", "query", b"query"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["_domain", b"_domain", "_limit", b"_limit", "_offset", b"_offset", "_order_by", b"_order_by", "_query", b"_query", "domain", b"domain", "limit", b"limit", "namespace_id", b"namespace_id", "offset", b"offset", "order_by", b"order_by", "query", b"query"]) -> None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_domain",b"_domain"]) -> typing.Optional[typing_extensions.Literal["domain"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_domain", b"_domain"]) -> typing_extensions.Literal["domain"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_limit",b"_limit"]) -> typing.Optional[typing_extensions.Literal["limit"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_limit", b"_limit"]) -> typing_extensions.Literal["limit"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_offset",b"_offset"]) -> typing.Optional[typing_extensions.Literal["offset"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_offset", b"_offset"]) -> typing_extensions.Literal["offset"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_order_by",b"_order_by"]) -> typing.Optional[typing_extensions.Literal["order_by"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_order_by", b"_order_by"]) -> typing_extensions.Literal["order_by"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_query",b"_query"]) -> typing.Optional[typing_extensions.Literal["query"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_query", b"_query"]) -> typing_extensions.Literal["query"] | None: ...
+
 global___ListKeyPairsRequest = ListKeyPairsRequest
 
 class ListKeyPairsResponse(google.protobuf.message.Message):
     """ListKeyPairsResponse is the list of Key Pairs found from a
     ListKeyPairsRequest
     """
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     KEY_PAIRS_FIELD_NUMBER: builtins.int
     TOTAL_COUNT_FIELD_NUMBER: builtins.int
     @property
     def key_pairs(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___KeyPairRecord]:
         """Key Pairs found"""
-        pass
-    total_count: builtins.int = ...
-    def __init__(self,
+    total_count: builtins.int
+    def __init__(
+        self,
         *,
-        key_pairs : typing.Optional[typing.Iterable[global___KeyPairRecord]] = ...,
-        total_count : builtins.int = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"key_pairs",b"key_pairs",u"total_count",b"total_count"]) -> None: ...
+        key_pairs: collections.abc.Iterable[global___KeyPairRecord] | None = ...,
+        total_count: builtins.int = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["key_pairs", b"key_pairs", "total_count", b"total_count"]) -> None: ...
+
 global___ListKeyPairsResponse = ListKeyPairsResponse
 
 class CreateKeyPairRequest(google.protobuf.message.Message):
     """CreateKeyPairRequest defines a Key Pair to create"""
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     NAME_FIELD_NUMBER: builtins.int
     NAMESPACE_ID_FIELD_NUMBER: builtins.int
     FORMAT_FIELD_NUMBER: builtins.int
     CERTIFICATE_FIELD_NUMBER: builtins.int
     KEY_FIELD_NUMBER: builtins.int
-    name: typing.Text = ...
-    namespace_id: typing.Text = ...
-    format: global___Format.V = ...
+    name: builtins.str
+    namespace_id: builtins.str
+    format: global___Format.ValueType
     """encoding format of data"""
-
-    certificate: builtins.bytes = ...
+    certificate: builtins.bytes
     """public certificate data"""
-
-    key: builtins.bytes = ...
+    key: builtins.bytes
     """private key data"""
-
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        name : typing.Text = ...,
-        namespace_id : typing.Text = ...,
-        format : global___Format.V = ...,
-        certificate : builtins.bytes = ...,
-        key : builtins.bytes = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"certificate",b"certificate",u"format",b"format",u"key",b"key",u"name",b"name",u"namespace_id",b"namespace_id"]) -> None: ...
+        name: builtins.str = ...,
+        namespace_id: builtins.str = ...,
+        format: global___Format.ValueType = ...,
+        certificate: builtins.bytes = ...,
+        key: builtins.bytes = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["certificate", b"certificate", "format", b"format", "key", b"key", "name", b"name", "namespace_id", b"namespace_id"]) -> None: ...
+
 global___CreateKeyPairRequest = CreateKeyPairRequest
 
 class CreateKeyPairResponse(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     KEY_PAIR_FIELD_NUMBER: builtins.int
     @property
     def key_pair(self) -> global___KeyPairRecord: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        key_pair : typing.Optional[global___KeyPairRecord] = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"key_pair",b"key_pair"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"key_pair",b"key_pair"]) -> None: ...
+        key_pair: global___KeyPairRecord | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["key_pair", b"key_pair"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["key_pair", b"key_pair"]) -> None: ...
+
 global___CreateKeyPairResponse = CreateKeyPairResponse
 
 class UpdateKeyPairRequest(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     ID_FIELD_NUMBER: builtins.int
     FORMAT_FIELD_NUMBER: builtins.int
     CERTIFICATE_FIELD_NUMBER: builtins.int
     KEY_FIELD_NUMBER: builtins.int
-    id: typing.Text = ...
-    format: global___Format.V = ...
+    id: builtins.str
+    format: global___Format.ValueType
     """encoding format of data"""
-
-    certificate: builtins.bytes = ...
+    certificate: builtins.bytes
     """public certificate data"""
-
-    key: builtins.bytes = ...
+    key: builtins.bytes
     """private key data"""
-
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        id : typing.Text = ...,
-        format : global___Format.V = ...,
-        certificate : builtins.bytes = ...,
-        key : builtins.bytes = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"certificate",b"certificate",u"format",b"format",u"id",b"id",u"key",b"key"]) -> None: ...
+        id: builtins.str = ...,
+        format: global___Format.ValueType = ...,
+        certificate: builtins.bytes = ...,
+        key: builtins.bytes = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["certificate", b"certificate", "format", b"format", "id", b"id", "key", b"key"]) -> None: ...
+
 global___UpdateKeyPairRequest = UpdateKeyPairRequest
 
 class UpdateKeyPairResponse(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     KEY_PAIR_FIELD_NUMBER: builtins.int
     @property
     def key_pair(self) -> global___KeyPairRecord: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        key_pair : typing.Optional[global___KeyPairRecord] = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"key_pair",b"key_pair"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"key_pair",b"key_pair"]) -> None: ...
+        key_pair: global___KeyPairRecord | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["key_pair", b"key_pair"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["key_pair", b"key_pair"]) -> None: ...
+
 global___UpdateKeyPairResponse = UpdateKeyPairResponse

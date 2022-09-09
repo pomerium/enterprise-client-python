@@ -3,6 +3,7 @@
 isort:skip_file
 """
 import builtins
+import collections.abc
 import envoy.config.cluster.v3.cluster_pb2
 import envoy.config.route.v3.route_components_pb2
 import google.protobuf.descriptor
@@ -12,59 +13,72 @@ import google.protobuf.internal.enum_type_wrapper
 import google.protobuf.message
 import google.protobuf.timestamp_pb2
 import policy_pb2
+import sys
 import typing
-import typing_extensions
 
-DESCRIPTOR: google.protobuf.descriptor.FileDescriptor = ...
+if sys.version_info >= (3, 10):
+    import typing as typing_extensions
+else:
+    import typing_extensions
+
+DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
 class RouteRewriteHeader(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     HEADER_FIELD_NUMBER: builtins.int
     PREFIX_FIELD_NUMBER: builtins.int
     VALUE_FIELD_NUMBER: builtins.int
-    header: typing.Text = ...
-    prefix: typing.Text = ...
-    value: typing.Text = ...
-    def __init__(self,
+    header: builtins.str
+    prefix: builtins.str
+    value: builtins.str
+    def __init__(
+        self,
         *,
-        header : typing.Text = ...,
-        prefix : typing.Text = ...,
-        value : typing.Text = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"matcher",b"matcher",u"prefix",b"prefix"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"header",b"header",u"matcher",b"matcher",u"prefix",b"prefix",u"value",b"value"]) -> None: ...
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"matcher",b"matcher"]) -> typing.Optional[typing_extensions.Literal["prefix"]]: ...
+        header: builtins.str = ...,
+        prefix: builtins.str = ...,
+        value: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["matcher", b"matcher", "prefix", b"prefix"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["header", b"header", "matcher", b"matcher", "prefix", b"prefix", "value", b"value"]) -> None: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["matcher", b"matcher"]) -> typing_extensions.Literal["prefix"] | None: ...
+
 global___RouteRewriteHeader = RouteRewriteHeader
 
 class Route(google.protobuf.message.Message):
     """Route defines a proxy route's settings and policy associations"""
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
-    class AuthorizationHeaderMode(_AuthorizationHeaderMode, metaclass=_AuthorizationHeaderModeEnumTypeWrapper):
-        pass
-    class _AuthorizationHeaderMode:
-        V = typing.NewType('V', builtins.int)
-    class _AuthorizationHeaderModeEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_AuthorizationHeaderMode.V], builtins.type):
-        DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor = ...
-        PASS_THROUGH = Route.AuthorizationHeaderMode.V(0)
-        ACCESS_TOKEN = Route.AuthorizationHeaderMode.V(1)
-        ID_TOKEN = Route.AuthorizationHeaderMode.V(2)
 
-    PASS_THROUGH = Route.AuthorizationHeaderMode.V(0)
-    ACCESS_TOKEN = Route.AuthorizationHeaderMode.V(1)
-    ID_TOKEN = Route.AuthorizationHeaderMode.V(2)
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    class _AuthorizationHeaderMode:
+        ValueType = typing.NewType("ValueType", builtins.int)
+        V: typing_extensions.TypeAlias = ValueType
+
+    class _AuthorizationHeaderModeEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[Route._AuthorizationHeaderMode.ValueType], builtins.type):  # noqa: F821
+        DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+        PASS_THROUGH: Route._AuthorizationHeaderMode.ValueType  # 0
+        ACCESS_TOKEN: Route._AuthorizationHeaderMode.ValueType  # 1
+        ID_TOKEN: Route._AuthorizationHeaderMode.ValueType  # 2
+
+    class AuthorizationHeaderMode(_AuthorizationHeaderMode, metaclass=_AuthorizationHeaderModeEnumTypeWrapper): ...
+    PASS_THROUGH: Route.AuthorizationHeaderMode.ValueType  # 0
+    ACCESS_TOKEN: Route.AuthorizationHeaderMode.ValueType  # 1
+    ID_TOKEN: Route.AuthorizationHeaderMode.ValueType  # 2
 
     class SetRequestHeadersEntry(google.protobuf.message.Message):
-        DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+        DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
         KEY_FIELD_NUMBER: builtins.int
         VALUE_FIELD_NUMBER: builtins.int
-        key: typing.Text = ...
-        value: typing.Text = ...
-        def __init__(self,
+        key: builtins.str
+        value: builtins.str
+        def __init__(
+            self,
             *,
-            key : typing.Text = ...,
-            value : typing.Text = ...,
-            ) -> None: ...
-        def ClearField(self, field_name: typing_extensions.Literal[u"key",b"key",u"value",b"value"]) -> None: ...
+            key: builtins.str = ...,
+            value: builtins.str = ...,
+        ) -> None: ...
+        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
 
     ID_FIELD_NUMBER: builtins.int
     NAMESPACE_ID_FIELD_NUMBER: builtins.int
@@ -91,7 +105,8 @@ class Route(google.protobuf.message.Message):
     ALLOW_WEBSOCKETS_FIELD_NUMBER: builtins.int
     ALLOW_SPDY_FIELD_NUMBER: builtins.int
     TLS_SKIP_VERIFY_FIELD_NUMBER: builtins.int
-    TLS_SERVER_NAME_FIELD_NUMBER: builtins.int
+    TLS_UPSTREAM_SERVER_NAME_FIELD_NUMBER: builtins.int
+    TLS_DOWNSTREAM_SERVER_NAME_FIELD_NUMBER: builtins.int
     TLS_CUSTOM_CA_KEY_PAIR_ID_FIELD_NUMBER: builtins.int
     TLS_CLIENT_KEY_PAIR_ID_FIELD_NUMBER: builtins.int
     TLS_DOWNSTREAM_CLIENT_CA_KEY_PAIR_ID_FIELD_NUMBER: builtins.int
@@ -105,358 +120,405 @@ class Route(google.protobuf.message.Message):
     ENVOY_OPTS_FIELD_NUMBER: builtins.int
     REDIRECT_FIELD_NUMBER: builtins.int
     ENABLE_GOOGLE_CLOUD_SERVERLESS_AUTHENTICATION_FIELD_NUMBER: builtins.int
+    SHOW_ERROR_DETAILS_FIELD_NUMBER: builtins.int
+    ORIGINATOR_ID_FIELD_NUMBER: builtins.int
     POLICY_IDS_FIELD_NUMBER: builtins.int
     POLICY_NAMES_FIELD_NUMBER: builtins.int
     NAMESPACE_NAME_FIELD_NUMBER: builtins.int
-    id: typing.Text = ...
-    namespace_id: typing.Text = ...
+    id: builtins.str
+    namespace_id: builtins.str
     @property
     def created_at(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
     @property
     def modified_at(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
     @property
     def deleted_at(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
-    name: typing.Text = ...
-    stat_name: typing.Text = ...
+    name: builtins.str
+    stat_name: builtins.str
     """name for prometheus stats, computed on first save"""
-
     @property
-    def to(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]: ...
-    prefix: typing.Text = ...
-    path: typing.Text = ...
-    regex: typing.Text = ...
-    prefix_rewrite: typing.Text = ...
-    regex_rewrite_pattern: typing.Text = ...
-    regex_rewrite_substitution: typing.Text = ...
-    host_rewrite: typing.Text = ...
-    host_rewrite_header: typing.Text = ...
-    host_path_regex_rewrite_pattern: typing.Text = ...
-    host_path_regex_rewrite_substitution: typing.Text = ...
-    regex_priority_order: builtins.int = ...
+    def to(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
+    prefix: builtins.str
+    path: builtins.str
+    regex: builtins.str
+    prefix_rewrite: builtins.str
+    regex_rewrite_pattern: builtins.str
+    regex_rewrite_substitution: builtins.str
+    host_rewrite: builtins.str
+    host_rewrite_header: builtins.str
+    host_path_regex_rewrite_pattern: builtins.str
+    host_path_regex_rewrite_substitution: builtins.str
+    regex_priority_order: builtins.int
     @property
     def timeout(self) -> google.protobuf.duration_pb2.Duration: ...
     @property
     def idle_timeout(self) -> google.protobuf.duration_pb2.Duration: ...
-    allow_websockets: builtins.bool = ...
-    allow_spdy: builtins.bool = ...
-    tls_skip_verify: builtins.bool = ...
-    tls_server_name: typing.Text = ...
-    tls_custom_ca_key_pair_id: typing.Text = ...
-    tls_client_key_pair_id: typing.Text = ...
-    tls_downstream_client_ca_key_pair_id: typing.Text = ...
+    allow_websockets: builtins.bool
+    allow_spdy: builtins.bool
+    tls_skip_verify: builtins.bool
+    tls_upstream_server_name: builtins.str
+    tls_downstream_server_name: builtins.str
+    tls_custom_ca_key_pair_id: builtins.str
+    tls_client_key_pair_id: builtins.str
+    tls_downstream_client_ca_key_pair_id: builtins.str
     @property
-    def set_request_headers(self) -> google.protobuf.internal.containers.ScalarMap[typing.Text, typing.Text]: ...
+    def set_request_headers(self) -> google.protobuf.internal.containers.ScalarMap[builtins.str, builtins.str]: ...
     @property
-    def remove_request_headers(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]: ...
+    def remove_request_headers(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
     @property
     def rewrite_response_headers(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___RouteRewriteHeader]: ...
-    set_authorization_header: global___Route.AuthorizationHeaderMode.V = ...
-    preserve_host_header: builtins.bool = ...
-    pass_identity_headers: builtins.bool = ...
-    kubernetes_service_account_token: typing.Text = ...
+    set_authorization_header: global___Route.AuthorizationHeaderMode.ValueType
+    preserve_host_header: builtins.bool
+    pass_identity_headers: builtins.bool
+    kubernetes_service_account_token: builtins.str
     @property
     def envoy_opts(self) -> envoy.config.cluster.v3.cluster_pb2.Cluster: ...
     @property
     def redirect(self) -> envoy.config.route.v3.route_components_pb2.RedirectAction: ...
-    enable_google_cloud_serverless_authentication: builtins.bool = ...
+    enable_google_cloud_serverless_authentication: builtins.bool
+    show_error_details: builtins.bool
+    originator_id: builtins.str
     @property
-    def policy_ids(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]:
+    def policy_ids(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
         """policies applied to this route"""
-        pass
     @property
-    def policy_names(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]:
+    def policy_names(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
         """computed properties (may be nil)"""
-        pass
-    namespace_name: typing.Text = ...
+    namespace_name: builtins.str
     """computed"""
-
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        id : typing.Text = ...,
-        namespace_id : typing.Text = ...,
-        created_at : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        modified_at : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        deleted_at : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        name : typing.Text = ...,
-        stat_name : typing.Text = ...,
-        to : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        prefix : typing.Text = ...,
-        path : typing.Text = ...,
-        regex : typing.Text = ...,
-        prefix_rewrite : typing.Text = ...,
-        regex_rewrite_pattern : typing.Text = ...,
-        regex_rewrite_substitution : typing.Text = ...,
-        host_rewrite : typing.Text = ...,
-        host_rewrite_header : typing.Text = ...,
-        host_path_regex_rewrite_pattern : typing.Text = ...,
-        host_path_regex_rewrite_substitution : typing.Text = ...,
-        regex_priority_order : builtins.int = ...,
-        timeout : typing.Optional[google.protobuf.duration_pb2.Duration] = ...,
-        idle_timeout : typing.Optional[google.protobuf.duration_pb2.Duration] = ...,
-        allow_websockets : builtins.bool = ...,
-        allow_spdy : builtins.bool = ...,
-        tls_skip_verify : builtins.bool = ...,
-        tls_server_name : typing.Text = ...,
-        tls_custom_ca_key_pair_id : typing.Text = ...,
-        tls_client_key_pair_id : typing.Text = ...,
-        tls_downstream_client_ca_key_pair_id : typing.Text = ...,
-        set_request_headers : typing.Optional[typing.Mapping[typing.Text, typing.Text]] = ...,
-        remove_request_headers : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        rewrite_response_headers : typing.Optional[typing.Iterable[global___RouteRewriteHeader]] = ...,
-        set_authorization_header : global___Route.AuthorizationHeaderMode.V = ...,
-        preserve_host_header : builtins.bool = ...,
-        pass_identity_headers : builtins.bool = ...,
-        kubernetes_service_account_token : typing.Text = ...,
-        envoy_opts : typing.Optional[envoy.config.cluster.v3.cluster_pb2.Cluster] = ...,
-        redirect : typing.Optional[envoy.config.route.v3.route_components_pb2.RedirectAction] = ...,
-        enable_google_cloud_serverless_authentication : builtins.bool = ...,
-        policy_ids : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        policy_names : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        namespace_name : typing.Text = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"_allow_spdy",b"_allow_spdy",u"_allow_websockets",b"_allow_websockets",u"_host_path_regex_rewrite_pattern",b"_host_path_regex_rewrite_pattern",u"_host_path_regex_rewrite_substitution",b"_host_path_regex_rewrite_substitution",u"_host_rewrite",b"_host_rewrite",u"_host_rewrite_header",b"_host_rewrite_header",u"_idle_timeout",b"_idle_timeout",u"_kubernetes_service_account_token",b"_kubernetes_service_account_token",u"_pass_identity_headers",b"_pass_identity_headers",u"_path",b"_path",u"_prefix",b"_prefix",u"_prefix_rewrite",b"_prefix_rewrite",u"_preserve_host_header",b"_preserve_host_header",u"_regex",b"_regex",u"_regex_priority_order",b"_regex_priority_order",u"_regex_rewrite_pattern",b"_regex_rewrite_pattern",u"_regex_rewrite_substitution",b"_regex_rewrite_substitution",u"_timeout",b"_timeout",u"_tls_client_key_pair_id",b"_tls_client_key_pair_id",u"_tls_custom_ca_key_pair_id",b"_tls_custom_ca_key_pair_id",u"_tls_downstream_client_ca_key_pair_id",b"_tls_downstream_client_ca_key_pair_id",u"_tls_server_name",b"_tls_server_name",u"_tls_skip_verify",b"_tls_skip_verify",u"allow_spdy",b"allow_spdy",u"allow_websockets",b"allow_websockets",u"created_at",b"created_at",u"deleted_at",b"deleted_at",u"envoy_opts",b"envoy_opts",u"host_path_regex_rewrite_pattern",b"host_path_regex_rewrite_pattern",u"host_path_regex_rewrite_substitution",b"host_path_regex_rewrite_substitution",u"host_rewrite",b"host_rewrite",u"host_rewrite_header",b"host_rewrite_header",u"idle_timeout",b"idle_timeout",u"kubernetes_service_account_token",b"kubernetes_service_account_token",u"modified_at",b"modified_at",u"pass_identity_headers",b"pass_identity_headers",u"path",b"path",u"prefix",b"prefix",u"prefix_rewrite",b"prefix_rewrite",u"preserve_host_header",b"preserve_host_header",u"redirect",b"redirect",u"regex",b"regex",u"regex_priority_order",b"regex_priority_order",u"regex_rewrite_pattern",b"regex_rewrite_pattern",u"regex_rewrite_substitution",b"regex_rewrite_substitution",u"timeout",b"timeout",u"tls_client_key_pair_id",b"tls_client_key_pair_id",u"tls_custom_ca_key_pair_id",b"tls_custom_ca_key_pair_id",u"tls_downstream_client_ca_key_pair_id",b"tls_downstream_client_ca_key_pair_id",u"tls_server_name",b"tls_server_name",u"tls_skip_verify",b"tls_skip_verify"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"_allow_spdy",b"_allow_spdy",u"_allow_websockets",b"_allow_websockets",u"_host_path_regex_rewrite_pattern",b"_host_path_regex_rewrite_pattern",u"_host_path_regex_rewrite_substitution",b"_host_path_regex_rewrite_substitution",u"_host_rewrite",b"_host_rewrite",u"_host_rewrite_header",b"_host_rewrite_header",u"_idle_timeout",b"_idle_timeout",u"_kubernetes_service_account_token",b"_kubernetes_service_account_token",u"_pass_identity_headers",b"_pass_identity_headers",u"_path",b"_path",u"_prefix",b"_prefix",u"_prefix_rewrite",b"_prefix_rewrite",u"_preserve_host_header",b"_preserve_host_header",u"_regex",b"_regex",u"_regex_priority_order",b"_regex_priority_order",u"_regex_rewrite_pattern",b"_regex_rewrite_pattern",u"_regex_rewrite_substitution",b"_regex_rewrite_substitution",u"_timeout",b"_timeout",u"_tls_client_key_pair_id",b"_tls_client_key_pair_id",u"_tls_custom_ca_key_pair_id",b"_tls_custom_ca_key_pair_id",u"_tls_downstream_client_ca_key_pair_id",b"_tls_downstream_client_ca_key_pair_id",u"_tls_server_name",b"_tls_server_name",u"_tls_skip_verify",b"_tls_skip_verify",u"allow_spdy",b"allow_spdy",u"allow_websockets",b"allow_websockets",u"created_at",b"created_at",u"deleted_at",b"deleted_at",u"enable_google_cloud_serverless_authentication",b"enable_google_cloud_serverless_authentication",u"envoy_opts",b"envoy_opts",u"from",b"from",u"host_path_regex_rewrite_pattern",b"host_path_regex_rewrite_pattern",u"host_path_regex_rewrite_substitution",b"host_path_regex_rewrite_substitution",u"host_rewrite",b"host_rewrite",u"host_rewrite_header",b"host_rewrite_header",u"id",b"id",u"idle_timeout",b"idle_timeout",u"kubernetes_service_account_token",b"kubernetes_service_account_token",u"modified_at",b"modified_at",u"name",b"name",u"namespace_id",b"namespace_id",u"namespace_name",b"namespace_name",u"pass_identity_headers",b"pass_identity_headers",u"path",b"path",u"policy_ids",b"policy_ids",u"policy_names",b"policy_names",u"prefix",b"prefix",u"prefix_rewrite",b"prefix_rewrite",u"preserve_host_header",b"preserve_host_header",u"redirect",b"redirect",u"regex",b"regex",u"regex_priority_order",b"regex_priority_order",u"regex_rewrite_pattern",b"regex_rewrite_pattern",u"regex_rewrite_substitution",b"regex_rewrite_substitution",u"remove_request_headers",b"remove_request_headers",u"rewrite_response_headers",b"rewrite_response_headers",u"set_authorization_header",b"set_authorization_header",u"set_request_headers",b"set_request_headers",u"stat_name",b"stat_name",u"timeout",b"timeout",u"tls_client_key_pair_id",b"tls_client_key_pair_id",u"tls_custom_ca_key_pair_id",b"tls_custom_ca_key_pair_id",u"tls_downstream_client_ca_key_pair_id",b"tls_downstream_client_ca_key_pair_id",u"tls_server_name",b"tls_server_name",u"tls_skip_verify",b"tls_skip_verify",u"to",b"to"]) -> None: ...
+        id: builtins.str = ...,
+        namespace_id: builtins.str = ...,
+        created_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        modified_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        deleted_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        name: builtins.str = ...,
+        stat_name: builtins.str = ...,
+        to: collections.abc.Iterable[builtins.str] | None = ...,
+        prefix: builtins.str | None = ...,
+        path: builtins.str | None = ...,
+        regex: builtins.str | None = ...,
+        prefix_rewrite: builtins.str | None = ...,
+        regex_rewrite_pattern: builtins.str | None = ...,
+        regex_rewrite_substitution: builtins.str | None = ...,
+        host_rewrite: builtins.str | None = ...,
+        host_rewrite_header: builtins.str | None = ...,
+        host_path_regex_rewrite_pattern: builtins.str | None = ...,
+        host_path_regex_rewrite_substitution: builtins.str | None = ...,
+        regex_priority_order: builtins.int | None = ...,
+        timeout: google.protobuf.duration_pb2.Duration | None = ...,
+        idle_timeout: google.protobuf.duration_pb2.Duration | None = ...,
+        allow_websockets: builtins.bool | None = ...,
+        allow_spdy: builtins.bool | None = ...,
+        tls_skip_verify: builtins.bool | None = ...,
+        tls_upstream_server_name: builtins.str | None = ...,
+        tls_downstream_server_name: builtins.str | None = ...,
+        tls_custom_ca_key_pair_id: builtins.str | None = ...,
+        tls_client_key_pair_id: builtins.str | None = ...,
+        tls_downstream_client_ca_key_pair_id: builtins.str | None = ...,
+        set_request_headers: collections.abc.Mapping[builtins.str, builtins.str] | None = ...,
+        remove_request_headers: collections.abc.Iterable[builtins.str] | None = ...,
+        rewrite_response_headers: collections.abc.Iterable[global___RouteRewriteHeader] | None = ...,
+        set_authorization_header: global___Route.AuthorizationHeaderMode.ValueType = ...,
+        preserve_host_header: builtins.bool | None = ...,
+        pass_identity_headers: builtins.bool | None = ...,
+        kubernetes_service_account_token: builtins.str | None = ...,
+        envoy_opts: envoy.config.cluster.v3.cluster_pb2.Cluster | None = ...,
+        redirect: envoy.config.route.v3.route_components_pb2.RedirectAction | None = ...,
+        enable_google_cloud_serverless_authentication: builtins.bool = ...,
+        show_error_details: builtins.bool = ...,
+        originator_id: builtins.str = ...,
+        policy_ids: collections.abc.Iterable[builtins.str] | None = ...,
+        policy_names: collections.abc.Iterable[builtins.str] | None = ...,
+        namespace_name: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["_allow_spdy", b"_allow_spdy", "_allow_websockets", b"_allow_websockets", "_host_path_regex_rewrite_pattern", b"_host_path_regex_rewrite_pattern", "_host_path_regex_rewrite_substitution", b"_host_path_regex_rewrite_substitution", "_host_rewrite", b"_host_rewrite", "_host_rewrite_header", b"_host_rewrite_header", "_idle_timeout", b"_idle_timeout", "_kubernetes_service_account_token", b"_kubernetes_service_account_token", "_pass_identity_headers", b"_pass_identity_headers", "_path", b"_path", "_prefix", b"_prefix", "_prefix_rewrite", b"_prefix_rewrite", "_preserve_host_header", b"_preserve_host_header", "_regex", b"_regex", "_regex_priority_order", b"_regex_priority_order", "_regex_rewrite_pattern", b"_regex_rewrite_pattern", "_regex_rewrite_substitution", b"_regex_rewrite_substitution", "_timeout", b"_timeout", "_tls_client_key_pair_id", b"_tls_client_key_pair_id", "_tls_custom_ca_key_pair_id", b"_tls_custom_ca_key_pair_id", "_tls_downstream_client_ca_key_pair_id", b"_tls_downstream_client_ca_key_pair_id", "_tls_downstream_server_name", b"_tls_downstream_server_name", "_tls_skip_verify", b"_tls_skip_verify", "_tls_upstream_server_name", b"_tls_upstream_server_name", "allow_spdy", b"allow_spdy", "allow_websockets", b"allow_websockets", "created_at", b"created_at", "deleted_at", b"deleted_at", "envoy_opts", b"envoy_opts", "host_path_regex_rewrite_pattern", b"host_path_regex_rewrite_pattern", "host_path_regex_rewrite_substitution", b"host_path_regex_rewrite_substitution", "host_rewrite", b"host_rewrite", "host_rewrite_header", b"host_rewrite_header", "idle_timeout", b"idle_timeout", "kubernetes_service_account_token", b"kubernetes_service_account_token", "modified_at", b"modified_at", "pass_identity_headers", b"pass_identity_headers", "path", b"path", "prefix", b"prefix", "prefix_rewrite", b"prefix_rewrite", "preserve_host_header", b"preserve_host_header", "redirect", b"redirect", "regex", b"regex", "regex_priority_order", b"regex_priority_order", "regex_rewrite_pattern", b"regex_rewrite_pattern", "regex_rewrite_substitution", b"regex_rewrite_substitution", "timeout", b"timeout", "tls_client_key_pair_id", b"tls_client_key_pair_id", "tls_custom_ca_key_pair_id", b"tls_custom_ca_key_pair_id", "tls_downstream_client_ca_key_pair_id", b"tls_downstream_client_ca_key_pair_id", "tls_downstream_server_name", b"tls_downstream_server_name", "tls_skip_verify", b"tls_skip_verify", "tls_upstream_server_name", b"tls_upstream_server_name"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["_allow_spdy", b"_allow_spdy", "_allow_websockets", b"_allow_websockets", "_host_path_regex_rewrite_pattern", b"_host_path_regex_rewrite_pattern", "_host_path_regex_rewrite_substitution", b"_host_path_regex_rewrite_substitution", "_host_rewrite", b"_host_rewrite", "_host_rewrite_header", b"_host_rewrite_header", "_idle_timeout", b"_idle_timeout", "_kubernetes_service_account_token", b"_kubernetes_service_account_token", "_pass_identity_headers", b"_pass_identity_headers", "_path", b"_path", "_prefix", b"_prefix", "_prefix_rewrite", b"_prefix_rewrite", "_preserve_host_header", b"_preserve_host_header", "_regex", b"_regex", "_regex_priority_order", b"_regex_priority_order", "_regex_rewrite_pattern", b"_regex_rewrite_pattern", "_regex_rewrite_substitution", b"_regex_rewrite_substitution", "_timeout", b"_timeout", "_tls_client_key_pair_id", b"_tls_client_key_pair_id", "_tls_custom_ca_key_pair_id", b"_tls_custom_ca_key_pair_id", "_tls_downstream_client_ca_key_pair_id", b"_tls_downstream_client_ca_key_pair_id", "_tls_downstream_server_name", b"_tls_downstream_server_name", "_tls_skip_verify", b"_tls_skip_verify", "_tls_upstream_server_name", b"_tls_upstream_server_name", "allow_spdy", b"allow_spdy", "allow_websockets", b"allow_websockets", "created_at", b"created_at", "deleted_at", b"deleted_at", "enable_google_cloud_serverless_authentication", b"enable_google_cloud_serverless_authentication", "envoy_opts", b"envoy_opts", "from", b"from", "host_path_regex_rewrite_pattern", b"host_path_regex_rewrite_pattern", "host_path_regex_rewrite_substitution", b"host_path_regex_rewrite_substitution", "host_rewrite", b"host_rewrite", "host_rewrite_header", b"host_rewrite_header", "id", b"id", "idle_timeout", b"idle_timeout", "kubernetes_service_account_token", b"kubernetes_service_account_token", "modified_at", b"modified_at", "name", b"name", "namespace_id", b"namespace_id", "namespace_name", b"namespace_name", "originator_id", b"originator_id", "pass_identity_headers", b"pass_identity_headers", "path", b"path", "policy_ids", b"policy_ids", "policy_names", b"policy_names", "prefix", b"prefix", "prefix_rewrite", b"prefix_rewrite", "preserve_host_header", b"preserve_host_header", "redirect", b"redirect", "regex", b"regex", "regex_priority_order", b"regex_priority_order", "regex_rewrite_pattern", b"regex_rewrite_pattern", "regex_rewrite_substitution", b"regex_rewrite_substitution", "remove_request_headers", b"remove_request_headers", "rewrite_response_headers", b"rewrite_response_headers", "set_authorization_header", b"set_authorization_header", "set_request_headers", b"set_request_headers", "show_error_details", b"show_error_details", "stat_name", b"stat_name", "timeout", b"timeout", "tls_client_key_pair_id", b"tls_client_key_pair_id", "tls_custom_ca_key_pair_id", b"tls_custom_ca_key_pair_id", "tls_downstream_client_ca_key_pair_id", b"tls_downstream_client_ca_key_pair_id", "tls_downstream_server_name", b"tls_downstream_server_name", "tls_skip_verify", b"tls_skip_verify", "tls_upstream_server_name", b"tls_upstream_server_name", "to", b"to"]) -> None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_allow_spdy",b"_allow_spdy"]) -> typing.Optional[typing_extensions.Literal["allow_spdy"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_allow_spdy", b"_allow_spdy"]) -> typing_extensions.Literal["allow_spdy"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_allow_websockets",b"_allow_websockets"]) -> typing.Optional[typing_extensions.Literal["allow_websockets"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_allow_websockets", b"_allow_websockets"]) -> typing_extensions.Literal["allow_websockets"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_host_path_regex_rewrite_pattern",b"_host_path_regex_rewrite_pattern"]) -> typing.Optional[typing_extensions.Literal["host_path_regex_rewrite_pattern"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_host_path_regex_rewrite_pattern", b"_host_path_regex_rewrite_pattern"]) -> typing_extensions.Literal["host_path_regex_rewrite_pattern"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_host_path_regex_rewrite_substitution",b"_host_path_regex_rewrite_substitution"]) -> typing.Optional[typing_extensions.Literal["host_path_regex_rewrite_substitution"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_host_path_regex_rewrite_substitution", b"_host_path_regex_rewrite_substitution"]) -> typing_extensions.Literal["host_path_regex_rewrite_substitution"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_host_rewrite",b"_host_rewrite"]) -> typing.Optional[typing_extensions.Literal["host_rewrite"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_host_rewrite", b"_host_rewrite"]) -> typing_extensions.Literal["host_rewrite"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_host_rewrite_header",b"_host_rewrite_header"]) -> typing.Optional[typing_extensions.Literal["host_rewrite_header"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_host_rewrite_header", b"_host_rewrite_header"]) -> typing_extensions.Literal["host_rewrite_header"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_idle_timeout",b"_idle_timeout"]) -> typing.Optional[typing_extensions.Literal["idle_timeout"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_idle_timeout", b"_idle_timeout"]) -> typing_extensions.Literal["idle_timeout"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_kubernetes_service_account_token",b"_kubernetes_service_account_token"]) -> typing.Optional[typing_extensions.Literal["kubernetes_service_account_token"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_kubernetes_service_account_token", b"_kubernetes_service_account_token"]) -> typing_extensions.Literal["kubernetes_service_account_token"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_pass_identity_headers",b"_pass_identity_headers"]) -> typing.Optional[typing_extensions.Literal["pass_identity_headers"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_pass_identity_headers", b"_pass_identity_headers"]) -> typing_extensions.Literal["pass_identity_headers"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_path",b"_path"]) -> typing.Optional[typing_extensions.Literal["path"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_path", b"_path"]) -> typing_extensions.Literal["path"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_prefix",b"_prefix"]) -> typing.Optional[typing_extensions.Literal["prefix"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_prefix", b"_prefix"]) -> typing_extensions.Literal["prefix"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_prefix_rewrite",b"_prefix_rewrite"]) -> typing.Optional[typing_extensions.Literal["prefix_rewrite"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_prefix_rewrite", b"_prefix_rewrite"]) -> typing_extensions.Literal["prefix_rewrite"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_preserve_host_header",b"_preserve_host_header"]) -> typing.Optional[typing_extensions.Literal["preserve_host_header"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_preserve_host_header", b"_preserve_host_header"]) -> typing_extensions.Literal["preserve_host_header"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_regex",b"_regex"]) -> typing.Optional[typing_extensions.Literal["regex"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_regex", b"_regex"]) -> typing_extensions.Literal["regex"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_regex_priority_order",b"_regex_priority_order"]) -> typing.Optional[typing_extensions.Literal["regex_priority_order"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_regex_priority_order", b"_regex_priority_order"]) -> typing_extensions.Literal["regex_priority_order"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_regex_rewrite_pattern",b"_regex_rewrite_pattern"]) -> typing.Optional[typing_extensions.Literal["regex_rewrite_pattern"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_regex_rewrite_pattern", b"_regex_rewrite_pattern"]) -> typing_extensions.Literal["regex_rewrite_pattern"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_regex_rewrite_substitution",b"_regex_rewrite_substitution"]) -> typing.Optional[typing_extensions.Literal["regex_rewrite_substitution"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_regex_rewrite_substitution", b"_regex_rewrite_substitution"]) -> typing_extensions.Literal["regex_rewrite_substitution"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_timeout",b"_timeout"]) -> typing.Optional[typing_extensions.Literal["timeout"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_timeout", b"_timeout"]) -> typing_extensions.Literal["timeout"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_tls_client_key_pair_id",b"_tls_client_key_pair_id"]) -> typing.Optional[typing_extensions.Literal["tls_client_key_pair_id"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_tls_client_key_pair_id", b"_tls_client_key_pair_id"]) -> typing_extensions.Literal["tls_client_key_pair_id"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_tls_custom_ca_key_pair_id",b"_tls_custom_ca_key_pair_id"]) -> typing.Optional[typing_extensions.Literal["tls_custom_ca_key_pair_id"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_tls_custom_ca_key_pair_id", b"_tls_custom_ca_key_pair_id"]) -> typing_extensions.Literal["tls_custom_ca_key_pair_id"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_tls_downstream_client_ca_key_pair_id",b"_tls_downstream_client_ca_key_pair_id"]) -> typing.Optional[typing_extensions.Literal["tls_downstream_client_ca_key_pair_id"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_tls_downstream_client_ca_key_pair_id", b"_tls_downstream_client_ca_key_pair_id"]) -> typing_extensions.Literal["tls_downstream_client_ca_key_pair_id"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_tls_server_name",b"_tls_server_name"]) -> typing.Optional[typing_extensions.Literal["tls_server_name"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_tls_downstream_server_name", b"_tls_downstream_server_name"]) -> typing_extensions.Literal["tls_downstream_server_name"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_tls_skip_verify",b"_tls_skip_verify"]) -> typing.Optional[typing_extensions.Literal["tls_skip_verify"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_tls_skip_verify", b"_tls_skip_verify"]) -> typing_extensions.Literal["tls_skip_verify"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_tls_upstream_server_name", b"_tls_upstream_server_name"]) -> typing_extensions.Literal["tls_upstream_server_name"] | None: ...
+
 global___Route = Route
 
 class RouteWithPolicies(google.protobuf.message.Message):
     """RouteWithPolicies contains automatically created routes and policies from a
     LoadRoutesRequest
     """
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     ROUTE_FIELD_NUMBER: builtins.int
     POLICIES_FIELD_NUMBER: builtins.int
     @property
     def route(self) -> global___Route: ...
     @property
     def policies(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[policy_pb2.Policy]: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        route : typing.Optional[global___Route] = ...,
-        policies : typing.Optional[typing.Iterable[policy_pb2.Policy]] = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"route",b"route"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"policies",b"policies",u"route",b"route"]) -> None: ...
+        route: global___Route | None = ...,
+        policies: collections.abc.Iterable[policy_pb2.Policy] | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["route", b"route"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["policies", b"policies", "route", b"route"]) -> None: ...
+
 global___RouteWithPolicies = RouteWithPolicies
 
 class DeleteRouteRequest(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     ID_FIELD_NUMBER: builtins.int
-    id: typing.Text = ...
-    def __init__(self,
+    id: builtins.str
+    def __init__(
+        self,
         *,
-        id : typing.Text = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"id",b"id"]) -> None: ...
+        id: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["id", b"id"]) -> None: ...
+
 global___DeleteRouteRequest = DeleteRouteRequest
 
 class DeleteRouteResponse(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
-    def __init__(self,
-        ) -> None: ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    def __init__(
+        self,
+    ) -> None: ...
+
 global___DeleteRouteResponse = DeleteRouteResponse
 
 class GetRouteRequest(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     ID_FIELD_NUMBER: builtins.int
-    id: typing.Text = ...
-    def __init__(self,
+    id: builtins.str
+    def __init__(
+        self,
         *,
-        id : typing.Text = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"id",b"id"]) -> None: ...
+        id: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["id", b"id"]) -> None: ...
+
 global___GetRouteRequest = GetRouteRequest
 
 class GetRouteResponse(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     ROUTE_FIELD_NUMBER: builtins.int
     @property
     def route(self) -> global___Route: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        route : typing.Optional[global___Route] = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"route",b"route"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"route",b"route"]) -> None: ...
+        route: global___Route | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["route", b"route"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["route", b"route"]) -> None: ...
+
 global___GetRouteResponse = GetRouteResponse
 
 class ListRoutesRequest(google.protobuf.message.Message):
     """ListRoutesRequest defines the routes to list"""
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     NAMESPACE_FIELD_NUMBER: builtins.int
     QUERY_FIELD_NUMBER: builtins.int
     OFFSET_FIELD_NUMBER: builtins.int
     LIMIT_FIELD_NUMBER: builtins.int
     ORDER_BY_FIELD_NUMBER: builtins.int
-    namespace: typing.Text = ...
-    query: typing.Text = ...
+    namespace: builtins.str
+    query: builtins.str
     """list Routes who's name, from or to contains the query string"""
-
-    offset: builtins.int = ...
+    offset: builtins.int
     """list Routes starting from an offset in the total list"""
-
-    limit: builtins.int = ...
+    limit: builtins.int
     """limit the number of Route entries returned"""
-
-    order_by: typing.Text = ...
+    order_by: builtins.str
     """sort the Routes by newest, oldest, name or from"""
-
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        namespace : typing.Text = ...,
-        query : typing.Text = ...,
-        offset : builtins.int = ...,
-        limit : builtins.int = ...,
-        order_by : typing.Text = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"_limit",b"_limit",u"_offset",b"_offset",u"_order_by",b"_order_by",u"_query",b"_query",u"limit",b"limit",u"offset",b"offset",u"order_by",b"order_by",u"query",b"query"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"_limit",b"_limit",u"_offset",b"_offset",u"_order_by",b"_order_by",u"_query",b"_query",u"limit",b"limit",u"namespace",b"namespace",u"offset",b"offset",u"order_by",b"order_by",u"query",b"query"]) -> None: ...
+        namespace: builtins.str = ...,
+        query: builtins.str | None = ...,
+        offset: builtins.int | None = ...,
+        limit: builtins.int | None = ...,
+        order_by: builtins.str | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["_limit", b"_limit", "_offset", b"_offset", "_order_by", b"_order_by", "_query", b"_query", "limit", b"limit", "offset", b"offset", "order_by", b"order_by", "query", b"query"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["_limit", b"_limit", "_offset", b"_offset", "_order_by", b"_order_by", "_query", b"_query", "limit", b"limit", "namespace", b"namespace", "offset", b"offset", "order_by", b"order_by", "query", b"query"]) -> None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_limit",b"_limit"]) -> typing.Optional[typing_extensions.Literal["limit"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_limit", b"_limit"]) -> typing_extensions.Literal["limit"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_offset",b"_offset"]) -> typing.Optional[typing_extensions.Literal["offset"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_offset", b"_offset"]) -> typing_extensions.Literal["offset"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_order_by",b"_order_by"]) -> typing.Optional[typing_extensions.Literal["order_by"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_order_by", b"_order_by"]) -> typing_extensions.Literal["order_by"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_query",b"_query"]) -> typing.Optional[typing_extensions.Literal["query"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_query", b"_query"]) -> typing_extensions.Literal["query"] | None: ...
+
 global___ListRoutesRequest = ListRoutesRequest
 
 class ListRoutesResponse(google.protobuf.message.Message):
     """ListRoutesResponse is the list of routes found for a ListRoutesRequest"""
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     ROUTES_FIELD_NUMBER: builtins.int
     TOTAL_COUNT_FIELD_NUMBER: builtins.int
     @property
     def routes(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___Route]: ...
-    total_count: builtins.int = ...
-    def __init__(self,
+    total_count: builtins.int
+    def __init__(
+        self,
         *,
-        routes : typing.Optional[typing.Iterable[global___Route]] = ...,
-        total_count : builtins.int = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"routes",b"routes",u"total_count",b"total_count"]) -> None: ...
+        routes: collections.abc.Iterable[global___Route] | None = ...,
+        total_count: builtins.int = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["routes", b"routes", "total_count", b"total_count"]) -> None: ...
+
 global___ListRoutesResponse = ListRoutesResponse
 
 class LoadRoutesRequest(google.protobuf.message.Message):
     """LoadRoutesRequest creates a route based on a yaml payload"""
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     NAME_FIELD_NUMBER: builtins.int
     CONTENTS_FIELD_NUMBER: builtins.int
-    name: typing.Text = ...
-    contents: builtins.bytes = ...
+    name: builtins.str
+    contents: builtins.bytes
     """OSS pomerium policy block"""
-
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        name : typing.Text = ...,
-        contents : builtins.bytes = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"contents",b"contents",u"name",b"name"]) -> None: ...
+        name: builtins.str = ...,
+        contents: builtins.bytes = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["contents", b"contents", "name", b"name"]) -> None: ...
+
 global___LoadRoutesRequest = LoadRoutesRequest
 
 class LoadRoutesResponse(google.protobuf.message.Message):
     """LoadRoutesResponse contains the routes and policies crated from a
     LoadRoutesRequest
     """
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     ROUTES_FIELD_NUMBER: builtins.int
     @property
     def routes(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___RouteWithPolicies]: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        routes : typing.Optional[typing.Iterable[global___RouteWithPolicies]] = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"routes",b"routes"]) -> None: ...
+        routes: collections.abc.Iterable[global___RouteWithPolicies] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["routes", b"routes"]) -> None: ...
+
 global___LoadRoutesResponse = LoadRoutesResponse
 
 class SetRouteRequest(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     ROUTE_FIELD_NUMBER: builtins.int
     @property
     def route(self) -> global___Route: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        route : typing.Optional[global___Route] = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"route",b"route"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"route",b"route"]) -> None: ...
+        route: global___Route | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["route", b"route"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["route", b"route"]) -> None: ...
+
 global___SetRouteRequest = SetRouteRequest
 
 class SetRouteResponse(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     ROUTE_FIELD_NUMBER: builtins.int
     @property
     def route(self) -> global___Route: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        route : typing.Optional[global___Route] = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"route",b"route"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"route",b"route"]) -> None: ...
+        route: global___Route | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["route", b"route"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["route", b"route"]) -> None: ...
+
 global___SetRouteResponse = SetRouteResponse
 
 class MoveRoutesRequest(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     ROUTE_IDS_FIELD_NUMBER: builtins.int
     NEW_NAMESPACE_ID_FIELD_NUMBER: builtins.int
     @property
-    def route_ids(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]: ...
-    new_namespace_id: typing.Text = ...
-    def __init__(self,
+    def route_ids(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
+    new_namespace_id: builtins.str
+    def __init__(
+        self,
         *,
-        route_ids : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        new_namespace_id : typing.Text = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"new_namespace_id",b"new_namespace_id",u"route_ids",b"route_ids"]) -> None: ...
+        route_ids: collections.abc.Iterable[builtins.str] | None = ...,
+        new_namespace_id: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["new_namespace_id", b"new_namespace_id", "route_ids", b"route_ids"]) -> None: ...
+
 global___MoveRoutesRequest = MoveRoutesRequest
 
 class MoveRoutesResponse(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
-    def __init__(self,
-        ) -> None: ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    def __init__(
+        self,
+    ) -> None: ...
+
 global___MoveRoutesResponse = MoveRoutesResponse

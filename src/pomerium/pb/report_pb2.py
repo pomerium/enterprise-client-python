@@ -3,6 +3,7 @@
 # source: report.proto
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
+from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
@@ -11,106 +12,16 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-from . import policy_pb2 as policy__pb2
-from . import routes_pb2 as routes__pb2
+import policy_pb2 as policy__pb2
+import routes_pb2 as routes__pb2
 
 
-DESCRIPTOR = _descriptor.FileDescriptor(
-  name='report.proto',
-  package='pomerium.dashboard',
-  syntax='proto3',
-  serialized_options=b'Z+github.com/pomerium/pomerium-console/pkg/pb',
-  create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0creport.proto\x12\x12pomerium.dashboard\x1a\x0cpolicy.proto\x1a\x0croutes.proto\">\n\x13PolicyReportRequest\x12\x11\n\troute_ids\x18\x01 \x03(\t\x12\x14\n\x0cnamespace_id\x18\x02 \x01(\t\"o\n\x14PolicyReportResponse\x12)\n\x06routes\x18\x01 \x03(\x0b\x32\x19.pomerium.dashboard.Route\x12,\n\x08policies\x18\x02 \x03(\x0b\x32\x1a.pomerium.dashboard.Policy2k\n\x06Report\x12\x61\n\x0cPolicyReport\x12\'.pomerium.dashboard.PolicyReportRequest\x1a(.pomerium.dashboard.PolicyReportResponseB-Z+github.com/pomerium/pomerium-console/pkg/pbb\x06proto3'
-  ,
-  dependencies=[policy__pb2.DESCRIPTOR,routes__pb2.DESCRIPTOR,])
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0creport.proto\x12\x12pomerium.dashboard\x1a\x0cpolicy.proto\x1a\x0croutes.proto\">\n\x13PolicyReportRequest\x12\x11\n\troute_ids\x18\x01 \x03(\t\x12\x14\n\x0cnamespace_id\x18\x02 \x01(\t\"o\n\x14PolicyReportResponse\x12)\n\x06routes\x18\x01 \x03(\x0b\x32\x19.pomerium.dashboard.Route\x12,\n\x08policies\x18\x02 \x03(\x0b\x32\x1a.pomerium.dashboard.Policy2k\n\x06Report\x12\x61\n\x0cPolicyReport\x12\'.pomerium.dashboard.PolicyReportRequest\x1a(.pomerium.dashboard.PolicyReportResponseB-Z+github.com/pomerium/pomerium-console/pkg/pbb\x06proto3')
 
 
 
-
-_POLICYREPORTREQUEST = _descriptor.Descriptor(
-  name='PolicyReportRequest',
-  full_name='pomerium.dashboard.PolicyReportRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='route_ids', full_name='pomerium.dashboard.PolicyReportRequest.route_ids', index=0,
-      number=1, type=9, cpp_type=9, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='namespace_id', full_name='pomerium.dashboard.PolicyReportRequest.namespace_id', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=64,
-  serialized_end=126,
-)
-
-
-_POLICYREPORTRESPONSE = _descriptor.Descriptor(
-  name='PolicyReportResponse',
-  full_name='pomerium.dashboard.PolicyReportResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='routes', full_name='pomerium.dashboard.PolicyReportResponse.routes', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='policies', full_name='pomerium.dashboard.PolicyReportResponse.policies', index=1,
-      number=2, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=128,
-  serialized_end=239,
-)
-
-_POLICYREPORTRESPONSE.fields_by_name['routes'].message_type = routes__pb2._ROUTE
-_POLICYREPORTRESPONSE.fields_by_name['policies'].message_type = policy__pb2._POLICY
-DESCRIPTOR.message_types_by_name['PolicyReportRequest'] = _POLICYREPORTREQUEST
-DESCRIPTOR.message_types_by_name['PolicyReportResponse'] = _POLICYREPORTRESPONSE
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
-
+_POLICYREPORTREQUEST = DESCRIPTOR.message_types_by_name['PolicyReportRequest']
+_POLICYREPORTRESPONSE = DESCRIPTOR.message_types_by_name['PolicyReportResponse']
 PolicyReportRequest = _reflection.GeneratedProtocolMessageType('PolicyReportRequest', (_message.Message,), {
   'DESCRIPTOR' : _POLICYREPORTREQUEST,
   '__module__' : 'report_pb2'
@@ -125,32 +36,15 @@ PolicyReportResponse = _reflection.GeneratedProtocolMessageType('PolicyReportRes
   })
 _sym_db.RegisterMessage(PolicyReportResponse)
 
+_REPORT = DESCRIPTOR.services_by_name['Report']
+if _descriptor._USE_C_DESCRIPTORS == False:
 
-DESCRIPTOR._options = None
-
-_REPORT = _descriptor.ServiceDescriptor(
-  name='Report',
-  full_name='pomerium.dashboard.Report',
-  file=DESCRIPTOR,
-  index=0,
-  serialized_options=None,
-  create_key=_descriptor._internal_create_key,
-  serialized_start=241,
-  serialized_end=348,
-  methods=[
-  _descriptor.MethodDescriptor(
-    name='PolicyReport',
-    full_name='pomerium.dashboard.Report.PolicyReport',
-    index=0,
-    containing_service=None,
-    input_type=_POLICYREPORTREQUEST,
-    output_type=_POLICYREPORTRESPONSE,
-    serialized_options=None,
-    create_key=_descriptor._internal_create_key,
-  ),
-])
-_sym_db.RegisterServiceDescriptor(_REPORT)
-
-DESCRIPTOR.services_by_name['Report'] = _REPORT
-
+  DESCRIPTOR._options = None
+  DESCRIPTOR._serialized_options = b'Z+github.com/pomerium/pomerium-console/pkg/pb'
+  _POLICYREPORTREQUEST._serialized_start=64
+  _POLICYREPORTREQUEST._serialized_end=126
+  _POLICYREPORTRESPONSE._serialized_start=128
+  _POLICYREPORTRESPONSE._serialized_end=239
+  _REPORT._serialized_start=241
+  _REPORT._serialized_end=348
 # @@protoc_insertion_point(module_scope)

@@ -10,80 +10,77 @@ class KeyChainServiceStub:
     """KeyChainService manages and store TLS Certificates, Keys and CAs, known as
     Key Pairs
     """
+
     def __init__(self, channel: grpc.Channel) -> None: ...
     DeleteKeyPair: grpc.UnaryUnaryMultiCallable[
         key_chain_pb2.DeleteKeyPairRequest,
-        key_chain_pb2.DeleteKeyPairResponse] = ...
+        key_chain_pb2.DeleteKeyPairResponse,
+    ]
     """DeleteKeyPair remove an x509 key pair based on a DeleteKeyPairRequest"""
-
     GetKeyPair: grpc.UnaryUnaryMultiCallable[
         key_chain_pb2.GetKeyPairRequest,
-        key_chain_pb2.GetKeyPairResponse] = ...
+        key_chain_pb2.GetKeyPairResponse,
+    ]
     """GetKeyPair retrieves an existing key pair"""
-
     ListKeyPairs: grpc.UnaryUnaryMultiCallable[
         key_chain_pb2.ListKeyPairsRequest,
-        key_chain_pb2.ListKeyPairsResponse] = ...
+        key_chain_pb2.ListKeyPairsResponse,
+    ]
     """ListKeyPairs lists existing key pairs based on parameters in
     ListKeyPairsRequest
     """
-
     CreateKeyPair: grpc.UnaryUnaryMultiCallable[
         key_chain_pb2.CreateKeyPairRequest,
-        key_chain_pb2.CreateKeyPairResponse] = ...
+        key_chain_pb2.CreateKeyPairResponse,
+    ]
     """CreateKeyPair creates a new key pair"""
-
     UpdateKeyPair: grpc.UnaryUnaryMultiCallable[
         key_chain_pb2.UpdateKeyPairRequest,
-        key_chain_pb2.UpdateKeyPairResponse] = ...
+        key_chain_pb2.UpdateKeyPairResponse,
+    ]
     """CreateKeyPair creates a new key pair"""
-
 
 class KeyChainServiceServicer(metaclass=abc.ABCMeta):
     """KeyChainService manages and store TLS Certificates, Keys and CAs, known as
     Key Pairs
     """
+
     @abc.abstractmethod
-    def DeleteKeyPair(self,
+    def DeleteKeyPair(
+        self,
         request: key_chain_pb2.DeleteKeyPairRequest,
         context: grpc.ServicerContext,
     ) -> key_chain_pb2.DeleteKeyPairResponse:
         """DeleteKeyPair remove an x509 key pair based on a DeleteKeyPairRequest"""
-        pass
-
     @abc.abstractmethod
-    def GetKeyPair(self,
+    def GetKeyPair(
+        self,
         request: key_chain_pb2.GetKeyPairRequest,
         context: grpc.ServicerContext,
     ) -> key_chain_pb2.GetKeyPairResponse:
         """GetKeyPair retrieves an existing key pair"""
-        pass
-
     @abc.abstractmethod
-    def ListKeyPairs(self,
+    def ListKeyPairs(
+        self,
         request: key_chain_pb2.ListKeyPairsRequest,
         context: grpc.ServicerContext,
     ) -> key_chain_pb2.ListKeyPairsResponse:
         """ListKeyPairs lists existing key pairs based on parameters in
         ListKeyPairsRequest
         """
-        pass
-
     @abc.abstractmethod
-    def CreateKeyPair(self,
+    def CreateKeyPair(
+        self,
         request: key_chain_pb2.CreateKeyPairRequest,
         context: grpc.ServicerContext,
     ) -> key_chain_pb2.CreateKeyPairResponse:
         """CreateKeyPair creates a new key pair"""
-        pass
-
     @abc.abstractmethod
-    def UpdateKeyPair(self,
+    def UpdateKeyPair(
+        self,
         request: key_chain_pb2.UpdateKeyPairRequest,
         context: grpc.ServicerContext,
     ) -> key_chain_pb2.UpdateKeyPairResponse:
         """CreateKeyPair creates a new key pair"""
-        pass
-
 
 def add_KeyChainServiceServicer_to_server(servicer: KeyChainServiceServicer, server: grpc.Server) -> None: ...

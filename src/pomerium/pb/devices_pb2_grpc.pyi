@@ -9,79 +9,81 @@ import grpc
 
 class DeviceServiceStub:
     """DeviceService manages device credentials, enrollments and types"""
+
     def __init__(self, channel: grpc.Channel) -> None: ...
     ApproveDevice: grpc.UnaryUnaryMultiCallable[
         devices_pb2.ApproveDeviceRequest,
-        google.protobuf.empty_pb2.Empty] = ...
-
+        google.protobuf.empty_pb2.Empty,
+    ]
     CreateDeviceEnrollment: grpc.UnaryUnaryMultiCallable[
         devices_pb2.CreateDeviceEnrollmentRequest,
-        devices_pb2.CreateDeviceEnrollmentResponse] = ...
-
+        devices_pb2.CreateDeviceEnrollmentResponse,
+    ]
     SetDeviceType: grpc.UnaryUnaryMultiCallable[
         devices_pb2.SetDeviceTypeRequest,
-        devices_pb2.SetDeviceTypeResponse] = ...
-
+        devices_pb2.SetDeviceTypeResponse,
+    ]
     DeleteDevice: grpc.UnaryUnaryMultiCallable[
         devices_pb2.DeleteDeviceRequest,
-        google.protobuf.empty_pb2.Empty] = ...
-
+        google.protobuf.empty_pb2.Empty,
+    ]
     DeleteDeviceType: grpc.UnaryUnaryMultiCallable[
         devices_pb2.DeleteDeviceTypeRequest,
-        google.protobuf.empty_pb2.Empty] = ...
-
+        google.protobuf.empty_pb2.Empty,
+    ]
     ListDevices: grpc.UnaryUnaryMultiCallable[
         devices_pb2.ListDevicesRequest,
-        devices_pb2.ListDevicesResponse] = ...
-
+        devices_pb2.ListDevicesResponse,
+    ]
     ListDeviceTypes: grpc.UnaryUnaryMultiCallable[
         google.protobuf.empty_pb2.Empty,
-        devices_pb2.ListDeviceTypesResponse] = ...
-
+        devices_pb2.ListDeviceTypesResponse,
+    ]
 
 class DeviceServiceServicer(metaclass=abc.ABCMeta):
     """DeviceService manages device credentials, enrollments and types"""
+
     @abc.abstractmethod
-    def ApproveDevice(self,
+    def ApproveDevice(
+        self,
         request: devices_pb2.ApproveDeviceRequest,
         context: grpc.ServicerContext,
     ) -> google.protobuf.empty_pb2.Empty: ...
-
     @abc.abstractmethod
-    def CreateDeviceEnrollment(self,
+    def CreateDeviceEnrollment(
+        self,
         request: devices_pb2.CreateDeviceEnrollmentRequest,
         context: grpc.ServicerContext,
     ) -> devices_pb2.CreateDeviceEnrollmentResponse: ...
-
     @abc.abstractmethod
-    def SetDeviceType(self,
+    def SetDeviceType(
+        self,
         request: devices_pb2.SetDeviceTypeRequest,
         context: grpc.ServicerContext,
     ) -> devices_pb2.SetDeviceTypeResponse: ...
-
     @abc.abstractmethod
-    def DeleteDevice(self,
+    def DeleteDevice(
+        self,
         request: devices_pb2.DeleteDeviceRequest,
         context: grpc.ServicerContext,
     ) -> google.protobuf.empty_pb2.Empty: ...
-
     @abc.abstractmethod
-    def DeleteDeviceType(self,
+    def DeleteDeviceType(
+        self,
         request: devices_pb2.DeleteDeviceTypeRequest,
         context: grpc.ServicerContext,
     ) -> google.protobuf.empty_pb2.Empty: ...
-
     @abc.abstractmethod
-    def ListDevices(self,
+    def ListDevices(
+        self,
         request: devices_pb2.ListDevicesRequest,
         context: grpc.ServicerContext,
     ) -> devices_pb2.ListDevicesResponse: ...
-
     @abc.abstractmethod
-    def ListDeviceTypes(self,
+    def ListDeviceTypes(
+        self,
         request: google.protobuf.empty_pb2.Empty,
         context: grpc.ServicerContext,
     ) -> devices_pb2.ListDeviceTypesResponse: ...
-
 
 def add_DeviceServiceServicer_to_server(servicer: DeviceServiceServicer, server: grpc.Server) -> None: ...

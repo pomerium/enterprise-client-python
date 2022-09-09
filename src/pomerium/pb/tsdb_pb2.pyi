@@ -3,69 +3,65 @@
 isort:skip_file
 """
 import builtins
+import collections.abc
 import google.protobuf.descriptor
 import google.protobuf.duration_pb2
 import google.protobuf.internal.containers
 import google.protobuf.internal.enum_type_wrapper
 import google.protobuf.message
 import google.protobuf.timestamp_pb2
+import sys
 import typing
-import typing_extensions
 
-DESCRIPTOR: google.protobuf.descriptor.FileDescriptor = ...
+if sys.version_info >= (3, 10):
+    import typing as typing_extensions
+else:
+    import typing_extensions
+
+DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
+
+class _Rate:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _RateEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_Rate.ValueType], builtins.type):  # noqa: F821
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    NONE: _Rate.ValueType  # 0
+    """undefined means this is an actual value that is not sampled"""
+    PER_SECOND: _Rate.ValueType  # 1
+    """value represents <something> per second"""
 
 class Rate(_Rate, metaclass=_RateEnumTypeWrapper):
     """Rate defines time-sampled values"""
-    pass
-class _Rate:
-    V = typing.NewType('V', builtins.int)
-class _RateEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_Rate.V], builtins.type):
-    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor = ...
-    NONE = Rate.V(0)
-    """undefined means this is an actual value that is not sampled"""
 
-    PER_SECOND = Rate.V(1)
-    """value represents <something> per second"""
-
-
-NONE = Rate.V(0)
+NONE: Rate.ValueType  # 0
 """undefined means this is an actual value that is not sampled"""
-
-PER_SECOND = Rate.V(1)
+PER_SECOND: Rate.ValueType  # 1
 """value represents <something> per second"""
-
 global___Rate = Rate
 
-
-class Metric(_Metric, metaclass=_MetricEnumTypeWrapper):
-    """see
-    https://www.envoyproxy.io/docs/envoy/latest/configuration/upstream/cluster_manager/cluster_stats
-    """
-    pass
 class _Metric:
-    V = typing.NewType('V', builtins.int)
-class _MetricEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_Metric.V], builtins.type):
-    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor = ...
-    UNDEFINED_METRIC_DO_NOT_USE = Metric.V(0)
-    REQUESTS = Metric.V(1)
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _MetricEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_Metric.ValueType], builtins.type):  # noqa: F821
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    UNDEFINED_METRIC_DO_NOT_USE: _Metric.ValueType  # 0
+    REQUESTS: _Metric.ValueType  # 1
     """
     envoy cluster stats
 
     request counter
     """
-
-    REQUESTS_RATE = Metric.V(2)
+    REQUESTS_RATE: _Metric.ValueType  # 2
     """request rate (per second)"""
-
-    REQUESTS_DURATION_MS = Metric.V(3)
+    REQUESTS_DURATION_MS: _Metric.ValueType  # 3
     """duration of the request in milliseconds - this is a histogram counter and
     requires percentile
     """
-
-    RESPONSE_CODES = Metric.V(4)
+    RESPONSE_CODES: _Metric.ValueType  # 4
     """returns distribution of response codes"""
-
-    AUTHZ_OK = Metric.V(20)
+    AUTHZ_OK: _Metric.ValueType  # 20
     """
     authz filter counters
     https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/ext_authz_filter#statistics
@@ -73,26 +69,21 @@ class _MetricEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTyp
     Total responses from the authz filter (note that does not imply that
     requests were allowed to pass thru)
     """
-
-    AUTHZ_DENIED = Metric.V(21)
+    AUTHZ_DENIED: _Metric.ValueType  # 21
     """Total responses from the authorizations service that were to deny the
     traffic.
     """
-
-    AUTHZ_ERROR = Metric.V(22)
+    AUTHZ_ERROR: _Metric.ValueType  # 22
     """Total errors contacting the external service."""
-
-    AUTHZ_DISABLED = Metric.V(23)
+    AUTHZ_DISABLED: _Metric.ValueType  # 23
     """Total requests that are allowed without calling external services due to
     the filter is disabled.
     """
-
-    AUTHZ_FAILURE_MODE_ALLOWED = Metric.V(24)
+    AUTHZ_FAILURE_MODE_ALLOWED: _Metric.ValueType  # 24
     """Total requests that were error(s) but were allowed through because of
     failure_mode_allow set to true.
     """
-
-    MEMBERSHIP_HEALTHY = Metric.V(30)
+    MEMBERSHIP_HEALTHY: _Metric.ValueType  # 30
     """
     cluster (upstream hosts) membership gauges
     https://www.envoyproxy.io/docs/envoy/latest/configuration/upstream/cluster_manager/cluster_stats.html?highlight=membership_
@@ -100,90 +91,79 @@ class _MetricEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTyp
     Current cluster healthy total (inclusive of both health checking and
     outlier detection)
     """
-
-    MEMBERSHIP_DEGRADED = Metric.V(31)
+    MEMBERSHIP_DEGRADED: _Metric.ValueType  # 31
     """Current cluster degraded total"""
-
-    MEMBERSHIP_EXCLUDED = Metric.V(32)
+    MEMBERSHIP_EXCLUDED: _Metric.ValueType  # 32
     """Current cluster excluded total"""
-
-    MEMBERSHIP_TOTAL = Metric.V(33)
+    MEMBERSHIP_TOTAL: _Metric.ValueType  # 33
     """Current cluster membership total"""
-
-    RX_BYTES = Metric.V(40)
+    RX_BYTES: _Metric.ValueType  # 40
     """
 
     bytes received - upstream_cx_rx_bytes_total
     """
-
-    TX_BYTES = Metric.V(41)
+    TX_BYTES: _Metric.ValueType  # 41
     """bytes sent - upstream_cx_tx_bytes_total"""
-
-    TOTAL_BYTES = Metric.V(42)
+    TOTAL_BYTES: _Metric.ValueType  # 42
     """total of rx + tx bytes"""
-
-    MEMORY_ALLOCATED = Metric.V(51)
+    MEMORY_ALLOCATED: _Metric.ValueType  # 51
     """
     system metrics
     """
-
-    CPU_USAGE = Metric.V(52)
-    IDP_LAST_REFRESH_TIMESTAMP = Metric.V(60)
+    CPU_USAGE: _Metric.ValueType  # 52
+    IDP_LAST_REFRESH_TIMESTAMP: _Metric.ValueType  # 60
     """
     identity provider specific
     """
-
-    IDP_LAST_USER_REFRESH_SUCCESS_TIMESTAMP = Metric.V(100)
-    IDP_LAST_USER_REFRESH_ERROR_TIMESTAMP = Metric.V(101)
-    IDP_LAST_USER_REFRESH_ERROR = Metric.V(102)
-    IDP_LAST_USER_REFRESH_SUCCESS = Metric.V(103)
-    IDP_LAST_USER_GROUP_REFRESH_SUCCESS_TIMESTAMP = Metric.V(104)
-    IDP_LAST_USER_GROUP_REFRESH_ERROR_TIMESTAMP = Metric.V(105)
-    IDP_LAST_USER_GROUP_REFRESH_ERROR = Metric.V(106)
-    IDP_LAST_USER_GROUP_REFRESH_SUCCESS = Metric.V(107)
-    IDP_LAST_SESSION_REFRESH_SUCCESS_TIMESTAMP = Metric.V(108)
-    IDP_LAST_SESSION_REFRESH_ERROR_TIMESTAMP = Metric.V(109)
-    IDP_LAST_SESSION_REFRESH_ERROR = Metric.V(110)
-    IDP_LAST_SESSION_REFRESH_SUCCESS = Metric.V(111)
-    CONFIG_LAST_RELOAD_SUCCESS_TIMESTAMP = Metric.V(70)
+    IDP_LAST_USER_REFRESH_SUCCESS_TIMESTAMP: _Metric.ValueType  # 100
+    IDP_LAST_USER_REFRESH_ERROR_TIMESTAMP: _Metric.ValueType  # 101
+    IDP_LAST_USER_REFRESH_ERROR: _Metric.ValueType  # 102
+    IDP_LAST_USER_REFRESH_SUCCESS: _Metric.ValueType  # 103
+    IDP_LAST_USER_GROUP_REFRESH_SUCCESS_TIMESTAMP: _Metric.ValueType  # 104
+    IDP_LAST_USER_GROUP_REFRESH_ERROR_TIMESTAMP: _Metric.ValueType  # 105
+    IDP_LAST_USER_GROUP_REFRESH_ERROR: _Metric.ValueType  # 106
+    IDP_LAST_USER_GROUP_REFRESH_SUCCESS: _Metric.ValueType  # 107
+    IDP_LAST_SESSION_REFRESH_SUCCESS_TIMESTAMP: _Metric.ValueType  # 108
+    IDP_LAST_SESSION_REFRESH_ERROR_TIMESTAMP: _Metric.ValueType  # 109
+    IDP_LAST_SESSION_REFRESH_ERROR: _Metric.ValueType  # 110
+    IDP_LAST_SESSION_REFRESH_SUCCESS: _Metric.ValueType  # 111
+    CONFIG_LAST_RELOAD_SUCCESS_TIMESTAMP: _Metric.ValueType  # 70
     """
     configuration related
     """
-
-    BUILD_INFO = Metric.V(71)
-    CONFIG_CHECKSUM_LOCAL = Metric.V(72)
-    CONFIG_CHECKSUM_DATABROKER = Metric.V(73)
-    CONFIG_VERSION = Metric.V(74)
-    CONFIG_ERRORS = Metric.V(75)
-    CONFIG_CONSOLE_VERSION = Metric.V(76)
-    PROMETHEUS_STORAGE_BYTES = Metric.V(80)
+    BUILD_INFO: _Metric.ValueType  # 71
+    CONFIG_CHECKSUM_LOCAL: _Metric.ValueType  # 72
+    CONFIG_CHECKSUM_DATABROKER: _Metric.ValueType  # 73
+    CONFIG_VERSION: _Metric.ValueType  # 74
+    CONFIG_ERRORS: _Metric.ValueType  # 75
+    CONFIG_CONSOLE_VERSION: _Metric.ValueType  # 76
+    PROMETHEUS_STORAGE_BYTES: _Metric.ValueType  # 80
     """prometheus metrics"""
-
-    MONTHLY_ACTIVE_USERS_THRESHOLD = Metric.V(90)
+    MONTHLY_ACTIVE_USERS_THRESHOLD: _Metric.ValueType  # 90
     """console metrics"""
+    MONTHLY_ACTIVE_USERS: _Metric.ValueType  # 91
 
-    MONTHLY_ACTIVE_USERS = Metric.V(91)
+class Metric(_Metric, metaclass=_MetricEnumTypeWrapper):
+    """see
+    https://www.envoyproxy.io/docs/envoy/latest/configuration/upstream/cluster_manager/cluster_stats
+    """
 
-UNDEFINED_METRIC_DO_NOT_USE = Metric.V(0)
-REQUESTS = Metric.V(1)
+UNDEFINED_METRIC_DO_NOT_USE: Metric.ValueType  # 0
+REQUESTS: Metric.ValueType  # 1
 """
 envoy cluster stats
 
 request counter
 """
-
-REQUESTS_RATE = Metric.V(2)
+REQUESTS_RATE: Metric.ValueType  # 2
 """request rate (per second)"""
-
-REQUESTS_DURATION_MS = Metric.V(3)
+REQUESTS_DURATION_MS: Metric.ValueType  # 3
 """duration of the request in milliseconds - this is a histogram counter and
 requires percentile
 """
-
-RESPONSE_CODES = Metric.V(4)
+RESPONSE_CODES: Metric.ValueType  # 4
 """returns distribution of response codes"""
-
-AUTHZ_OK = Metric.V(20)
+AUTHZ_OK: Metric.ValueType  # 20
 """
 authz filter counters
 https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/ext_authz_filter#statistics
@@ -191,26 +171,21 @@ https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/ext_
 Total responses from the authz filter (note that does not imply that
 requests were allowed to pass thru)
 """
-
-AUTHZ_DENIED = Metric.V(21)
+AUTHZ_DENIED: Metric.ValueType  # 21
 """Total responses from the authorizations service that were to deny the
 traffic.
 """
-
-AUTHZ_ERROR = Metric.V(22)
+AUTHZ_ERROR: Metric.ValueType  # 22
 """Total errors contacting the external service."""
-
-AUTHZ_DISABLED = Metric.V(23)
+AUTHZ_DISABLED: Metric.ValueType  # 23
 """Total requests that are allowed without calling external services due to
 the filter is disabled.
 """
-
-AUTHZ_FAILURE_MODE_ALLOWED = Metric.V(24)
+AUTHZ_FAILURE_MODE_ALLOWED: Metric.ValueType  # 24
 """Total requests that were error(s) but were allowed through because of
 failure_mode_allow set to true.
 """
-
-MEMBERSHIP_HEALTHY = Metric.V(30)
+MEMBERSHIP_HEALTHY: Metric.ValueType  # 30
 """
 cluster (upstream hosts) membership gauges
 https://www.envoyproxy.io/docs/envoy/latest/configuration/upstream/cluster_manager/cluster_stats.html?highlight=membership_
@@ -218,301 +193,312 @@ https://www.envoyproxy.io/docs/envoy/latest/configuration/upstream/cluster_manag
 Current cluster healthy total (inclusive of both health checking and
 outlier detection)
 """
-
-MEMBERSHIP_DEGRADED = Metric.V(31)
+MEMBERSHIP_DEGRADED: Metric.ValueType  # 31
 """Current cluster degraded total"""
-
-MEMBERSHIP_EXCLUDED = Metric.V(32)
+MEMBERSHIP_EXCLUDED: Metric.ValueType  # 32
 """Current cluster excluded total"""
-
-MEMBERSHIP_TOTAL = Metric.V(33)
+MEMBERSHIP_TOTAL: Metric.ValueType  # 33
 """Current cluster membership total"""
-
-RX_BYTES = Metric.V(40)
+RX_BYTES: Metric.ValueType  # 40
 """
 
 bytes received - upstream_cx_rx_bytes_total
 """
-
-TX_BYTES = Metric.V(41)
+TX_BYTES: Metric.ValueType  # 41
 """bytes sent - upstream_cx_tx_bytes_total"""
-
-TOTAL_BYTES = Metric.V(42)
+TOTAL_BYTES: Metric.ValueType  # 42
 """total of rx + tx bytes"""
-
-MEMORY_ALLOCATED = Metric.V(51)
+MEMORY_ALLOCATED: Metric.ValueType  # 51
 """
 system metrics
 """
-
-CPU_USAGE = Metric.V(52)
-IDP_LAST_REFRESH_TIMESTAMP = Metric.V(60)
+CPU_USAGE: Metric.ValueType  # 52
+IDP_LAST_REFRESH_TIMESTAMP: Metric.ValueType  # 60
 """
 identity provider specific
 """
-
-IDP_LAST_USER_REFRESH_SUCCESS_TIMESTAMP = Metric.V(100)
-IDP_LAST_USER_REFRESH_ERROR_TIMESTAMP = Metric.V(101)
-IDP_LAST_USER_REFRESH_ERROR = Metric.V(102)
-IDP_LAST_USER_REFRESH_SUCCESS = Metric.V(103)
-IDP_LAST_USER_GROUP_REFRESH_SUCCESS_TIMESTAMP = Metric.V(104)
-IDP_LAST_USER_GROUP_REFRESH_ERROR_TIMESTAMP = Metric.V(105)
-IDP_LAST_USER_GROUP_REFRESH_ERROR = Metric.V(106)
-IDP_LAST_USER_GROUP_REFRESH_SUCCESS = Metric.V(107)
-IDP_LAST_SESSION_REFRESH_SUCCESS_TIMESTAMP = Metric.V(108)
-IDP_LAST_SESSION_REFRESH_ERROR_TIMESTAMP = Metric.V(109)
-IDP_LAST_SESSION_REFRESH_ERROR = Metric.V(110)
-IDP_LAST_SESSION_REFRESH_SUCCESS = Metric.V(111)
-CONFIG_LAST_RELOAD_SUCCESS_TIMESTAMP = Metric.V(70)
+IDP_LAST_USER_REFRESH_SUCCESS_TIMESTAMP: Metric.ValueType  # 100
+IDP_LAST_USER_REFRESH_ERROR_TIMESTAMP: Metric.ValueType  # 101
+IDP_LAST_USER_REFRESH_ERROR: Metric.ValueType  # 102
+IDP_LAST_USER_REFRESH_SUCCESS: Metric.ValueType  # 103
+IDP_LAST_USER_GROUP_REFRESH_SUCCESS_TIMESTAMP: Metric.ValueType  # 104
+IDP_LAST_USER_GROUP_REFRESH_ERROR_TIMESTAMP: Metric.ValueType  # 105
+IDP_LAST_USER_GROUP_REFRESH_ERROR: Metric.ValueType  # 106
+IDP_LAST_USER_GROUP_REFRESH_SUCCESS: Metric.ValueType  # 107
+IDP_LAST_SESSION_REFRESH_SUCCESS_TIMESTAMP: Metric.ValueType  # 108
+IDP_LAST_SESSION_REFRESH_ERROR_TIMESTAMP: Metric.ValueType  # 109
+IDP_LAST_SESSION_REFRESH_ERROR: Metric.ValueType  # 110
+IDP_LAST_SESSION_REFRESH_SUCCESS: Metric.ValueType  # 111
+CONFIG_LAST_RELOAD_SUCCESS_TIMESTAMP: Metric.ValueType  # 70
 """
 configuration related
 """
-
-BUILD_INFO = Metric.V(71)
-CONFIG_CHECKSUM_LOCAL = Metric.V(72)
-CONFIG_CHECKSUM_DATABROKER = Metric.V(73)
-CONFIG_VERSION = Metric.V(74)
-CONFIG_ERRORS = Metric.V(75)
-CONFIG_CONSOLE_VERSION = Metric.V(76)
-PROMETHEUS_STORAGE_BYTES = Metric.V(80)
+BUILD_INFO: Metric.ValueType  # 71
+CONFIG_CHECKSUM_LOCAL: Metric.ValueType  # 72
+CONFIG_CHECKSUM_DATABROKER: Metric.ValueType  # 73
+CONFIG_VERSION: Metric.ValueType  # 74
+CONFIG_ERRORS: Metric.ValueType  # 75
+CONFIG_CONSOLE_VERSION: Metric.ValueType  # 76
+PROMETHEUS_STORAGE_BYTES: Metric.ValueType  # 80
 """prometheus metrics"""
-
-MONTHLY_ACTIVE_USERS_THRESHOLD = Metric.V(90)
+MONTHLY_ACTIVE_USERS_THRESHOLD: Metric.ValueType  # 90
 """console metrics"""
-
-MONTHLY_ACTIVE_USERS = Metric.V(91)
+MONTHLY_ACTIVE_USERS: Metric.ValueType  # 91
 global___Metric = Metric
 
-
-class Component(_Component, metaclass=_ComponentEnumTypeWrapper):
-    pass
 class _Component:
-    V = typing.NewType('V', builtins.int)
-class _ComponentEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_Component.V], builtins.type):
-    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor = ...
-    UNKNOWN_DO_NOT_USE = Component.V(0)
-    AUTHENTICATE = Component.V(1)
-    AUTHORIZE = Component.V(2)
-    DATABROKER = Component.V(3)
-    CONSOLE = Component.V(4)
-    PROXY = Component.V(5)
-    ALL_IN_ONE = Component.V(6)
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _ComponentEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_Component.ValueType], builtins.type):  # noqa: F821
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    UNKNOWN_DO_NOT_USE: _Component.ValueType  # 0
+    AUTHENTICATE: _Component.ValueType  # 1
+    AUTHORIZE: _Component.ValueType  # 2
+    DATABROKER: _Component.ValueType  # 3
+    CONSOLE: _Component.ValueType  # 4
+    PROXY: _Component.ValueType  # 5
+    ALL_IN_ONE: _Component.ValueType  # 6
     """used when all components are running in the all-in-one mode"""
-
-    PROXY_ENVOY = Component.V(7)
+    PROXY_ENVOY: _Component.ValueType  # 7
     """Proxy envoy is always reported separately"""
+    PROMETHEUS: _Component.ValueType  # 8
 
-    PROMETHEUS = Component.V(8)
+class Component(_Component, metaclass=_ComponentEnumTypeWrapper): ...
 
-UNKNOWN_DO_NOT_USE = Component.V(0)
-AUTHENTICATE = Component.V(1)
-AUTHORIZE = Component.V(2)
-DATABROKER = Component.V(3)
-CONSOLE = Component.V(4)
-PROXY = Component.V(5)
-ALL_IN_ONE = Component.V(6)
+UNKNOWN_DO_NOT_USE: Component.ValueType  # 0
+AUTHENTICATE: Component.ValueType  # 1
+AUTHORIZE: Component.ValueType  # 2
+DATABROKER: Component.ValueType  # 3
+CONSOLE: Component.ValueType  # 4
+PROXY: Component.ValueType  # 5
+ALL_IN_ONE: Component.ValueType  # 6
 """used when all components are running in the all-in-one mode"""
-
-PROXY_ENVOY = Component.V(7)
+PROXY_ENVOY: Component.ValueType  # 7
 """Proxy envoy is always reported separately"""
-
-PROMETHEUS = Component.V(8)
+PROMETHEUS: Component.ValueType  # 8
 global___Component = Component
 
-
 class Range(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     START_FIELD_NUMBER: builtins.int
     END_FIELD_NUMBER: builtins.int
     STEP_FIELD_NUMBER: builtins.int
     @property
     def start(self) -> google.protobuf.timestamp_pb2.Timestamp:
         """Start time"""
-        pass
     @property
     def end(self) -> google.protobuf.timestamp_pb2.Timestamp:
         """End time"""
-        pass
     @property
     def step(self) -> google.protobuf.duration_pb2.Duration:
         """Max time between two slices within [start:end]"""
-        pass
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        start : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        end : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        step : typing.Optional[google.protobuf.duration_pb2.Duration] = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"end",b"end",u"start",b"start",u"step",b"step"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"end",b"end",u"start",b"start",u"step",b"step"]) -> None: ...
+        start: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        end: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        step: google.protobuf.duration_pb2.Duration | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["end", b"end", "start", b"start", "step", b"step"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["end", b"end", "start", b"start", "step", b"step"]) -> None: ...
+
 global___Range = Range
 
 class RouteMatcher(google.protobuf.message.Message):
     """RouteMatcher may be used to query data for multiple routes"""
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     ROUTE_ID_FIELD_NUMBER: builtins.int
     NAMESPACE_ID_FIELD_NUMBER: builtins.int
-    route_id: typing.Text = ...
+    route_id: builtins.str
     """route database ID"""
-
-    namespace_id: typing.Text = ...
+    namespace_id: builtins.str
     """namespace ID"""
-
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        route_id : typing.Text = ...,
-        namespace_id : typing.Text = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"matcher",b"matcher",u"namespace_id",b"namespace_id",u"route_id",b"route_id"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"matcher",b"matcher",u"namespace_id",b"namespace_id",u"route_id",b"route_id"]) -> None: ...
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"matcher",b"matcher"]) -> typing.Optional[typing_extensions.Literal["route_id","namespace_id"]]: ...
+        route_id: builtins.str = ...,
+        namespace_id: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["matcher", b"matcher", "namespace_id", b"namespace_id", "route_id", b"route_id"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["matcher", b"matcher", "namespace_id", b"namespace_id", "route_id", b"route_id"]) -> None: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["matcher", b"matcher"]) -> typing_extensions.Literal["route_id", "namespace_id"] | None: ...
+
 global___RouteMatcher = RouteMatcher
 
 class String(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     VALUE_FIELD_NUMBER: builtins.int
     TS_FIELD_NUMBER: builtins.int
-    value: typing.Text = ...
+    value: builtins.str
     @property
     def ts(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        value : typing.Text = ...,
-        ts : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"ts",b"ts"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"ts",b"ts",u"value",b"value"]) -> None: ...
+        value: builtins.str = ...,
+        ts: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["ts", b"ts"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["ts", b"ts", "value", b"value"]) -> None: ...
+
 global___String = String
 
 class Scalar(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     VALUE_FIELD_NUMBER: builtins.int
     TS_FIELD_NUMBER: builtins.int
-    value: builtins.float = ...
+    value: builtins.float
     @property
     def ts(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        value : builtins.float = ...,
-        ts : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"ts",b"ts"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"ts",b"ts",u"value",b"value"]) -> None: ...
+        value: builtins.float = ...,
+        ts: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["ts", b"ts"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["ts", b"ts", "value", b"value"]) -> None: ...
+
 global___Scalar = Scalar
 
 class TimeSeries(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     class LabelsEntry(google.protobuf.message.Message):
-        DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+        DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
         KEY_FIELD_NUMBER: builtins.int
         VALUE_FIELD_NUMBER: builtins.int
-        key: typing.Text = ...
-        value: typing.Text = ...
-        def __init__(self,
+        key: builtins.str
+        value: builtins.str
+        def __init__(
+            self,
             *,
-            key : typing.Text = ...,
-            value : typing.Text = ...,
-            ) -> None: ...
-        def ClearField(self, field_name: typing_extensions.Literal[u"key",b"key",u"value",b"value"]) -> None: ...
+            key: builtins.str = ...,
+            value: builtins.str = ...,
+        ) -> None: ...
+        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
 
     LABELS_FIELD_NUMBER: builtins.int
     SERIES_FIELD_NUMBER: builtins.int
     @property
-    def labels(self) -> google.protobuf.internal.containers.ScalarMap[typing.Text, typing.Text]: ...
+    def labels(self) -> google.protobuf.internal.containers.ScalarMap[builtins.str, builtins.str]: ...
     @property
     def series(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___Scalar]: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        labels : typing.Optional[typing.Mapping[typing.Text, typing.Text]] = ...,
-        series : typing.Optional[typing.Iterable[global___Scalar]] = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"labels",b"labels",u"series",b"series"]) -> None: ...
+        labels: collections.abc.Mapping[builtins.str, builtins.str] | None = ...,
+        series: collections.abc.Iterable[global___Scalar] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["labels", b"labels", "series", b"series"]) -> None: ...
+
 global___TimeSeries = TimeSeries
 
 class Matrix(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     SERIES_FIELD_NUMBER: builtins.int
     @property
     def series(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___TimeSeries]: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        series : typing.Optional[typing.Iterable[global___TimeSeries]] = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"series",b"series"]) -> None: ...
+        series: collections.abc.Iterable[global___TimeSeries] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["series", b"series"]) -> None: ...
+
 global___Matrix = Matrix
 
 class Sample(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     class LabelsEntry(google.protobuf.message.Message):
-        DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+        DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
         KEY_FIELD_NUMBER: builtins.int
         VALUE_FIELD_NUMBER: builtins.int
-        key: typing.Text = ...
-        value: typing.Text = ...
-        def __init__(self,
+        key: builtins.str
+        value: builtins.str
+        def __init__(
+            self,
             *,
-            key : typing.Text = ...,
-            value : typing.Text = ...,
-            ) -> None: ...
-        def ClearField(self, field_name: typing_extensions.Literal[u"key",b"key",u"value",b"value"]) -> None: ...
+            key: builtins.str = ...,
+            value: builtins.str = ...,
+        ) -> None: ...
+        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
 
     LABELS_FIELD_NUMBER: builtins.int
     VALUE_FIELD_NUMBER: builtins.int
     @property
-    def labels(self) -> google.protobuf.internal.containers.ScalarMap[typing.Text, typing.Text]: ...
+    def labels(self) -> google.protobuf.internal.containers.ScalarMap[builtins.str, builtins.str]: ...
     @property
     def value(self) -> global___Scalar: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        labels : typing.Optional[typing.Mapping[typing.Text, typing.Text]] = ...,
-        value : typing.Optional[global___Scalar] = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"value",b"value"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"labels",b"labels",u"value",b"value"]) -> None: ...
+        labels: collections.abc.Mapping[builtins.str, builtins.str] | None = ...,
+        value: global___Scalar | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["value", b"value"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["labels", b"labels", "value", b"value"]) -> None: ...
+
 global___Sample = Sample
 
 class Vector(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     SAMPLES_FIELD_NUMBER: builtins.int
     @property
     def samples(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___Sample]: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        samples : typing.Optional[typing.Iterable[global___Sample]] = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"samples",b"samples"]) -> None: ...
+        samples: collections.abc.Iterable[global___Sample] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["samples", b"samples"]) -> None: ...
+
 global___Vector = Vector
 
 class RouteMetricSeriesRequest(google.protobuf.message.Message):
     """request route-specific metric time series"""
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     MATCHER_FIELD_NUMBER: builtins.int
     METRIC_FIELD_NUMBER: builtins.int
     RANGE_FIELD_NUMBER: builtins.int
     @property
     def matcher(self) -> global___RouteMatcher:
         """route to match"""
-        pass
-    metric: global___Metric.V = ...
+    metric: global___Metric.ValueType
     """metric to retrieve"""
-
     @property
     def range(self) -> global___Range:
         """time range and sampling step"""
-        pass
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        matcher : typing.Optional[global___RouteMatcher] = ...,
-        metric : global___Metric.V = ...,
-        range : typing.Optional[global___Range] = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"matcher",b"matcher",u"range",b"range"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"matcher",b"matcher",u"metric",b"metric",u"range",b"range"]) -> None: ...
+        matcher: global___RouteMatcher | None = ...,
+        metric: global___Metric.ValueType = ...,
+        range: global___Range | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["matcher", b"matcher", "range", b"range"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["matcher", b"matcher", "metric", b"metric", "range", b"range"]) -> None: ...
+
 global___RouteMetricSeriesRequest = RouteMetricSeriesRequest
 
 class RouteMetricSeriesHistogramRequest(google.protobuf.message.Message):
     """request route-specific metric time series histogram"""
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     MATCHER_FIELD_NUMBER: builtins.int
     METRIC_FIELD_NUMBER: builtins.int
     RANGE_FIELD_NUMBER: builtins.int
@@ -520,154 +506,167 @@ class RouteMetricSeriesHistogramRequest(google.protobuf.message.Message):
     @property
     def matcher(self) -> global___RouteMatcher:
         """route to match"""
-        pass
-    metric: global___Metric.V = ...
+    metric: global___Metric.ValueType
     """metric to retrieve"""
-
     @property
     def range(self) -> global___Range:
         """time range and sampling step"""
-        pass
-    percentile: builtins.float = ...
+    percentile: builtins.float
     """if data for the metric was precomputed as histogram, the data may be
     requested within a certain percentile
     """
-
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        matcher : typing.Optional[global___RouteMatcher] = ...,
-        metric : global___Metric.V = ...,
-        range : typing.Optional[global___Range] = ...,
-        percentile : builtins.float = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"matcher",b"matcher",u"range",b"range"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"matcher",b"matcher",u"metric",b"metric",u"percentile",b"percentile",u"range",b"range"]) -> None: ...
+        matcher: global___RouteMatcher | None = ...,
+        metric: global___Metric.ValueType = ...,
+        range: global___Range | None = ...,
+        percentile: builtins.float = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["matcher", b"matcher", "range", b"range"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["matcher", b"matcher", "metric", b"metric", "percentile", b"percentile", "range", b"range"]) -> None: ...
+
 global___RouteMetricSeriesHistogramRequest = RouteMetricSeriesHistogramRequest
 
 class ServerMetricSeriesRequest(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     METRIC_FIELD_NUMBER: builtins.int
     RANGE_FIELD_NUMBER: builtins.int
     PERCENTILE_FIELD_NUMBER: builtins.int
     COMPONENT_FIELD_NUMBER: builtins.int
     INSTANCE_ID_FIELD_NUMBER: builtins.int
-    metric: global___Metric.V = ...
+    metric: global___Metric.ValueType
     """metric to retrieve"""
-
     @property
     def range(self) -> global___Range:
         """time range and sampling step"""
-        pass
-    percentile: builtins.float = ...
+    percentile: builtins.float
     """if data for the metric was precomputed as histogram, the data may be
     requested within a certain percentile
     """
-
-    component: global___Component.V = ...
+    component: global___Component.ValueType
     """server component and instance ID"""
-
-    instance_id: typing.Text = ...
-    def __init__(self,
+    instance_id: builtins.str
+    def __init__(
+        self,
         *,
-        metric : global___Metric.V = ...,
-        range : typing.Optional[global___Range] = ...,
-        percentile : builtins.float = ...,
-        component : global___Component.V = ...,
-        instance_id : typing.Text = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"range",b"range"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"component",b"component",u"instance_id",b"instance_id",u"metric",b"metric",u"percentile",b"percentile",u"range",b"range"]) -> None: ...
+        metric: global___Metric.ValueType = ...,
+        range: global___Range | None = ...,
+        percentile: builtins.float = ...,
+        component: global___Component.ValueType = ...,
+        instance_id: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["range", b"range"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["component", b"component", "instance_id", b"instance_id", "metric", b"metric", "percentile", b"percentile", "range", b"range"]) -> None: ...
+
 global___ServerMetricSeriesRequest = ServerMetricSeriesRequest
 
 class ServerMetricRequest(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     COMPONENT_FIELD_NUMBER: builtins.int
     INSTANCE_ID_FIELD_NUMBER: builtins.int
     METRIC_FIELD_NUMBER: builtins.int
-    component: global___Component.V = ...
-    instance_id: typing.Text = ...
-    metric: global___Metric.V = ...
+    component: global___Component.ValueType
+    instance_id: builtins.str
+    metric: global___Metric.ValueType
     """metric to retrieve"""
-
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        component : global___Component.V = ...,
-        instance_id : typing.Text = ...,
-        metric : global___Metric.V = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"component",b"component",u"instance_id",b"instance_id",u"metric",b"metric"]) -> None: ...
+        component: global___Component.ValueType = ...,
+        instance_id: builtins.str = ...,
+        metric: global___Metric.ValueType = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["component", b"component", "instance_id", b"instance_id", "metric", b"metric"]) -> None: ...
+
 global___ServerMetricRequest = ServerMetricRequest
 
 class ConsoleMetricRequest(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     METRIC_FIELD_NUMBER: builtins.int
-    metric: global___Metric.V = ...
-    def __init__(self,
+    metric: global___Metric.ValueType
+    def __init__(
+        self,
         *,
-        metric : global___Metric.V = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"metric",b"metric"]) -> None: ...
+        metric: global___Metric.ValueType = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["metric", b"metric"]) -> None: ...
+
 global___ConsoleMetricRequest = ConsoleMetricRequest
 
 class ConsoleMetricSeriesRequest(google.protobuf.message.Message):
     """Requests console metric time series"""
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     METRIC_FIELD_NUMBER: builtins.int
     START_FIELD_NUMBER: builtins.int
     END_FIELD_NUMBER: builtins.int
-    metric: global___Metric.V = ...
+    metric: global___Metric.ValueType
     """metric to retrieve"""
-
     @property
     def start(self) -> google.protobuf.timestamp_pb2.Timestamp:
         """Start time"""
-        pass
     @property
     def end(self) -> google.protobuf.timestamp_pb2.Timestamp:
         """End time"""
-        pass
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        metric : global___Metric.V = ...,
-        start : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        end : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"end",b"end",u"start",b"start"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"end",b"end",u"metric",b"metric",u"start",b"start"]) -> None: ...
+        metric: global___Metric.ValueType = ...,
+        start: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        end: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["end", b"end", "start", b"start"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["end", b"end", "metric", b"metric", "start", b"start"]) -> None: ...
+
 global___ConsoleMetricSeriesRequest = ConsoleMetricSeriesRequest
 
 class LastErrorRequest(google.protobuf.message.Message):
     """LastErrorRequest will fetch last known error for certain error-related metrics"""
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     METRIC_FIELD_NUMBER: builtins.int
-    metric: global___Metric.V = ...
-    def __init__(self,
+    metric: global___Metric.ValueType
+    def __init__(
+        self,
         *,
-        metric : global___Metric.V = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"metric",b"metric"]) -> None: ...
+        metric: global___Metric.ValueType = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["metric", b"metric"]) -> None: ...
+
 global___LastErrorRequest = LastErrorRequest
 
 class LastErrorResponse(google.protobuf.message.Message):
     """LastErrorResponse returns last known error for certain error-related metrics"""
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     TS_FIELD_NUMBER: builtins.int
     MESSAGE_FIELD_NUMBER: builtins.int
     @property
     def ts(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
-    message: typing.Text = ...
-    def __init__(self,
+    message: builtins.str
+    def __init__(
+        self,
         *,
-        ts : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        message : typing.Text = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"ts",b"ts"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"message",b"message",u"ts",b"ts"]) -> None: ...
+        ts: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        message: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["ts", b"ts"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["message", b"message", "ts", b"ts"]) -> None: ...
+
 global___LastErrorResponse = LastErrorResponse
 
 class RouteMetricChangeRequest(google.protobuf.message.Message):
     """Used to request a particular metric change within a given period of time"""
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     MATCHER_FIELD_NUMBER: builtins.int
     METRIC_FIELD_NUMBER: builtins.int
     START_FIELD_NUMBER: builtins.int
@@ -675,98 +674,108 @@ class RouteMetricChangeRequest(google.protobuf.message.Message):
     @property
     def matcher(self) -> global___RouteMatcher:
         """route to match"""
-        pass
-    metric: global___Metric.V = ...
+    metric: global___Metric.ValueType
     """metric to retrieve"""
-
     @property
     def start(self) -> google.protobuf.timestamp_pb2.Timestamp:
         """Start time"""
-        pass
     @property
     def end(self) -> google.protobuf.timestamp_pb2.Timestamp:
         """End time"""
-        pass
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        matcher : typing.Optional[global___RouteMatcher] = ...,
-        metric : global___Metric.V = ...,
-        start : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        end : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"end",b"end",u"matcher",b"matcher",u"start",b"start"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"end",b"end",u"matcher",b"matcher",u"metric",b"metric",u"start",b"start"]) -> None: ...
+        matcher: global___RouteMatcher | None = ...,
+        metric: global___Metric.ValueType = ...,
+        start: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        end: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["end", b"end", "matcher", b"matcher", "start", b"start"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["end", b"end", "matcher", b"matcher", "metric", b"metric", "start", b"start"]) -> None: ...
+
 global___RouteMetricChangeRequest = RouteMetricChangeRequest
 
 class TimeSeriesResponse(google.protobuf.message.Message):
     """TimeSeries response returns"""
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     RATE_FIELD_NUMBER: builtins.int
     SERIES_FIELD_NUMBER: builtins.int
-    rate: global___Rate.V = ...
+    rate: global___Rate.ValueType
     """provided for time-sampled values - i.e. requests <per second>"""
-
     @property
     def series(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___Scalar]:
         """series are (timestamp,value) data points"""
-        pass
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        rate : global___Rate.V = ...,
-        series : typing.Optional[typing.Iterable[global___Scalar]] = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"rate",b"rate",u"series",b"series"]) -> None: ...
+        rate: global___Rate.ValueType = ...,
+        series: collections.abc.Iterable[global___Scalar] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["rate", b"rate", "series", b"series"]) -> None: ...
+
 global___TimeSeriesResponse = TimeSeriesResponse
 
 class TimeSeriesResponseMulti(google.protobuf.message.Message):
     """Multiple time series response"""
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     RATE_FIELD_NUMBER: builtins.int
     SERIES_FIELD_NUMBER: builtins.int
-    rate: global___Rate.V = ...
+    rate: global___Rate.ValueType
     @property
     def series(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___TimeSeries]: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        rate : global___Rate.V = ...,
-        series : typing.Optional[typing.Iterable[global___TimeSeries]] = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"rate",b"rate",u"series",b"series"]) -> None: ...
+        rate: global___Rate.ValueType = ...,
+        series: collections.abc.Iterable[global___TimeSeries] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["rate", b"rate", "series", b"series"]) -> None: ...
+
 global___TimeSeriesResponseMulti = TimeSeriesResponseMulti
 
 class ScalarBuckets(google.protobuf.message.Message):
     """returns histogram values"""
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     class Bucket(google.protobuf.message.Message):
-        DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+        DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
         LESS_OR_EQUAL_THAN_FIELD_NUMBER: builtins.int
         COUNT_FIELD_NUMBER: builtins.int
-        less_or_equal_than: builtins.float = ...
+        less_or_equal_than: builtins.float
         """bucket identifier"""
-
-        count: builtins.int = ...
+        count: builtins.int
         """occurences for the given bucket"""
-
-        def __init__(self,
+        def __init__(
+            self,
             *,
-            less_or_equal_than : builtins.float = ...,
-            count : builtins.int = ...,
-            ) -> None: ...
-        def ClearField(self, field_name: typing_extensions.Literal[u"count",b"count",u"less_or_equal_than",b"less_or_equal_than"]) -> None: ...
+            less_or_equal_than: builtins.float = ...,
+            count: builtins.int = ...,
+        ) -> None: ...
+        def ClearField(self, field_name: typing_extensions.Literal["count", b"count", "less_or_equal_than", b"less_or_equal_than"]) -> None: ...
 
     BUCKETS_FIELD_NUMBER: builtins.int
     @property
     def buckets(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___ScalarBuckets.Bucket]: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        buckets : typing.Optional[typing.Iterable[global___ScalarBuckets.Bucket]] = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"buckets",b"buckets"]) -> None: ...
+        buckets: collections.abc.Iterable[global___ScalarBuckets.Bucket] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["buckets", b"buckets"]) -> None: ...
+
 global___ScalarBuckets = ScalarBuckets
 
 class UptimeRequest(google.protobuf.message.Message):
     """uptime info for all pomerium services for a given period of time"""
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     START_FIELD_NUMBER: builtins.int
     END_FIELD_NUMBER: builtins.int
     COMPONENT_FIELD_NUMBER: builtins.int
@@ -775,17 +784,19 @@ class UptimeRequest(google.protobuf.message.Message):
     def start(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
     @property
     def end(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
-    component: global___Component.V = ...
-    instance_id: typing.Text = ...
-    def __init__(self,
+    component: global___Component.ValueType
+    instance_id: builtins.str
+    def __init__(
+        self,
         *,
-        start : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        end : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        component : global___Component.V = ...,
-        instance_id : typing.Text = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"end",b"end",u"start",b"start"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"component",b"component",u"end",b"end",u"instance_id",b"instance_id",u"start",b"start"]) -> None: ...
+        start: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        end: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        component: global___Component.ValueType = ...,
+        instance_id: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["end", b"end", "start", b"start"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["component", b"component", "end", b"end", "instance_id", b"instance_id", "start", b"start"]) -> None: ...
+
 global___UptimeRequest = UptimeRequest
 
 class UptimeResponse(google.protobuf.message.Message):
@@ -795,38 +806,37 @@ class UptimeResponse(google.protobuf.message.Message):
     for the UI consumer it does not provide statistics as data representation
     makes it trivial to calculate depending on the UI requirements
     """
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
-    class Status(_Status, metaclass=_StatusEnumTypeWrapper):
-        pass
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     class _Status:
-        V = typing.NewType('V', builtins.int)
-    class _StatusEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_Status.V], builtins.type):
-        DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor = ...
-        UNDEFINED_STATUS_DO_NOT_USE = UptimeResponse.Status.V(0)
-        LIVE = UptimeResponse.Status.V(1)
+        ValueType = typing.NewType("ValueType", builtins.int)
+        V: typing_extensions.TypeAlias = ValueType
+
+    class _StatusEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[UptimeResponse._Status.ValueType], builtins.type):  # noqa: F821
+        DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+        UNDEFINED_STATUS_DO_NOT_USE: UptimeResponse._Status.ValueType  # 0
+        LIVE: UptimeResponse._Status.ValueType  # 1
         """fully operational"""
-
-        NO_DATA = UptimeResponse.Status.V(2)
+        NO_DATA: UptimeResponse._Status.ValueType  # 2
         """no data is available for the period in the prometheus"""
-
-        DOWN = UptimeResponse.Status.V(3)
+        DOWN: UptimeResponse._Status.ValueType  # 3
         """prometheus is up but the scraping instance is down"""
 
-
-    UNDEFINED_STATUS_DO_NOT_USE = UptimeResponse.Status.V(0)
-    LIVE = UptimeResponse.Status.V(1)
+    class Status(_Status, metaclass=_StatusEnumTypeWrapper): ...
+    UNDEFINED_STATUS_DO_NOT_USE: UptimeResponse.Status.ValueType  # 0
+    LIVE: UptimeResponse.Status.ValueType  # 1
     """fully operational"""
-
-    NO_DATA = UptimeResponse.Status.V(2)
+    NO_DATA: UptimeResponse.Status.ValueType  # 2
     """no data is available for the period in the prometheus"""
-
-    DOWN = UptimeResponse.Status.V(3)
+    DOWN: UptimeResponse.Status.ValueType  # 3
     """prometheus is up but the scraping instance is down"""
-
 
     class Summary(google.protobuf.message.Message):
         """summary provides a higher level information re health of the component"""
-        DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+        DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
         START_FIELD_NUMBER: builtins.int
         END_FIELD_NUMBER: builtins.int
         STATUS_FIELD_NUMBER: builtins.int
@@ -834,193 +844,224 @@ class UptimeResponse(google.protobuf.message.Message):
         def start(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
         @property
         def end(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
-        status: global___UptimeResponse.Status.V = ...
+        status: global___UptimeResponse.Status.ValueType
         """aggregate status of the system"""
-
-        def __init__(self,
+        def __init__(
+            self,
             *,
-            start : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-            end : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-            status : global___UptimeResponse.Status.V = ...,
-            ) -> None: ...
-        def HasField(self, field_name: typing_extensions.Literal[u"end",b"end",u"start",b"start"]) -> builtins.bool: ...
-        def ClearField(self, field_name: typing_extensions.Literal[u"end",b"end",u"start",b"start",u"status",b"status"]) -> None: ...
+            start: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+            end: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+            status: global___UptimeResponse.Status.ValueType = ...,
+        ) -> None: ...
+        def HasField(self, field_name: typing_extensions.Literal["end", b"end", "start", b"start"]) -> builtins.bool: ...
+        def ClearField(self, field_name: typing_extensions.Literal["end", b"end", "start", b"start", "status", b"status"]) -> None: ...
 
     INTERVALS_FIELD_NUMBER: builtins.int
     @property
     def intervals(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___UptimeResponse.Summary]: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        intervals : typing.Optional[typing.Iterable[global___UptimeResponse.Summary]] = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"intervals",b"intervals"]) -> None: ...
+        intervals: collections.abc.Iterable[global___UptimeResponse.Summary] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["intervals", b"intervals"]) -> None: ...
+
 global___UptimeResponse = UptimeResponse
 
 class GetInstancesRequest(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     START_FIELD_NUMBER: builtins.int
     END_FIELD_NUMBER: builtins.int
     @property
     def start(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
     @property
     def end(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        start : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        end : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"end",b"end",u"start",b"start"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"end",b"end",u"start",b"start"]) -> None: ...
+        start: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        end: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["end", b"end", "start", b"start"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["end", b"end", "start", b"start"]) -> None: ...
+
 global___GetInstancesRequest = GetInstancesRequest
 
 class Instances(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     class Instance(google.protobuf.message.Message):
-        DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+        DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
         COMPONENT_FIELD_NUMBER: builtins.int
         ID_FIELD_NUMBER: builtins.int
         NAME_FIELD_NUMBER: builtins.int
-        component: global___Component.V = ...
-        id: typing.Text = ...
+        component: global___Component.ValueType
+        id: builtins.str
         """ID that should be used in requests for metrics"""
-
-        name: typing.Text = ...
+        name: builtins.str
         """human readable instance name"""
-
-        def __init__(self,
+        def __init__(
+            self,
             *,
-            component : global___Component.V = ...,
-            id : typing.Text = ...,
-            name : typing.Text = ...,
-            ) -> None: ...
-        def ClearField(self, field_name: typing_extensions.Literal[u"component",b"component",u"id",b"id",u"name",b"name"]) -> None: ...
+            component: global___Component.ValueType = ...,
+            id: builtins.str = ...,
+            name: builtins.str = ...,
+        ) -> None: ...
+        def ClearField(self, field_name: typing_extensions.Literal["component", b"component", "id", b"id", "name", b"name"]) -> None: ...
 
     INSTANCES_FIELD_NUMBER: builtins.int
     @property
     def instances(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___Instances.Instance]: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        instances : typing.Optional[typing.Iterable[global___Instances.Instance]] = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"instances",b"instances"]) -> None: ...
+        instances: collections.abc.Iterable[global___Instances.Instance] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["instances", b"instances"]) -> None: ...
+
 global___Instances = Instances
 
 class GetInstanceInfoRequest(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     COMPONENT_FIELD_NUMBER: builtins.int
     INSTANCE_ID_FIELD_NUMBER: builtins.int
-    component: global___Component.V = ...
-    instance_id: typing.Text = ...
-    def __init__(self,
+    component: global___Component.ValueType
+    instance_id: builtins.str
+    def __init__(
+        self,
         *,
-        component : global___Component.V = ...,
-        instance_id : typing.Text = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"component",b"component",u"instance_id",b"instance_id"]) -> None: ...
+        component: global___Component.ValueType = ...,
+        instance_id: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["component", b"component", "instance_id", b"instance_id"]) -> None: ...
+
 global___GetInstanceInfoRequest = GetInstanceInfoRequest
 
 class GetStatusRequest(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
-    def __init__(self,
-        ) -> None: ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    def __init__(
+        self,
+    ) -> None: ...
+
 global___GetStatusRequest = GetStatusRequest
 
 class GetStatusResponse(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
-    class Target(google.protobuf.message.Message):
-        DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
-        class Health(_Health, metaclass=_HealthEnumTypeWrapper):
-            pass
-        class _Health:
-            V = typing.NewType('V', builtins.int)
-        class _HealthEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_Health.V], builtins.type):
-            DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor = ...
-            TARGET_HEALTH_UNKNOWN = GetStatusResponse.Target.Health.V(0)
-            TARGET_HEALTH_UP = GetStatusResponse.Target.Health.V(1)
-            TARGET_HEALTH_DOWN = GetStatusResponse.Target.Health.V(2)
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
-        TARGET_HEALTH_UNKNOWN = GetStatusResponse.Target.Health.V(0)
-        TARGET_HEALTH_UP = GetStatusResponse.Target.Health.V(1)
-        TARGET_HEALTH_DOWN = GetStatusResponse.Target.Health.V(2)
+    class Target(google.protobuf.message.Message):
+        DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+        class _Health:
+            ValueType = typing.NewType("ValueType", builtins.int)
+            V: typing_extensions.TypeAlias = ValueType
+
+        class _HealthEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[GetStatusResponse.Target._Health.ValueType], builtins.type):  # noqa: F821
+            DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+            TARGET_HEALTH_UNKNOWN: GetStatusResponse.Target._Health.ValueType  # 0
+            TARGET_HEALTH_UP: GetStatusResponse.Target._Health.ValueType  # 1
+            TARGET_HEALTH_DOWN: GetStatusResponse.Target._Health.ValueType  # 2
+
+        class Health(_Health, metaclass=_HealthEnumTypeWrapper): ...
+        TARGET_HEALTH_UNKNOWN: GetStatusResponse.Target.Health.ValueType  # 0
+        TARGET_HEALTH_UP: GetStatusResponse.Target.Health.ValueType  # 1
+        TARGET_HEALTH_DOWN: GetStatusResponse.Target.Health.ValueType  # 2
 
         SCRAPE_URL_FIELD_NUMBER: builtins.int
         GLOBAL_URL_FIELD_NUMBER: builtins.int
         LAST_ERROR_FIELD_NUMBER: builtins.int
         LAST_SCRAPE_FIELD_NUMBER: builtins.int
         HEALTH_FIELD_NUMBER: builtins.int
-        scrape_url: typing.Text = ...
-        global_url: typing.Text = ...
-        last_error: typing.Text = ...
+        scrape_url: builtins.str
+        global_url: builtins.str
+        last_error: builtins.str
         @property
         def last_scrape(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
-        health: global___GetStatusResponse.Target.Health.V = ...
-        def __init__(self,
+        health: global___GetStatusResponse.Target.Health.ValueType
+        def __init__(
+            self,
             *,
-            scrape_url : typing.Text = ...,
-            global_url : typing.Text = ...,
-            last_error : typing.Text = ...,
-            last_scrape : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-            health : global___GetStatusResponse.Target.Health.V = ...,
-            ) -> None: ...
-        def HasField(self, field_name: typing_extensions.Literal[u"last_scrape",b"last_scrape"]) -> builtins.bool: ...
-        def ClearField(self, field_name: typing_extensions.Literal[u"global_url",b"global_url",u"health",b"health",u"last_error",b"last_error",u"last_scrape",b"last_scrape",u"scrape_url",b"scrape_url"]) -> None: ...
+            scrape_url: builtins.str = ...,
+            global_url: builtins.str = ...,
+            last_error: builtins.str = ...,
+            last_scrape: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+            health: global___GetStatusResponse.Target.Health.ValueType = ...,
+        ) -> None: ...
+        def HasField(self, field_name: typing_extensions.Literal["last_scrape", b"last_scrape"]) -> builtins.bool: ...
+        def ClearField(self, field_name: typing_extensions.Literal["global_url", b"global_url", "health", b"health", "last_error", b"last_error", "last_scrape", b"last_scrape", "scrape_url", b"scrape_url"]) -> None: ...
 
     TARGETS_FIELD_NUMBER: builtins.int
     OK_FIELD_NUMBER: builtins.int
     LAST_ERROR_FIELD_NUMBER: builtins.int
     @property
     def targets(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___GetStatusResponse.Target]: ...
-    ok: builtins.bool = ...
-    last_error: typing.Text = ...
-    def __init__(self,
+    ok: builtins.bool
+    last_error: builtins.str
+    def __init__(
+        self,
         *,
-        targets : typing.Optional[typing.Iterable[global___GetStatusResponse.Target]] = ...,
-        ok : builtins.bool = ...,
-        last_error : typing.Text = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"last_error",b"last_error",u"ok",b"ok",u"status",b"status"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"last_error",b"last_error",u"ok",b"ok",u"status",b"status",u"targets",b"targets"]) -> None: ...
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"status",b"status"]) -> typing.Optional[typing_extensions.Literal["ok","last_error"]]: ...
+        targets: collections.abc.Iterable[global___GetStatusResponse.Target] | None = ...,
+        ok: builtins.bool = ...,
+        last_error: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["last_error", b"last_error", "ok", b"ok", "status", b"status"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["last_error", b"last_error", "ok", b"ok", "status", b"status", "targets", b"targets"]) -> None: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["status", b"status"]) -> typing_extensions.Literal["ok", "last_error"] | None: ...
+
 global___GetStatusResponse = GetStatusResponse
 
 class UsageReportRequest(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
-    def __init__(self,
-        ) -> None: ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    def __init__(
+        self,
+    ) -> None: ...
+
 global___UsageReportRequest = UsageReportRequest
 
 class UsageReportResponse(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     REPORT_FIELD_NUMBER: builtins.int
-    report: builtins.bytes = ...
-    def __init__(self,
+    report: builtins.bytes
+    def __init__(
+        self,
         *,
-        report : builtins.bytes = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"report",b"report"]) -> None: ...
+        report: builtins.bytes = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["report", b"report"]) -> None: ...
+
 global___UsageReportResponse = UsageReportResponse
 
 class Labels(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     class LabelsEntry(google.protobuf.message.Message):
-        DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+        DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
         KEY_FIELD_NUMBER: builtins.int
         VALUE_FIELD_NUMBER: builtins.int
-        key: typing.Text = ...
-        value: typing.Text = ...
-        def __init__(self,
+        key: builtins.str
+        value: builtins.str
+        def __init__(
+            self,
             *,
-            key : typing.Text = ...,
-            value : typing.Text = ...,
-            ) -> None: ...
-        def ClearField(self, field_name: typing_extensions.Literal[u"key",b"key",u"value",b"value"]) -> None: ...
+            key: builtins.str = ...,
+            value: builtins.str = ...,
+        ) -> None: ...
+        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
 
     LABELS_FIELD_NUMBER: builtins.int
     @property
-    def labels(self) -> google.protobuf.internal.containers.ScalarMap[typing.Text, typing.Text]: ...
-    def __init__(self,
+    def labels(self) -> google.protobuf.internal.containers.ScalarMap[builtins.str, builtins.str]: ...
+    def __init__(
+        self,
         *,
-        labels : typing.Optional[typing.Mapping[typing.Text, typing.Text]] = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"labels",b"labels"]) -> None: ...
+        labels: collections.abc.Mapping[builtins.str, builtins.str] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["labels", b"labels"]) -> None: ...
+
 global___Labels = Labels

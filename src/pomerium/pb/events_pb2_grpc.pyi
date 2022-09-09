@@ -3,32 +3,33 @@
 isort:skip_file
 """
 import abc
+import collections.abc
 import events_pb2
 import grpc
-import typing
 
 class EventsStub:
     """Events represent configuration changes made to envoy's controle plane by
     Pomerium
     """
+
     def __init__(self, channel: grpc.Channel) -> None: ...
     Sync: grpc.UnaryStreamMultiCallable[
         events_pb2.SyncRequest,
-        events_pb2.SyncResponse] = ...
+        events_pb2.SyncResponse,
+    ]
     """Sync sends all current events and then pushes new events as they arrive"""
-
 
 class EventsServicer(metaclass=abc.ABCMeta):
     """Events represent configuration changes made to envoy's controle plane by
     Pomerium
     """
+
     @abc.abstractmethod
-    def Sync(self,
+    def Sync(
+        self,
         request: events_pb2.SyncRequest,
         context: grpc.ServicerContext,
-    ) -> typing.Iterator[events_pb2.SyncResponse]:
+    ) -> collections.abc.Iterator[events_pb2.SyncResponse]:
         """Sync sends all current events and then pushes new events as they arrive"""
-        pass
-
 
 def add_EventsServicer_to_server(servicer: EventsServicer, server: grpc.Server) -> None: ...

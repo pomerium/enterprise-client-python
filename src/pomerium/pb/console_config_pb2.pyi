@@ -3,6 +3,7 @@
 isort:skip_file
 """
 import builtins
+import collections.abc
 import google.protobuf.descriptor
 import google.protobuf.internal.containers
 import google.protobuf.message
@@ -11,13 +12,18 @@ import namespaces_pb2
 import policy_pb2
 import routes_pb2
 import settings_pb2
-import typing
-import typing_extensions
+import sys
 
-DESCRIPTOR: google.protobuf.descriptor.FileDescriptor = ...
+if sys.version_info >= (3, 8):
+    import typing as typing_extensions
+else:
+    import typing_extensions
+
+DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
 class ConsoleConfig(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     KEY_PAIRS_FIELD_NUMBER: builtins.int
     NAMESPACES_FIELD_NUMBER: builtins.int
     POLICIES_FIELD_NUMBER: builtins.int
@@ -33,14 +39,16 @@ class ConsoleConfig(google.protobuf.message.Message):
     def routes(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[routes_pb2.Route]: ...
     @property
     def settings(self) -> settings_pb2.Settings: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        key_pairs : typing.Optional[typing.Iterable[key_chain_pb2.KeyPair]] = ...,
-        namespaces : typing.Optional[typing.Iterable[namespaces_pb2.Namespace]] = ...,
-        policies : typing.Optional[typing.Iterable[policy_pb2.Policy]] = ...,
-        routes : typing.Optional[typing.Iterable[routes_pb2.Route]] = ...,
-        settings : typing.Optional[settings_pb2.Settings] = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"settings",b"settings"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"key_pairs",b"key_pairs",u"namespaces",b"namespaces",u"policies",b"policies",u"routes",b"routes",u"settings",b"settings"]) -> None: ...
+        key_pairs: collections.abc.Iterable[key_chain_pb2.KeyPair] | None = ...,
+        namespaces: collections.abc.Iterable[namespaces_pb2.Namespace] | None = ...,
+        policies: collections.abc.Iterable[policy_pb2.Policy] | None = ...,
+        routes: collections.abc.Iterable[routes_pb2.Route] | None = ...,
+        settings: settings_pb2.Settings | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["settings", b"settings"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["key_pairs", b"key_pairs", "namespaces", b"namespaces", "policies", b"policies", "routes", b"routes", "settings", b"settings"]) -> None: ...
+
 global___ConsoleConfig = ConsoleConfig

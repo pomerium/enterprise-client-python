@@ -10,18 +10,17 @@ class ReportStub:
     def __init__(self, channel: grpc.Channel) -> None: ...
     PolicyReport: grpc.UnaryUnaryMultiCallable[
         report_pb2.PolicyReportRequest,
-        report_pb2.PolicyReportResponse] = ...
+        report_pb2.PolicyReportResponse,
+    ]
     """PolicyReport generates a policy report"""
-
 
 class ReportServicer(metaclass=abc.ABCMeta):
     @abc.abstractmethod
-    def PolicyReport(self,
+    def PolicyReport(
+        self,
         request: report_pb2.PolicyReportRequest,
         context: grpc.ServicerContext,
     ) -> report_pb2.PolicyReportResponse:
         """PolicyReport generates a policy report"""
-        pass
-
 
 def add_ReportServicer_to_server(servicer: ReportServicer, server: grpc.Server) -> None: ...

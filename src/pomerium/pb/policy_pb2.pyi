@@ -3,48 +3,60 @@
 isort:skip_file
 """
 import builtins
+import collections.abc
 import google.protobuf.descriptor
 import google.protobuf.internal.containers
 import google.protobuf.message
 import google.protobuf.struct_pb2
 import google.protobuf.timestamp_pb2
+import sys
 import typing
-import typing_extensions
 
-DESCRIPTOR: google.protobuf.descriptor.FileDescriptor = ...
+if sys.version_info >= (3, 8):
+    import typing as typing_extensions
+else:
+    import typing_extensions
+
+DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
 class Policy(google.protobuf.message.Message):
     """Policy defines an authorization policy which can be applied to a route or
     routes
     """
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     class AllowedIdpClaimsEntry(google.protobuf.message.Message):
-        DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+        DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
         KEY_FIELD_NUMBER: builtins.int
         VALUE_FIELD_NUMBER: builtins.int
-        key: typing.Text = ...
+        key: builtins.str
         @property
         def value(self) -> google.protobuf.struct_pb2.ListValue: ...
-        def __init__(self,
+        def __init__(
+            self,
             *,
-            key : typing.Text = ...,
-            value : typing.Optional[google.protobuf.struct_pb2.ListValue] = ...,
-            ) -> None: ...
-        def HasField(self, field_name: typing_extensions.Literal[u"value",b"value"]) -> builtins.bool: ...
-        def ClearField(self, field_name: typing_extensions.Literal[u"key",b"key",u"value",b"value"]) -> None: ...
+            key: builtins.str = ...,
+            value: google.protobuf.struct_pb2.ListValue | None = ...,
+        ) -> None: ...
+        def HasField(self, field_name: typing_extensions.Literal["value", b"value"]) -> builtins.bool: ...
+        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
 
     class RoutesEntry(google.protobuf.message.Message):
-        DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+        DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
         KEY_FIELD_NUMBER: builtins.int
         VALUE_FIELD_NUMBER: builtins.int
-        key: typing.Text = ...
-        value: typing.Text = ...
-        def __init__(self,
+        key: builtins.str
+        value: builtins.str
+        def __init__(
+            self,
             *,
-            key : typing.Text = ...,
-            value : typing.Text = ...,
-            ) -> None: ...
-        def ClearField(self, field_name: typing_extensions.Literal[u"key",b"key",u"value",b"value"]) -> None: ...
+            key: builtins.str = ...,
+            value: builtins.str = ...,
+        ) -> None: ...
+        def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
 
     ID_FIELD_NUMBER: builtins.int
     NAMESPACE_ID_FIELD_NUMBER: builtins.int
@@ -60,190 +72,218 @@ class Policy(google.protobuf.message.Message):
     REGO_FIELD_NUMBER: builtins.int
     PPL_FIELD_NUMBER: builtins.int
     ENFORCED_FIELD_NUMBER: builtins.int
+    EXPLANATION_FIELD_NUMBER: builtins.int
+    REMEDIATION_FIELD_NUMBER: builtins.int
+    ORIGINATOR_ID_FIELD_NUMBER: builtins.int
     ROUTES_FIELD_NUMBER: builtins.int
     NAMESPACE_NAME_FIELD_NUMBER: builtins.int
-    id: typing.Text = ...
-    namespace_id: typing.Text = ...
+    id: builtins.str
+    namespace_id: builtins.str
     @property
     def created_at(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
     @property
     def modified_at(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
     @property
     def deleted_at(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
-    name: typing.Text = ...
-    description: typing.Text = ...
+    name: builtins.str
+    description: builtins.str
     @property
-    def allowed_users(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]: ...
+    def allowed_users(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
     @property
-    def allowed_groups(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]: ...
+    def allowed_groups(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
     @property
-    def allowed_domains(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]: ...
+    def allowed_domains(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
     @property
-    def allowed_idp_claims(self) -> google.protobuf.internal.containers.MessageMap[typing.Text, google.protobuf.struct_pb2.ListValue]: ...
+    def allowed_idp_claims(self) -> google.protobuf.internal.containers.MessageMap[builtins.str, google.protobuf.struct_pb2.ListValue]: ...
     @property
-    def rego(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[typing.Text]:
+    def rego(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
         """custom rego definition in string format"""
-        pass
-    ppl: typing.Text = ...
+    ppl: builtins.str
     """PPL definition in JSON format"""
-
-    enforced: builtins.bool = ...
+    enforced: builtins.bool
     """policy is automatically applied to all routes in namespace_id and child
     namespaces
     """
-
+    explanation: builtins.str
+    remediation: builtins.str
+    originator_id: builtins.str
     @property
-    def routes(self) -> google.protobuf.internal.containers.ScalarMap[typing.Text, typing.Text]:
+    def routes(self) -> google.protobuf.internal.containers.ScalarMap[builtins.str, builtins.str]:
         """computed
         route id => name
         """
-        pass
-    namespace_name: typing.Text = ...
+    namespace_name: builtins.str
     """computed"""
-
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        id : typing.Text = ...,
-        namespace_id : typing.Text = ...,
-        created_at : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        modified_at : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        deleted_at : typing.Optional[google.protobuf.timestamp_pb2.Timestamp] = ...,
-        name : typing.Text = ...,
-        description : typing.Text = ...,
-        allowed_users : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        allowed_groups : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        allowed_domains : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        allowed_idp_claims : typing.Optional[typing.Mapping[typing.Text, google.protobuf.struct_pb2.ListValue]] = ...,
-        rego : typing.Optional[typing.Iterable[typing.Text]] = ...,
-        ppl : typing.Text = ...,
-        enforced : builtins.bool = ...,
-        routes : typing.Optional[typing.Mapping[typing.Text, typing.Text]] = ...,
-        namespace_name : typing.Text = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"created_at",b"created_at",u"deleted_at",b"deleted_at",u"modified_at",b"modified_at"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"allowed_domains",b"allowed_domains",u"allowed_groups",b"allowed_groups",u"allowed_idp_claims",b"allowed_idp_claims",u"allowed_users",b"allowed_users",u"created_at",b"created_at",u"deleted_at",b"deleted_at",u"description",b"description",u"enforced",b"enforced",u"id",b"id",u"modified_at",b"modified_at",u"name",b"name",u"namespace_id",b"namespace_id",u"namespace_name",b"namespace_name",u"ppl",b"ppl",u"rego",b"rego",u"routes",b"routes"]) -> None: ...
+        id: builtins.str = ...,
+        namespace_id: builtins.str = ...,
+        created_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        modified_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        deleted_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        name: builtins.str = ...,
+        description: builtins.str = ...,
+        allowed_users: collections.abc.Iterable[builtins.str] | None = ...,
+        allowed_groups: collections.abc.Iterable[builtins.str] | None = ...,
+        allowed_domains: collections.abc.Iterable[builtins.str] | None = ...,
+        allowed_idp_claims: collections.abc.Mapping[builtins.str, google.protobuf.struct_pb2.ListValue] | None = ...,
+        rego: collections.abc.Iterable[builtins.str] | None = ...,
+        ppl: builtins.str = ...,
+        enforced: builtins.bool = ...,
+        explanation: builtins.str = ...,
+        remediation: builtins.str = ...,
+        originator_id: builtins.str = ...,
+        routes: collections.abc.Mapping[builtins.str, builtins.str] | None = ...,
+        namespace_name: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["created_at", b"created_at", "deleted_at", b"deleted_at", "modified_at", b"modified_at"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["allowed_domains", b"allowed_domains", "allowed_groups", b"allowed_groups", "allowed_idp_claims", b"allowed_idp_claims", "allowed_users", b"allowed_users", "created_at", b"created_at", "deleted_at", b"deleted_at", "description", b"description", "enforced", b"enforced", "explanation", b"explanation", "id", b"id", "modified_at", b"modified_at", "name", b"name", "namespace_id", b"namespace_id", "namespace_name", b"namespace_name", "originator_id", b"originator_id", "ppl", b"ppl", "rego", b"rego", "remediation", b"remediation", "routes", b"routes"]) -> None: ...
+
 global___Policy = Policy
 
 class DeletePolicyRequest(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     ID_FIELD_NUMBER: builtins.int
-    id: typing.Text = ...
-    def __init__(self,
+    id: builtins.str
+    def __init__(
+        self,
         *,
-        id : typing.Text = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"id",b"id"]) -> None: ...
+        id: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["id", b"id"]) -> None: ...
+
 global___DeletePolicyRequest = DeletePolicyRequest
 
 class DeletePolicyResponse(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
-    def __init__(self,
-        ) -> None: ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    def __init__(
+        self,
+    ) -> None: ...
+
 global___DeletePolicyResponse = DeletePolicyResponse
 
 class GetPolicyRequest(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     ID_FIELD_NUMBER: builtins.int
-    id: typing.Text = ...
-    def __init__(self,
+    id: builtins.str
+    def __init__(
+        self,
         *,
-        id : typing.Text = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"id",b"id"]) -> None: ...
+        id: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["id", b"id"]) -> None: ...
+
 global___GetPolicyRequest = GetPolicyRequest
 
 class GetPolicyResponse(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     POLICY_FIELD_NUMBER: builtins.int
     @property
     def policy(self) -> global___Policy: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        policy : typing.Optional[global___Policy] = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"policy",b"policy"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"policy",b"policy"]) -> None: ...
+        policy: global___Policy | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["policy", b"policy"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["policy", b"policy"]) -> None: ...
+
 global___GetPolicyResponse = GetPolicyResponse
 
 class ListPoliciesRequest(google.protobuf.message.Message):
     """ListPoliciesRequest specifies the policies to list"""
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     NAMESPACE_FIELD_NUMBER: builtins.int
     QUERY_FIELD_NUMBER: builtins.int
     OFFSET_FIELD_NUMBER: builtins.int
     LIMIT_FIELD_NUMBER: builtins.int
     ORDER_BY_FIELD_NUMBER: builtins.int
-    namespace: typing.Text = ...
-    query: typing.Text = ...
+    namespace: builtins.str
+    query: builtins.str
     """list Policies whose name contains the query string"""
-
-    offset: builtins.int = ...
+    offset: builtins.int
     """list Policies starting from an offset in the total list"""
-
-    limit: builtins.int = ...
+    limit: builtins.int
     """limit the number of entries returned"""
-
-    order_by: typing.Text = ...
+    order_by: builtins.str
     """sort the Policies by newest, oldest or name"""
-
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        namespace : typing.Text = ...,
-        query : typing.Text = ...,
-        offset : builtins.int = ...,
-        limit : builtins.int = ...,
-        order_by : typing.Text = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"_limit",b"_limit",u"_offset",b"_offset",u"_order_by",b"_order_by",u"_query",b"_query",u"limit",b"limit",u"offset",b"offset",u"order_by",b"order_by",u"query",b"query"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"_limit",b"_limit",u"_offset",b"_offset",u"_order_by",b"_order_by",u"_query",b"_query",u"limit",b"limit",u"namespace",b"namespace",u"offset",b"offset",u"order_by",b"order_by",u"query",b"query"]) -> None: ...
+        namespace: builtins.str = ...,
+        query: builtins.str | None = ...,
+        offset: builtins.int | None = ...,
+        limit: builtins.int | None = ...,
+        order_by: builtins.str | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["_limit", b"_limit", "_offset", b"_offset", "_order_by", b"_order_by", "_query", b"_query", "limit", b"limit", "offset", b"offset", "order_by", b"order_by", "query", b"query"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["_limit", b"_limit", "_offset", b"_offset", "_order_by", b"_order_by", "_query", b"_query", "limit", b"limit", "namespace", b"namespace", "offset", b"offset", "order_by", b"order_by", "query", b"query"]) -> None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_limit",b"_limit"]) -> typing.Optional[typing_extensions.Literal["limit"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_limit", b"_limit"]) -> typing_extensions.Literal["limit"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_offset",b"_offset"]) -> typing.Optional[typing_extensions.Literal["offset"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_offset", b"_offset"]) -> typing_extensions.Literal["offset"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_order_by",b"_order_by"]) -> typing.Optional[typing_extensions.Literal["order_by"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_order_by", b"_order_by"]) -> typing_extensions.Literal["order_by"] | None: ...
     @typing.overload
-    def WhichOneof(self, oneof_group: typing_extensions.Literal[u"_query",b"_query"]) -> typing.Optional[typing_extensions.Literal["query"]]: ...
+    def WhichOneof(self, oneof_group: typing_extensions.Literal["_query", b"_query"]) -> typing_extensions.Literal["query"] | None: ...
+
 global___ListPoliciesRequest = ListPoliciesRequest
 
 class ListPoliciesResponse(google.protobuf.message.Message):
     """ListPoliciesResponse is the list of policies found for a ListPoliciesRequest"""
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     POLICIES_FIELD_NUMBER: builtins.int
     TOTAL_COUNT_FIELD_NUMBER: builtins.int
     @property
     def policies(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___Policy]: ...
-    total_count: builtins.int = ...
-    def __init__(self,
+    total_count: builtins.int
+    def __init__(
+        self,
         *,
-        policies : typing.Optional[typing.Iterable[global___Policy]] = ...,
-        total_count : builtins.int = ...,
-        ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"policies",b"policies",u"total_count",b"total_count"]) -> None: ...
+        policies: collections.abc.Iterable[global___Policy] | None = ...,
+        total_count: builtins.int = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["policies", b"policies", "total_count", b"total_count"]) -> None: ...
+
 global___ListPoliciesResponse = ListPoliciesResponse
 
 class SetPolicyRequest(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     POLICY_FIELD_NUMBER: builtins.int
     @property
     def policy(self) -> global___Policy: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        policy : typing.Optional[global___Policy] = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"policy",b"policy"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"policy",b"policy"]) -> None: ...
+        policy: global___Policy | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["policy", b"policy"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["policy", b"policy"]) -> None: ...
+
 global___SetPolicyRequest = SetPolicyRequest
 
 class SetPolicyResponse(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor = ...
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
     POLICY_FIELD_NUMBER: builtins.int
     @property
     def policy(self) -> global___Policy: ...
-    def __init__(self,
+    def __init__(
+        self,
         *,
-        policy : typing.Optional[global___Policy] = ...,
-        ) -> None: ...
-    def HasField(self, field_name: typing_extensions.Literal[u"policy",b"policy"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing_extensions.Literal[u"policy",b"policy"]) -> None: ...
+        policy: global___Policy | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["policy", b"policy"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["policy", b"policy"]) -> None: ...
+
 global___SetPolicyResponse = SetPolicyResponse
