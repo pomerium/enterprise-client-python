@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from . import key_chain_pb2 as key__chain__pb2
+import pomerium.pb.key_chain_pb2 as key__chain__pb2
 
 
 class KeyChainServiceStub(object):

@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from . import routes_pb2 as routes__pb2
+import pomerium.pb.routes_pb2 as routes__pb2
 
 
 class RouteServiceStub(object):

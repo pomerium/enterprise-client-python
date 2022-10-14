@@ -3,6 +3,7 @@
 # source: udpa/annotations/sensitive.proto
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
+from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
@@ -14,30 +15,15 @@ _sym_db = _symbol_database.Default()
 from google.protobuf import descriptor_pb2 as google_dot_protobuf_dot_descriptor__pb2
 
 
-DESCRIPTOR = _descriptor.FileDescriptor(
-  name='udpa/annotations/sensitive.proto',
-  package='udpa.annotations',
-  syntax='proto3',
-  serialized_options=b'Z\"github.com/cncf/xds/go/annotations',
-  create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n udpa/annotations/sensitive.proto\x12\x10udpa.annotations\x1a google/protobuf/descriptor.proto:3\n\tsensitive\x12\x1d.google.protobuf.FieldOptions\x18\xf7\xb6\xc1$ \x01(\x08\x42$Z\"github.com/cncf/xds/go/annotationsb\x06proto3'
-  ,
-  dependencies=[google_dot_protobuf_dot_descriptor__pb2.DESCRIPTOR,])
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n udpa/annotations/sensitive.proto\x12\x10udpa.annotations\x1a google/protobuf/descriptor.proto:3\n\tsensitive\x12\x1d.google.protobuf.FieldOptions\x18\xf7\xb6\xc1$ \x01(\x08\x42$Z\"github.com/cncf/xds/go/annotationsb\x06proto3')
 
 
 SENSITIVE_FIELD_NUMBER = 76569463
-sensitive = _descriptor.FieldDescriptor(
-  name='sensitive', full_name='udpa.annotations.sensitive', index=0,
-  number=76569463, type=8, cpp_type=7, label=1,
-  has_default_value=False, default_value=False,
-  message_type=None, enum_type=None, containing_type=None,
-  is_extension=True, extension_scope=None,
-  serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key)
+sensitive = DESCRIPTOR.extensions_by_name['sensitive']
 
-DESCRIPTOR.extensions_by_name['sensitive'] = sensitive
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
+if _descriptor._USE_C_DESCRIPTORS == False:
+  google_dot_protobuf_dot_descriptor__pb2.FieldOptions.RegisterExtension(sensitive)
 
-google_dot_protobuf_dot_descriptor__pb2.FieldOptions.RegisterExtension(sensitive)
-
-DESCRIPTOR._options = None
+  DESCRIPTOR._options = None
+  DESCRIPTOR._serialized_options = b'Z\"github.com/cncf/xds/go/annotations'
 # @@protoc_insertion_point(module_scope)

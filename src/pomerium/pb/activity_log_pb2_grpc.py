@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from . import activity_log_pb2 as activity__log__pb2
+import pomerium.pb.activity_log_pb2 as activity__log__pb2
 
 
 class ActivityLogServiceStub(object):

@@ -3,6 +3,7 @@
 # source: envoy/type/v3/percent.proto
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
+from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
@@ -16,126 +17,13 @@ from udpa.annotations import versioning_pb2 as udpa_dot_annotations_dot_versioni
 from validate import validate_pb2 as validate_dot_validate__pb2
 
 
-DESCRIPTOR = _descriptor.FileDescriptor(
-  name='envoy/type/v3/percent.proto',
-  package='envoy.type.v3',
-  syntax='proto3',
-  serialized_options=b'\n\033io.envoyproxy.envoy.type.v3B\014PercentProtoP\001Z;github.com/envoyproxy/go-control-plane/envoy/type/v3;typev3\272\200\310\321\006\002\020\002',
-  create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x1b\x65nvoy/type/v3/percent.proto\x12\renvoy.type.v3\x1a\x1dudpa/annotations/status.proto\x1a!udpa/annotations/versioning.proto\x1a\x17validate/validate.proto\"L\n\x07Percent\x12&\n\x05value\x18\x01 \x01(\x01\x42\x17\xfa\x42\x14\x12\x12\x19\x00\x00\x00\x00\x00\x00Y@)\x00\x00\x00\x00\x00\x00\x00\x00:\x19\x9a\xc5\x88\x1e\x14\n\x12\x65nvoy.type.Percent\"\xdb\x01\n\x11\x46ractionalPercent\x12\x11\n\tnumerator\x18\x01 \x01(\r\x12O\n\x0b\x64\x65nominator\x18\x02 \x01(\x0e\x32\x30.envoy.type.v3.FractionalPercent.DenominatorTypeB\x08\xfa\x42\x05\x82\x01\x02\x10\x01\"=\n\x0f\x44\x65nominatorType\x12\x0b\n\x07HUNDRED\x10\x00\x12\x10\n\x0cTEN_THOUSAND\x10\x01\x12\x0b\n\x07MILLION\x10\x02:#\x9a\xc5\x88\x1e\x1e\n\x1c\x65nvoy.type.FractionalPercentBr\n\x1bio.envoyproxy.envoy.type.v3B\x0cPercentProtoP\x01Z;github.com/envoyproxy/go-control-plane/envoy/type/v3;typev3\xba\x80\xc8\xd1\x06\x02\x10\x02\x62\x06proto3'
-  ,
-  dependencies=[udpa_dot_annotations_dot_status__pb2.DESCRIPTOR,udpa_dot_annotations_dot_versioning__pb2.DESCRIPTOR,validate_dot_validate__pb2.DESCRIPTOR,])
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1b\x65nvoy/type/v3/percent.proto\x12\renvoy.type.v3\x1a\x1dudpa/annotations/status.proto\x1a!udpa/annotations/versioning.proto\x1a\x17validate/validate.proto\"L\n\x07Percent\x12&\n\x05value\x18\x01 \x01(\x01\x42\x17\xfa\x42\x14\x12\x12\x19\x00\x00\x00\x00\x00\x00Y@)\x00\x00\x00\x00\x00\x00\x00\x00:\x19\x9a\xc5\x88\x1e\x14\n\x12\x65nvoy.type.Percent\"\xdb\x01\n\x11\x46ractionalPercent\x12\x11\n\tnumerator\x18\x01 \x01(\r\x12O\n\x0b\x64\x65nominator\x18\x02 \x01(\x0e\x32\x30.envoy.type.v3.FractionalPercent.DenominatorTypeB\x08\xfa\x42\x05\x82\x01\x02\x10\x01\"=\n\x0f\x44\x65nominatorType\x12\x0b\n\x07HUNDRED\x10\x00\x12\x10\n\x0cTEN_THOUSAND\x10\x01\x12\x0b\n\x07MILLION\x10\x02:#\x9a\xc5\x88\x1e\x1e\n\x1c\x65nvoy.type.FractionalPercentBr\n\x1bio.envoyproxy.envoy.type.v3B\x0cPercentProtoP\x01Z;github.com/envoyproxy/go-control-plane/envoy/type/v3;typev3\xba\x80\xc8\xd1\x06\x02\x10\x02\x62\x06proto3')
 
 
 
-_FRACTIONALPERCENT_DENOMINATORTYPE = _descriptor.EnumDescriptor(
-  name='DenominatorType',
-  full_name='envoy.type.v3.FractionalPercent.DenominatorType',
-  filename=None,
-  file=DESCRIPTOR,
-  create_key=_descriptor._internal_create_key,
-  values=[
-    _descriptor.EnumValueDescriptor(
-      name='HUNDRED', index=0, number=0,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='TEN_THOUSAND', index=1, number=1,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='MILLION', index=2, number=2,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-  ],
-  containing_type=None,
-  serialized_options=None,
-  serialized_start=337,
-  serialized_end=398,
-)
-_sym_db.RegisterEnumDescriptor(_FRACTIONALPERCENT_DENOMINATORTYPE)
-
-
-_PERCENT = _descriptor.Descriptor(
-  name='Percent',
-  full_name='envoy.type.v3.Percent',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='value', full_name='envoy.type.v3.Percent.value', index=0,
-      number=1, type=1, cpp_type=5, label=1,
-      has_default_value=False, default_value=float(0),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\024\022\022\031\000\000\000\000\000\000Y@)\000\000\000\000\000\000\000\000', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=b'\232\305\210\036\024\n\022envoy.type.Percent',
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=137,
-  serialized_end=213,
-)
-
-
-_FRACTIONALPERCENT = _descriptor.Descriptor(
-  name='FractionalPercent',
-  full_name='envoy.type.v3.FractionalPercent',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='numerator', full_name='envoy.type.v3.FractionalPercent.numerator', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='denominator', full_name='envoy.type.v3.FractionalPercent.denominator', index=1,
-      number=2, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\005\202\001\002\020\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-    _FRACTIONALPERCENT_DENOMINATORTYPE,
-  ],
-  serialized_options=b'\232\305\210\036\036\n\034envoy.type.FractionalPercent',
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=216,
-  serialized_end=435,
-)
-
-_FRACTIONALPERCENT.fields_by_name['denominator'].enum_type = _FRACTIONALPERCENT_DENOMINATORTYPE
-_FRACTIONALPERCENT_DENOMINATORTYPE.containing_type = _FRACTIONALPERCENT
-DESCRIPTOR.message_types_by_name['Percent'] = _PERCENT
-DESCRIPTOR.message_types_by_name['FractionalPercent'] = _FRACTIONALPERCENT
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
-
+_PERCENT = DESCRIPTOR.message_types_by_name['Percent']
+_FRACTIONALPERCENT = DESCRIPTOR.message_types_by_name['FractionalPercent']
+_FRACTIONALPERCENT_DENOMINATORTYPE = _FRACTIONALPERCENT.enum_types_by_name['DenominatorType']
 Percent = _reflection.GeneratedProtocolMessageType('Percent', (_message.Message,), {
   'DESCRIPTOR' : _PERCENT,
   '__module__' : 'envoy.type.v3.percent_pb2'
@@ -150,10 +38,22 @@ FractionalPercent = _reflection.GeneratedProtocolMessageType('FractionalPercent'
   })
 _sym_db.RegisterMessage(FractionalPercent)
 
+if _descriptor._USE_C_DESCRIPTORS == False:
 
-DESCRIPTOR._options = None
-_PERCENT.fields_by_name['value']._options = None
-_PERCENT._options = None
-_FRACTIONALPERCENT.fields_by_name['denominator']._options = None
-_FRACTIONALPERCENT._options = None
+  DESCRIPTOR._options = None
+  DESCRIPTOR._serialized_options = b'\n\033io.envoyproxy.envoy.type.v3B\014PercentProtoP\001Z;github.com/envoyproxy/go-control-plane/envoy/type/v3;typev3\272\200\310\321\006\002\020\002'
+  _PERCENT.fields_by_name['value']._options = None
+  _PERCENT.fields_by_name['value']._serialized_options = b'\372B\024\022\022\031\000\000\000\000\000\000Y@)\000\000\000\000\000\000\000\000'
+  _PERCENT._options = None
+  _PERCENT._serialized_options = b'\232\305\210\036\024\n\022envoy.type.Percent'
+  _FRACTIONALPERCENT.fields_by_name['denominator']._options = None
+  _FRACTIONALPERCENT.fields_by_name['denominator']._serialized_options = b'\372B\005\202\001\002\020\001'
+  _FRACTIONALPERCENT._options = None
+  _FRACTIONALPERCENT._serialized_options = b'\232\305\210\036\036\n\034envoy.type.FractionalPercent'
+  _PERCENT._serialized_start=137
+  _PERCENT._serialized_end=213
+  _FRACTIONALPERCENT._serialized_start=216
+  _FRACTIONALPERCENT._serialized_end=435
+  _FRACTIONALPERCENT_DENOMINATORTYPE._serialized_start=337
+  _FRACTIONALPERCENT_DENOMINATORTYPE._serialized_end=398
 # @@protoc_insertion_point(module_scope)

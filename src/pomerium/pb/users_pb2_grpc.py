@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from . import users_pb2 as users__pb2
+import pomerium.pb.users_pb2 as users__pb2
 
 
 class UserServiceStub(object):
@@ -172,6 +172,11 @@ class PomeriumServiceAccountServiceStub(object):
                 request_serializer=users__pb2.ListPomeriumServiceAccountsRequest.SerializeToString,
                 response_deserializer=users__pb2.ListPomeriumServiceAccountsResponse.FromString,
                 )
+        self.SetPomeriumServiceAccount = channel.unary_unary(
+                '/pomerium.dashboard.PomeriumServiceAccountService/SetPomeriumServiceAccount',
+                request_serializer=users__pb2.SetPomeriumServiceAccountRequest.SerializeToString,
+                response_deserializer=users__pb2.SetPomeriumServiceAccountResponse.FromString,
+                )
 
 
 class PomeriumServiceAccountServiceServicer(object):
@@ -208,6 +213,12 @@ class PomeriumServiceAccountServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def SetPomeriumServiceAccount(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_PomeriumServiceAccountServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -230,6 +241,11 @@ def add_PomeriumServiceAccountServiceServicer_to_server(servicer, server):
                     servicer.ListPomeriumServiceAccounts,
                     request_deserializer=users__pb2.ListPomeriumServiceAccountsRequest.FromString,
                     response_serializer=users__pb2.ListPomeriumServiceAccountsResponse.SerializeToString,
+            ),
+            'SetPomeriumServiceAccount': grpc.unary_unary_rpc_method_handler(
+                    servicer.SetPomeriumServiceAccount,
+                    request_deserializer=users__pb2.SetPomeriumServiceAccountRequest.FromString,
+                    response_serializer=users__pb2.SetPomeriumServiceAccountResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -308,6 +324,23 @@ class PomeriumServiceAccountService(object):
         return grpc.experimental.unary_unary(request, target, '/pomerium.dashboard.PomeriumServiceAccountService/ListPomeriumServiceAccounts',
             users__pb2.ListPomeriumServiceAccountsRequest.SerializeToString,
             users__pb2.ListPomeriumServiceAccountsResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def SetPomeriumServiceAccount(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/pomerium.dashboard.PomeriumServiceAccountService/SetPomeriumServiceAccount',
+            users__pb2.SetPomeriumServiceAccountRequest.SerializeToString,
+            users__pb2.SetPomeriumServiceAccountResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

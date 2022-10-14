@@ -1,0 +1,4 @@
+#!/bin/bash
+set -euo pipefail
+_prefix="$(python -c 'import sys;print(sys.prefix)')"
+exec "$_prefix/bin/protoc-gen-python_grpc" "$@"
