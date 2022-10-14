@@ -3,7 +3,6 @@
 # source: xds/core/v3/resource.proto
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
-from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
@@ -17,11 +16,69 @@ from xds.annotations.v3 import status_pb2 as xds_dot_annotations_dot_v3_dot_stat
 from xds.core.v3 import resource_name_pb2 as xds_dot_core_dot_v3_dot_resource__name__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1axds/core/v3/resource.proto\x12\x0bxds.core.v3\x1a\x19google/protobuf/any.proto\x1a\x1fxds/annotations/v3/status.proto\x1a\x1fxds/core/v3/resource_name.proto\"l\n\x08Resource\x12\'\n\x04name\x18\x01 \x01(\x0b\x32\x19.xds.core.v3.ResourceName\x12\x0f\n\x07version\x18\x02 \x01(\t\x12&\n\x08resource\x18\x03 \x01(\x0b\x32\x14.google.protobuf.AnyBU\n\x16\x63om.github.xds.core.v3B\rResourceProtoP\x01Z\"github.com/cncf/xds/go/xds/core/v3\xd2\xc6\xa4\xe1\x06\x02\x08\x01\x62\x06proto3')
+DESCRIPTOR = _descriptor.FileDescriptor(
+  name='xds/core/v3/resource.proto',
+  package='xds.core.v3',
+  syntax='proto3',
+  serialized_options=b'\n\026com.github.xds.core.v3B\rResourceProtoP\001Z\"github.com/cncf/xds/go/xds/core/v3\322\306\244\341\006\002\010\001',
+  create_key=_descriptor._internal_create_key,
+  serialized_pb=b'\n\x1axds/core/v3/resource.proto\x12\x0bxds.core.v3\x1a\x19google/protobuf/any.proto\x1a\x1fxds/annotations/v3/status.proto\x1a\x1fxds/core/v3/resource_name.proto\"l\n\x08Resource\x12\'\n\x04name\x18\x01 \x01(\x0b\x32\x19.xds.core.v3.ResourceName\x12\x0f\n\x07version\x18\x02 \x01(\t\x12&\n\x08resource\x18\x03 \x01(\x0b\x32\x14.google.protobuf.AnyBU\n\x16\x63om.github.xds.core.v3B\rResourceProtoP\x01Z\"github.com/cncf/xds/go/xds/core/v3\xd2\xc6\xa4\xe1\x06\x02\x08\x01\x62\x06proto3'
+  ,
+  dependencies=[google_dot_protobuf_dot_any__pb2.DESCRIPTOR,xds_dot_annotations_dot_v3_dot_status__pb2.DESCRIPTOR,xds_dot_core_dot_v3_dot_resource__name__pb2.DESCRIPTOR,])
 
 
 
-_RESOURCE = DESCRIPTOR.message_types_by_name['Resource']
+
+_RESOURCE = _descriptor.Descriptor(
+  name='Resource',
+  full_name='xds.core.v3.Resource',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='name', full_name='xds.core.v3.Resource.name', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='version', full_name='xds.core.v3.Resource.version', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='resource', full_name='xds.core.v3.Resource.resource', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=136,
+  serialized_end=244,
+)
+
+_RESOURCE.fields_by_name['name'].message_type = xds_dot_core_dot_v3_dot_resource__name__pb2._RESOURCENAME
+_RESOURCE.fields_by_name['resource'].message_type = google_dot_protobuf_dot_any__pb2._ANY
+DESCRIPTOR.message_types_by_name['Resource'] = _RESOURCE
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
+
 Resource = _reflection.GeneratedProtocolMessageType('Resource', (_message.Message,), {
   'DESCRIPTOR' : _RESOURCE,
   '__module__' : 'xds.core.v3.resource_pb2'
@@ -29,10 +86,6 @@ Resource = _reflection.GeneratedProtocolMessageType('Resource', (_message.Messag
   })
 _sym_db.RegisterMessage(Resource)
 
-if _descriptor._USE_C_DESCRIPTORS == False:
 
-  DESCRIPTOR._options = None
-  DESCRIPTOR._serialized_options = b'\n\026com.github.xds.core.v3B\rResourceProtoP\001Z\"github.com/cncf/xds/go/xds/core/v3\322\306\244\341\006\002\010\001'
-  _RESOURCE._serialized_start=136
-  _RESOURCE._serialized_end=244
+DESCRIPTOR._options = None
 # @@protoc_insertion_point(module_scope)
