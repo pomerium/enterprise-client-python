@@ -12,11 +12,11 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-import key_chain_pb2 as key__chain__pb2
-import namespaces_pb2 as namespaces__pb2
-import policy_pb2 as policy__pb2
-import routes_pb2 as routes__pb2
-import settings_pb2 as settings__pb2
+import pomerium.pb.key_chain_pb2 as key__chain__pb2
+import pomerium.pb.namespaces_pb2 as namespaces__pb2
+import pomerium.pb.policy_pb2 as policy__pb2
+import pomerium.pb.routes_pb2 as routes__pb2
+import pomerium.pb.settings_pb2 as settings__pb2
 
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x14\x63onsole_config.proto\x12\x12pomerium.dashboard\x1a\x0fkey_chain.proto\x1a\x10namespaces.proto\x1a\x0cpolicy.proto\x1a\x0croutes.proto\x1a\x0esettings.proto\"\xfb\x01\n\rConsoleConfig\x12.\n\tkey_pairs\x18\x01 \x03(\x0b\x32\x1b.pomerium.dashboard.KeyPair\x12\x31\n\nnamespaces\x18\x02 \x03(\x0b\x32\x1d.pomerium.dashboard.Namespace\x12,\n\x08policies\x18\x03 \x03(\x0b\x32\x1a.pomerium.dashboard.Policy\x12)\n\x06routes\x18\x04 \x03(\x0b\x32\x19.pomerium.dashboard.Route\x12.\n\x08settings\x18\x05 \x01(\x0b\x32\x1c.pomerium.dashboard.SettingsB-Z+github.com/pomerium/pomerium-console/pkg/pbb\x06proto3')

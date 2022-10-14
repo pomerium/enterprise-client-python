@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from . import settings_pb2 as settings__pb2
+import pomerium.pb.settings_pb2 as settings__pb2
 
 
 class SettingsServiceStub(object):

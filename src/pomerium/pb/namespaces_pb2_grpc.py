@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from . import namespaces_pb2 as namespaces__pb2
+import pomerium.pb.namespaces_pb2 as namespaces__pb2
 
 
 class NamespaceServiceStub(object):

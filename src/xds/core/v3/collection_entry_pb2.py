@@ -3,6 +3,7 @@
 # source: xds/core/v3/collection_entry.proto
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
+from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
@@ -17,120 +18,12 @@ from xds.core.v3 import resource_locator_pb2 as xds_dot_core_dot_v3_dot_resource
 from validate import validate_pb2 as validate_dot_validate__pb2
 
 
-DESCRIPTOR = _descriptor.FileDescriptor(
-  name='xds/core/v3/collection_entry.proto',
-  package='xds.core.v3',
-  syntax='proto3',
-  serialized_options=b'\n\026com.github.xds.core.v3B\024CollectionEntryProtoP\001Z\"github.com/cncf/xds/go/xds/core/v3\322\306\244\341\006\002\010\001',
-  create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\"xds/core/v3/collection_entry.proto\x12\x0bxds.core.v3\x1a\x19google/protobuf/any.proto\x1a\x1fxds/annotations/v3/status.proto\x1a\"xds/core/v3/resource_locator.proto\x1a\x17validate/validate.proto\"\x93\x02\n\x0f\x43ollectionEntry\x12/\n\x07locator\x18\x01 \x01(\x0b\x32\x1c.xds.core.v3.ResourceLocatorH\x00\x12@\n\x0cinline_entry\x18\x02 \x01(\x0b\x32(.xds.core.v3.CollectionEntry.InlineEntryH\x00\x1ar\n\x0bInlineEntry\x12*\n\x04name\x18\x01 \x01(\tB\x1c\xfa\x42\x19r\x17\x32\x15^[0-9a-zA-Z_\\-\\.~:]+$\x12\x0f\n\x07version\x18\x02 \x01(\t\x12&\n\x08resource\x18\x03 \x01(\x0b\x32\x14.google.protobuf.AnyB\x19\n\x12resource_specifier\x12\x03\xf8\x42\x01\x42\\\n\x16\x63om.github.xds.core.v3B\x14\x43ollectionEntryProtoP\x01Z\"github.com/cncf/xds/go/xds/core/v3\xd2\xc6\xa4\xe1\x06\x02\x08\x01\x62\x06proto3'
-  ,
-  dependencies=[google_dot_protobuf_dot_any__pb2.DESCRIPTOR,xds_dot_annotations_dot_v3_dot_status__pb2.DESCRIPTOR,xds_dot_core_dot_v3_dot_resource__locator__pb2.DESCRIPTOR,validate_dot_validate__pb2.DESCRIPTOR,])
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\"xds/core/v3/collection_entry.proto\x12\x0bxds.core.v3\x1a\x19google/protobuf/any.proto\x1a\x1fxds/annotations/v3/status.proto\x1a\"xds/core/v3/resource_locator.proto\x1a\x17validate/validate.proto\"\x93\x02\n\x0f\x43ollectionEntry\x12/\n\x07locator\x18\x01 \x01(\x0b\x32\x1c.xds.core.v3.ResourceLocatorH\x00\x12@\n\x0cinline_entry\x18\x02 \x01(\x0b\x32(.xds.core.v3.CollectionEntry.InlineEntryH\x00\x1ar\n\x0bInlineEntry\x12*\n\x04name\x18\x01 \x01(\tB\x1c\xfa\x42\x19r\x17\x32\x15^[0-9a-zA-Z_\\-\\.~:]+$\x12\x0f\n\x07version\x18\x02 \x01(\t\x12&\n\x08resource\x18\x03 \x01(\x0b\x32\x14.google.protobuf.AnyB\x19\n\x12resource_specifier\x12\x03\xf8\x42\x01\x42\\\n\x16\x63om.github.xds.core.v3B\x14\x43ollectionEntryProtoP\x01Z\"github.com/cncf/xds/go/xds/core/v3\xd2\xc6\xa4\xe1\x06\x02\x08\x01\x62\x06proto3')
 
 
 
-
-_COLLECTIONENTRY_INLINEENTRY = _descriptor.Descriptor(
-  name='InlineEntry',
-  full_name='xds.core.v3.CollectionEntry.InlineEntry',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='name', full_name='xds.core.v3.CollectionEntry.InlineEntry.name', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\031r\0272\025^[0-9a-zA-Z_\\-\\.~:]+$', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='version', full_name='xds.core.v3.CollectionEntry.InlineEntry.version', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='resource', full_name='xds.core.v3.CollectionEntry.InlineEntry.resource', index=2,
-      number=3, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=307,
-  serialized_end=421,
-)
-
-_COLLECTIONENTRY = _descriptor.Descriptor(
-  name='CollectionEntry',
-  full_name='xds.core.v3.CollectionEntry',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='locator', full_name='xds.core.v3.CollectionEntry.locator', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='inline_entry', full_name='xds.core.v3.CollectionEntry.inline_entry', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[_COLLECTIONENTRY_INLINEENTRY, ],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-    _descriptor.OneofDescriptor(
-      name='resource_specifier', full_name='xds.core.v3.CollectionEntry.resource_specifier',
-      index=0, containing_type=None,
-      create_key=_descriptor._internal_create_key,
-    fields=[], serialized_options=b'\370B\001'),
-  ],
-  serialized_start=173,
-  serialized_end=448,
-)
-
-_COLLECTIONENTRY_INLINEENTRY.fields_by_name['resource'].message_type = google_dot_protobuf_dot_any__pb2._ANY
-_COLLECTIONENTRY_INLINEENTRY.containing_type = _COLLECTIONENTRY
-_COLLECTIONENTRY.fields_by_name['locator'].message_type = xds_dot_core_dot_v3_dot_resource__locator__pb2._RESOURCELOCATOR
-_COLLECTIONENTRY.fields_by_name['inline_entry'].message_type = _COLLECTIONENTRY_INLINEENTRY
-_COLLECTIONENTRY.oneofs_by_name['resource_specifier'].fields.append(
-  _COLLECTIONENTRY.fields_by_name['locator'])
-_COLLECTIONENTRY.fields_by_name['locator'].containing_oneof = _COLLECTIONENTRY.oneofs_by_name['resource_specifier']
-_COLLECTIONENTRY.oneofs_by_name['resource_specifier'].fields.append(
-  _COLLECTIONENTRY.fields_by_name['inline_entry'])
-_COLLECTIONENTRY.fields_by_name['inline_entry'].containing_oneof = _COLLECTIONENTRY.oneofs_by_name['resource_specifier']
-DESCRIPTOR.message_types_by_name['CollectionEntry'] = _COLLECTIONENTRY
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
-
+_COLLECTIONENTRY = DESCRIPTOR.message_types_by_name['CollectionEntry']
+_COLLECTIONENTRY_INLINEENTRY = _COLLECTIONENTRY.nested_types_by_name['InlineEntry']
 CollectionEntry = _reflection.GeneratedProtocolMessageType('CollectionEntry', (_message.Message,), {
 
   'InlineEntry' : _reflection.GeneratedProtocolMessageType('InlineEntry', (_message.Message,), {
@@ -146,8 +39,16 @@ CollectionEntry = _reflection.GeneratedProtocolMessageType('CollectionEntry', (_
 _sym_db.RegisterMessage(CollectionEntry)
 _sym_db.RegisterMessage(CollectionEntry.InlineEntry)
 
+if _descriptor._USE_C_DESCRIPTORS == False:
 
-DESCRIPTOR._options = None
-_COLLECTIONENTRY_INLINEENTRY.fields_by_name['name']._options = None
-_COLLECTIONENTRY.oneofs_by_name['resource_specifier']._options = None
+  DESCRIPTOR._options = None
+  DESCRIPTOR._serialized_options = b'\n\026com.github.xds.core.v3B\024CollectionEntryProtoP\001Z\"github.com/cncf/xds/go/xds/core/v3\322\306\244\341\006\002\010\001'
+  _COLLECTIONENTRY_INLINEENTRY.fields_by_name['name']._options = None
+  _COLLECTIONENTRY_INLINEENTRY.fields_by_name['name']._serialized_options = b'\372B\031r\0272\025^[0-9a-zA-Z_\\-\\.~:]+$'
+  _COLLECTIONENTRY.oneofs_by_name['resource_specifier']._options = None
+  _COLLECTIONENTRY.oneofs_by_name['resource_specifier']._serialized_options = b'\370B\001'
+  _COLLECTIONENTRY._serialized_start=173
+  _COLLECTIONENTRY._serialized_end=448
+  _COLLECTIONENTRY_INLINEENTRY._serialized_start=307
+  _COLLECTIONENTRY_INLINEENTRY._serialized_end=421
 # @@protoc_insertion_point(module_scope)

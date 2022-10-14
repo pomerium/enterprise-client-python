@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from . import policy_pb2 as policy__pb2
+import pomerium.pb.policy_pb2 as policy__pb2
 
 
 class PolicyServiceStub(object):

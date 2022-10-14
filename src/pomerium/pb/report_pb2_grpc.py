@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from . import report_pb2 as report__pb2
+import pomerium.pb.report_pb2 as report__pb2
 
 
 class ReportStub(object):

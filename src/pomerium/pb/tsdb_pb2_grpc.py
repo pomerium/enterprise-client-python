@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from . import tsdb_pb2 as tsdb__pb2
+import pomerium.pb.tsdb_pb2 as tsdb__pb2
 
 
 class TimeSeriesDBStub(object):

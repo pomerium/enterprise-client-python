@@ -12,8 +12,8 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-import policy_pb2 as policy__pb2
-import routes_pb2 as routes__pb2
+import pomerium.pb.policy_pb2 as policy__pb2
+import pomerium.pb.routes_pb2 as routes__pb2
 
 
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0creport.proto\x12\x12pomerium.dashboard\x1a\x0cpolicy.proto\x1a\x0croutes.proto\">\n\x13PolicyReportRequest\x12\x11\n\troute_ids\x18\x01 \x03(\t\x12\x14\n\x0cnamespace_id\x18\x02 \x01(\t\"o\n\x14PolicyReportResponse\x12)\n\x06routes\x18\x01 \x03(\x0b\x32\x19.pomerium.dashboard.Route\x12,\n\x08policies\x18\x02 \x03(\x0b\x32\x1a.pomerium.dashboard.Policy2k\n\x06Report\x12\x61\n\x0cPolicyReport\x12\'.pomerium.dashboard.PolicyReportRequest\x1a(.pomerium.dashboard.PolicyReportResponseB-Z+github.com/pomerium/pomerium-console/pkg/pbb\x06proto3')
