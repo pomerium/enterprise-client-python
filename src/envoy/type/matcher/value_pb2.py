@@ -3,7 +3,6 @@
 # source: envoy/type/matcher/value.proto
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
-from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
@@ -18,13 +17,182 @@ from udpa.annotations import status_pb2 as udpa_dot_annotations_dot_status__pb2
 from validate import validate_pb2 as validate_dot_validate__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1e\x65nvoy/type/matcher/value.proto\x12\x12\x65nvoy.type.matcher\x1a\x1f\x65nvoy/type/matcher/number.proto\x1a\x1f\x65nvoy/type/matcher/string.proto\x1a\x1dudpa/annotations/status.proto\x1a\x17validate/validate.proto\"\xcf\x02\n\x0cValueMatcher\x12@\n\nnull_match\x18\x01 \x01(\x0b\x32*.envoy.type.matcher.ValueMatcher.NullMatchH\x00\x12\x39\n\x0c\x64ouble_match\x18\x02 \x01(\x0b\x32!.envoy.type.matcher.DoubleMatcherH\x00\x12\x39\n\x0cstring_match\x18\x03 \x01(\x0b\x32!.envoy.type.matcher.StringMatcherH\x00\x12\x14\n\nbool_match\x18\x04 \x01(\x08H\x00\x12\x17\n\rpresent_match\x18\x05 \x01(\x08H\x00\x12\x35\n\nlist_match\x18\x06 \x01(\x0b\x32\x1f.envoy.type.matcher.ListMatcherH\x00\x1a\x0b\n\tNullMatchB\x14\n\rmatch_pattern\x12\x03\xf8\x42\x01\"W\n\x0bListMatcher\x12\x32\n\x06one_of\x18\x01 \x01(\x0b\x32 .envoy.type.matcher.ValueMatcherH\x00\x42\x14\n\rmatch_pattern\x12\x03\xf8\x42\x01\x42s\n io.envoyproxy.envoy.type.matcherB\nValueProtoP\x01Z9github.com/envoyproxy/go-control-plane/envoy/type/matcher\xba\x80\xc8\xd1\x06\x02\x10\x01\x62\x06proto3')
+DESCRIPTOR = _descriptor.FileDescriptor(
+  name='envoy/type/matcher/value.proto',
+  package='envoy.type.matcher',
+  syntax='proto3',
+  serialized_options=b'\n io.envoyproxy.envoy.type.matcherB\nValueProtoP\001Z9github.com/envoyproxy/go-control-plane/envoy/type/matcher\272\200\310\321\006\002\020\001',
+  create_key=_descriptor._internal_create_key,
+  serialized_pb=b'\n\x1e\x65nvoy/type/matcher/value.proto\x12\x12\x65nvoy.type.matcher\x1a\x1f\x65nvoy/type/matcher/number.proto\x1a\x1f\x65nvoy/type/matcher/string.proto\x1a\x1dudpa/annotations/status.proto\x1a\x17validate/validate.proto\"\xcf\x02\n\x0cValueMatcher\x12@\n\nnull_match\x18\x01 \x01(\x0b\x32*.envoy.type.matcher.ValueMatcher.NullMatchH\x00\x12\x39\n\x0c\x64ouble_match\x18\x02 \x01(\x0b\x32!.envoy.type.matcher.DoubleMatcherH\x00\x12\x39\n\x0cstring_match\x18\x03 \x01(\x0b\x32!.envoy.type.matcher.StringMatcherH\x00\x12\x14\n\nbool_match\x18\x04 \x01(\x08H\x00\x12\x17\n\rpresent_match\x18\x05 \x01(\x08H\x00\x12\x35\n\nlist_match\x18\x06 \x01(\x0b\x32\x1f.envoy.type.matcher.ListMatcherH\x00\x1a\x0b\n\tNullMatchB\x14\n\rmatch_pattern\x12\x03\xf8\x42\x01\"W\n\x0bListMatcher\x12\x32\n\x06one_of\x18\x01 \x01(\x0b\x32 .envoy.type.matcher.ValueMatcherH\x00\x42\x14\n\rmatch_pattern\x12\x03\xf8\x42\x01\x42s\n io.envoyproxy.envoy.type.matcherB\nValueProtoP\x01Z9github.com/envoyproxy/go-control-plane/envoy/type/matcher\xba\x80\xc8\xd1\x06\x02\x10\x01\x62\x06proto3'
+  ,
+  dependencies=[envoy_dot_type_dot_matcher_dot_number__pb2.DESCRIPTOR,envoy_dot_type_dot_matcher_dot_string__pb2.DESCRIPTOR,udpa_dot_annotations_dot_status__pb2.DESCRIPTOR,validate_dot_validate__pb2.DESCRIPTOR,])
 
 
 
-_VALUEMATCHER = DESCRIPTOR.message_types_by_name['ValueMatcher']
-_VALUEMATCHER_NULLMATCH = _VALUEMATCHER.nested_types_by_name['NullMatch']
-_LISTMATCHER = DESCRIPTOR.message_types_by_name['ListMatcher']
+
+_VALUEMATCHER_NULLMATCH = _descriptor.Descriptor(
+  name='NullMatch',
+  full_name='envoy.type.matcher.ValueMatcher.NullMatch',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=479,
+  serialized_end=490,
+)
+
+_VALUEMATCHER = _descriptor.Descriptor(
+  name='ValueMatcher',
+  full_name='envoy.type.matcher.ValueMatcher',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='null_match', full_name='envoy.type.matcher.ValueMatcher.null_match', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='double_match', full_name='envoy.type.matcher.ValueMatcher.double_match', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='string_match', full_name='envoy.type.matcher.ValueMatcher.string_match', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='bool_match', full_name='envoy.type.matcher.ValueMatcher.bool_match', index=3,
+      number=4, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='present_match', full_name='envoy.type.matcher.ValueMatcher.present_match', index=4,
+      number=5, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='list_match', full_name='envoy.type.matcher.ValueMatcher.list_match', index=5,
+      number=6, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[_VALUEMATCHER_NULLMATCH, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='match_pattern', full_name='envoy.type.matcher.ValueMatcher.match_pattern',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[], serialized_options=b'\370B\001'),
+  ],
+  serialized_start=177,
+  serialized_end=512,
+)
+
+
+_LISTMATCHER = _descriptor.Descriptor(
+  name='ListMatcher',
+  full_name='envoy.type.matcher.ListMatcher',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='one_of', full_name='envoy.type.matcher.ListMatcher.one_of', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='match_pattern', full_name='envoy.type.matcher.ListMatcher.match_pattern',
+      index=0, containing_type=None,
+      create_key=_descriptor._internal_create_key,
+    fields=[], serialized_options=b'\370B\001'),
+  ],
+  serialized_start=514,
+  serialized_end=601,
+)
+
+_VALUEMATCHER_NULLMATCH.containing_type = _VALUEMATCHER
+_VALUEMATCHER.fields_by_name['null_match'].message_type = _VALUEMATCHER_NULLMATCH
+_VALUEMATCHER.fields_by_name['double_match'].message_type = envoy_dot_type_dot_matcher_dot_number__pb2._DOUBLEMATCHER
+_VALUEMATCHER.fields_by_name['string_match'].message_type = envoy_dot_type_dot_matcher_dot_string__pb2._STRINGMATCHER
+_VALUEMATCHER.fields_by_name['list_match'].message_type = _LISTMATCHER
+_VALUEMATCHER.oneofs_by_name['match_pattern'].fields.append(
+  _VALUEMATCHER.fields_by_name['null_match'])
+_VALUEMATCHER.fields_by_name['null_match'].containing_oneof = _VALUEMATCHER.oneofs_by_name['match_pattern']
+_VALUEMATCHER.oneofs_by_name['match_pattern'].fields.append(
+  _VALUEMATCHER.fields_by_name['double_match'])
+_VALUEMATCHER.fields_by_name['double_match'].containing_oneof = _VALUEMATCHER.oneofs_by_name['match_pattern']
+_VALUEMATCHER.oneofs_by_name['match_pattern'].fields.append(
+  _VALUEMATCHER.fields_by_name['string_match'])
+_VALUEMATCHER.fields_by_name['string_match'].containing_oneof = _VALUEMATCHER.oneofs_by_name['match_pattern']
+_VALUEMATCHER.oneofs_by_name['match_pattern'].fields.append(
+  _VALUEMATCHER.fields_by_name['bool_match'])
+_VALUEMATCHER.fields_by_name['bool_match'].containing_oneof = _VALUEMATCHER.oneofs_by_name['match_pattern']
+_VALUEMATCHER.oneofs_by_name['match_pattern'].fields.append(
+  _VALUEMATCHER.fields_by_name['present_match'])
+_VALUEMATCHER.fields_by_name['present_match'].containing_oneof = _VALUEMATCHER.oneofs_by_name['match_pattern']
+_VALUEMATCHER.oneofs_by_name['match_pattern'].fields.append(
+  _VALUEMATCHER.fields_by_name['list_match'])
+_VALUEMATCHER.fields_by_name['list_match'].containing_oneof = _VALUEMATCHER.oneofs_by_name['match_pattern']
+_LISTMATCHER.fields_by_name['one_of'].message_type = _VALUEMATCHER
+_LISTMATCHER.oneofs_by_name['match_pattern'].fields.append(
+  _LISTMATCHER.fields_by_name['one_of'])
+_LISTMATCHER.fields_by_name['one_of'].containing_oneof = _LISTMATCHER.oneofs_by_name['match_pattern']
+DESCRIPTOR.message_types_by_name['ValueMatcher'] = _VALUEMATCHER
+DESCRIPTOR.message_types_by_name['ListMatcher'] = _LISTMATCHER
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
+
 ValueMatcher = _reflection.GeneratedProtocolMessageType('ValueMatcher', (_message.Message,), {
 
   'NullMatch' : _reflection.GeneratedProtocolMessageType('NullMatch', (_message.Message,), {
@@ -47,18 +215,8 @@ ListMatcher = _reflection.GeneratedProtocolMessageType('ListMatcher', (_message.
   })
 _sym_db.RegisterMessage(ListMatcher)
 
-if _descriptor._USE_C_DESCRIPTORS == False:
 
-  DESCRIPTOR._options = None
-  DESCRIPTOR._serialized_options = b'\n io.envoyproxy.envoy.type.matcherB\nValueProtoP\001Z9github.com/envoyproxy/go-control-plane/envoy/type/matcher\272\200\310\321\006\002\020\001'
-  _VALUEMATCHER.oneofs_by_name['match_pattern']._options = None
-  _VALUEMATCHER.oneofs_by_name['match_pattern']._serialized_options = b'\370B\001'
-  _LISTMATCHER.oneofs_by_name['match_pattern']._options = None
-  _LISTMATCHER.oneofs_by_name['match_pattern']._serialized_options = b'\370B\001'
-  _VALUEMATCHER._serialized_start=177
-  _VALUEMATCHER._serialized_end=512
-  _VALUEMATCHER_NULLMATCH._serialized_start=479
-  _VALUEMATCHER_NULLMATCH._serialized_end=490
-  _LISTMATCHER._serialized_start=514
-  _LISTMATCHER._serialized_end=601
+DESCRIPTOR._options = None
+_VALUEMATCHER.oneofs_by_name['match_pattern']._options = None
+_LISTMATCHER.oneofs_by_name['match_pattern']._options = None
 # @@protoc_insertion_point(module_scope)

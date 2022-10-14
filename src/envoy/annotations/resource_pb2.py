@@ -3,7 +3,6 @@
 # source: envoy/annotations/resource.proto
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
-from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
@@ -15,13 +14,62 @@ _sym_db = _symbol_database.Default()
 from google.protobuf import descriptor_pb2 as google_dot_protobuf_dot_descriptor__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n envoy/annotations/resource.proto\x12\x11\x65nvoy.annotations\x1a google/protobuf/descriptor.proto\"\"\n\x12ResourceAnnotation\x12\x0c\n\x04type\x18\x01 \x01(\t:[\n\x08resource\x12\x1f.google.protobuf.ServiceOptions\x18\xc1\xe4\xb2~ \x01(\x0b\x32%.envoy.annotations.ResourceAnnotationB:Z8github.com/envoyproxy/go-control-plane/envoy/annotationsb\x06proto3')
+DESCRIPTOR = _descriptor.FileDescriptor(
+  name='envoy/annotations/resource.proto',
+  package='envoy.annotations',
+  syntax='proto3',
+  serialized_options=b'Z8github.com/envoyproxy/go-control-plane/envoy/annotations',
+  create_key=_descriptor._internal_create_key,
+  serialized_pb=b'\n envoy/annotations/resource.proto\x12\x11\x65nvoy.annotations\x1a google/protobuf/descriptor.proto\"\"\n\x12ResourceAnnotation\x12\x0c\n\x04type\x18\x01 \x01(\t:[\n\x08resource\x12\x1f.google.protobuf.ServiceOptions\x18\xc1\xe4\xb2~ \x01(\x0b\x32%.envoy.annotations.ResourceAnnotationB:Z8github.com/envoyproxy/go-control-plane/envoy/annotationsb\x06proto3'
+  ,
+  dependencies=[google_dot_protobuf_dot_descriptor__pb2.DESCRIPTOR,])
 
 
 RESOURCE_FIELD_NUMBER = 265073217
-resource = DESCRIPTOR.extensions_by_name['resource']
+resource = _descriptor.FieldDescriptor(
+  name='resource', full_name='envoy.annotations.resource', index=0,
+  number=265073217, type=11, cpp_type=10, label=1,
+  has_default_value=False, default_value=None,
+  message_type=None, enum_type=None, containing_type=None,
+  is_extension=True, extension_scope=None,
+  serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key)
 
-_RESOURCEANNOTATION = DESCRIPTOR.message_types_by_name['ResourceAnnotation']
+
+_RESOURCEANNOTATION = _descriptor.Descriptor(
+  name='ResourceAnnotation',
+  full_name='envoy.annotations.ResourceAnnotation',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='type', full_name='envoy.annotations.ResourceAnnotation.type', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=89,
+  serialized_end=123,
+)
+
+DESCRIPTOR.message_types_by_name['ResourceAnnotation'] = _RESOURCEANNOTATION
+DESCRIPTOR.extensions_by_name['resource'] = resource
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
+
 ResourceAnnotation = _reflection.GeneratedProtocolMessageType('ResourceAnnotation', (_message.Message,), {
   'DESCRIPTOR' : _RESOURCEANNOTATION,
   '__module__' : 'envoy.annotations.resource_pb2'
@@ -29,11 +77,8 @@ ResourceAnnotation = _reflection.GeneratedProtocolMessageType('ResourceAnnotatio
   })
 _sym_db.RegisterMessage(ResourceAnnotation)
 
-if _descriptor._USE_C_DESCRIPTORS == False:
-  google_dot_protobuf_dot_descriptor__pb2.ServiceOptions.RegisterExtension(resource)
+resource.message_type = _RESOURCEANNOTATION
+google_dot_protobuf_dot_descriptor__pb2.ServiceOptions.RegisterExtension(resource)
 
-  DESCRIPTOR._options = None
-  DESCRIPTOR._serialized_options = b'Z8github.com/envoyproxy/go-control-plane/envoy/annotations'
-  _RESOURCEANNOTATION._serialized_start=89
-  _RESOURCEANNOTATION._serialized_end=123
+DESCRIPTOR._options = None
 # @@protoc_insertion_point(module_scope)

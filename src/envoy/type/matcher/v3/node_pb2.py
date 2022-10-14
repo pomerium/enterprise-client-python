@@ -3,7 +3,6 @@
 # source: envoy/type/matcher/v3/node.proto
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
-from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
@@ -18,11 +17,62 @@ from udpa.annotations import status_pb2 as udpa_dot_annotations_dot_status__pb2
 from udpa.annotations import versioning_pb2 as udpa_dot_annotations_dot_versioning__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n envoy/type/matcher/v3/node.proto\x12\x15\x65nvoy.type.matcher.v3\x1a\"envoy/type/matcher/v3/string.proto\x1a\"envoy/type/matcher/v3/struct.proto\x1a\x1dudpa/annotations/status.proto\x1a!udpa/annotations/versioning.proto\"\xa9\x01\n\x0bNodeMatcher\x12\x35\n\x07node_id\x18\x01 \x01(\x0b\x32$.envoy.type.matcher.v3.StringMatcher\x12<\n\x0enode_metadatas\x18\x02 \x03(\x0b\x32$.envoy.type.matcher.v3.StructMatcher:%\x9a\xc5\x88\x1e \n\x1e\x65nvoy.type.matcher.NodeMatcherB\x82\x01\n#io.envoyproxy.envoy.type.matcher.v3B\tNodeProtoP\x01ZFgithub.com/envoyproxy/go-control-plane/envoy/type/matcher/v3;matcherv3\xba\x80\xc8\xd1\x06\x02\x10\x02\x62\x06proto3')
+DESCRIPTOR = _descriptor.FileDescriptor(
+  name='envoy/type/matcher/v3/node.proto',
+  package='envoy.type.matcher.v3',
+  syntax='proto3',
+  serialized_options=b'\n#io.envoyproxy.envoy.type.matcher.v3B\tNodeProtoP\001ZFgithub.com/envoyproxy/go-control-plane/envoy/type/matcher/v3;matcherv3\272\200\310\321\006\002\020\002',
+  create_key=_descriptor._internal_create_key,
+  serialized_pb=b'\n envoy/type/matcher/v3/node.proto\x12\x15\x65nvoy.type.matcher.v3\x1a\"envoy/type/matcher/v3/string.proto\x1a\"envoy/type/matcher/v3/struct.proto\x1a\x1dudpa/annotations/status.proto\x1a!udpa/annotations/versioning.proto\"\xa9\x01\n\x0bNodeMatcher\x12\x35\n\x07node_id\x18\x01 \x01(\x0b\x32$.envoy.type.matcher.v3.StringMatcher\x12<\n\x0enode_metadatas\x18\x02 \x03(\x0b\x32$.envoy.type.matcher.v3.StructMatcher:%\x9a\xc5\x88\x1e \n\x1e\x65nvoy.type.matcher.NodeMatcherB\x82\x01\n#io.envoyproxy.envoy.type.matcher.v3B\tNodeProtoP\x01ZFgithub.com/envoyproxy/go-control-plane/envoy/type/matcher/v3;matcherv3\xba\x80\xc8\xd1\x06\x02\x10\x02\x62\x06proto3'
+  ,
+  dependencies=[envoy_dot_type_dot_matcher_dot_v3_dot_string__pb2.DESCRIPTOR,envoy_dot_type_dot_matcher_dot_v3_dot_struct__pb2.DESCRIPTOR,udpa_dot_annotations_dot_status__pb2.DESCRIPTOR,udpa_dot_annotations_dot_versioning__pb2.DESCRIPTOR,])
 
 
 
-_NODEMATCHER = DESCRIPTOR.message_types_by_name['NodeMatcher']
+
+_NODEMATCHER = _descriptor.Descriptor(
+  name='NodeMatcher',
+  full_name='envoy.type.matcher.v3.NodeMatcher',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='node_id', full_name='envoy.type.matcher.v3.NodeMatcher.node_id', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='node_metadatas', full_name='envoy.type.matcher.v3.NodeMatcher.node_metadatas', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=b'\232\305\210\036 \n\036envoy.type.matcher.NodeMatcher',
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=198,
+  serialized_end=367,
+)
+
+_NODEMATCHER.fields_by_name['node_id'].message_type = envoy_dot_type_dot_matcher_dot_v3_dot_string__pb2._STRINGMATCHER
+_NODEMATCHER.fields_by_name['node_metadatas'].message_type = envoy_dot_type_dot_matcher_dot_v3_dot_struct__pb2._STRUCTMATCHER
+DESCRIPTOR.message_types_by_name['NodeMatcher'] = _NODEMATCHER
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
+
 NodeMatcher = _reflection.GeneratedProtocolMessageType('NodeMatcher', (_message.Message,), {
   'DESCRIPTOR' : _NODEMATCHER,
   '__module__' : 'envoy.type.matcher.v3.node_pb2'
@@ -30,12 +80,7 @@ NodeMatcher = _reflection.GeneratedProtocolMessageType('NodeMatcher', (_message.
   })
 _sym_db.RegisterMessage(NodeMatcher)
 
-if _descriptor._USE_C_DESCRIPTORS == False:
 
-  DESCRIPTOR._options = None
-  DESCRIPTOR._serialized_options = b'\n#io.envoyproxy.envoy.type.matcher.v3B\tNodeProtoP\001ZFgithub.com/envoyproxy/go-control-plane/envoy/type/matcher/v3;matcherv3\272\200\310\321\006\002\020\002'
-  _NODEMATCHER._options = None
-  _NODEMATCHER._serialized_options = b'\232\305\210\036 \n\036envoy.type.matcher.NodeMatcher'
-  _NODEMATCHER._serialized_start=198
-  _NODEMATCHER._serialized_end=367
+DESCRIPTOR._options = None
+_NODEMATCHER._options = None
 # @@protoc_insertion_point(module_scope)
