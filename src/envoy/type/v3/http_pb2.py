@@ -4,6 +4,7 @@
 """Generated protocol buffer code."""
 from google.protobuf.internal import enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
+from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
@@ -15,55 +16,19 @@ _sym_db = _symbol_database.Default()
 from udpa.annotations import status_pb2 as udpa_dot_annotations_dot_status__pb2
 
 
-DESCRIPTOR = _descriptor.FileDescriptor(
-  name='envoy/type/v3/http.proto',
-  package='envoy.type.v3',
-  syntax='proto3',
-  serialized_options=b'\n\033io.envoyproxy.envoy.type.v3B\tHttpProtoP\001Z;github.com/envoyproxy/go-control-plane/envoy/type/v3;typev3\272\200\310\321\006\002\020\002',
-  create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x18\x65nvoy/type/v3/http.proto\x12\renvoy.type.v3\x1a\x1dudpa/annotations/status.proto*2\n\x0f\x43odecClientType\x12\t\n\x05HTTP1\x10\x00\x12\t\n\x05HTTP2\x10\x01\x12\t\n\x05HTTP3\x10\x02\x42o\n\x1bio.envoyproxy.envoy.type.v3B\tHttpProtoP\x01Z;github.com/envoyproxy/go-control-plane/envoy/type/v3;typev3\xba\x80\xc8\xd1\x06\x02\x10\x02\x62\x06proto3'
-  ,
-  dependencies=[udpa_dot_annotations_dot_status__pb2.DESCRIPTOR,])
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x18\x65nvoy/type/v3/http.proto\x12\renvoy.type.v3\x1a\x1dudpa/annotations/status.proto*2\n\x0f\x43odecClientType\x12\t\n\x05HTTP1\x10\x00\x12\t\n\x05HTTP2\x10\x01\x12\t\n\x05HTTP3\x10\x02\x42o\n\x1bio.envoyproxy.envoy.type.v3B\tHttpProtoP\x01Z;github.com/envoyproxy/go-control-plane/envoy/type/v3;typev3\xba\x80\xc8\xd1\x06\x02\x10\x02\x62\x06proto3')
 
-_CODECCLIENTTYPE = _descriptor.EnumDescriptor(
-  name='CodecClientType',
-  full_name='envoy.type.v3.CodecClientType',
-  filename=None,
-  file=DESCRIPTOR,
-  create_key=_descriptor._internal_create_key,
-  values=[
-    _descriptor.EnumValueDescriptor(
-      name='HTTP1', index=0, number=0,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='HTTP2', index=1, number=1,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-    _descriptor.EnumValueDescriptor(
-      name='HTTP3', index=2, number=2,
-      serialized_options=None,
-      type=None,
-      create_key=_descriptor._internal_create_key),
-  ],
-  containing_type=None,
-  serialized_options=None,
-  serialized_start=74,
-  serialized_end=124,
-)
-_sym_db.RegisterEnumDescriptor(_CODECCLIENTTYPE)
-
+_CODECCLIENTTYPE = DESCRIPTOR.enum_types_by_name['CodecClientType']
 CodecClientType = enum_type_wrapper.EnumTypeWrapper(_CODECCLIENTTYPE)
 HTTP1 = 0
 HTTP2 = 1
 HTTP3 = 2
 
 
-DESCRIPTOR.enum_types_by_name['CodecClientType'] = _CODECCLIENTTYPE
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
+if _descriptor._USE_C_DESCRIPTORS == False:
 
-
-DESCRIPTOR._options = None
+  DESCRIPTOR._options = None
+  DESCRIPTOR._serialized_options = b'\n\033io.envoyproxy.envoy.type.v3B\tHttpProtoP\001Z;github.com/envoyproxy/go-control-plane/envoy/type/v3;typev3\272\200\310\321\006\002\020\002'
+  _CODECCLIENTTYPE._serialized_start=74
+  _CODECCLIENTTYPE._serialized_end=124
 # @@protoc_insertion_point(module_scope)

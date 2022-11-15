@@ -3,6 +3,7 @@
 # source: envoy/type/matcher/regex.proto
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
+from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
@@ -16,143 +17,13 @@ from udpa.annotations import status_pb2 as udpa_dot_annotations_dot_status__pb2
 from validate import validate_pb2 as validate_dot_validate__pb2
 
 
-DESCRIPTOR = _descriptor.FileDescriptor(
-  name='envoy/type/matcher/regex.proto',
-  package='envoy.type.matcher',
-  syntax='proto3',
-  serialized_options=b'\n io.envoyproxy.envoy.type.matcherB\nRegexProtoP\001Z9github.com/envoyproxy/go-control-plane/envoy/type/matcher\272\200\310\321\006\002\020\001',
-  create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x1e\x65nvoy/type/matcher/regex.proto\x12\x12\x65nvoy.type.matcher\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1dudpa/annotations/status.proto\x1a\x17validate/validate.proto\"\xcf\x01\n\x0cRegexMatcher\x12J\n\ngoogle_re2\x18\x01 \x01(\x0b\x32*.envoy.type.matcher.RegexMatcher.GoogleRE2B\x08\xfa\x42\x05\x8a\x01\x02\x10\x01H\x00\x12\x16\n\x05regex\x18\x02 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01\x1aG\n\tGoogleRE2\x12:\n\x10max_program_size\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.UInt32ValueB\x02\x18\x01\x42\x12\n\x0b\x65ngine_type\x12\x03\xf8\x42\x01\"b\n\x17RegexMatchAndSubstitute\x12\x31\n\x07pattern\x18\x01 \x01(\x0b\x32 .envoy.type.matcher.RegexMatcher\x12\x14\n\x0csubstitution\x18\x02 \x01(\tBs\n io.envoyproxy.envoy.type.matcherB\nRegexProtoP\x01Z9github.com/envoyproxy/go-control-plane/envoy/type/matcher\xba\x80\xc8\xd1\x06\x02\x10\x01\x62\x06proto3'
-  ,
-  dependencies=[google_dot_protobuf_dot_wrappers__pb2.DESCRIPTOR,udpa_dot_annotations_dot_status__pb2.DESCRIPTOR,validate_dot_validate__pb2.DESCRIPTOR,])
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1e\x65nvoy/type/matcher/regex.proto\x12\x12\x65nvoy.type.matcher\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1dudpa/annotations/status.proto\x1a\x17validate/validate.proto\"\xcf\x01\n\x0cRegexMatcher\x12J\n\ngoogle_re2\x18\x01 \x01(\x0b\x32*.envoy.type.matcher.RegexMatcher.GoogleRE2B\x08\xfa\x42\x05\x8a\x01\x02\x10\x01H\x00\x12\x16\n\x05regex\x18\x02 \x01(\tB\x07\xfa\x42\x04r\x02\x10\x01\x1aG\n\tGoogleRE2\x12:\n\x10max_program_size\x18\x01 \x01(\x0b\x32\x1c.google.protobuf.UInt32ValueB\x02\x18\x01\x42\x12\n\x0b\x65ngine_type\x12\x03\xf8\x42\x01\"b\n\x17RegexMatchAndSubstitute\x12\x31\n\x07pattern\x18\x01 \x01(\x0b\x32 .envoy.type.matcher.RegexMatcher\x12\x14\n\x0csubstitution\x18\x02 \x01(\tBs\n io.envoyproxy.envoy.type.matcherB\nRegexProtoP\x01Z9github.com/envoyproxy/go-control-plane/envoy/type/matcher\xba\x80\xc8\xd1\x06\x02\x10\x01\x62\x06proto3')
 
 
 
-
-_REGEXMATCHER_GOOGLERE2 = _descriptor.Descriptor(
-  name='GoogleRE2',
-  full_name='envoy.type.matcher.RegexMatcher.GoogleRE2',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='max_program_size', full_name='envoy.type.matcher.RegexMatcher.GoogleRE2.max_program_size', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\030\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=259,
-  serialized_end=330,
-)
-
-_REGEXMATCHER = _descriptor.Descriptor(
-  name='RegexMatcher',
-  full_name='envoy.type.matcher.RegexMatcher',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='google_re2', full_name='envoy.type.matcher.RegexMatcher.google_re2', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\005\212\001\002\020\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='regex', full_name='envoy.type.matcher.RegexMatcher.regex', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=b'\372B\004r\002\020\001', file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[_REGEXMATCHER_GOOGLERE2, ],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-    _descriptor.OneofDescriptor(
-      name='engine_type', full_name='envoy.type.matcher.RegexMatcher.engine_type',
-      index=0, containing_type=None,
-      create_key=_descriptor._internal_create_key,
-    fields=[], serialized_options=b'\370B\001'),
-  ],
-  serialized_start=143,
-  serialized_end=350,
-)
-
-
-_REGEXMATCHANDSUBSTITUTE = _descriptor.Descriptor(
-  name='RegexMatchAndSubstitute',
-  full_name='envoy.type.matcher.RegexMatchAndSubstitute',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='pattern', full_name='envoy.type.matcher.RegexMatchAndSubstitute.pattern', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='substitution', full_name='envoy.type.matcher.RegexMatchAndSubstitute.substitution', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=352,
-  serialized_end=450,
-)
-
-_REGEXMATCHER_GOOGLERE2.fields_by_name['max_program_size'].message_type = google_dot_protobuf_dot_wrappers__pb2._UINT32VALUE
-_REGEXMATCHER_GOOGLERE2.containing_type = _REGEXMATCHER
-_REGEXMATCHER.fields_by_name['google_re2'].message_type = _REGEXMATCHER_GOOGLERE2
-_REGEXMATCHER.oneofs_by_name['engine_type'].fields.append(
-  _REGEXMATCHER.fields_by_name['google_re2'])
-_REGEXMATCHER.fields_by_name['google_re2'].containing_oneof = _REGEXMATCHER.oneofs_by_name['engine_type']
-_REGEXMATCHANDSUBSTITUTE.fields_by_name['pattern'].message_type = _REGEXMATCHER
-DESCRIPTOR.message_types_by_name['RegexMatcher'] = _REGEXMATCHER
-DESCRIPTOR.message_types_by_name['RegexMatchAndSubstitute'] = _REGEXMATCHANDSUBSTITUTE
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
-
+_REGEXMATCHER = DESCRIPTOR.message_types_by_name['RegexMatcher']
+_REGEXMATCHER_GOOGLERE2 = _REGEXMATCHER.nested_types_by_name['GoogleRE2']
+_REGEXMATCHANDSUBSTITUTE = DESCRIPTOR.message_types_by_name['RegexMatchAndSubstitute']
 RegexMatcher = _reflection.GeneratedProtocolMessageType('RegexMatcher', (_message.Message,), {
 
   'GoogleRE2' : _reflection.GeneratedProtocolMessageType('GoogleRE2', (_message.Message,), {
@@ -175,10 +46,22 @@ RegexMatchAndSubstitute = _reflection.GeneratedProtocolMessageType('RegexMatchAn
   })
 _sym_db.RegisterMessage(RegexMatchAndSubstitute)
 
+if _descriptor._USE_C_DESCRIPTORS == False:
 
-DESCRIPTOR._options = None
-_REGEXMATCHER_GOOGLERE2.fields_by_name['max_program_size']._options = None
-_REGEXMATCHER.oneofs_by_name['engine_type']._options = None
-_REGEXMATCHER.fields_by_name['google_re2']._options = None
-_REGEXMATCHER.fields_by_name['regex']._options = None
+  DESCRIPTOR._options = None
+  DESCRIPTOR._serialized_options = b'\n io.envoyproxy.envoy.type.matcherB\nRegexProtoP\001Z9github.com/envoyproxy/go-control-plane/envoy/type/matcher\272\200\310\321\006\002\020\001'
+  _REGEXMATCHER_GOOGLERE2.fields_by_name['max_program_size']._options = None
+  _REGEXMATCHER_GOOGLERE2.fields_by_name['max_program_size']._serialized_options = b'\030\001'
+  _REGEXMATCHER.oneofs_by_name['engine_type']._options = None
+  _REGEXMATCHER.oneofs_by_name['engine_type']._serialized_options = b'\370B\001'
+  _REGEXMATCHER.fields_by_name['google_re2']._options = None
+  _REGEXMATCHER.fields_by_name['google_re2']._serialized_options = b'\372B\005\212\001\002\020\001'
+  _REGEXMATCHER.fields_by_name['regex']._options = None
+  _REGEXMATCHER.fields_by_name['regex']._serialized_options = b'\372B\004r\002\020\001'
+  _REGEXMATCHER._serialized_start=143
+  _REGEXMATCHER._serialized_end=350
+  _REGEXMATCHER_GOOGLERE2._serialized_start=259
+  _REGEXMATCHER_GOOGLERE2._serialized_end=330
+  _REGEXMATCHANDSUBSTITUTE._serialized_start=352
+  _REGEXMATCHANDSUBSTITUTE._serialized_end=450
 # @@protoc_insertion_point(module_scope)
