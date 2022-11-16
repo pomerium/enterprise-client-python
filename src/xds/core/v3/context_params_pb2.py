@@ -3,6 +3,7 @@
 # source: xds/core/v3/context_params.proto
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
+from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
@@ -14,93 +15,12 @@ _sym_db = _symbol_database.Default()
 from xds.annotations.v3 import status_pb2 as xds_dot_annotations_dot_v3_dot_status__pb2
 
 
-DESCRIPTOR = _descriptor.FileDescriptor(
-  name='xds/core/v3/context_params.proto',
-  package='xds.core.v3',
-  syntax='proto3',
-  serialized_options=b'\n\026com.github.xds.core.v3B\022ContextParamsProtoP\001Z\"github.com/cncf/xds/go/xds/core/v3\322\306\244\341\006\002\010\001',
-  create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n xds/core/v3/context_params.proto\x12\x0bxds.core.v3\x1a\x1fxds/annotations/v3/status.proto\"v\n\rContextParams\x12\x36\n\x06params\x18\x01 \x03(\x0b\x32&.xds.core.v3.ContextParams.ParamsEntry\x1a-\n\x0bParamsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42Z\n\x16\x63om.github.xds.core.v3B\x12\x43ontextParamsProtoP\x01Z\"github.com/cncf/xds/go/xds/core/v3\xd2\xc6\xa4\xe1\x06\x02\x08\x01\x62\x06proto3'
-  ,
-  dependencies=[xds_dot_annotations_dot_v3_dot_status__pb2.DESCRIPTOR,])
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n xds/core/v3/context_params.proto\x12\x0bxds.core.v3\x1a\x1fxds/annotations/v3/status.proto\"v\n\rContextParams\x12\x36\n\x06params\x18\x01 \x03(\x0b\x32&.xds.core.v3.ContextParams.ParamsEntry\x1a-\n\x0bParamsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42Z\n\x16\x63om.github.xds.core.v3B\x12\x43ontextParamsProtoP\x01Z\"github.com/cncf/xds/go/xds/core/v3\xd2\xc6\xa4\xe1\x06\x02\x08\x01\x62\x06proto3')
 
 
 
-
-_CONTEXTPARAMS_PARAMSENTRY = _descriptor.Descriptor(
-  name='ParamsEntry',
-  full_name='xds.core.v3.ContextParams.ParamsEntry',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='key', full_name='xds.core.v3.ContextParams.ParamsEntry.key', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='value', full_name='xds.core.v3.ContextParams.ParamsEntry.value', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=b'8\001',
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=155,
-  serialized_end=200,
-)
-
-_CONTEXTPARAMS = _descriptor.Descriptor(
-  name='ContextParams',
-  full_name='xds.core.v3.ContextParams',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='params', full_name='xds.core.v3.ContextParams.params', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[_CONTEXTPARAMS_PARAMSENTRY, ],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=82,
-  serialized_end=200,
-)
-
-_CONTEXTPARAMS_PARAMSENTRY.containing_type = _CONTEXTPARAMS
-_CONTEXTPARAMS.fields_by_name['params'].message_type = _CONTEXTPARAMS_PARAMSENTRY
-DESCRIPTOR.message_types_by_name['ContextParams'] = _CONTEXTPARAMS
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
-
+_CONTEXTPARAMS = DESCRIPTOR.message_types_by_name['ContextParams']
+_CONTEXTPARAMS_PARAMSENTRY = _CONTEXTPARAMS.nested_types_by_name['ParamsEntry']
 ContextParams = _reflection.GeneratedProtocolMessageType('ContextParams', (_message.Message,), {
 
   'ParamsEntry' : _reflection.GeneratedProtocolMessageType('ParamsEntry', (_message.Message,), {
@@ -116,7 +36,14 @@ ContextParams = _reflection.GeneratedProtocolMessageType('ContextParams', (_mess
 _sym_db.RegisterMessage(ContextParams)
 _sym_db.RegisterMessage(ContextParams.ParamsEntry)
 
+if _descriptor._USE_C_DESCRIPTORS == False:
 
-DESCRIPTOR._options = None
-_CONTEXTPARAMS_PARAMSENTRY._options = None
+  DESCRIPTOR._options = None
+  DESCRIPTOR._serialized_options = b'\n\026com.github.xds.core.v3B\022ContextParamsProtoP\001Z\"github.com/cncf/xds/go/xds/core/v3\322\306\244\341\006\002\010\001'
+  _CONTEXTPARAMS_PARAMSENTRY._options = None
+  _CONTEXTPARAMS_PARAMSENTRY._serialized_options = b'8\001'
+  _CONTEXTPARAMS._serialized_start=82
+  _CONTEXTPARAMS._serialized_end=200
+  _CONTEXTPARAMS_PARAMSENTRY._serialized_start=155
+  _CONTEXTPARAMS_PARAMSENTRY._serialized_end=200
 # @@protoc_insertion_point(module_scope)
