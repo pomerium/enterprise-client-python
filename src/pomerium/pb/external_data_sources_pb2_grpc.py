@@ -30,6 +30,16 @@ class ExternalDataSourceServiceStub(object):
                 request_serializer=external__data__sources__pb2.ListExternalDataSourcesRequest.SerializeToString,
                 response_deserializer=external__data__sources__pb2.ListExternalDataSourcesResponse.FromString,
                 )
+        self.ListExternalDataSourceRecordTypes = channel.unary_unary(
+                '/pomerium.dashboard.ExternalDataSourceService/ListExternalDataSourceRecordTypes',
+                request_serializer=external__data__sources__pb2.ListExternalDataSourceRecordTypesRequest.SerializeToString,
+                response_deserializer=external__data__sources__pb2.ListExternalDataSourceRecordTypesResponse.FromString,
+                )
+        self.ListExternalDataSourceRecordFields = channel.unary_unary(
+                '/pomerium.dashboard.ExternalDataSourceService/ListExternalDataSourceRecordFields',
+                request_serializer=external__data__sources__pb2.ListExternalDataSourceRecordFieldsRequest.SerializeToString,
+                response_deserializer=external__data__sources__pb2.ListExternalDataSourceRecordFieldsResponse.FromString,
+                )
         self.SetExternalDataSource = channel.unary_unary(
                 '/pomerium.dashboard.ExternalDataSourceService/SetExternalDataSource',
                 request_serializer=external__data__sources__pb2.SetExternalDataSourceRequest.SerializeToString,
@@ -58,6 +68,18 @@ class ExternalDataSourceServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def ListExternalDataSourceRecordTypes(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def ListExternalDataSourceRecordFields(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def SetExternalDataSource(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -81,6 +103,16 @@ def add_ExternalDataSourceServiceServicer_to_server(servicer, server):
                     servicer.ListExternalDataSources,
                     request_deserializer=external__data__sources__pb2.ListExternalDataSourcesRequest.FromString,
                     response_serializer=external__data__sources__pb2.ListExternalDataSourcesResponse.SerializeToString,
+            ),
+            'ListExternalDataSourceRecordTypes': grpc.unary_unary_rpc_method_handler(
+                    servicer.ListExternalDataSourceRecordTypes,
+                    request_deserializer=external__data__sources__pb2.ListExternalDataSourceRecordTypesRequest.FromString,
+                    response_serializer=external__data__sources__pb2.ListExternalDataSourceRecordTypesResponse.SerializeToString,
+            ),
+            'ListExternalDataSourceRecordFields': grpc.unary_unary_rpc_method_handler(
+                    servicer.ListExternalDataSourceRecordFields,
+                    request_deserializer=external__data__sources__pb2.ListExternalDataSourceRecordFieldsRequest.FromString,
+                    response_serializer=external__data__sources__pb2.ListExternalDataSourceRecordFieldsResponse.SerializeToString,
             ),
             'SetExternalDataSource': grpc.unary_unary_rpc_method_handler(
                     servicer.SetExternalDataSource,
@@ -145,6 +177,40 @@ class ExternalDataSourceService(object):
         return grpc.experimental.unary_unary(request, target, '/pomerium.dashboard.ExternalDataSourceService/ListExternalDataSources',
             external__data__sources__pb2.ListExternalDataSourcesRequest.SerializeToString,
             external__data__sources__pb2.ListExternalDataSourcesResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def ListExternalDataSourceRecordTypes(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/pomerium.dashboard.ExternalDataSourceService/ListExternalDataSourceRecordTypes',
+            external__data__sources__pb2.ListExternalDataSourceRecordTypesRequest.SerializeToString,
+            external__data__sources__pb2.ListExternalDataSourceRecordTypesResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def ListExternalDataSourceRecordFields(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/pomerium.dashboard.ExternalDataSourceService/ListExternalDataSourceRecordFields',
+            external__data__sources__pb2.ListExternalDataSourceRecordFieldsRequest.SerializeToString,
+            external__data__sources__pb2.ListExternalDataSourceRecordFieldsResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

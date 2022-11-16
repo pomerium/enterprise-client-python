@@ -17,7 +17,7 @@ from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1b\x65xternal_data_sources.proto\x12\x12pomerium.dashboard\x1a\x1egoogle/protobuf/duration.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xee\x04\n\x12\x45xternalDataSource\x12\n\n\x02id\x18\x01 \x01(\t\x12.\n\ncreated_at\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bmodified_at\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12.\n\ndeleted_at\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x0b\n\x03url\x18\x05 \x01(\t\x12\x13\n\x0brecord_type\x18\x06 \x01(\t\x12\x13\n\x0b\x66oreign_key\x18\x07 \x01(\t\x12\x44\n\x07headers\x18\x08 \x03(\x0b\x32\x33.pomerium.dashboard.ExternalDataSource.HeadersEntry\x12\x1f\n\x12\x61llow_insecure_tls\x18\t \x01(\x08H\x00\x88\x01\x01\x12\x1e\n\x11\x63lient_tls_key_id\x18\n \x01(\tH\x01\x88\x01\x01\x12\x39\n\x11polling_min_delay\x18\x0b \x01(\x0b\x32\x19.google.protobuf.DurationH\x02\x88\x01\x01\x12\x39\n\x11polling_max_delay\x18\x0c \x01(\x0b\x32\x19.google.protobuf.DurationH\x03\x88\x01\x01\x1a.\n\x0cHeadersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\x15\n\x13_allow_insecure_tlsB\x14\n\x12_client_tls_key_idB\x14\n\x12_polling_min_delayB\x14\n\x12_polling_max_delay\"-\n\x1f\x44\x65leteExternalDataSourceRequest\x12\n\n\x02id\x18\x01 \x01(\t\"*\n\x1cGetExternalDataSourceRequest\x12\n\n\x02id\x18\x01 \x01(\t\"e\n\x1dGetExternalDataSourceResponse\x12\x44\n\x14\x65xternal_data_source\x18\x01 \x01(\x0b\x32&.pomerium.dashboard.ExternalDataSource\" \n\x1eListExternalDataSourcesRequest\"h\n\x1fListExternalDataSourcesResponse\x12\x45\n\x15\x65xternal_data_sources\x18\x01 \x03(\x0b\x32&.pomerium.dashboard.ExternalDataSource\"d\n\x1cSetExternalDataSourceRequest\x12\x44\n\x14\x65xternal_data_source\x18\x01 \x01(\x0b\x32&.pomerium.dashboard.ExternalDataSource\"e\n\x1dSetExternalDataSourceResponse\x12\x44\n\x14\x65xternal_data_source\x18\x01 \x01(\x0b\x32&.pomerium.dashboard.ExternalDataSource2\x85\x04\n\x19\x45xternalDataSourceService\x12g\n\x18\x44\x65leteExternalDataSource\x12\x33.pomerium.dashboard.DeleteExternalDataSourceRequest\x1a\x16.google.protobuf.Empty\x12|\n\x15GetExternalDataSource\x12\x30.pomerium.dashboard.GetExternalDataSourceRequest\x1a\x31.pomerium.dashboard.GetExternalDataSourceResponse\x12\x82\x01\n\x17ListExternalDataSources\x12\x32.pomerium.dashboard.ListExternalDataSourcesRequest\x1a\x33.pomerium.dashboard.ListExternalDataSourcesResponse\x12|\n\x15SetExternalDataSource\x12\x30.pomerium.dashboard.SetExternalDataSourceRequest\x1a\x31.pomerium.dashboard.SetExternalDataSourceResponseB-Z+github.com/pomerium/pomerium-console/pkg/pbb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1b\x65xternal_data_sources.proto\x12\x12pomerium.dashboard\x1a\x1egoogle/protobuf/duration.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xee\x04\n\x12\x45xternalDataSource\x12\n\n\x02id\x18\x01 \x01(\t\x12.\n\ncreated_at\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bmodified_at\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12.\n\ndeleted_at\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x0b\n\x03url\x18\x05 \x01(\t\x12\x13\n\x0brecord_type\x18\x06 \x01(\t\x12\x13\n\x0b\x66oreign_key\x18\x07 \x01(\t\x12\x44\n\x07headers\x18\x08 \x03(\x0b\x32\x33.pomerium.dashboard.ExternalDataSource.HeadersEntry\x12\x1f\n\x12\x61llow_insecure_tls\x18\t \x01(\x08H\x00\x88\x01\x01\x12\x1e\n\x11\x63lient_tls_key_id\x18\n \x01(\tH\x01\x88\x01\x01\x12\x39\n\x11polling_min_delay\x18\x0b \x01(\x0b\x32\x19.google.protobuf.DurationH\x02\x88\x01\x01\x12\x39\n\x11polling_max_delay\x18\x0c \x01(\x0b\x32\x19.google.protobuf.DurationH\x03\x88\x01\x01\x1a.\n\x0cHeadersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\x15\n\x13_allow_insecure_tlsB\x14\n\x12_client_tls_key_idB\x14\n\x12_polling_min_delayB\x14\n\x12_polling_max_delay\"-\n\x1f\x44\x65leteExternalDataSourceRequest\x12\n\n\x02id\x18\x01 \x01(\t\"*\n\x1cGetExternalDataSourceRequest\x12\n\n\x02id\x18\x01 \x01(\t\"e\n\x1dGetExternalDataSourceResponse\x12\x44\n\x14\x65xternal_data_source\x18\x01 \x01(\x0b\x32&.pomerium.dashboard.ExternalDataSource\" \n\x1eListExternalDataSourcesRequest\"h\n\x1fListExternalDataSourcesResponse\x12\x45\n\x15\x65xternal_data_sources\x18\x01 \x03(\x0b\x32&.pomerium.dashboard.ExternalDataSource\"*\n(ListExternalDataSourceRecordTypesRequest\"A\n)ListExternalDataSourceRecordTypesResponse\x12\x14\n\x0crecord_types\x18\x01 \x03(\t\"@\n)ListExternalDataSourceRecordFieldsRequest\x12\x13\n\x0brecord_type\x18\x01 \x01(\t\"C\n*ListExternalDataSourceRecordFieldsResponse\x12\x15\n\rrecord_fields\x18\x01 \x03(\t\"d\n\x1cSetExternalDataSourceRequest\x12\x44\n\x14\x65xternal_data_source\x18\x01 \x01(\x0b\x32&.pomerium.dashboard.ExternalDataSource\"e\n\x1dSetExternalDataSourceResponse\x12\x44\n\x14\x65xternal_data_source\x18\x01 \x01(\x0b\x32&.pomerium.dashboard.ExternalDataSource2\xce\x06\n\x19\x45xternalDataSourceService\x12g\n\x18\x44\x65leteExternalDataSource\x12\x33.pomerium.dashboard.DeleteExternalDataSourceRequest\x1a\x16.google.protobuf.Empty\x12|\n\x15GetExternalDataSource\x12\x30.pomerium.dashboard.GetExternalDataSourceRequest\x1a\x31.pomerium.dashboard.GetExternalDataSourceResponse\x12\x82\x01\n\x17ListExternalDataSources\x12\x32.pomerium.dashboard.ListExternalDataSourcesRequest\x1a\x33.pomerium.dashboard.ListExternalDataSourcesResponse\x12\xa0\x01\n!ListExternalDataSourceRecordTypes\x12<.pomerium.dashboard.ListExternalDataSourceRecordTypesRequest\x1a=.pomerium.dashboard.ListExternalDataSourceRecordTypesResponse\x12\xa3\x01\n\"ListExternalDataSourceRecordFields\x12=.pomerium.dashboard.ListExternalDataSourceRecordFieldsRequest\x1a>.pomerium.dashboard.ListExternalDataSourceRecordFieldsResponse\x12|\n\x15SetExternalDataSource\x12\x30.pomerium.dashboard.SetExternalDataSourceRequest\x1a\x31.pomerium.dashboard.SetExternalDataSourceResponseB-Z+github.com/pomerium/pomerium-console/pkg/pbb\x06proto3')
 
 
 
@@ -28,6 +28,10 @@ _GETEXTERNALDATASOURCEREQUEST = DESCRIPTOR.message_types_by_name['GetExternalDat
 _GETEXTERNALDATASOURCERESPONSE = DESCRIPTOR.message_types_by_name['GetExternalDataSourceResponse']
 _LISTEXTERNALDATASOURCESREQUEST = DESCRIPTOR.message_types_by_name['ListExternalDataSourcesRequest']
 _LISTEXTERNALDATASOURCESRESPONSE = DESCRIPTOR.message_types_by_name['ListExternalDataSourcesResponse']
+_LISTEXTERNALDATASOURCERECORDTYPESREQUEST = DESCRIPTOR.message_types_by_name['ListExternalDataSourceRecordTypesRequest']
+_LISTEXTERNALDATASOURCERECORDTYPESRESPONSE = DESCRIPTOR.message_types_by_name['ListExternalDataSourceRecordTypesResponse']
+_LISTEXTERNALDATASOURCERECORDFIELDSREQUEST = DESCRIPTOR.message_types_by_name['ListExternalDataSourceRecordFieldsRequest']
+_LISTEXTERNALDATASOURCERECORDFIELDSRESPONSE = DESCRIPTOR.message_types_by_name['ListExternalDataSourceRecordFieldsResponse']
 _SETEXTERNALDATASOURCEREQUEST = DESCRIPTOR.message_types_by_name['SetExternalDataSourceRequest']
 _SETEXTERNALDATASOURCERESPONSE = DESCRIPTOR.message_types_by_name['SetExternalDataSourceResponse']
 ExternalDataSource = _reflection.GeneratedProtocolMessageType('ExternalDataSource', (_message.Message,), {
@@ -80,6 +84,34 @@ ListExternalDataSourcesResponse = _reflection.GeneratedProtocolMessageType('List
   })
 _sym_db.RegisterMessage(ListExternalDataSourcesResponse)
 
+ListExternalDataSourceRecordTypesRequest = _reflection.GeneratedProtocolMessageType('ListExternalDataSourceRecordTypesRequest', (_message.Message,), {
+  'DESCRIPTOR' : _LISTEXTERNALDATASOURCERECORDTYPESREQUEST,
+  '__module__' : 'external_data_sources_pb2'
+  # @@protoc_insertion_point(class_scope:pomerium.dashboard.ListExternalDataSourceRecordTypesRequest)
+  })
+_sym_db.RegisterMessage(ListExternalDataSourceRecordTypesRequest)
+
+ListExternalDataSourceRecordTypesResponse = _reflection.GeneratedProtocolMessageType('ListExternalDataSourceRecordTypesResponse', (_message.Message,), {
+  'DESCRIPTOR' : _LISTEXTERNALDATASOURCERECORDTYPESRESPONSE,
+  '__module__' : 'external_data_sources_pb2'
+  # @@protoc_insertion_point(class_scope:pomerium.dashboard.ListExternalDataSourceRecordTypesResponse)
+  })
+_sym_db.RegisterMessage(ListExternalDataSourceRecordTypesResponse)
+
+ListExternalDataSourceRecordFieldsRequest = _reflection.GeneratedProtocolMessageType('ListExternalDataSourceRecordFieldsRequest', (_message.Message,), {
+  'DESCRIPTOR' : _LISTEXTERNALDATASOURCERECORDFIELDSREQUEST,
+  '__module__' : 'external_data_sources_pb2'
+  # @@protoc_insertion_point(class_scope:pomerium.dashboard.ListExternalDataSourceRecordFieldsRequest)
+  })
+_sym_db.RegisterMessage(ListExternalDataSourceRecordFieldsRequest)
+
+ListExternalDataSourceRecordFieldsResponse = _reflection.GeneratedProtocolMessageType('ListExternalDataSourceRecordFieldsResponse', (_message.Message,), {
+  'DESCRIPTOR' : _LISTEXTERNALDATASOURCERECORDFIELDSRESPONSE,
+  '__module__' : 'external_data_sources_pb2'
+  # @@protoc_insertion_point(class_scope:pomerium.dashboard.ListExternalDataSourceRecordFieldsResponse)
+  })
+_sym_db.RegisterMessage(ListExternalDataSourceRecordFieldsResponse)
+
 SetExternalDataSourceRequest = _reflection.GeneratedProtocolMessageType('SetExternalDataSourceRequest', (_message.Message,), {
   'DESCRIPTOR' : _SETEXTERNALDATASOURCEREQUEST,
   '__module__' : 'external_data_sources_pb2'
@@ -115,10 +147,18 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _LISTEXTERNALDATASOURCESREQUEST._serialized_end=996
   _LISTEXTERNALDATASOURCESRESPONSE._serialized_start=998
   _LISTEXTERNALDATASOURCESRESPONSE._serialized_end=1102
-  _SETEXTERNALDATASOURCEREQUEST._serialized_start=1104
-  _SETEXTERNALDATASOURCEREQUEST._serialized_end=1204
-  _SETEXTERNALDATASOURCERESPONSE._serialized_start=1206
-  _SETEXTERNALDATASOURCERESPONSE._serialized_end=1307
-  _EXTERNALDATASOURCESERVICE._serialized_start=1310
-  _EXTERNALDATASOURCESERVICE._serialized_end=1827
+  _LISTEXTERNALDATASOURCERECORDTYPESREQUEST._serialized_start=1104
+  _LISTEXTERNALDATASOURCERECORDTYPESREQUEST._serialized_end=1146
+  _LISTEXTERNALDATASOURCERECORDTYPESRESPONSE._serialized_start=1148
+  _LISTEXTERNALDATASOURCERECORDTYPESRESPONSE._serialized_end=1213
+  _LISTEXTERNALDATASOURCERECORDFIELDSREQUEST._serialized_start=1215
+  _LISTEXTERNALDATASOURCERECORDFIELDSREQUEST._serialized_end=1279
+  _LISTEXTERNALDATASOURCERECORDFIELDSRESPONSE._serialized_start=1281
+  _LISTEXTERNALDATASOURCERECORDFIELDSRESPONSE._serialized_end=1348
+  _SETEXTERNALDATASOURCEREQUEST._serialized_start=1350
+  _SETEXTERNALDATASOURCEREQUEST._serialized_end=1450
+  _SETEXTERNALDATASOURCERESPONSE._serialized_start=1452
+  _SETEXTERNALDATASOURCERESPONSE._serialized_end=1553
+  _EXTERNALDATASOURCESERVICE._serialized_start=1556
+  _EXTERNALDATASOURCESERVICE._serialized_end=2402
 # @@protoc_insertion_point(module_scope)

@@ -68,8 +68,8 @@ class TimeSeriesDBStub(object):
                 request_serializer=tsdb__pb2.GetStatusRequest.SerializeToString,
                 response_deserializer=tsdb__pb2.GetStatusResponse.FromString,
                 )
-        self.GetLastError = channel.unary_unary(
-                '/pomerium.dashboard.TimeSeriesDB/GetLastError',
+        self.GetLastMetricError = channel.unary_unary(
+                '/pomerium.dashboard.TimeSeriesDB/GetLastMetricError',
                 request_serializer=tsdb__pb2.LastErrorRequest.SerializeToString,
                 response_deserializer=tsdb__pb2.LastErrorResponse.FromString,
                 )
@@ -157,7 +157,7 @@ class TimeSeriesDBServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def GetLastError(self, request, context):
+    def GetLastMetricError(self, request, context):
         """returns last known error for a metric, if available
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -224,8 +224,8 @@ def add_TimeSeriesDBServicer_to_server(servicer, server):
                     request_deserializer=tsdb__pb2.GetStatusRequest.FromString,
                     response_serializer=tsdb__pb2.GetStatusResponse.SerializeToString,
             ),
-            'GetLastError': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetLastError,
+            'GetLastMetricError': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetLastMetricError,
                     request_deserializer=tsdb__pb2.LastErrorRequest.FromString,
                     response_serializer=tsdb__pb2.LastErrorResponse.SerializeToString,
             ),
@@ -419,7 +419,7 @@ class TimeSeriesDB(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def GetLastError(request,
+    def GetLastMetricError(request,
             target,
             options=(),
             channel_credentials=None,
@@ -429,7 +429,7 @@ class TimeSeriesDB(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/pomerium.dashboard.TimeSeriesDB/GetLastError',
+        return grpc.experimental.unary_unary(request, target, '/pomerium.dashboard.TimeSeriesDB/GetLastMetricError',
             tsdb__pb2.LastErrorRequest.SerializeToString,
             tsdb__pb2.LastErrorResponse.FromString,
             options, channel_credentials,
