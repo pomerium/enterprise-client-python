@@ -6,8 +6,8 @@ _root_dir="$(dirname "$_scripts_dir")"
 _deps_dir="$_root_dir/deps"
 
 readonly _git_deps=(
-    "pomerium/pomerium|v0.19.1"
-    "pomerium/pomerium-console|v0.19.0"
+    "pomerium/pomerium|v0.20.0"
+    "pomerium/pomerium-console|v0.20.0"
     'envoyproxy/protoc-gen-validate|v0.6.1'
     'envoyproxy/data-plane-api|dc2731c0bc027a08bfbcaf29bd9fb59dcc683b8b'
     'cncf/xds|1e77728a1eaa11d6c931ec2ccd6e95f516a7ef94'

@@ -16,7 +16,7 @@ from google.protobuf import struct_pb2 as google_dot_protobuf_dot_struct__pb2
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0cpolicy.proto\x12\x12pomerium.dashboard\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xb6\x05\n\x06Policy\x12\n\n\x02id\x18\x01 \x01(\t\x12\x14\n\x0cnamespace_id\x18\n \x01(\t\x12.\n\ncreated_at\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bmodified_at\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12.\n\ndeleted_at\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x0c\n\x04name\x18\x05 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x10 \x01(\t\x12\x15\n\rallowed_users\x18\x06 \x03(\t\x12\x16\n\x0e\x61llowed_groups\x18\x07 \x03(\t\x12\x17\n\x0f\x61llowed_domains\x18\x08 \x03(\t\x12L\n\x12\x61llowed_idp_claims\x18\x0e \x03(\x0b\x32\x30.pomerium.dashboard.Policy.AllowedIdpClaimsEntry\x12\x0c\n\x04rego\x18\t \x03(\t\x12\x0b\n\x03ppl\x18\x0f \x01(\t\x12\x10\n\x08\x65nforced\x18\r \x01(\x08\x12\x13\n\x0b\x65xplanation\x18\x11 \x01(\t\x12\x13\n\x0bremediation\x18\x12 \x01(\t\x12\x15\n\roriginator_id\x18\x13 \x01(\t\x12\x36\n\x06routes\x18\x0b \x03(\x0b\x32&.pomerium.dashboard.Policy.RoutesEntry\x12\x16\n\x0enamespace_name\x18\x0c \x01(\t\x1aS\n\x15\x41llowedIdpClaimsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12)\n\x05value\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.ListValue:\x02\x38\x01\x1a-\n\x0bRoutesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"!\n\x13\x44\x65letePolicyRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\x16\n\x14\x44\x65letePolicyResponse\"\x1e\n\x10GetPolicyRequest\x12\n\n\x02id\x18\x01 \x01(\t\"?\n\x11GetPolicyResponse\x12*\n\x06policy\x18\x01 \x01(\x0b\x32\x1a.pomerium.dashboard.Policy\"\xa8\x01\n\x13ListPoliciesRequest\x12\x11\n\tnamespace\x18\x01 \x01(\t\x12\x12\n\x05query\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x13\n\x06offset\x18\x03 \x01(\x03H\x01\x88\x01\x01\x12\x12\n\x05limit\x18\x04 \x01(\x03H\x02\x88\x01\x01\x12\x15\n\x08order_by\x18\x05 \x01(\tH\x03\x88\x01\x01\x42\x08\n\x06_queryB\t\n\x07_offsetB\x08\n\x06_limitB\x0b\n\t_order_by\"Y\n\x14ListPoliciesResponse\x12,\n\x08policies\x18\x01 \x03(\x0b\x32\x1a.pomerium.dashboard.Policy\x12\x13\n\x0btotal_count\x18\x02 \x01(\x03\">\n\x10SetPolicyRequest\x12*\n\x06policy\x18\x01 \x01(\x0b\x32\x1a.pomerium.dashboard.Policy\"?\n\x11SetPolicyResponse\x12*\n\x06policy\x18\x01 \x01(\x0b\x32\x1a.pomerium.dashboard.Policy2\x89\x03\n\rPolicyService\x12\x61\n\x0c\x44\x65letePolicy\x12\'.pomerium.dashboard.DeletePolicyRequest\x1a(.pomerium.dashboard.DeletePolicyResponse\x12X\n\tGetPolicy\x12$.pomerium.dashboard.GetPolicyRequest\x1a%.pomerium.dashboard.GetPolicyResponse\x12\x61\n\x0cListPolicies\x12\'.pomerium.dashboard.ListPoliciesRequest\x1a(.pomerium.dashboard.ListPoliciesResponse\x12X\n\tSetPolicy\x12$.pomerium.dashboard.SetPolicyRequest\x1a%.pomerium.dashboard.SetPolicyResponseB-Z+github.com/pomerium/pomerium-console/pkg/pbb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0cpolicy.proto\x12\x12pomerium.dashboard\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x9e\x05\n\x06Policy\x12\n\n\x02id\x18\x01 \x01(\t\x12\x14\n\x0cnamespace_id\x18\n \x01(\t\x12.\n\ncreated_at\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bmodified_at\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12.\n\ndeleted_at\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x0c\n\x04name\x18\x05 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x10 \x01(\t\x12\x15\n\rallowed_users\x18\x06 \x03(\t\x12\x17\n\x0f\x61llowed_domains\x18\x08 \x03(\t\x12L\n\x12\x61llowed_idp_claims\x18\x0e \x03(\x0b\x32\x30.pomerium.dashboard.Policy.AllowedIdpClaimsEntry\x12\x0c\n\x04rego\x18\t \x03(\t\x12\x0b\n\x03ppl\x18\x0f \x01(\t\x12\x10\n\x08\x65nforced\x18\r \x01(\x08\x12\x13\n\x0b\x65xplanation\x18\x11 \x01(\t\x12\x13\n\x0bremediation\x18\x12 \x01(\t\x12\x15\n\roriginator_id\x18\x13 \x01(\t\x12\x36\n\x06routes\x18\x0b \x03(\x0b\x32&.pomerium.dashboard.Policy.RoutesEntry\x12\x16\n\x0enamespace_name\x18\x0c \x01(\t\x1aS\n\x15\x41llowedIdpClaimsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12)\n\x05value\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.ListValue:\x02\x38\x01\x1a-\n\x0bRoutesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"!\n\x13\x44\x65letePolicyRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\x16\n\x14\x44\x65letePolicyResponse\"\x1e\n\x10GetPolicyRequest\x12\n\n\x02id\x18\x01 \x01(\t\"?\n\x11GetPolicyResponse\x12*\n\x06policy\x18\x01 \x01(\x0b\x32\x1a.pomerium.dashboard.Policy\"\xa8\x01\n\x13ListPoliciesRequest\x12\x11\n\tnamespace\x18\x01 \x01(\t\x12\x12\n\x05query\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x13\n\x06offset\x18\x03 \x01(\x03H\x01\x88\x01\x01\x12\x12\n\x05limit\x18\x04 \x01(\x03H\x02\x88\x01\x01\x12\x15\n\x08order_by\x18\x05 \x01(\tH\x03\x88\x01\x01\x42\x08\n\x06_queryB\t\n\x07_offsetB\x08\n\x06_limitB\x0b\n\t_order_by\"Y\n\x14ListPoliciesResponse\x12,\n\x08policies\x18\x01 \x03(\x0b\x32\x1a.pomerium.dashboard.Policy\x12\x13\n\x0btotal_count\x18\x02 \x01(\x03\">\n\x10SetPolicyRequest\x12*\n\x06policy\x18\x01 \x01(\x0b\x32\x1a.pomerium.dashboard.Policy\"?\n\x11SetPolicyResponse\x12*\n\x06policy\x18\x01 \x01(\x0b\x32\x1a.pomerium.dashboard.Policy2\x89\x03\n\rPolicyService\x12\x61\n\x0c\x44\x65letePolicy\x12\'.pomerium.dashboard.DeletePolicyRequest\x1a(.pomerium.dashboard.DeletePolicyResponse\x12X\n\tGetPolicy\x12$.pomerium.dashboard.GetPolicyRequest\x1a%.pomerium.dashboard.GetPolicyResponse\x12\x61\n\x0cListPolicies\x12\'.pomerium.dashboard.ListPoliciesRequest\x1a(.pomerium.dashboard.ListPoliciesResponse\x12X\n\tSetPolicy\x12$.pomerium.dashboard.SetPolicyRequest\x1a%.pomerium.dashboard.SetPolicyResponseB-Z+github.com/pomerium/pomerium-console/pkg/pbb\x06proto3')
 
 
 
@@ -120,27 +120,27 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _POLICY_ROUTESENTRY._options = None
   _POLICY_ROUTESENTRY._serialized_options = b'8\001'
   _POLICY._serialized_start=100
-  _POLICY._serialized_end=794
-  _POLICY_ALLOWEDIDPCLAIMSENTRY._serialized_start=664
-  _POLICY_ALLOWEDIDPCLAIMSENTRY._serialized_end=747
-  _POLICY_ROUTESENTRY._serialized_start=749
-  _POLICY_ROUTESENTRY._serialized_end=794
-  _DELETEPOLICYREQUEST._serialized_start=796
-  _DELETEPOLICYREQUEST._serialized_end=829
-  _DELETEPOLICYRESPONSE._serialized_start=831
-  _DELETEPOLICYRESPONSE._serialized_end=853
-  _GETPOLICYREQUEST._serialized_start=855
-  _GETPOLICYREQUEST._serialized_end=885
-  _GETPOLICYRESPONSE._serialized_start=887
-  _GETPOLICYRESPONSE._serialized_end=950
-  _LISTPOLICIESREQUEST._serialized_start=953
-  _LISTPOLICIESREQUEST._serialized_end=1121
-  _LISTPOLICIESRESPONSE._serialized_start=1123
-  _LISTPOLICIESRESPONSE._serialized_end=1212
-  _SETPOLICYREQUEST._serialized_start=1214
-  _SETPOLICYREQUEST._serialized_end=1276
-  _SETPOLICYRESPONSE._serialized_start=1278
-  _SETPOLICYRESPONSE._serialized_end=1341
-  _POLICYSERVICE._serialized_start=1344
-  _POLICYSERVICE._serialized_end=1737
+  _POLICY._serialized_end=770
+  _POLICY_ALLOWEDIDPCLAIMSENTRY._serialized_start=640
+  _POLICY_ALLOWEDIDPCLAIMSENTRY._serialized_end=723
+  _POLICY_ROUTESENTRY._serialized_start=725
+  _POLICY_ROUTESENTRY._serialized_end=770
+  _DELETEPOLICYREQUEST._serialized_start=772
+  _DELETEPOLICYREQUEST._serialized_end=805
+  _DELETEPOLICYRESPONSE._serialized_start=807
+  _DELETEPOLICYRESPONSE._serialized_end=829
+  _GETPOLICYREQUEST._serialized_start=831
+  _GETPOLICYREQUEST._serialized_end=861
+  _GETPOLICYRESPONSE._serialized_start=863
+  _GETPOLICYRESPONSE._serialized_end=926
+  _LISTPOLICIESREQUEST._serialized_start=929
+  _LISTPOLICIESREQUEST._serialized_end=1097
+  _LISTPOLICIESRESPONSE._serialized_start=1099
+  _LISTPOLICIESRESPONSE._serialized_end=1188
+  _SETPOLICYREQUEST._serialized_start=1190
+  _SETPOLICYREQUEST._serialized_end=1252
+  _SETPOLICYRESPONSE._serialized_start=1254
+  _SETPOLICYRESPONSE._serialized_end=1317
+  _POLICYSERVICE._serialized_start=1320
+  _POLICYSERVICE._serialized_end=1713
 # @@protoc_insertion_point(module_scope)
