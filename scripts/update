@@ -6,15 +6,15 @@ _root_dir="$(dirname "$_scripts_dir")"
 _deps_dir="$_root_dir/deps"
 
 readonly _git_deps=(
-    "pomerium/pomerium|v0.20.0"
-    "pomerium/pomerium-console|v0.20.0"
-    'envoyproxy/protoc-gen-validate|v0.6.1'
-    'envoyproxy/data-plane-api|dc2731c0bc027a08bfbcaf29bd9fb59dcc683b8b'
-    'cncf/xds|1e77728a1eaa11d6c931ec2ccd6e95f516a7ef94'
-    'googleapis/googleapis|dde2e5c02c45299621b5a2e625a3eef101ff3a7e'
+    "pomerium/pomerium|v0.25.0"
+    "pomerium/pomerium-console|v0.25.0"
+    'envoyproxy/protoc-gen-validate|v1.0.2'
+    'envoyproxy/data-plane-api|d525ab36724d6a94477f7642e02418b50a8c4043'
+    'cncf/xds|e9ce68804cb4e64cab5a52e3c8baf840d4ff87b7'
+    'googleapis/googleapis|114a745b2841a044e98cdbb19358ed29fcf4a5f1'
     'census-instrumentation/opencensus-proto|v0.4.1'
-    'open-telemetry/opentelemetry-proto|v0.19.0'
-    'prometheus/client_model|v0.3.0'
+    'open-telemetry/opentelemetry-proto|v1.0.0'
+    'prometheus/client_model|v0.4.0'
 )
 
 function replace-in-file() {
@@ -107,9 +107,9 @@ _proto_files=(
 echo "installing python dependencies"
 pip install \
     'wheel==0.37.1' \
-    'protobuf==3.20.3' \
-    'grpcio==1.49.1' \
-    'grpcio-tools==1.48.2'
+    'protobuf==4.25.2' \
+    'grpcio==1.60.0' \
+    'grpcio-tools==1.60.0'
 
 (
     cd "$_root_dir"
