@@ -8,13 +8,16 @@ on:
 jobs:
   tests:
     strategy:
-        matrix:
-          python-version: [ '3.7', '3.8', '3.9' ]
+      matrix:
+        python-version: ["3.7", "3.8", "3.9"]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-python@v5
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b
+
+      - uses: actions/setup-python@9a7ac94420f42ee15fc60ab88d0dca4be1fd5757
         with:
           python-version: ${{ matrix.python-version }}
+
       - run: pip install .
+
       - run: make test
