@@ -11,4 +11,4 @@ pkg:
 .PHONY: test
 test:
 	@echo "==> $@"
-	PYTHONPATH=src/ $(PYTHON) -m unittest discover -s src/pomerium -v
+	PYTHONPATH=src/ $(PYTHON) -m unittest discover -s src -v

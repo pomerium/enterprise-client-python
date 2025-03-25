@@ -20,6 +20,11 @@ class RouteServiceStub(object):
                 request_serializer=routes__pb2.DeleteRouteRequest.SerializeToString,
                 response_deserializer=routes__pb2.DeleteRouteResponse.FromString,
                 )
+        self.DeleteRoutes = channel.unary_unary(
+                '/pomerium.dashboard.RouteService/DeleteRoutes',
+                request_serializer=routes__pb2.DeleteRoutesRequest.SerializeToString,
+                response_deserializer=routes__pb2.DeleteRoutesResponse.FromString,
+                )
         self.GetRoute = channel.unary_unary(
                 '/pomerium.dashboard.RouteService/GetRoute',
                 request_serializer=routes__pb2.GetRouteRequest.SerializeToString,
@@ -40,6 +45,11 @@ class RouteServiceStub(object):
                 request_serializer=routes__pb2.SetRouteRequest.SerializeToString,
                 response_deserializer=routes__pb2.SetRouteResponse.FromString,
                 )
+        self.SetRoutes = channel.unary_unary(
+                '/pomerium.dashboard.RouteService/SetRoutes',
+                request_serializer=routes__pb2.SetRoutesRequest.SerializeToString,
+                response_deserializer=routes__pb2.SetRoutesResponse.FromString,
+                )
         self.MoveRoutes = channel.unary_unary(
                 '/pomerium.dashboard.RouteService/MoveRoutes',
                 request_serializer=routes__pb2.MoveRoutesRequest.SerializeToString,
@@ -53,6 +63,13 @@ class RouteServiceServicer(object):
 
     def DeleteRoute(self, request, context):
         """DeleteRoute removes an existing route
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def DeleteRoutes(self, request, context):
+        """DeleteRoutes removes existing routes.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -86,6 +103,13 @@ class RouteServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def SetRoutes(self, request, context):
+        """SetRoutes creates or, if id is defined, updates existing routes
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def MoveRoutes(self, request, context):
         """MoveRoutes takes an array of routeIds and moves them to a new namespace
         """
@@ -100,6 +124,11 @@ def add_RouteServiceServicer_to_server(servicer, server):
                     servicer.DeleteRoute,
                     request_deserializer=routes__pb2.DeleteRouteRequest.FromString,
                     response_serializer=routes__pb2.DeleteRouteResponse.SerializeToString,
+            ),
+            'DeleteRoutes': grpc.unary_unary_rpc_method_handler(
+                    servicer.DeleteRoutes,
+                    request_deserializer=routes__pb2.DeleteRoutesRequest.FromString,
+                    response_serializer=routes__pb2.DeleteRoutesResponse.SerializeToString,
             ),
             'GetRoute': grpc.unary_unary_rpc_method_handler(
                     servicer.GetRoute,
@@ -120,6 +149,11 @@ def add_RouteServiceServicer_to_server(servicer, server):
                     servicer.SetRoute,
                     request_deserializer=routes__pb2.SetRouteRequest.FromString,
                     response_serializer=routes__pb2.SetRouteResponse.SerializeToString,
+            ),
+            'SetRoutes': grpc.unary_unary_rpc_method_handler(
+                    servicer.SetRoutes,
+                    request_deserializer=routes__pb2.SetRoutesRequest.FromString,
+                    response_serializer=routes__pb2.SetRoutesResponse.SerializeToString,
             ),
             'MoveRoutes': grpc.unary_unary_rpc_method_handler(
                     servicer.MoveRoutes,
@@ -151,6 +185,23 @@ class RouteService(object):
         return grpc.experimental.unary_unary(request, target, '/pomerium.dashboard.RouteService/DeleteRoute',
             routes__pb2.DeleteRouteRequest.SerializeToString,
             routes__pb2.DeleteRouteResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def DeleteRoutes(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/pomerium.dashboard.RouteService/DeleteRoutes',
+            routes__pb2.DeleteRoutesRequest.SerializeToString,
+            routes__pb2.DeleteRoutesResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -219,6 +270,23 @@ class RouteService(object):
         return grpc.experimental.unary_unary(request, target, '/pomerium.dashboard.RouteService/SetRoute',
             routes__pb2.SetRouteRequest.SerializeToString,
             routes__pb2.SetRouteResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def SetRoutes(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/pomerium.dashboard.RouteService/SetRoutes',
+            routes__pb2.SetRoutesRequest.SerializeToString,
+            routes__pb2.SetRoutesResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

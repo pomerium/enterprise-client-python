@@ -30,6 +30,11 @@ class NamespaceServiceStub(object):
                 request_serializer=namespaces__pb2.ListNamespacesRequest.SerializeToString,
                 response_deserializer=namespaces__pb2.ListNamespacesResponse.FromString,
                 )
+        self.ListNamespaceResources = channel.unary_unary(
+                '/pomerium.dashboard.NamespaceService/ListNamespaceResources',
+                request_serializer=namespaces__pb2.ListNamespaceResourcesRequest.SerializeToString,
+                response_deserializer=namespaces__pb2.ListNamespaceResourcesResponse.FromString,
+                )
         self.SetNamespace = channel.unary_unary(
                 '/pomerium.dashboard.NamespaceService/SetNamespace',
                 request_serializer=namespaces__pb2.SetNamespaceRequest.SerializeToString,
@@ -62,6 +67,13 @@ class NamespaceServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def ListNamespaceResources(self, request, context):
+        """ListNamespaceResources lists all the resources for a namespace.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def SetNamespace(self, request, context):
         """SetNamespace creates a namespace or, if the id is specified, updates an
         existing namespace
@@ -87,6 +99,11 @@ def add_NamespaceServiceServicer_to_server(servicer, server):
                     servicer.ListNamespaces,
                     request_deserializer=namespaces__pb2.ListNamespacesRequest.FromString,
                     response_serializer=namespaces__pb2.ListNamespacesResponse.SerializeToString,
+            ),
+            'ListNamespaceResources': grpc.unary_unary_rpc_method_handler(
+                    servicer.ListNamespaceResources,
+                    request_deserializer=namespaces__pb2.ListNamespaceResourcesRequest.FromString,
+                    response_serializer=namespaces__pb2.ListNamespaceResourcesResponse.SerializeToString,
             ),
             'SetNamespace': grpc.unary_unary_rpc_method_handler(
                     servicer.SetNamespace,
@@ -152,6 +169,23 @@ class NamespaceService(object):
         return grpc.experimental.unary_unary(request, target, '/pomerium.dashboard.NamespaceService/ListNamespaces',
             namespaces__pb2.ListNamespacesRequest.SerializeToString,
             namespaces__pb2.ListNamespacesResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def ListNamespaceResources(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/pomerium.dashboard.NamespaceService/ListNamespaceResources',
+            namespaces__pb2.ListNamespaceResourcesRequest.SerializeToString,
+            namespaces__pb2.ListNamespaceResourcesResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
