@@ -103,7 +103,8 @@ pip install \
     'wheel==0.37.1' \
     'protobuf==4.25.2' \
     'grpcio==1.60.0' \
-    'grpcio-tools==1.60.0'
+    'grpcio-tools==1.60.0' \
+    'mypy-protobuf==3.6.0'
 
 (
     cd "$_root_dir"
@@ -127,6 +128,8 @@ pip install \
         -I "$_deps_dir/github.com/pomerium/pomerium-console/pkg/pb" \
         --python_out="src/pomerium/pb" \
         --grpc_python_out="src/pomerium/pb" \
+        --mypy_out="src/pomerium/pb" \
+        --mypy_grpc_out="src/pomerium/pb" \
         "${_proto_files[@]}"
 
     # fix package names for grpc
