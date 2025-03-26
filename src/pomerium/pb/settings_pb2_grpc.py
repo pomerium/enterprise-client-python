@@ -25,6 +25,16 @@ class SettingsServiceStub(object):
                 request_serializer=settings__pb2.SetSettingsRequest.SerializeToString,
                 response_deserializer=settings__pb2.SetSettingsResponse.FromString,
                 )
+        self.GetBrandingSettings = channel.unary_unary(
+                '/pomerium.dashboard.SettingsService/GetBrandingSettings',
+                request_serializer=settings__pb2.GetSettingsRequest.SerializeToString,
+                response_deserializer=settings__pb2.GetSettingsResponse.FromString,
+                )
+        self.GetConsoleSettings = channel.unary_unary(
+                '/pomerium.dashboard.SettingsService/GetConsoleSettings',
+                request_serializer=settings__pb2.GetConsoleSettingsRequest.SerializeToString,
+                response_deserializer=settings__pb2.GetConsoleSettingsResponse.FromString,
+                )
 
 
 class SettingsServiceServicer(object):
@@ -45,6 +55,20 @@ class SettingsServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetBrandingSettings(self, request, context):
+        """GetBrandingSettings retrieves just the branding part of the settings
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetConsoleSettings(self, request, context):
+        """GetConsoleSettings retrieves the console settings.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_SettingsServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -57,6 +81,16 @@ def add_SettingsServiceServicer_to_server(servicer, server):
                     servicer.SetSettings,
                     request_deserializer=settings__pb2.SetSettingsRequest.FromString,
                     response_serializer=settings__pb2.SetSettingsResponse.SerializeToString,
+            ),
+            'GetBrandingSettings': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetBrandingSettings,
+                    request_deserializer=settings__pb2.GetSettingsRequest.FromString,
+                    response_serializer=settings__pb2.GetSettingsResponse.SerializeToString,
+            ),
+            'GetConsoleSettings': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetConsoleSettings,
+                    request_deserializer=settings__pb2.GetConsoleSettingsRequest.FromString,
+                    response_serializer=settings__pb2.GetConsoleSettingsResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -100,5 +134,39 @@ class SettingsService(object):
         return grpc.experimental.unary_unary(request, target, '/pomerium.dashboard.SettingsService/SetSettings',
             settings__pb2.SetSettingsRequest.SerializeToString,
             settings__pb2.SetSettingsResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetBrandingSettings(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/pomerium.dashboard.SettingsService/GetBrandingSettings',
+            settings__pb2.GetSettingsRequest.SerializeToString,
+            settings__pb2.GetSettingsResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetConsoleSettings(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/pomerium.dashboard.SettingsService/GetConsoleSettings',
+            settings__pb2.GetConsoleSettingsRequest.SerializeToString,
+            settings__pb2.GetConsoleSettingsResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

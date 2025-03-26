@@ -6,15 +6,11 @@ _root_dir="$(dirname "$_scripts_dir")"
 _deps_dir="$_root_dir/deps"
 
 readonly _git_deps=(
-    "pomerium/pomerium|v0.25.0"
-    "pomerium/pomerium-console|v0.25.0"
-    'envoyproxy/protoc-gen-validate|v1.0.2'
-    'envoyproxy/data-plane-api|d525ab36724d6a94477f7642e02418b50a8c4043'
-    'cncf/xds|e9ce68804cb4e64cab5a52e3c8baf840d4ff87b7'
+    "pomerium/pomerium-console|main"
+    'envoyproxy/protoc-gen-validate|v1.0.2'    
     'googleapis/googleapis|114a745b2841a044e98cdbb19358ed29fcf4a5f1'
     'census-instrumentation/opencensus-proto|v0.4.1'
     'open-telemetry/opentelemetry-proto|v1.0.0'
-    'prometheus/client_model|v0.4.0'
 )
 
 function replace-in-file() {
@@ -88,20 +84,18 @@ _import_paths=$(join_by , "${_imports[@]}")
 
 _proto_files=(
     activity_log.proto
-    audit_svc.proto
-    databroker_svc.proto
-    policy.proto
-    routes.proto
-    settings.proto
-    namespaces.proto
-    users.proto
-    key_chain.proto
-    console_config.proto
-    report.proto
     devices.proto
     external_data_sources.proto
-    events.proto
-    tsdb.proto
+    key_chain.proto
+    namespaces.proto
+    policy.proto
+    report.proto
+    route_health_check.proto
+    route_redirect_action.proto
+    routes.proto
+    settings.proto
+    types.proto
+    users.proto
 )
 
 echo "installing python dependencies"
@@ -116,27 +110,20 @@ pip install \
 
     echo "generating dependency protobuf code"
     python -m grpc_tools.protoc \
-        -I "$_deps_dir/github.com/cncf/xds" \
         -I "$_deps_dir/github.com/googleapis/googleapis" \
         -I "$_deps_dir/github.com/envoyproxy/protoc-gen-validate" \
-        -I "$_deps_dir/github.com/envoyproxy/data-plane-api" \
         -I "$_deps_dir/github.com/census-instrumentation/opencensus-proto/src" \
         -I "$_deps_dir/github.com/open-telemetry/opentelemetry-proto" \
         -I "$_deps_dir/github.com/prometheus/client_model" \
         --python_out="src" \
-        $(cd deps/github.com/envoyproxy/data-plane-api && find . -regex '.*\.proto' | sed 's|^./||') \
-        $(cd deps/github.com/cncf/xds && find . -regex '.*\.proto' | sed 's|^./||') \
         $(cd deps/github.com/envoyproxy/protoc-gen-validate && find . -regex '.*\.proto' | sed 's|^./||')
 
     echo "generating pomerium-console protobuf code"
     mkdir -p src/pomerium/pb
     python -m grpc_tools.protoc \
         -I "$_deps_dir" \
-        -I "$_deps_dir/github.com/cncf/xds" \
-        -I "$_deps_dir/github.com/envoyproxy/data-plane-api" \
         -I "$_deps_dir/github.com/envoyproxy/protoc-gen-validate" \
         -I "$_deps_dir/github.com/googleapis/googleapis" \
-        -I "$_deps_dir/github.com/pomerium/pomerium/pkg/grpc" \
         -I "$_deps_dir/github.com/pomerium/pomerium-console/pkg/pb" \
         --python_out="src/pomerium/pb" \
         --grpc_python_out="src/pomerium/pb" \
