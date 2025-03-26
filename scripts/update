@@ -6,8 +6,8 @@ _root_dir="$(dirname "$_scripts_dir")"
 _deps_dir="$_root_dir/deps"
 
 readonly _git_deps=(
-    "pomerium/pomerium|0-29-0"
-    "pomerium/pomerium-console|0-29-0"
+    "pomerium/pomerium-console|main"
+    'envoyproxy/protoc-gen-validate|v1.0.2'    
     'googleapis/googleapis|114a745b2841a044e98cdbb19358ed29fcf4a5f1'
     'census-instrumentation/opencensus-proto|v0.4.1'
     'open-telemetry/opentelemetry-proto|v1.0.0'
@@ -124,7 +124,6 @@ pip install \
         -I "$_deps_dir" \
         -I "$_deps_dir/github.com/envoyproxy/protoc-gen-validate" \
         -I "$_deps_dir/github.com/googleapis/googleapis" \
-        -I "$_deps_dir/github.com/pomerium/pomerium/pkg/grpc" \
         -I "$_deps_dir/github.com/pomerium/pomerium-console/pkg/pb" \
         --python_out="src/pomerium/pb" \
         --grpc_python_out="src/pomerium/pb" \

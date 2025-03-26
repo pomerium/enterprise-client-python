@@ -48,7 +48,7 @@ class DeviceServiceStub(object):
                 )
         self.ListDeviceTypes = channel.unary_unary(
                 '/pomerium.dashboard.DeviceService/ListDeviceTypes',
-                request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+                request_serializer=devices__pb2.ListDeviceTypesRequest.SerializeToString,
                 response_deserializer=devices__pb2.ListDeviceTypesResponse.FromString,
                 )
 
@@ -134,7 +134,7 @@ def add_DeviceServiceServicer_to_server(servicer, server):
             ),
             'ListDeviceTypes': grpc.unary_unary_rpc_method_handler(
                     servicer.ListDeviceTypes,
-                    request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+                    request_deserializer=devices__pb2.ListDeviceTypesRequest.FromString,
                     response_serializer=devices__pb2.ListDeviceTypesResponse.SerializeToString,
             ),
     }
@@ -262,7 +262,7 @@ class DeviceService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/pomerium.dashboard.DeviceService/ListDeviceTypes',
-            google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+            devices__pb2.ListDeviceTypesRequest.SerializeToString,
             devices__pb2.ListDeviceTypesResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

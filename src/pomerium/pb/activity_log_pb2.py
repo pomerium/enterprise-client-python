@@ -15,7 +15,7 @@ _sym_db = _symbol_database.Default()
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x12\x61\x63tivity_log.proto\x12\x12pomerium.dashboard\x1a\x1fgoogle/protobuf/timestamp.proto\"\xce\x04\n\x10\x41\x63tivityLogEntry\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x14 \x01(\t\x12\x15\n\ractivity_type\x18\x02 \x01(\t\x12.\n\ncreated_at\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x14\n\x0cnamespace_id\x18\x04 \x01(\t\x12\x16\n\x0enamespace_name\x18\x05 \x01(\t\x12\x0f\n\x07user_id\x18\x06 \x01(\t\x12\x11\n\tuser_name\x18\x07 \x01(\t\x12\x12\n\nuser_email\x18\x08 \x01(\t\x12\x13\n\x0b\x65ntity_type\x18\t \x01(\t\x12\x11\n\tentity_id\x18\n \x01(\t\x12\x13\n\x0b\x65ntity_data\x18\x0b \x01(\t\x12\x46\n\x0c\x64iff_summary\x18\x0c \x01(\x0b\x32\x30.pomerium.dashboard.ActivityLogEntry.DiffSummary\x12\x12\n\ndb_version\x18\r \x01(\x04\x12\x12\n\nsession_id\x18\x0e \x01(\t\x12\x1a\n\x12service_account_id\x18\x0f \x01(\t\x12\x1b\n\x13impersonate_user_id\x18\x10 \x01(\t\x12\x1d\n\x15impersonate_user_name\x18\x11 \x01(\t\x12\x1e\n\x16impersonate_user_email\x18\x12 \x01(\t\x12\x1f\n\x17impersonate_user_groups\x18\x13 \x03(\t\x1a-\n\x0b\x44iffSummary\x12\r\n\x05\x61\x64\x64\x65\x64\x18\x01 \x01(\x03\x12\x0f\n\x07removed\x18\x02 \x01(\x03\"(\n\x1aGetActivityLogEntryRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\xb6\x01\n\x1bGetActivityLogEntryResponse\x12\x33\n\x05\x65ntry\x18\x01 \x01(\x0b\x32$.pomerium.dashboard.ActivityLogEntry\x12\x1e\n\x11previous_entry_id\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x1a\n\rnext_entry_id\x18\x03 \x01(\tH\x01\x88\x01\x01\x42\x14\n\x12_previous_entry_idB\x10\n\x0e_next_entry_id\"\xb9\x07\n\x1dListActivityLogEntriesRequest\x12\x1a\n\ractivity_type\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\x19\n\x0cnamespace_id\x18\x02 \x01(\tH\x01\x88\x01\x01\x12\x14\n\x07user_id\x18\x03 \x01(\tH\x02\x88\x01\x01\x12\x18\n\x0b\x65ntity_type\x18\x04 \x01(\tH\x03\x88\x01\x01\x12\x16\n\tentity_id\x18\x05 \x01(\tH\x04\x88\x01\x01\x12\x12\n\x05query\x18\x06 \x01(\tH\x05\x88\x01\x01\x12\x13\n\x06offset\x18\x07 \x01(\x03H\x06\x88\x01\x01\x12\x12\n\x05limit\x18\x08 \x01(\x03H\x07\x88\x01\x01\x12\x13\n\x0b\x64\x62_versions\x18\t \x03(\x04\x12\x1e\n\x11recurse_namespace\x18\x0b \x01(\x08H\x08\x88\x01\x01\x12J\n\x08\x65ntities\x18\n \x03(\x0b\x32\x38.pomerium.dashboard.ListActivityLogEntriesRequest.Entity\x12I\n\x04sort\x18\x0c \x01(\x0b\x32\x36.pomerium.dashboard.ListActivityLogEntriesRequest.SortH\t\x88\x01\x01\x12Q\n\x0b\x64\x61te_filter\x18\r \x01(\x0b\x32<.pomerium.dashboard.ListActivityLogEntriesRequest.DateFilter\x12U\n\rstring_filter\x18\x0e \x01(\x0b\x32>.pomerium.dashboard.ListActivityLogEntriesRequest.StringFilter\x1a\"\n\x06\x45ntity\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\t\x1a)\n\x04Sort\x12\x0e\n\x06\x63olumn\x18\x01 \x01(\t\x12\x11\n\tdirection\x18\x02 \x01(\t\x1aH\n\nDateFilter\x12\x10\n\x08operator\x18\x01 \x01(\t\x12(\n\x04\x64\x61te\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x1a\x42\n\x0cStringFilter\x12\x11\n\tfieldName\x18\x01 \x01(\t\x12\x10\n\x08operator\x18\x02 \x01(\t\x12\r\n\x05value\x18\x03 \x01(\tB\x10\n\x0e_activity_typeB\x0f\n\r_namespace_idB\n\n\x08_user_idB\x0e\n\x0c_entity_typeB\x0c\n\n_entity_idB\x08\n\x06_queryB\t\n\x07_offsetB\x08\n\x06_limitB\x14\n\x12_recurse_namespaceB\x07\n\x05_sort\"l\n\x1eListActivityLogEntriesResponse\x12\x35\n\x07\x65ntries\x18\x01 \x03(\x0b\x32$.pomerium.dashboard.ActivityLogEntry\x12\x13\n\x0btotal_count\x18\x02 \x01(\x03\x32\x8d\x02\n\x12\x41\x63tivityLogService\x12v\n\x13GetActivityLogEntry\x12..pomerium.dashboard.GetActivityLogEntryRequest\x1a/.pomerium.dashboard.GetActivityLogEntryResponse\x12\x7f\n\x16ListActivityLogEntries\x12\x31.pomerium.dashboard.ListActivityLogEntriesRequest\x1a\x32.pomerium.dashboard.ListActivityLogEntriesResponseB-Z+github.com/pomerium/pomerium-console/pkg/pbb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x12\x61\x63tivity_log.proto\x12\x12pomerium.dashboard\x1a\x1fgoogle/protobuf/timestamp.proto\"\xf6\x04\n\x10\x41\x63tivityLogEntry\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x14 \x01(\t\x12\x15\n\ractivity_type\x18\x02 \x01(\t\x12.\n\ncreated_at\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x17\n\ncluster_id\x18\x15 \x01(\tH\x00\x88\x01\x01\x12\x14\n\x0cnamespace_id\x18\x04 \x01(\t\x12\x16\n\x0enamespace_name\x18\x05 \x01(\t\x12\x0f\n\x07user_id\x18\x06 \x01(\t\x12\x11\n\tuser_name\x18\x07 \x01(\t\x12\x12\n\nuser_email\x18\x08 \x01(\t\x12\x13\n\x0b\x65ntity_type\x18\t \x01(\t\x12\x11\n\tentity_id\x18\n \x01(\t\x12\x13\n\x0b\x65ntity_data\x18\x0b \x01(\t\x12\x46\n\x0c\x64iff_summary\x18\x0c \x01(\x0b\x32\x30.pomerium.dashboard.ActivityLogEntry.DiffSummary\x12\x12\n\ndb_version\x18\r \x01(\x04\x12\x12\n\nsession_id\x18\x0e \x01(\t\x12\x1a\n\x12service_account_id\x18\x0f \x01(\t\x12\x1b\n\x13impersonate_user_id\x18\x10 \x01(\t\x12\x1d\n\x15impersonate_user_name\x18\x11 \x01(\t\x12\x1e\n\x16impersonate_user_email\x18\x12 \x01(\t\x12\x1f\n\x17impersonate_user_groups\x18\x13 \x03(\t\x1a-\n\x0b\x44iffSummary\x12\r\n\x05\x61\x64\x64\x65\x64\x18\x01 \x01(\x03\x12\x0f\n\x07removed\x18\x02 \x01(\x03\x42\r\n\x0b_cluster_id\"(\n\x1aGetActivityLogEntryRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\xb6\x01\n\x1bGetActivityLogEntryResponse\x12\x33\n\x05\x65ntry\x18\x01 \x01(\x0b\x32$.pomerium.dashboard.ActivityLogEntry\x12\x1e\n\x11previous_entry_id\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x1a\n\rnext_entry_id\x18\x03 \x01(\tH\x01\x88\x01\x01\x42\x14\n\x12_previous_entry_idB\x10\n\x0e_next_entry_id\"\xb9\x07\n\x1dListActivityLogEntriesRequest\x12\x1a\n\ractivity_type\x18\x01 \x01(\tH\x00\x88\x01\x01\x12\x19\n\x0cnamespace_id\x18\x02 \x01(\tH\x01\x88\x01\x01\x12\x14\n\x07user_id\x18\x03 \x01(\tH\x02\x88\x01\x01\x12\x18\n\x0b\x65ntity_type\x18\x04 \x01(\tH\x03\x88\x01\x01\x12\x16\n\tentity_id\x18\x05 \x01(\tH\x04\x88\x01\x01\x12\x12\n\x05query\x18\x06 \x01(\tH\x05\x88\x01\x01\x12\x13\n\x06offset\x18\x07 \x01(\x03H\x06\x88\x01\x01\x12\x12\n\x05limit\x18\x08 \x01(\x03H\x07\x88\x01\x01\x12\x13\n\x0b\x64\x62_versions\x18\t \x03(\x04\x12\x1e\n\x11recurse_namespace\x18\x0b \x01(\x08H\x08\x88\x01\x01\x12J\n\x08\x65ntities\x18\n \x03(\x0b\x32\x38.pomerium.dashboard.ListActivityLogEntriesRequest.Entity\x12I\n\x04sort\x18\x0c \x01(\x0b\x32\x36.pomerium.dashboard.ListActivityLogEntriesRequest.SortH\t\x88\x01\x01\x12Q\n\x0b\x64\x61te_filter\x18\r \x01(\x0b\x32<.pomerium.dashboard.ListActivityLogEntriesRequest.DateFilter\x12U\n\rstring_filter\x18\x0e \x01(\x0b\x32>.pomerium.dashboard.ListActivityLogEntriesRequest.StringFilter\x1a\"\n\x06\x45ntity\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\t\x1a)\n\x04Sort\x12\x0e\n\x06\x63olumn\x18\x01 \x01(\t\x12\x11\n\tdirection\x18\x02 \x01(\t\x1aH\n\nDateFilter\x12\x10\n\x08operator\x18\x01 \x01(\t\x12(\n\x04\x64\x61te\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x1a\x42\n\x0cStringFilter\x12\x11\n\tfieldName\x18\x01 \x01(\t\x12\x10\n\x08operator\x18\x02 \x01(\t\x12\r\n\x05value\x18\x03 \x01(\tB\x10\n\x0e_activity_typeB\x0f\n\r_namespace_idB\n\n\x08_user_idB\x0e\n\x0c_entity_typeB\x0c\n\n_entity_idB\x08\n\x06_queryB\t\n\x07_offsetB\x08\n\x06_limitB\x14\n\x12_recurse_namespaceB\x07\n\x05_sort\"l\n\x1eListActivityLogEntriesResponse\x12\x35\n\x07\x65ntries\x18\x01 \x03(\x0b\x32$.pomerium.dashboard.ActivityLogEntry\x12\x13\n\x0btotal_count\x18\x02 \x01(\x03\x32\x8d\x02\n\x12\x41\x63tivityLogService\x12v\n\x13GetActivityLogEntry\x12..pomerium.dashboard.GetActivityLogEntryRequest\x1a/.pomerium.dashboard.GetActivityLogEntryResponse\x12\x7f\n\x16ListActivityLogEntries\x12\x31.pomerium.dashboard.ListActivityLogEntriesRequest\x1a\x32.pomerium.dashboard.ListActivityLogEntriesResponseB-Z+github.com/pomerium/pomerium-console/pkg/pbb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -24,25 +24,25 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['DESCRIPTOR']._options = None
   _globals['DESCRIPTOR']._serialized_options = b'Z+github.com/pomerium/pomerium-console/pkg/pb'
   _globals['_ACTIVITYLOGENTRY']._serialized_start=76
-  _globals['_ACTIVITYLOGENTRY']._serialized_end=666
-  _globals['_ACTIVITYLOGENTRY_DIFFSUMMARY']._serialized_start=621
-  _globals['_ACTIVITYLOGENTRY_DIFFSUMMARY']._serialized_end=666
-  _globals['_GETACTIVITYLOGENTRYREQUEST']._serialized_start=668
-  _globals['_GETACTIVITYLOGENTRYREQUEST']._serialized_end=708
-  _globals['_GETACTIVITYLOGENTRYRESPONSE']._serialized_start=711
-  _globals['_GETACTIVITYLOGENTRYRESPONSE']._serialized_end=893
-  _globals['_LISTACTIVITYLOGENTRIESREQUEST']._serialized_start=896
-  _globals['_LISTACTIVITYLOGENTRIESREQUEST']._serialized_end=1849
-  _globals['_LISTACTIVITYLOGENTRIESREQUEST_ENTITY']._serialized_start=1491
-  _globals['_LISTACTIVITYLOGENTRIESREQUEST_ENTITY']._serialized_end=1525
-  _globals['_LISTACTIVITYLOGENTRIESREQUEST_SORT']._serialized_start=1527
-  _globals['_LISTACTIVITYLOGENTRIESREQUEST_SORT']._serialized_end=1568
-  _globals['_LISTACTIVITYLOGENTRIESREQUEST_DATEFILTER']._serialized_start=1570
-  _globals['_LISTACTIVITYLOGENTRIESREQUEST_DATEFILTER']._serialized_end=1642
-  _globals['_LISTACTIVITYLOGENTRIESREQUEST_STRINGFILTER']._serialized_start=1644
-  _globals['_LISTACTIVITYLOGENTRIESREQUEST_STRINGFILTER']._serialized_end=1710
-  _globals['_LISTACTIVITYLOGENTRIESRESPONSE']._serialized_start=1851
-  _globals['_LISTACTIVITYLOGENTRIESRESPONSE']._serialized_end=1959
-  _globals['_ACTIVITYLOGSERVICE']._serialized_start=1962
-  _globals['_ACTIVITYLOGSERVICE']._serialized_end=2231
+  _globals['_ACTIVITYLOGENTRY']._serialized_end=706
+  _globals['_ACTIVITYLOGENTRY_DIFFSUMMARY']._serialized_start=646
+  _globals['_ACTIVITYLOGENTRY_DIFFSUMMARY']._serialized_end=691
+  _globals['_GETACTIVITYLOGENTRYREQUEST']._serialized_start=708
+  _globals['_GETACTIVITYLOGENTRYREQUEST']._serialized_end=748
+  _globals['_GETACTIVITYLOGENTRYRESPONSE']._serialized_start=751
+  _globals['_GETACTIVITYLOGENTRYRESPONSE']._serialized_end=933
+  _globals['_LISTACTIVITYLOGENTRIESREQUEST']._serialized_start=936
+  _globals['_LISTACTIVITYLOGENTRIESREQUEST']._serialized_end=1889
+  _globals['_LISTACTIVITYLOGENTRIESREQUEST_ENTITY']._serialized_start=1531
+  _globals['_LISTACTIVITYLOGENTRIESREQUEST_ENTITY']._serialized_end=1565
+  _globals['_LISTACTIVITYLOGENTRIESREQUEST_SORT']._serialized_start=1567
+  _globals['_LISTACTIVITYLOGENTRIESREQUEST_SORT']._serialized_end=1608
+  _globals['_LISTACTIVITYLOGENTRIESREQUEST_DATEFILTER']._serialized_start=1610
+  _globals['_LISTACTIVITYLOGENTRIESREQUEST_DATEFILTER']._serialized_end=1682
+  _globals['_LISTACTIVITYLOGENTRIESREQUEST_STRINGFILTER']._serialized_start=1684
+  _globals['_LISTACTIVITYLOGENTRIESREQUEST_STRINGFILTER']._serialized_end=1750
+  _globals['_LISTACTIVITYLOGENTRIESRESPONSE']._serialized_start=1891
+  _globals['_LISTACTIVITYLOGENTRIESRESPONSE']._serialized_end=1999
+  _globals['_ACTIVITYLOGSERVICE']._serialized_start=2002
+  _globals['_ACTIVITYLOGSERVICE']._serialized_end=2271
 # @@protoc_insertion_point(module_scope)
