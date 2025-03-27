@@ -6,8 +6,8 @@ _root_dir="$(dirname "$_scripts_dir")"
 _deps_dir="$_root_dir/deps"
 
 readonly _git_deps=(
-    "pomerium/pomerium-console|main"
-    'envoyproxy/protoc-gen-validate|v1.0.2'    
+    "pomerium/enterprise-client|210c5841c41094d66c1d93f99abf0f1280fd7ad0"
+    'envoyproxy/protoc-gen-validate|v1.0.2'
     'googleapis/googleapis|114a745b2841a044e98cdbb19358ed29fcf4a5f1'
     'census-instrumentation/opencensus-proto|v0.4.1'
     'open-telemetry/opentelemetry-proto|v1.0.0'
@@ -72,16 +72,6 @@ function join_by() {
 
 clone_all
 
-_imports=()
-while read -r _proto; do
-    if [[ "$_proto" == envoy/* ]]; then
-        _imports+=("M${_proto}=github.com/envoyproxy/go-control-plane/$(dirname "$_proto")")
-    elif [[ "$_proto" == xds/* || "$_proto" == udpa/* ]]; then
-        _imports+=("M${_proto}=github.com/cncf/xds/go/$(dirname "$_proto")")
-    fi
-done <"$_deps_dir/github.com/pomerium/pomerium-console/scripts/proto-dependencies.txt"
-_import_paths=$(join_by , "${_imports[@]}")
-
 _proto_files=(
     activity_log.proto
     devices.proto
@@ -118,13 +108,13 @@ pip install \
         --python_out="src" \
         $(cd deps/github.com/envoyproxy/protoc-gen-validate && find . -regex '.*\.proto' | sed 's|^./||')
 
-    echo "generating pomerium-console protobuf code"
+    echo "generating enterprise-client protobuf code"
     mkdir -p src/pomerium/pb
     python -m grpc_tools.protoc \
         -I "$_deps_dir" \
         -I "$_deps_dir/github.com/envoyproxy/protoc-gen-validate" \
         -I "$_deps_dir/github.com/googleapis/googleapis" \
-        -I "$_deps_dir/github.com/pomerium/pomerium-console/pkg/pb" \
+        -I "$_deps_dir/github.com/pomerium/enterprise-client/protos/pomerium-console" \
         --python_out="src/pomerium/pb" \
         --grpc_python_out="src/pomerium/pb" \
         "${_proto_files[@]}"
