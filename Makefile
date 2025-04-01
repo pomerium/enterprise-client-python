@@ -8,6 +8,11 @@ pkg:
 	@echo "==> $@"
 	$(PYTHON) -m build .
 
+.PHONY: update
+update:
+	@echo "==> $@"
+	@scripts/update.sh
+
 .PHONY: test
 test:
 	@echo "==> $@"
