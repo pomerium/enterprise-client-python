@@ -120,6 +120,8 @@ pip install \
         --mypy_grpc_out="src/pomerium/pb" \
         --python_out="src/pomerium/pb" \
         --grpc_python_out="src/pomerium/pb" \
+        --mypy_out="src/pomerium/pb" \
+        --mypy_grpc_out="src/pomerium/pb" \
         "${_proto_files[@]}"
 
     # fix package names for grpc
