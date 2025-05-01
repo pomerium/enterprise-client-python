@@ -73,6 +73,7 @@ clone_all
 
 _proto_files=(
     activity_log.proto
+    clusters.proto
     devices.proto
     external_data_sources.proto
     key_chain.proto
