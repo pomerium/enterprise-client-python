@@ -90,10 +90,10 @@ _proto_files=(
 
 echo "installing python dependencies"
 pip install \
-    'wheel==0.37.1' \
-    'protobuf==4.25.3' \
-    'grpcio==1.60.0' \
-    'grpcio-tools==1.60.0' \
+    'wheel==0.45.1' \
+    'protobuf==5.29.4' \
+    'grpcio==1.71.0' \
+    'grpcio-tools==1.71.0' \
     'mypy-protobuf==3.6.0'
 
 (

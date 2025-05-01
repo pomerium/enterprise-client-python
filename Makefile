@@ -11,7 +11,7 @@ pkg:
 .PHONY: update
 update:
 	@echo "==> $@"
-	@scripts/update.sh
+	@scripts/update
 
 .PHONY: test
 test:
