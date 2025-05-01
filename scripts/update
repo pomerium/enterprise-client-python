@@ -6,9 +6,8 @@ _root_dir="$(dirname "$_scripts_dir")"
 _deps_dir="$_root_dir/deps"
 
 readonly _git_deps=(
-    "pomerium/enterprise-client|210c5841c41094d66c1d93f99abf0f1280fd7ad0"
+    "pomerium/enterprise-client|5765e735b60781392f56685ad901906e0a1ea006"
     'envoyproxy/protoc-gen-validate|v1.0.2'
-    'googleapis/googleapis|114a745b2841a044e98cdbb19358ed29fcf4a5f1'
     'census-instrumentation/opencensus-proto|v0.4.1'
     'open-telemetry/opentelemetry-proto|v1.0.0'
 )
@@ -101,7 +100,6 @@ pip install \
 
     echo "generating dependency protobuf code"
     python -m grpc_tools.protoc \
-        -I "$_deps_dir/github.com/googleapis/googleapis" \
         -I "$_deps_dir/github.com/envoyproxy/protoc-gen-validate" \
         -I "$_deps_dir/github.com/census-instrumentation/opencensus-proto/src" \
         -I "$_deps_dir/github.com/open-telemetry/opentelemetry-proto" \
@@ -114,7 +112,6 @@ pip install \
     python -m grpc_tools.protoc \
         -I "$_deps_dir" \
         -I "$_deps_dir/github.com/envoyproxy/protoc-gen-validate" \
-        -I "$_deps_dir/github.com/googleapis/googleapis" \
         -I "$_deps_dir/github.com/pomerium/enterprise-client/protos/pomerium-console" \
         --mypy_out="src/pomerium/pb" \
         --mypy_grpc_out="src/pomerium/pb" \
