@@ -6,7 +6,7 @@ _root_dir="$(dirname "$_scripts_dir")"
 _deps_dir="$_root_dir/deps"
 
 readonly _git_deps=(
-    "pomerium/enterprise-client|5765e735b60781392f56685ad901906e0a1ea006"
+    "pomerium/enterprise-client|d7a41a10d10c9a499e5cc9d9f93ab2c53dfe87b1"
     'envoyproxy/protoc-gen-validate|v1.0.2'
     'census-instrumentation/opencensus-proto|v0.4.1'
     'open-telemetry/opentelemetry-proto|v1.0.0'
