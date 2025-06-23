@@ -282,32 +282,44 @@ class NamespacePermissionGroup(google.protobuf.message.Message):
 
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
+    ID_FIELD_NUMBER: builtins.int
+    CREATED_AT_FIELD_NUMBER: builtins.int
+    MODIFIED_AT_FIELD_NUMBER: builtins.int
+    NAMESPACE_ID_FIELD_NUMBER: builtins.int
+    NAMESPACE_NAME_FIELD_NUMBER: builtins.int
     GROUP_ID_FIELD_NUMBER: builtins.int
     GROUP_NAME_FIELD_NUMBER: builtins.int
     GROUP_EMAIL_FIELD_NUMBER: builtins.int
-    NAMESPACE_ID_FIELD_NUMBER: builtins.int
-    NAMESPACE_NAME_FIELD_NUMBER: builtins.int
     ROLE_FIELD_NUMBER: builtins.int
     ORIGINATOR_ID_FIELD_NUMBER: builtins.int
+    id: builtins.str
+    namespace_id: builtins.str
+    namespace_name: builtins.str
     group_id: builtins.str
     group_name: builtins.str
     group_email: builtins.str
-    namespace_id: builtins.str
-    namespace_name: builtins.str
     role: builtins.str
     originator_id: builtins.str
+    @property
+    def created_at(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
+    @property
+    def modified_at(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
     def __init__(
         self,
         *,
+        id: builtins.str = ...,
+        created_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        modified_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        namespace_id: builtins.str = ...,
+        namespace_name: builtins.str = ...,
         group_id: builtins.str = ...,
         group_name: builtins.str = ...,
         group_email: builtins.str = ...,
-        namespace_id: builtins.str = ...,
-        namespace_name: builtins.str = ...,
         role: builtins.str = ...,
         originator_id: builtins.str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing.Literal["group_email", b"group_email", "group_id", b"group_id", "group_name", b"group_name", "namespace_id", b"namespace_id", "namespace_name", b"namespace_name", "originator_id", b"originator_id", "role", b"role"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["created_at", b"created_at", "modified_at", b"modified_at"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["created_at", b"created_at", "group_email", b"group_email", "group_id", b"group_id", "group_name", b"group_name", "id", b"id", "modified_at", b"modified_at", "namespace_id", b"namespace_id", "namespace_name", b"namespace_name", "originator_id", b"originator_id", "role", b"role"]) -> None: ...
 
 global___NamespacePermissionGroup = NamespacePermissionGroup
 
@@ -317,36 +329,48 @@ class NamespacePermissionUser(google.protobuf.message.Message):
 
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
+    ID_FIELD_NUMBER: builtins.int
+    CREATED_AT_FIELD_NUMBER: builtins.int
+    MODIFIED_AT_FIELD_NUMBER: builtins.int
+    NAMESPACE_ID_FIELD_NUMBER: builtins.int
+    NAMESPACE_NAME_FIELD_NUMBER: builtins.int
     USER_ID_FIELD_NUMBER: builtins.int
     USER_NAME_FIELD_NUMBER: builtins.int
     USER_EMAIL_FIELD_NUMBER: builtins.int
     GROUP_IDS_FIELD_NUMBER: builtins.int
-    NAMESPACE_ID_FIELD_NUMBER: builtins.int
-    NAMESPACE_NAME_FIELD_NUMBER: builtins.int
     ROLE_FIELD_NUMBER: builtins.int
     ORIGINATOR_ID_FIELD_NUMBER: builtins.int
+    id: builtins.str
+    namespace_id: builtins.str
+    namespace_name: builtins.str
     user_id: builtins.str
     user_name: builtins.str
     user_email: builtins.str
-    namespace_id: builtins.str
-    namespace_name: builtins.str
     role: builtins.str
     originator_id: builtins.str
+    @property
+    def created_at(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
+    @property
+    def modified_at(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
     @property
     def group_ids(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
     def __init__(
         self,
         *,
+        id: builtins.str = ...,
+        created_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        modified_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        namespace_id: builtins.str = ...,
+        namespace_name: builtins.str = ...,
         user_id: builtins.str = ...,
         user_name: builtins.str = ...,
         user_email: builtins.str = ...,
         group_ids: collections.abc.Iterable[builtins.str] | None = ...,
-        namespace_id: builtins.str = ...,
-        namespace_name: builtins.str = ...,
         role: builtins.str = ...,
         originator_id: builtins.str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing.Literal["group_ids", b"group_ids", "namespace_id", b"namespace_id", "namespace_name", b"namespace_name", "originator_id", b"originator_id", "role", b"role", "user_email", b"user_email", "user_id", b"user_id", "user_name", b"user_name"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["created_at", b"created_at", "modified_at", b"modified_at"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["created_at", b"created_at", "group_ids", b"group_ids", "id", b"id", "modified_at", b"modified_at", "namespace_id", b"namespace_id", "namespace_name", b"namespace_name", "originator_id", b"originator_id", "role", b"role", "user_email", b"user_email", "user_id", b"user_id", "user_name", b"user_name"]) -> None: ...
 
 global___NamespacePermissionUser = NamespacePermissionUser
 
