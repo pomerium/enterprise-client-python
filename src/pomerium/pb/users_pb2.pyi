@@ -126,6 +126,43 @@ class UserInfo(google.protobuf.message.Message):
 global___UserInfo = UserInfo
 
 @typing.final
+class GetGroupInfoRequest(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    GROUP_ID_FIELD_NUMBER: builtins.int
+    CLUSTER_ID_FIELD_NUMBER: builtins.int
+    group_id: builtins.str
+    cluster_id: builtins.str
+    def __init__(
+        self,
+        *,
+        group_id: builtins.str = ...,
+        cluster_id: builtins.str | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["_cluster_id", b"_cluster_id", "cluster_id", b"cluster_id"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_cluster_id", b"_cluster_id", "cluster_id", b"cluster_id", "group_id", b"group_id"]) -> None: ...
+    def WhichOneof(self, oneof_group: typing.Literal["_cluster_id", b"_cluster_id"]) -> typing.Literal["cluster_id"] | None: ...
+
+global___GetGroupInfoRequest = GetGroupInfoRequest
+
+@typing.final
+class GetGroupInfoResponse(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    GROUP_INFO_FIELD_NUMBER: builtins.int
+    @property
+    def group_info(self) -> global___GroupInfo: ...
+    def __init__(
+        self,
+        *,
+        group_info: global___GroupInfo | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["group_info", b"group_info"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["group_info", b"group_info"]) -> None: ...
+
+global___GetGroupInfoResponse = GetGroupInfoResponse
+
+@typing.final
 class GetUserInfoRequest(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 

@@ -35,6 +35,11 @@ class UserServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
+        self.GetGroupInfo = channel.unary_unary(
+                '/pomerium.dashboard.UserService/GetGroupInfo',
+                request_serializer=users__pb2.GetGroupInfoRequest.SerializeToString,
+                response_deserializer=users__pb2.GetGroupInfoResponse.FromString,
+                _registered_method=True)
         self.GetUserInfo = channel.unary_unary(
                 '/pomerium.dashboard.UserService/GetUserInfo',
                 request_serializer=users__pb2.GetUserInfoRequest.SerializeToString,
@@ -55,6 +60,13 @@ class UserServiceStub(object):
 class UserServiceServicer(object):
     """UserService supports querying directory data from the databroker
     """
+
+    def GetGroupInfo(self, request, context):
+        """GetGroupInfo retrieves information about a group.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
     def GetUserInfo(self, request, context):
         """GetUserInfo retrieves identity information and permission mappings for a
@@ -83,6 +95,11 @@ class UserServiceServicer(object):
 
 def add_UserServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
+            'GetGroupInfo': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetGroupInfo,
+                    request_deserializer=users__pb2.GetGroupInfoRequest.FromString,
+                    response_serializer=users__pb2.GetGroupInfoResponse.SerializeToString,
+            ),
             'GetUserInfo': grpc.unary_unary_rpc_method_handler(
                     servicer.GetUserInfo,
                     request_deserializer=users__pb2.GetUserInfoRequest.FromString,
@@ -109,6 +126,33 @@ def add_UserServiceServicer_to_server(servicer, server):
 class UserService(object):
     """UserService supports querying directory data from the databroker
     """
+
+    @staticmethod
+    def GetGroupInfo(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/pomerium.dashboard.UserService/GetGroupInfo',
+            users__pb2.GetGroupInfoRequest.SerializeToString,
+            users__pb2.GetGroupInfoResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def GetUserInfo(request,
