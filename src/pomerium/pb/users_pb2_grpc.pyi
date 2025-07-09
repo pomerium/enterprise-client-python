@@ -21,6 +21,12 @@ class UserServiceStub:
     """UserService supports querying directory data from the databroker"""
 
     def __init__(self, channel: typing.Union[grpc.Channel, grpc.aio.Channel]) -> None: ...
+    GetGroupInfo: grpc.UnaryUnaryMultiCallable[
+        users_pb2.GetGroupInfoRequest,
+        users_pb2.GetGroupInfoResponse,
+    ]
+    """GetGroupInfo retrieves information about a group."""
+
     GetUserInfo: grpc.UnaryUnaryMultiCallable[
         users_pb2.GetUserInfoRequest,
         users_pb2.GetUserInfoResponse,
@@ -48,6 +54,12 @@ class UserServiceStub:
 class UserServiceAsyncStub:
     """UserService supports querying directory data from the databroker"""
 
+    GetGroupInfo: grpc.aio.UnaryUnaryMultiCallable[
+        users_pb2.GetGroupInfoRequest,
+        users_pb2.GetGroupInfoResponse,
+    ]
+    """GetGroupInfo retrieves information about a group."""
+
     GetUserInfo: grpc.aio.UnaryUnaryMultiCallable[
         users_pb2.GetUserInfoRequest,
         users_pb2.GetUserInfoResponse,
@@ -74,6 +86,14 @@ class UserServiceAsyncStub:
 
 class UserServiceServicer(metaclass=abc.ABCMeta):
     """UserService supports querying directory data from the databroker"""
+
+    @abc.abstractmethod
+    def GetGroupInfo(
+        self,
+        request: users_pb2.GetGroupInfoRequest,
+        context: _ServicerContext,
+    ) -> typing.Union[users_pb2.GetGroupInfoResponse, collections.abc.Awaitable[users_pb2.GetGroupInfoResponse]]:
+        """GetGroupInfo retrieves information about a group."""
 
     @abc.abstractmethod
     def GetUserInfo(
