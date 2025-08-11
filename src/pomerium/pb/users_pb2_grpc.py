@@ -521,6 +521,11 @@ class PomeriumSessionServiceStub(object):
                 request_serializer=users__pb2.ListPomeriumSessionsRequest.SerializeToString,
                 response_deserializer=users__pb2.ListPomeriumSessionsResponse.FromString,
                 _registered_method=True)
+        self.ListPomeriumSessionsForImpersonation = channel.unary_unary(
+                '/pomerium.dashboard.PomeriumSessionService/ListPomeriumSessionsForImpersonation',
+                request_serializer=users__pb2.ListPomeriumSessionsForImpersonationRequest.SerializeToString,
+                response_deserializer=users__pb2.ListPomeriumSessionsForImpersonationResponse.FromString,
+                _registered_method=True)
 
 
 class PomeriumSessionServiceServicer(object):
@@ -556,6 +561,14 @@ class PomeriumSessionServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def ListPomeriumSessionsForImpersonation(self, request, context):
+        """ListPomeriumSessionsForImpersonation lists existing sessions for
+        impersonation.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_PomeriumSessionServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -578,6 +591,11 @@ def add_PomeriumSessionServiceServicer_to_server(servicer, server):
                     servicer.ListPomeriumSessions,
                     request_deserializer=users__pb2.ListPomeriumSessionsRequest.FromString,
                     response_serializer=users__pb2.ListPomeriumSessionsResponse.SerializeToString,
+            ),
+            'ListPomeriumSessionsForImpersonation': grpc.unary_unary_rpc_method_handler(
+                    servicer.ListPomeriumSessionsForImpersonation,
+                    request_deserializer=users__pb2.ListPomeriumSessionsForImpersonationRequest.FromString,
+                    response_serializer=users__pb2.ListPomeriumSessionsForImpersonationResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -689,6 +707,33 @@ class PomeriumSessionService(object):
             '/pomerium.dashboard.PomeriumSessionService/ListPomeriumSessions',
             users__pb2.ListPomeriumSessionsRequest.SerializeToString,
             users__pb2.ListPomeriumSessionsResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def ListPomeriumSessionsForImpersonation(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/pomerium.dashboard.PomeriumSessionService/ListPomeriumSessionsForImpersonation',
+            users__pb2.ListPomeriumSessionsForImpersonationRequest.SerializeToString,
+            users__pb2.ListPomeriumSessionsForImpersonationResponse.FromString,
             options,
             channel_credentials,
             insecure,

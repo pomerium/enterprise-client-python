@@ -788,6 +788,64 @@ class ListPomeriumSessionsResponse(google.protobuf.message.Message):
 global___ListPomeriumSessionsResponse = ListPomeriumSessionsResponse
 
 @typing.final
+class ListPomeriumSessionsForImpersonationRequest(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    CLUSTER_ID_FIELD_NUMBER: builtins.int
+    QUERY_FIELD_NUMBER: builtins.int
+    cluster_id: builtins.str
+    query: builtins.str
+    def __init__(
+        self,
+        *,
+        cluster_id: builtins.str | None = ...,
+        query: builtins.str | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["_cluster_id", b"_cluster_id", "_query", b"_query", "cluster_id", b"cluster_id", "query", b"query"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_cluster_id", b"_cluster_id", "_query", b"_query", "cluster_id", b"cluster_id", "query", b"query"]) -> None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_cluster_id", b"_cluster_id"]) -> typing.Literal["cluster_id"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_query", b"_query"]) -> typing.Literal["query"] | None: ...
+
+global___ListPomeriumSessionsForImpersonationRequest = ListPomeriumSessionsForImpersonationRequest
+
+@typing.final
+class ListPomeriumSessionsForImpersonationResponse(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    @typing.final
+    class Session(google.protobuf.message.Message):
+        DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+        ID_FIELD_NUMBER: builtins.int
+        USER_DISPLAY_NAME_FIELD_NUMBER: builtins.int
+        USER_EMAIL_FIELD_NUMBER: builtins.int
+        id: builtins.str
+        user_display_name: builtins.str
+        user_email: builtins.str
+        def __init__(
+            self,
+            *,
+            id: builtins.str = ...,
+            user_display_name: builtins.str = ...,
+            user_email: builtins.str = ...,
+        ) -> None: ...
+        def ClearField(self, field_name: typing.Literal["id", b"id", "user_display_name", b"user_display_name", "user_email", b"user_email"]) -> None: ...
+
+    SESSIONS_FIELD_NUMBER: builtins.int
+    @property
+    def sessions(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___ListPomeriumSessionsForImpersonationResponse.Session]: ...
+    def __init__(
+        self,
+        *,
+        sessions: collections.abc.Iterable[global___ListPomeriumSessionsForImpersonationResponse.Session] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["sessions", b"sessions"]) -> None: ...
+
+global___ListPomeriumSessionsForImpersonationResponse = ListPomeriumSessionsForImpersonationResponse
+
+@typing.final
 class ImpersonateRequest(google.protobuf.message.Message):
     """ImpersonateRequest defines the identity information to impersonate"""
 
