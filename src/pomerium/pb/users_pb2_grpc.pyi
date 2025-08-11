@@ -278,6 +278,14 @@ class PomeriumSessionServiceStub:
     ListPomeriumSessionsRequest
     """
 
+    ListPomeriumSessionsForImpersonation: grpc.UnaryUnaryMultiCallable[
+        users_pb2.ListPomeriumSessionsForImpersonationRequest,
+        users_pb2.ListPomeriumSessionsForImpersonationResponse,
+    ]
+    """ListPomeriumSessionsForImpersonation lists existing sessions for
+    impersonation.
+    """
+
 class PomeriumSessionServiceAsyncStub:
     """PomeriumSessionService manages user sessions inside the databroker"""
 
@@ -305,6 +313,14 @@ class PomeriumSessionServiceAsyncStub:
     ]
     """ListPomeriumSessions lists existing sessions based on the parameters of
     ListPomeriumSessionsRequest
+    """
+
+    ListPomeriumSessionsForImpersonation: grpc.aio.UnaryUnaryMultiCallable[
+        users_pb2.ListPomeriumSessionsForImpersonationRequest,
+        users_pb2.ListPomeriumSessionsForImpersonationResponse,
+    ]
+    """ListPomeriumSessionsForImpersonation lists existing sessions for
+    impersonation.
     """
 
 class PomeriumSessionServiceServicer(metaclass=abc.ABCMeta):
@@ -342,6 +358,16 @@ class PomeriumSessionServiceServicer(metaclass=abc.ABCMeta):
     ) -> typing.Union[users_pb2.ListPomeriumSessionsResponse, collections.abc.Awaitable[users_pb2.ListPomeriumSessionsResponse]]:
         """ListPomeriumSessions lists existing sessions based on the parameters of
         ListPomeriumSessionsRequest
+        """
+
+    @abc.abstractmethod
+    def ListPomeriumSessionsForImpersonation(
+        self,
+        request: users_pb2.ListPomeriumSessionsForImpersonationRequest,
+        context: _ServicerContext,
+    ) -> typing.Union[users_pb2.ListPomeriumSessionsForImpersonationResponse, collections.abc.Awaitable[users_pb2.ListPomeriumSessionsForImpersonationResponse]]:
+        """ListPomeriumSessionsForImpersonation lists existing sessions for
+        impersonation.
         """
 
 def add_PomeriumSessionServiceServicer_to_server(servicer: PomeriumSessionServiceServicer, server: typing.Union[grpc.Server, grpc.aio.Server]) -> None: ...
