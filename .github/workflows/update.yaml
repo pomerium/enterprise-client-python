@@ -34,8 +34,9 @@ jobs:
           commit_message: "ci: update"
 
   test:
-    needs: update
     runs-on: ubuntu-latest
+    needs: update
+    if: always() && !failure() && !cancelled()
     strategy:
       matrix:
         python-version: ["3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
