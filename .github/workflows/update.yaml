@@ -2,11 +2,12 @@ name: Update
 
 on:
   pull_request:
-
+  push:
+    branches:
+      - main
 jobs:
   update:
-    runs-on: ubuntu-latest
-    # if: github.event.pull_request.user.login == 'dependabot[bot]' && github.repository == 'pomerium/enterprise-client'
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
@@ -15,9 +16,20 @@ jobs:
           submodules: "true"
           token: ${{ secrets.APPARITOR_GITHUB_TOKEN }}
 
+      - name: Setup Python
+        uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c
+        with:
+          python-version: "3.9"
+
       - name: Update
         run: |
           ./scripts/update
+
+      - name: Install
+        run: pip install .
+
+      - name: Test
+        run: make test
 
       - name: Commit
         uses: devops-infra/action-commit-push@e6a24fad602d1f92e46432c89a7e0c7fdd45d62d
