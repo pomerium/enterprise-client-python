@@ -1,0 +1,12 @@
+[submodule "deps/github.com/pomerium/enterprise-client"]
+	path = deps/github.com/pomerium/enterprise-client
+	url = git@github.com:pomerium/enterprise-client
+[submodule "deps/github.com/envoyproxy/protoc-gen-validate"]
+	path = deps/github.com/envoyproxy/protoc-gen-validate
+	url = git@github.com:envoyproxy/protoc-gen-validate
+[submodule "deps/github.com/census-instrumentation/opencensus-proto"]
+	path = deps/github.com/census-instrumentation/opencensus-proto
+	url = git@github.com:census-instrumentation/opencensus-proto
+[submodule "deps/github.com/open-telemetry/opentelemetry-proto"]
+	path = deps/github.com/open-telemetry/opentelemetry-proto
+	url = git@github.com:open-telemetry/opentelemetry-proto

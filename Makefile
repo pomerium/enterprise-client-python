@@ -1,17 +1,17 @@
 PYTHON:=python3
 
 .PHONY: all
-all: test pkg
+all: generate test pkg
 
 .PHONY: pkg
 pkg:
 	@echo "==> $@"
 	$(PYTHON) -m build .
 
-.PHONY: update
-update:
+.PHONY: generate
+generate:
 	@echo "==> $@"
-	@scripts/update
+	@scripts/generate
 
 .PHONY: test
 test:
