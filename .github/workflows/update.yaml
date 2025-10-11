@@ -22,9 +22,8 @@ jobs:
         with:
           python-version: "3.14"
 
-      - name: Update
-        run: |
-          ./scripts/update
+      - name: Generate
+        run: make generate
 
       - name: Commit
         if: github.event.pull_request.user.login == 'dependabot[bot]'
