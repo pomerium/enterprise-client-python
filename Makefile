@@ -14,6 +14,10 @@ generate: install
 	@echo "==> $@"
 	@scripts/generate
 
+.PHONY: install
+install:
+	$(PYTHON) -m pip install .
+
 .PHONY: test
 test: install
 	@echo "==> $@"
@@ -23,8 +27,3 @@ test: install
 update-pomerium:
 	@echo "==> $@"
 	git submodule update --remote deps/github.com/pomerium
-
-.PHONY: install
-install: setup.cfg
-setup.cfg:
-	$(PYTHON) -m pip install .
