@@ -4,7 +4,7 @@ PYTHON:=python3
 all: generate test pkg
 
 .PHONY: pkg
-pkg:
+pkg: install
 	@echo "==> $@"
 	$(PYTHON) -m pip install build
 	$(PYTHON) -m build .
@@ -15,7 +15,7 @@ generate:
 	@scripts/generate
 
 .PHONY: test
-test:
+test: install
 	@echo "==> $@"
 	PYTHONPATH=src/ $(PYTHON) -m unittest discover -s src -v
 
@@ -23,3 +23,8 @@ test:
 update-pomerium:
 	@echo "==> $@"
 	git submodule update --remote deps/github.com/pomerium
+
+.PHONY: install
+install: setup.cfg
+setup.cfg:
+	$(PYTHON) -m pip install .
