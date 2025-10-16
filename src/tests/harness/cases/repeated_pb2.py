@@ -28,7 +28,7 @@ from google.protobuf import duration_pb2 as google_dot_protobuf_dot_duration__pb
 from google.protobuf import any_pb2 as google_dot_protobuf_dot_any__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\"tests/harness/cases/repeated.proto\x12\x13tests.harness.cases\x1a-tests/harness/cases/other_package/embed.proto\x1a\x17validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x19google/protobuf/any.proto\"\x1d\n\x05\x45mbed\x12\x14\n\x03val\x18\x01 \x01(\x03\x42\x07\xfa\x42\x04\"\x02 \x00\"\x1b\n\x0cRepeatedNone\x12\x0b\n\x03val\x18\x01 \x03(\x03\"<\n\x11RepeatedEmbedNone\x12\'\n\x03val\x18\x01 \x03(\x0b\x32\x1a.tests.harness.cases.Embed\"V\n\x1dRepeatedEmbedCrossPackageNone\x12\x35\n\x03val\x18\x01 \x03(\x0b\x32(.tests.harness.cases.other_package.Embed\"@\n\x0bRepeatedMin\x12\x31\n\x03val\x18\x01 \x03(\x0b\x32\x1a.tests.harness.cases.EmbedB\x08\xfa\x42\x05\x92\x01\x02\x08\x02\"$\n\x0bRepeatedMax\x12\x15\n\x03val\x18\x01 \x03(\x01\x42\x08\xfa\x42\x05\x92\x01\x02\x10\x03\")\n\x0eRepeatedMinMax\x12\x17\n\x03val\x18\x01 \x03(\x0f\x42\n\xfa\x42\x07\x92\x01\x04\x08\x02\x10\x04\"(\n\rRepeatedExact\x12\x17\n\x03val\x18\x01 \x03(\rB\n\xfa\x42\x07\x92\x01\x04\x08\x03\x10\x03\"\'\n\x0eRepeatedUnique\x12\x15\n\x03val\x18\x01 \x03(\tB\x08\xfa\x42\x05\x92\x01\x02\x18\x01\"0\n\x10RepeatedItemRule\x12\x1c\n\x03val\x18\x01 \x03(\x02\x42\x0f\xfa\x42\x0c\x92\x01\t\"\x07\n\x05%\x00\x00\x00\x00\"?\n\x13RepeatedItemPattern\x12(\n\x03val\x18\x01 \x03(\tB\x1b\xfa\x42\x18\x92\x01\x15\"\x13r\x11\x32\x0f(?i)^[a-z0-9]+$\"K\n\x11RepeatedEmbedSkip\x12\x36\n\x03val\x18\x01 \x03(\x0b\x32\x1a.tests.harness.cases.EmbedB\r\xfa\x42\n\x92\x01\x07\"\x05\x8a\x01\x02\x08\x01\"3\n\x0eRepeatedItemIn\x12!\n\x03val\x18\x01 \x03(\tB\x14\xfa\x42\x11\x92\x01\x0e\"\x0cr\nR\x03\x66ooR\x03\x62\x61r\"6\n\x11RepeatedItemNotIn\x12!\n\x03val\x18\x01 \x03(\tB\x14\xfa\x42\x11\x92\x01\x0e\"\x0cr\nZ\x03\x66ooZ\x03\x62\x61r\"I\n\x0eRepeatedEnumIn\x12\x37\n\x03val\x18\x01 \x03(\x0e\x32\x1b.tests.harness.cases.AnEnumB\r\xfa\x42\n\x92\x01\x07\"\x05\x82\x01\x02\x18\x00\"L\n\x11RepeatedEnumNotIn\x12\x37\n\x03val\x18\x01 \x03(\x0e\x32\x1b.tests.harness.cases.AnEnumB\r\xfa\x42\n\x92\x01\x07\"\x05\x82\x01\x02 \x00\"\x8e\x01\n\x16RepeatedEmbeddedEnumIn\x12U\n\x03val\x18\x01 \x03(\x0e\x32\x39.tests.harness.cases.RepeatedEmbeddedEnumIn.AnotherInEnumB\r\xfa\x42\n\x92\x01\x07\"\x05\x82\x01\x02\x18\x00\"\x1d\n\rAnotherInEnum\x12\x05\n\x01\x41\x10\x00\x12\x05\n\x01\x42\x10\x01\"\x9a\x01\n\x19RepeatedEmbeddedEnumNotIn\x12[\n\x03val\x18\x01 \x03(\x0e\x32?.tests.harness.cases.RepeatedEmbeddedEnumNotIn.AnotherNotInEnumB\r\xfa\x42\n\x92\x01\x07\"\x05\x82\x01\x02 \x00\" \n\x10\x41notherNotInEnum\x12\x05\n\x01\x41\x10\x00\x12\x05\n\x01\x42\x10\x01\"m\n\rRepeatedAnyIn\x12\\\n\x03val\x18\x01 \x03(\x0b\x32\x14.google.protobuf.AnyB9\xfa\x42\x36\x92\x01\x33\"1\xa2\x01.\x12,type.googleapis.com/google.protobuf.Duration\"q\n\x10RepeatedAnyNotIn\x12]\n\x03val\x18\x01 \x03(\x0b\x32\x14.google.protobuf.AnyB:\xfa\x42\x37\x92\x01\x34\"2\xa2\x01/\x1a-type.googleapis.com/google.protobuf.Timestamp\"5\n\x15RepeatedMinAndItemLen\x12\x1c\n\x03val\x18\x01 \x03(\tB\x0f\xfa\x42\x0c\x92\x01\t\x08\x01\"\x05r\x03\x98\x01\x03\"3\n\x18RepeatedMinAndMaxItemLen\x12\x17\n\x03val\x18\x01 \x03(\tB\n\xfa\x42\x07\x92\x01\x04\x08\x01\x10\x03\"M\n\x10RepeatedDuration\x12\x39\n\x03val\x18\x01 \x03(\x0b\x32\x19.google.protobuf.DurationB\x11\xfa\x42\x0e\x92\x01\x0b\"\t\xaa\x01\x06\x32\x04\x10\xc0\x84=\"0\n\x13RepeatedExactIgnore\x12\x19\n\x03val\x18\x01 \x03(\rB\x0c\xfa\x42\t\x92\x01\x06\x08\x03\x10\x03(\x01*\x16\n\x06\x41nEnum\x12\x05\n\x01X\x10\x00\x12\x05\n\x01Y\x10\x01\x42HZFgithub.com/envoyproxy/protoc-gen-validate/tests/harness/cases/go;casesb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\"tests/harness/cases/repeated.proto\x12\x13tests.harness.cases\x1a-tests/harness/cases/other_package/embed.proto\x1a\x17validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x19google/protobuf/any.proto\"\x1d\n\x05\x45mbed\x12\x14\n\x03val\x18\x01 \x01(\x03\x42\x07\xfa\x42\x04\"\x02 \x00\"\x1b\n\x0cRepeatedNone\x12\x0b\n\x03val\x18\x01 \x03(\x03\"<\n\x11RepeatedEmbedNone\x12\'\n\x03val\x18\x01 \x03(\x0b\x32\x1a.tests.harness.cases.Embed\"V\n\x1dRepeatedEmbedCrossPackageNone\x12\x35\n\x03val\x18\x01 \x03(\x0b\x32(.tests.harness.cases.other_package.Embed\"@\n\x0bRepeatedMin\x12\x31\n\x03val\x18\x01 \x03(\x0b\x32\x1a.tests.harness.cases.EmbedB\x08\xfa\x42\x05\x92\x01\x02\x08\x02\"$\n\x0bRepeatedMax\x12\x15\n\x03val\x18\x01 \x03(\x01\x42\x08\xfa\x42\x05\x92\x01\x02\x10\x03\")\n\x0eRepeatedMinMax\x12\x17\n\x03val\x18\x01 \x03(\x0f\x42\n\xfa\x42\x07\x92\x01\x04\x08\x02\x10\x04\"(\n\rRepeatedExact\x12\x17\n\x03val\x18\x01 \x03(\rB\n\xfa\x42\x07\x92\x01\x04\x08\x03\x10\x03\"\'\n\x0eRepeatedUnique\x12\x15\n\x03val\x18\x01 \x03(\tB\x08\xfa\x42\x05\x92\x01\x02\x18\x01\"0\n\x10RepeatedItemRule\x12\x1c\n\x03val\x18\x01 \x03(\x02\x42\x0f\xfa\x42\x0c\x92\x01\t\"\x07\n\x05%\x00\x00\x00\x00\"?\n\x13RepeatedItemPattern\x12(\n\x03val\x18\x01 \x03(\tB\x1b\xfa\x42\x18\x92\x01\x15\"\x13r\x11\x32\x0f(?i)^[a-z0-9]+$\"K\n\x11RepeatedEmbedSkip\x12\x36\n\x03val\x18\x01 \x03(\x0b\x32\x1a.tests.harness.cases.EmbedB\r\xfa\x42\n\x92\x01\x07\"\x05\x8a\x01\x02\x08\x01\"3\n\x0eRepeatedItemIn\x12!\n\x03val\x18\x01 \x03(\tB\x14\xfa\x42\x11\x92\x01\x0e\"\x0cr\nR\x03\x66ooR\x03\x62\x61r\"6\n\x11RepeatedItemNotIn\x12!\n\x03val\x18\x01 \x03(\tB\x14\xfa\x42\x11\x92\x01\x0e\"\x0cr\nZ\x03\x66ooZ\x03\x62\x61r\"2\n\x13RepeatedItemInt64In\x12\x1b\n\x03val\x18\x01 \x03(\x03\x42\x0e\xfa\x42\x0b\x92\x01\x08\"\x06\"\x04\x30\x01\x30\x02\"5\n\x16RepeatedItemInt64NotIn\x12\x1b\n\x03val\x18\x01 \x03(\x03\x42\x0e\xfa\x42\x0b\x92\x01\x08\"\x06\"\x04\x38\x01\x38\x02\"2\n\x13RepeatedItemInt32In\x12\x1b\n\x03val\x18\x01 \x03(\x05\x42\x0e\xfa\x42\x0b\x92\x01\x08\"\x06\x1a\x04\x30\x01\x30\x02\"5\n\x16RepeatedItemInt32NotIn\x12\x1b\n\x03val\x18\x01 \x03(\x05\x42\x0e\xfa\x42\x0b\x92\x01\x08\"\x06\x1a\x04\x38\x01\x38\x02\"I\n\x0eRepeatedEnumIn\x12\x37\n\x03val\x18\x01 \x03(\x0e\x32\x1b.tests.harness.cases.AnEnumB\r\xfa\x42\n\x92\x01\x07\"\x05\x82\x01\x02\x18\x00\"L\n\x11RepeatedEnumNotIn\x12\x37\n\x03val\x18\x01 \x03(\x0e\x32\x1b.tests.harness.cases.AnEnumB\r\xfa\x42\n\x92\x01\x07\"\x05\x82\x01\x02 \x00\"\x8e\x01\n\x16RepeatedEmbeddedEnumIn\x12U\n\x03val\x18\x01 \x03(\x0e\x32\x39.tests.harness.cases.RepeatedEmbeddedEnumIn.AnotherInEnumB\r\xfa\x42\n\x92\x01\x07\"\x05\x82\x01\x02\x18\x00\"\x1d\n\rAnotherInEnum\x12\x05\n\x01\x41\x10\x00\x12\x05\n\x01\x42\x10\x01\"\x9a\x01\n\x19RepeatedEmbeddedEnumNotIn\x12[\n\x03val\x18\x01 \x03(\x0e\x32?.tests.harness.cases.RepeatedEmbeddedEnumNotIn.AnotherNotInEnumB\r\xfa\x42\n\x92\x01\x07\"\x05\x82\x01\x02 \x00\" \n\x10\x41notherNotInEnum\x12\x05\n\x01\x41\x10\x00\x12\x05\n\x01\x42\x10\x01\"m\n\rRepeatedAnyIn\x12\\\n\x03val\x18\x01 \x03(\x0b\x32\x14.google.protobuf.AnyB9\xfa\x42\x36\x92\x01\x33\"1\xa2\x01.\x12,type.googleapis.com/google.protobuf.Duration\"q\n\x10RepeatedAnyNotIn\x12]\n\x03val\x18\x01 \x03(\x0b\x32\x14.google.protobuf.AnyB:\xfa\x42\x37\x92\x01\x34\"2\xa2\x01/\x1a-type.googleapis.com/google.protobuf.Timestamp\"5\n\x15RepeatedMinAndItemLen\x12\x1c\n\x03val\x18\x01 \x03(\tB\x0f\xfa\x42\x0c\x92\x01\t\x08\x01\"\x05r\x03\x98\x01\x03\"3\n\x18RepeatedMinAndMaxItemLen\x12\x17\n\x03val\x18\x01 \x03(\tB\n\xfa\x42\x07\x92\x01\x04\x08\x01\x10\x03\"M\n\x10RepeatedDuration\x12\x39\n\x03val\x18\x01 \x03(\x0b\x32\x19.google.protobuf.DurationB\x11\xfa\x42\x0e\x92\x01\x0b\"\t\xaa\x01\x06\x32\x04\x10\xc0\x84=\"0\n\x13RepeatedExactIgnore\x12\x19\n\x03val\x18\x01 \x03(\rB\x0c\xfa\x42\t\x92\x01\x06\x08\x03\x10\x03(\x01*\x16\n\x06\x41nEnum\x12\x05\n\x01X\x10\x00\x12\x05\n\x01Y\x10\x01\x42HZFgithub.com/envoyproxy/protoc-gen-validate/tests/harness/cases/go;casesb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -58,6 +58,14 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_REPEATEDITEMIN'].fields_by_name['val']._serialized_options = b'\372B\021\222\001\016\"\014r\nR\003fooR\003bar'
   _globals['_REPEATEDITEMNOTIN'].fields_by_name['val']._loaded_options = None
   _globals['_REPEATEDITEMNOTIN'].fields_by_name['val']._serialized_options = b'\372B\021\222\001\016\"\014r\nZ\003fooZ\003bar'
+  _globals['_REPEATEDITEMINT64IN'].fields_by_name['val']._loaded_options = None
+  _globals['_REPEATEDITEMINT64IN'].fields_by_name['val']._serialized_options = b'\372B\013\222\001\010\"\006\"\0040\0010\002'
+  _globals['_REPEATEDITEMINT64NOTIN'].fields_by_name['val']._loaded_options = None
+  _globals['_REPEATEDITEMINT64NOTIN'].fields_by_name['val']._serialized_options = b'\372B\013\222\001\010\"\006\"\0048\0018\002'
+  _globals['_REPEATEDITEMINT32IN'].fields_by_name['val']._loaded_options = None
+  _globals['_REPEATEDITEMINT32IN'].fields_by_name['val']._serialized_options = b'\372B\013\222\001\010\"\006\032\0040\0010\002'
+  _globals['_REPEATEDITEMINT32NOTIN'].fields_by_name['val']._loaded_options = None
+  _globals['_REPEATEDITEMINT32NOTIN'].fields_by_name['val']._serialized_options = b'\372B\013\222\001\010\"\006\032\0048\0018\002'
   _globals['_REPEATEDENUMIN'].fields_by_name['val']._loaded_options = None
   _globals['_REPEATEDENUMIN'].fields_by_name['val']._serialized_options = b'\372B\n\222\001\007\"\005\202\001\002\030\000'
   _globals['_REPEATEDENUMNOTIN'].fields_by_name['val']._loaded_options = None
@@ -78,8 +86,8 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_REPEATEDDURATION'].fields_by_name['val']._serialized_options = b'\372B\016\222\001\013\"\t\252\001\0062\004\020\300\204='
   _globals['_REPEATEDEXACTIGNORE'].fields_by_name['val']._loaded_options = None
   _globals['_REPEATEDEXACTIGNORE'].fields_by_name['val']._serialized_options = b'\372B\t\222\001\006\010\003\020\003(\001'
-  _globals['_ANENUM']._serialized_start=1849
-  _globals['_ANENUM']._serialized_end=1871
+  _globals['_ANENUM']._serialized_start=2063
+  _globals['_ANENUM']._serialized_end=2085
   _globals['_EMBED']._serialized_start=190
   _globals['_EMBED']._serialized_end=219
   _globals['_REPEATEDNONE']._serialized_start=221
@@ -108,28 +116,36 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_REPEATEDITEMIN']._serialized_end=873
   _globals['_REPEATEDITEMNOTIN']._serialized_start=875
   _globals['_REPEATEDITEMNOTIN']._serialized_end=929
-  _globals['_REPEATEDENUMIN']._serialized_start=931
-  _globals['_REPEATEDENUMIN']._serialized_end=1004
-  _globals['_REPEATEDENUMNOTIN']._serialized_start=1006
-  _globals['_REPEATEDENUMNOTIN']._serialized_end=1082
-  _globals['_REPEATEDEMBEDDEDENUMIN']._serialized_start=1085
-  _globals['_REPEATEDEMBEDDEDENUMIN']._serialized_end=1227
-  _globals['_REPEATEDEMBEDDEDENUMIN_ANOTHERINENUM']._serialized_start=1198
-  _globals['_REPEATEDEMBEDDEDENUMIN_ANOTHERINENUM']._serialized_end=1227
-  _globals['_REPEATEDEMBEDDEDENUMNOTIN']._serialized_start=1230
-  _globals['_REPEATEDEMBEDDEDENUMNOTIN']._serialized_end=1384
-  _globals['_REPEATEDEMBEDDEDENUMNOTIN_ANOTHERNOTINENUM']._serialized_start=1352
-  _globals['_REPEATEDEMBEDDEDENUMNOTIN_ANOTHERNOTINENUM']._serialized_end=1384
-  _globals['_REPEATEDANYIN']._serialized_start=1386
-  _globals['_REPEATEDANYIN']._serialized_end=1495
-  _globals['_REPEATEDANYNOTIN']._serialized_start=1497
-  _globals['_REPEATEDANYNOTIN']._serialized_end=1610
-  _globals['_REPEATEDMINANDITEMLEN']._serialized_start=1612
-  _globals['_REPEATEDMINANDITEMLEN']._serialized_end=1665
-  _globals['_REPEATEDMINANDMAXITEMLEN']._serialized_start=1667
-  _globals['_REPEATEDMINANDMAXITEMLEN']._serialized_end=1718
-  _globals['_REPEATEDDURATION']._serialized_start=1720
-  _globals['_REPEATEDDURATION']._serialized_end=1797
-  _globals['_REPEATEDEXACTIGNORE']._serialized_start=1799
-  _globals['_REPEATEDEXACTIGNORE']._serialized_end=1847
+  _globals['_REPEATEDITEMINT64IN']._serialized_start=931
+  _globals['_REPEATEDITEMINT64IN']._serialized_end=981
+  _globals['_REPEATEDITEMINT64NOTIN']._serialized_start=983
+  _globals['_REPEATEDITEMINT64NOTIN']._serialized_end=1036
+  _globals['_REPEATEDITEMINT32IN']._serialized_start=1038
+  _globals['_REPEATEDITEMINT32IN']._serialized_end=1088
+  _globals['_REPEATEDITEMINT32NOTIN']._serialized_start=1090
+  _globals['_REPEATEDITEMINT32NOTIN']._serialized_end=1143
+  _globals['_REPEATEDENUMIN']._serialized_start=1145
+  _globals['_REPEATEDENUMIN']._serialized_end=1218
+  _globals['_REPEATEDENUMNOTIN']._serialized_start=1220
+  _globals['_REPEATEDENUMNOTIN']._serialized_end=1296
+  _globals['_REPEATEDEMBEDDEDENUMIN']._serialized_start=1299
+  _globals['_REPEATEDEMBEDDEDENUMIN']._serialized_end=1441
+  _globals['_REPEATEDEMBEDDEDENUMIN_ANOTHERINENUM']._serialized_start=1412
+  _globals['_REPEATEDEMBEDDEDENUMIN_ANOTHERINENUM']._serialized_end=1441
+  _globals['_REPEATEDEMBEDDEDENUMNOTIN']._serialized_start=1444
+  _globals['_REPEATEDEMBEDDEDENUMNOTIN']._serialized_end=1598
+  _globals['_REPEATEDEMBEDDEDENUMNOTIN_ANOTHERNOTINENUM']._serialized_start=1566
+  _globals['_REPEATEDEMBEDDEDENUMNOTIN_ANOTHERNOTINENUM']._serialized_end=1598
+  _globals['_REPEATEDANYIN']._serialized_start=1600
+  _globals['_REPEATEDANYIN']._serialized_end=1709
+  _globals['_REPEATEDANYNOTIN']._serialized_start=1711
+  _globals['_REPEATEDANYNOTIN']._serialized_end=1824
+  _globals['_REPEATEDMINANDITEMLEN']._serialized_start=1826
+  _globals['_REPEATEDMINANDITEMLEN']._serialized_end=1879
+  _globals['_REPEATEDMINANDMAXITEMLEN']._serialized_start=1881
+  _globals['_REPEATEDMINANDMAXITEMLEN']._serialized_end=1932
+  _globals['_REPEATEDDURATION']._serialized_start=1934
+  _globals['_REPEATEDDURATION']._serialized_end=2011
+  _globals['_REPEATEDEXACTIGNORE']._serialized_start=2013
+  _globals['_REPEATEDEXACTIGNORE']._serialized_end=2061
 # @@protoc_insertion_point(module_scope)
