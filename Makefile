@@ -1,19 +1,29 @@
 PYTHON:=python3
 
 .PHONY: all
-all: test pkg
+all: generate test pkg
 
 .PHONY: pkg
-pkg:
+pkg: install
 	@echo "==> $@"
+	$(PYTHON) -m pip install build
 	$(PYTHON) -m build .
 
-.PHONY: update
-update:
+.PHONY: generate
+generate: install
 	@echo "==> $@"
-	@scripts/update
+	@scripts/generate
+
+.PHONY: install
+install:
+	$(PYTHON) -m pip install .
 
 .PHONY: test
-test:
+test: install
 	@echo "==> $@"
 	PYTHONPATH=src/ $(PYTHON) -m unittest discover -s src -v
+
+.PHONY: update-pomerium
+update-pomerium:
+	@echo "==> $@"
+	git submodule update --remote deps/github.com/pomerium
