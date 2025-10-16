@@ -10,7 +10,7 @@ pkg: install
 	$(PYTHON) -m build .
 
 .PHONY: generate
-generate:
+generate: install
 	@echo "==> $@"
 	@scripts/generate
 
