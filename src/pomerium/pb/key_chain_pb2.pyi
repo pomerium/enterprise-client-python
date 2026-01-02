@@ -311,16 +311,14 @@ class KeyPairRecord(google.protobuf.message.Message):
     HAS_PRIVATE_KEY_FIELD_NUMBER: builtins.int
     CERTIFICATE_FIELD_NUMBER: builtins.int
     ORIGINATOR_ID_FIELD_NUMBER: builtins.int
-    KEY_SHA256_FIELD_NUMBER: builtins.int
     id: builtins.str
     name: builtins.str
     namespace_id: builtins.str
     has_private_key: builtins.bool
-    """Deprecated: This field will be removed in a future release. Use key_sha256 to verify presence of private key."""
+    """Key Pair has a private key attached"""
     certificate: builtins.bytes
     """public certificate data"""
     originator_id: builtins.str
-    key_sha256: builtins.str
     @property
     def created_at(self) -> google.protobuf.timestamp_pb2.Timestamp:
         """database record creation time"""
@@ -345,11 +343,9 @@ class KeyPairRecord(google.protobuf.message.Message):
         has_private_key: builtins.bool = ...,
         certificate: builtins.bytes = ...,
         originator_id: builtins.str = ...,
-        key_sha256: builtins.str | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_key_sha256", b"_key_sha256", "cert_info", b"cert_info", "created_at", b"created_at", "key_sha256", b"key_sha256", "modified_at", b"modified_at"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_key_sha256", b"_key_sha256", "cert_info", b"cert_info", "certificate", b"certificate", "created_at", b"created_at", "has_private_key", b"has_private_key", "id", b"id", "key_sha256", b"key_sha256", "modified_at", b"modified_at", "name", b"name", "namespace_id", b"namespace_id", "originator_id", b"originator_id"]) -> None: ...
-    def WhichOneof(self, oneof_group: typing.Literal["_key_sha256", b"_key_sha256"]) -> typing.Literal["key_sha256"] | None: ...
+    def HasField(self, field_name: typing.Literal["cert_info", b"cert_info", "created_at", b"created_at", "modified_at", b"modified_at"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["cert_info", b"cert_info", "certificate", b"certificate", "created_at", b"created_at", "has_private_key", b"has_private_key", "id", b"id", "modified_at", b"modified_at", "name", b"name", "namespace_id", b"namespace_id", "originator_id", b"originator_id"]) -> None: ...
 
 global___KeyPairRecord = KeyPairRecord
 
@@ -494,13 +490,13 @@ class CreateKeyPairRequest(google.protobuf.message.Message):
 
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
+    ORIGINATOR_ID_FIELD_NUMBER: builtins.int
     NAME_FIELD_NUMBER: builtins.int
     NAMESPACE_ID_FIELD_NUMBER: builtins.int
     FORMAT_FIELD_NUMBER: builtins.int
     CERTIFICATE_FIELD_NUMBER: builtins.int
     KEY_FIELD_NUMBER: builtins.int
-    ORIGINATOR_ID_FIELD_NUMBER: builtins.int
-    ID_FIELD_NUMBER: builtins.int
+    originator_id: builtins.str
     name: builtins.str
     namespace_id: builtins.str
     format: global___Format.ValueType
@@ -509,22 +505,17 @@ class CreateKeyPairRequest(google.protobuf.message.Message):
     """public certificate data"""
     key: builtins.bytes
     """private key data"""
-    originator_id: builtins.str
-    id: builtins.str
     def __init__(
         self,
         *,
+        originator_id: builtins.str = ...,
         name: builtins.str = ...,
         namespace_id: builtins.str = ...,
         format: global___Format.ValueType = ...,
         certificate: builtins.bytes = ...,
         key: builtins.bytes = ...,
-        originator_id: builtins.str = ...,
-        id: builtins.str | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_id", b"_id", "id", b"id"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_id", b"_id", "certificate", b"certificate", "format", b"format", "id", b"id", "key", b"key", "name", b"name", "namespace_id", b"namespace_id", "originator_id", b"originator_id"]) -> None: ...
-    def WhichOneof(self, oneof_group: typing.Literal["_id", b"_id"]) -> typing.Literal["id"] | None: ...
+    def ClearField(self, field_name: typing.Literal["certificate", b"certificate", "format", b"format", "key", b"key", "name", b"name", "namespace_id", b"namespace_id", "originator_id", b"originator_id"]) -> None: ...
 
 global___CreateKeyPairRequest = CreateKeyPairRequest
 

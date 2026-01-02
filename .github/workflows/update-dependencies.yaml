@@ -9,6 +9,27 @@ jobs:
   update-dependencies:
     runs-on: ubuntu-latest
     steps:
+      - name: Install Packages
+        run: |
+          sudo apt update
+          sudo apt install -y \
+            build-essential \
+            libssl-dev \
+            zlib1g-dev \
+            libbz2-dev \
+            libreadline-dev \
+            libsqlite3-dev \
+            curl \
+            git \
+            libncursesw5-dev \
+            xz-utils \
+            tk-dev \
+            libxml2-dev \
+            libxmlsec1-dev \
+            libffi-dev \
+            liblzma-dev \
+            libzstd-dev
+
       - name: Checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
         with:

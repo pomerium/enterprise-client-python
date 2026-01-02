@@ -33,8 +33,8 @@ update-tools() {
 
 	require-command asdf
 
-	asdf install python latest
-	asdf set python latest
+	asdf install python 3.14.2
+	asdf set python 3.14.2
 
 	popd
 }
