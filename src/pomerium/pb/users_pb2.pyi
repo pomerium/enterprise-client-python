@@ -650,16 +650,26 @@ class DeletePomeriumSessionRequest(google.protobuf.message.Message):
 
     ID_FIELD_NUMBER: builtins.int
     CLUSTER_ID_FIELD_NUMBER: builtins.int
+    BLOCK_USER_FIELD_NUMBER: builtins.int
     id: builtins.str
     cluster_id: builtins.str
+    block_user: builtins.bool
+    """If set, in addition to revoking the session,
+    revoke any other session associated with the session user id,
+    and block the user from accessing any routes.
+    """
     def __init__(
         self,
         *,
         id: builtins.str = ...,
         cluster_id: builtins.str | None = ...,
+        block_user: builtins.bool | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_cluster_id", b"_cluster_id", "cluster_id", b"cluster_id"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_cluster_id", b"_cluster_id", "cluster_id", b"cluster_id", "id", b"id"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["_block_user", b"_block_user", "_cluster_id", b"_cluster_id", "block_user", b"block_user", "cluster_id", b"cluster_id"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_block_user", b"_block_user", "_cluster_id", b"_cluster_id", "block_user", b"block_user", "cluster_id", b"cluster_id", "id", b"id"]) -> None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_block_user", b"_block_user"]) -> typing.Literal["block_user"] | None: ...
+    @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_cluster_id", b"_cluster_id"]) -> typing.Literal["cluster_id"] | None: ...
 
 global___DeletePomeriumSessionRequest = DeletePomeriumSessionRequest
