@@ -741,9 +741,16 @@ global___Route = Route
 class UpstreamTunnel(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
+    SSH_POLICY_ID_FIELD_NUMBER: builtins.int
+    ssh_policy_id: builtins.str
     def __init__(
         self,
+        *,
+        ssh_policy_id: builtins.str | None = ...,
     ) -> None: ...
+    def HasField(self, field_name: typing.Literal["_ssh_policy_id", b"_ssh_policy_id", "ssh_policy_id", b"ssh_policy_id"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_ssh_policy_id", b"_ssh_policy_id", "ssh_policy_id", b"ssh_policy_id"]) -> None: ...
+    def WhichOneof(self, oneof_group: typing.Literal["_ssh_policy_id", b"_ssh_policy_id"]) -> typing.Literal["ssh_policy_id"] | None: ...
 
 global___UpstreamTunnel = UpstreamTunnel
 
