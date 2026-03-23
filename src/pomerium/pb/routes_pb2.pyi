@@ -327,16 +327,35 @@ class UpstreamOAuth2(google.protobuf.message.Message):
 
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
+    @typing.final
+    class AuthorizationUrlParamsEntry(google.protobuf.message.Message):
+        DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+        KEY_FIELD_NUMBER: builtins.int
+        VALUE_FIELD_NUMBER: builtins.int
+        key: builtins.str
+        value: builtins.str
+        def __init__(
+            self,
+            *,
+            key: builtins.str = ...,
+            value: builtins.str = ...,
+        ) -> None: ...
+        def ClearField(self, field_name: typing.Literal["key", b"key", "value", b"value"]) -> None: ...
+
     CLIENT_ID_FIELD_NUMBER: builtins.int
     CLIENT_SECRET_FIELD_NUMBER: builtins.int
     OAUTH2_ENDPOINT_FIELD_NUMBER: builtins.int
     SCOPES_FIELD_NUMBER: builtins.int
+    AUTHORIZATION_URL_PARAMS_FIELD_NUMBER: builtins.int
     client_id: builtins.str
     client_secret: builtins.str
     @property
     def oauth2_endpoint(self) -> global___OAuth2Endpoint: ...
     @property
     def scopes(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
+    @property
+    def authorization_url_params(self) -> google.protobuf.internal.containers.ScalarMap[builtins.str, builtins.str]: ...
     def __init__(
         self,
         *,
@@ -344,9 +363,10 @@ class UpstreamOAuth2(google.protobuf.message.Message):
         client_secret: builtins.str = ...,
         oauth2_endpoint: global___OAuth2Endpoint | None = ...,
         scopes: collections.abc.Iterable[builtins.str] | None = ...,
+        authorization_url_params: collections.abc.Mapping[builtins.str, builtins.str] | None = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["oauth2_endpoint", b"oauth2_endpoint"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["client_id", b"client_id", "client_secret", b"client_secret", "oauth2_endpoint", b"oauth2_endpoint", "scopes", b"scopes"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["authorization_url_params", b"authorization_url_params", "client_id", b"client_id", "client_secret", b"client_secret", "oauth2_endpoint", b"oauth2_endpoint", "scopes", b"scopes"]) -> None: ...
 
 global___UpstreamOAuth2 = UpstreamOAuth2
 
