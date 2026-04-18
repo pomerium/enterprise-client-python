@@ -527,15 +527,18 @@ class SetPomeriumServiceAccountResponse(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
     SERVICE_ACCOUNT_FIELD_NUMBER: builtins.int
+    JWT_FIELD_NUMBER: builtins.int
+    jwt: builtins.str
     @property
     def service_account(self) -> global___PomeriumServiceAccount: ...
     def __init__(
         self,
         *,
         service_account: global___PomeriumServiceAccount | None = ...,
+        jwt: builtins.str = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["service_account", b"service_account"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["service_account", b"service_account"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["jwt", b"jwt", "service_account", b"service_account"]) -> None: ...
 
 global___SetPomeriumServiceAccountResponse = SetPomeriumServiceAccountResponse
 
