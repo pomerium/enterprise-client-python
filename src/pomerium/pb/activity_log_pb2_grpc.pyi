@@ -37,6 +37,12 @@ class ActivityLogServiceStub:
     ListActivityLogEntriesRequest
     """
 
+    ListEntityTypes: grpc.UnaryUnaryMultiCallable[
+        activity_log_pb2.ListEntityTypesRequest,
+        activity_log_pb2.ListEntityTypesResponse,
+    ]
+    """Lists all the known entity types."""
+
 class ActivityLogServiceAsyncStub:
     """ActivityLogService tracks historical changes to configuration made through
     Pomerium Enterprise
@@ -55,6 +61,12 @@ class ActivityLogServiceAsyncStub:
     """ListActivityLogEntries lists activity log entries based on paramters in the
     ListActivityLogEntriesRequest
     """
+
+    ListEntityTypes: grpc.aio.UnaryUnaryMultiCallable[
+        activity_log_pb2.ListEntityTypesRequest,
+        activity_log_pb2.ListEntityTypesResponse,
+    ]
+    """Lists all the known entity types."""
 
 class ActivityLogServiceServicer(metaclass=abc.ABCMeta):
     """ActivityLogService tracks historical changes to configuration made through
@@ -78,5 +90,13 @@ class ActivityLogServiceServicer(metaclass=abc.ABCMeta):
         """ListActivityLogEntries lists activity log entries based on paramters in the
         ListActivityLogEntriesRequest
         """
+
+    @abc.abstractmethod
+    def ListEntityTypes(
+        self,
+        request: activity_log_pb2.ListEntityTypesRequest,
+        context: _ServicerContext,
+    ) -> typing.Union[activity_log_pb2.ListEntityTypesResponse, collections.abc.Awaitable[activity_log_pb2.ListEntityTypesResponse]]:
+        """Lists all the known entity types."""
 
 def add_ActivityLogServiceServicer_to_server(servicer: ActivityLogServiceServicer, server: typing.Union[grpc.Server, grpc.aio.Server]) -> None: ...

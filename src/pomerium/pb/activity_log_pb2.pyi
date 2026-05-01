@@ -361,3 +361,29 @@ class ListActivityLogEntriesResponse(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["entries", b"entries", "total_count", b"total_count"]) -> None: ...
 
 global___ListActivityLogEntriesResponse = ListActivityLogEntriesResponse
+
+@typing.final
+class ListEntityTypesRequest(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    def __init__(
+        self,
+    ) -> None: ...
+
+global___ListEntityTypesRequest = ListEntityTypesRequest
+
+@typing.final
+class ListEntityTypesResponse(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENTITY_TYPES_FIELD_NUMBER: builtins.int
+    @property
+    def entity_types(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
+    def __init__(
+        self,
+        *,
+        entity_types: collections.abc.Iterable[builtins.str] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["entity_types", b"entity_types"]) -> None: ...
+
+global___ListEntityTypesResponse = ListEntityTypesResponse

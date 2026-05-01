@@ -46,6 +46,11 @@ class ActivityLogServiceStub(object):
                 request_serializer=activity__log__pb2.ListActivityLogEntriesRequest.SerializeToString,
                 response_deserializer=activity__log__pb2.ListActivityLogEntriesResponse.FromString,
                 _registered_method=True)
+        self.ListEntityTypes = channel.unary_unary(
+                '/pomerium.dashboard.ActivityLogService/ListEntityTypes',
+                request_serializer=activity__log__pb2.ListEntityTypesRequest.SerializeToString,
+                response_deserializer=activity__log__pb2.ListEntityTypesResponse.FromString,
+                _registered_method=True)
 
 
 class ActivityLogServiceServicer(object):
@@ -68,6 +73,13 @@ class ActivityLogServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def ListEntityTypes(self, request, context):
+        """Lists all the known entity types.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_ActivityLogServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -80,6 +92,11 @@ def add_ActivityLogServiceServicer_to_server(servicer, server):
                     servicer.ListActivityLogEntries,
                     request_deserializer=activity__log__pb2.ListActivityLogEntriesRequest.FromString,
                     response_serializer=activity__log__pb2.ListActivityLogEntriesResponse.SerializeToString,
+            ),
+            'ListEntityTypes': grpc.unary_unary_rpc_method_handler(
+                    servicer.ListEntityTypes,
+                    request_deserializer=activity__log__pb2.ListEntityTypesRequest.FromString,
+                    response_serializer=activity__log__pb2.ListEntityTypesResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -138,6 +155,33 @@ class ActivityLogService(object):
             '/pomerium.dashboard.ActivityLogService/ListActivityLogEntries',
             activity__log__pb2.ListActivityLogEntriesRequest.SerializeToString,
             activity__log__pb2.ListActivityLogEntriesResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def ListEntityTypes(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/pomerium.dashboard.ActivityLogService/ListEntityTypes',
+            activity__log__pb2.ListEntityTypesRequest.SerializeToString,
+            activity__log__pb2.ListEntityTypesResponse.FromString,
             options,
             channel_credentials,
             insecure,
