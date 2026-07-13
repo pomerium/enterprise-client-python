@@ -26,7 +26,7 @@ from google.protobuf import struct_pb2 as google_dot_protobuf_dot_struct__pb2
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0cpolicy.proto\x12\x12pomerium.dashboard\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x9e\x05\n\x06Policy\x12\n\n\x02id\x18\x01 \x01(\t\x12\x14\n\x0cnamespace_id\x18\n \x01(\t\x12.\n\ncreated_at\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bmodified_at\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12.\n\ndeleted_at\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x0c\n\x04name\x18\x05 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x10 \x01(\t\x12\x15\n\rallowed_users\x18\x06 \x03(\t\x12\x17\n\x0f\x61llowed_domains\x18\x08 \x03(\t\x12L\n\x12\x61llowed_idp_claims\x18\x0e \x03(\x0b\x32\x30.pomerium.dashboard.Policy.AllowedIdpClaimsEntry\x12\x0c\n\x04rego\x18\t \x03(\t\x12\x0b\n\x03ppl\x18\x0f \x01(\t\x12\x10\n\x08\x65nforced\x18\r \x01(\x08\x12\x13\n\x0b\x65xplanation\x18\x11 \x01(\t\x12\x13\n\x0bremediation\x18\x12 \x01(\t\x12\x15\n\roriginator_id\x18\x13 \x01(\t\x12\x36\n\x06routes\x18\x0b \x03(\x0b\x32&.pomerium.dashboard.Policy.RoutesEntry\x12\x16\n\x0enamespace_name\x18\x0c \x01(\t\x1aS\n\x15\x41llowedIdpClaimsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12)\n\x05value\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.ListValue:\x02\x38\x01\x1a-\n\x0bRoutesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"!\n\x13\x44\x65letePolicyRequest\x12\n\n\x02id\x18\x01 \x01(\t\"\x16\n\x14\x44\x65letePolicyResponse\"\x1e\n\x10GetPolicyRequest\x12\n\n\x02id\x18\x01 \x01(\t\"?\n\x11GetPolicyResponse\x12*\n\x06policy\x18\x01 \x01(\x0b\x32\x1a.pomerium.dashboard.Policy\"\xd0\x01\n\x13ListPoliciesRequest\x12\x11\n\tnamespace\x18\x01 \x01(\t\x12\x12\n\x05query\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x13\n\x06offset\x18\x03 \x01(\x03H\x01\x88\x01\x01\x12\x12\n\x05limit\x18\x04 \x01(\x03H\x02\x88\x01\x01\x12\x15\n\x08order_by\x18\x05 \x01(\tH\x03\x88\x01\x01\x12\x17\n\ncluster_id\x18\x06 \x01(\tH\x04\x88\x01\x01\x42\x08\n\x06_queryB\t\n\x07_offsetB\x08\n\x06_limitB\x0b\n\t_order_byB\r\n\x0b_cluster_id\"Y\n\x14ListPoliciesResponse\x12,\n\x08policies\x18\x01 \x03(\x0b\x32\x1a.pomerium.dashboard.Policy\x12\x13\n\x0btotal_count\x18\x02 \x01(\x03\">\n\x10SetPolicyRequest\x12*\n\x06policy\x18\x01 \x01(\x0b\x32\x1a.pomerium.dashboard.Policy\"?\n\x11SetPolicyResponse\x12*\n\x06policy\x18\x01 \x01(\x0b\x32\x1a.pomerium.dashboard.Policy2\x89\x03\n\rPolicyService\x12\x61\n\x0c\x44\x65letePolicy\x12\'.pomerium.dashboard.DeletePolicyRequest\x1a(.pomerium.dashboard.DeletePolicyResponse\x12X\n\tGetPolicy\x12$.pomerium.dashboard.GetPolicyRequest\x1a%.pomerium.dashboard.GetPolicyResponse\x12\x61\n\x0cListPolicies\x12\'.pomerium.dashboard.ListPoliciesRequest\x1a(.pomerium.dashboard.ListPoliciesResponse\x12X\n\tSetPolicy\x12$.pomerium.dashboard.SetPolicyRequest\x1a%.pomerium.dashboard.SetPolicyResponseB-Z+github.com/pomerium/pomerium-console/pkg/pbb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0cpolicy.proto\x12\x12pomerium.dashboard\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x9e\x05\n\x06Policy\x12\n\n\x02id\x18\x01 \x01(\t\x12\x14\n\x0cnamespace_id\x18\n \x01(\t\x12.\n\ncreated_at\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bmodified_at\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12.\n\ndeleted_at\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x0c\n\x04name\x18\x05 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x10 \x01(\t\x12\x15\n\rallowed_users\x18\x06 \x03(\t\x12\x17\n\x0f\x61llowed_domains\x18\x08 \x03(\t\x12L\n\x12\x61llowed_idp_claims\x18\x0e \x03(\x0b\x32\x30.pomerium.dashboard.Policy.AllowedIdpClaimsEntry\x12\x0c\n\x04rego\x18\t \x03(\t\x12\x0b\n\x03ppl\x18\x0f \x01(\t\x12\x10\n\x08\x65nforced\x18\r \x01(\x08\x12\x13\n\x0b\x65xplanation\x18\x11 \x01(\t\x12\x13\n\x0bremediation\x18\x12 \x01(\t\x12\x15\n\roriginator_id\x18\x13 \x01(\t\x12\x36\n\x06routes\x18\x0b \x03(\x0b\x32&.pomerium.dashboard.Policy.RoutesEntry\x12\x16\n\x0enamespace_name\x18\x0c \x01(\t\x1aS\n\x15\x41llowedIdpClaimsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12)\n\x05value\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.ListValue:\x02\x38\x01\x1a-\n\x0bRoutesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"J\n\x13\x44\x65letePolicyRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\'\n\x1fremove_from_any_assigned_routes\x18\x02 \x01(\x08\"\x16\n\x14\x44\x65letePolicyResponse\"\x1e\n\x10GetPolicyRequest\x12\n\n\x02id\x18\x01 \x01(\t\"?\n\x11GetPolicyResponse\x12*\n\x06policy\x18\x01 \x01(\x0b\x32\x1a.pomerium.dashboard.Policy\"\xd0\x01\n\x13ListPoliciesRequest\x12\x11\n\tnamespace\x18\x01 \x01(\t\x12\x12\n\x05query\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x13\n\x06offset\x18\x03 \x01(\x03H\x01\x88\x01\x01\x12\x12\n\x05limit\x18\x04 \x01(\x03H\x02\x88\x01\x01\x12\x15\n\x08order_by\x18\x05 \x01(\tH\x03\x88\x01\x01\x12\x17\n\ncluster_id\x18\x06 \x01(\tH\x04\x88\x01\x01\x42\x08\n\x06_queryB\t\n\x07_offsetB\x08\n\x06_limitB\x0b\n\t_order_byB\r\n\x0b_cluster_id\"Y\n\x14ListPoliciesResponse\x12,\n\x08policies\x18\x01 \x03(\x0b\x32\x1a.pomerium.dashboard.Policy\x12\x13\n\x0btotal_count\x18\x02 \x01(\x03\">\n\x10SetPolicyRequest\x12*\n\x06policy\x18\x01 \x01(\x0b\x32\x1a.pomerium.dashboard.Policy\"?\n\x11SetPolicyResponse\x12*\n\x06policy\x18\x01 \x01(\x0b\x32\x1a.pomerium.dashboard.Policy2\x89\x03\n\rPolicyService\x12\x61\n\x0c\x44\x65letePolicy\x12\'.pomerium.dashboard.DeletePolicyRequest\x1a(.pomerium.dashboard.DeletePolicyResponse\x12X\n\tGetPolicy\x12$.pomerium.dashboard.GetPolicyRequest\x1a%.pomerium.dashboard.GetPolicyResponse\x12\x61\n\x0cListPolicies\x12\'.pomerium.dashboard.ListPoliciesRequest\x1a(.pomerium.dashboard.ListPoliciesResponse\x12X\n\tSetPolicy\x12$.pomerium.dashboard.SetPolicyRequest\x1a%.pomerium.dashboard.SetPolicyResponseB-Z+github.com/pomerium/pomerium-console/pkg/pbb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -45,21 +45,21 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_POLICY_ROUTESENTRY']._serialized_start=725
   _globals['_POLICY_ROUTESENTRY']._serialized_end=770
   _globals['_DELETEPOLICYREQUEST']._serialized_start=772
-  _globals['_DELETEPOLICYREQUEST']._serialized_end=805
-  _globals['_DELETEPOLICYRESPONSE']._serialized_start=807
-  _globals['_DELETEPOLICYRESPONSE']._serialized_end=829
-  _globals['_GETPOLICYREQUEST']._serialized_start=831
-  _globals['_GETPOLICYREQUEST']._serialized_end=861
-  _globals['_GETPOLICYRESPONSE']._serialized_start=863
-  _globals['_GETPOLICYRESPONSE']._serialized_end=926
-  _globals['_LISTPOLICIESREQUEST']._serialized_start=929
-  _globals['_LISTPOLICIESREQUEST']._serialized_end=1137
-  _globals['_LISTPOLICIESRESPONSE']._serialized_start=1139
-  _globals['_LISTPOLICIESRESPONSE']._serialized_end=1228
-  _globals['_SETPOLICYREQUEST']._serialized_start=1230
-  _globals['_SETPOLICYREQUEST']._serialized_end=1292
-  _globals['_SETPOLICYRESPONSE']._serialized_start=1294
-  _globals['_SETPOLICYRESPONSE']._serialized_end=1357
-  _globals['_POLICYSERVICE']._serialized_start=1360
-  _globals['_POLICYSERVICE']._serialized_end=1753
+  _globals['_DELETEPOLICYREQUEST']._serialized_end=846
+  _globals['_DELETEPOLICYRESPONSE']._serialized_start=848
+  _globals['_DELETEPOLICYRESPONSE']._serialized_end=870
+  _globals['_GETPOLICYREQUEST']._serialized_start=872
+  _globals['_GETPOLICYREQUEST']._serialized_end=902
+  _globals['_GETPOLICYRESPONSE']._serialized_start=904
+  _globals['_GETPOLICYRESPONSE']._serialized_end=967
+  _globals['_LISTPOLICIESREQUEST']._serialized_start=970
+  _globals['_LISTPOLICIESREQUEST']._serialized_end=1178
+  _globals['_LISTPOLICIESRESPONSE']._serialized_start=1180
+  _globals['_LISTPOLICIESRESPONSE']._serialized_end=1269
+  _globals['_SETPOLICYREQUEST']._serialized_start=1271
+  _globals['_SETPOLICYREQUEST']._serialized_end=1333
+  _globals['_SETPOLICYRESPONSE']._serialized_start=1335
+  _globals['_SETPOLICYRESPONSE']._serialized_end=1398
+  _globals['_POLICYSERVICE']._serialized_start=1401
+  _globals['_POLICYSERVICE']._serialized_end=1794
 # @@protoc_insertion_point(module_scope)
