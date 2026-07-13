@@ -143,13 +143,16 @@ class DeletePolicyRequest(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
     ID_FIELD_NUMBER: builtins.int
+    REMOVE_FROM_ANY_ASSIGNED_ROUTES_FIELD_NUMBER: builtins.int
     id: builtins.str
+    remove_from_any_assigned_routes: builtins.bool
     def __init__(
         self,
         *,
         id: builtins.str = ...,
+        remove_from_any_assigned_routes: builtins.bool = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing.Literal["id", b"id"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["id", b"id", "remove_from_any_assigned_routes", b"remove_from_any_assigned_routes"]) -> None: ...
 
 global___DeletePolicyRequest = DeletePolicyRequest
 
