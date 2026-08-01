@@ -94,6 +94,7 @@ class UserInfo(google.protobuf.message.Message):
         ) -> None: ...
         def ClearField(self, field_name: typing.Literal["key", b"key", "value", b"value"]) -> None: ...
 
+    ISSUER_FIELD_NUMBER: builtins.int
     ID_FIELD_NUMBER: builtins.int
     NAME_FIELD_NUMBER: builtins.int
     EMAIL_FIELD_NUMBER: builtins.int
@@ -101,6 +102,7 @@ class UserInfo(google.protobuf.message.Message):
     NAMESPACE_ROLES_FIELD_NUMBER: builtins.int
     PICTURE_URL_FIELD_NUMBER: builtins.int
     IS_IMPERSONATED_FIELD_NUMBER: builtins.int
+    issuer: builtins.str
     id: builtins.str
     name: builtins.str
     email: builtins.str
@@ -113,6 +115,7 @@ class UserInfo(google.protobuf.message.Message):
     def __init__(
         self,
         *,
+        issuer: builtins.str = ...,
         id: builtins.str = ...,
         name: builtins.str = ...,
         email: builtins.str = ...,
@@ -121,7 +124,7 @@ class UserInfo(google.protobuf.message.Message):
         picture_url: builtins.str = ...,
         is_impersonated: builtins.bool = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing.Literal["email", b"email", "groups", b"groups", "id", b"id", "is_impersonated", b"is_impersonated", "name", b"name", "namespace_roles", b"namespace_roles", "picture_url", b"picture_url"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["email", b"email", "groups", b"groups", "id", b"id", "is_impersonated", b"is_impersonated", "issuer", b"issuer", "name", b"name", "namespace_roles", b"namespace_roles", "picture_url", b"picture_url"]) -> None: ...
 
 global___UserInfo = UserInfo
 
