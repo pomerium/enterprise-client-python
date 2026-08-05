@@ -112,15 +112,21 @@ class ConsoleSettings(google.protobuf.message.Message):
 
     ENABLE_FEEDBACK_WIDGET_FIELD_NUMBER: builtins.int
     USE_CHANGESETS_FIELD_NUMBER: builtins.int
+    ENABLE_REMOTE_DIAGNOSTICS_FIELD_NUMBER: builtins.int
+    INSTALLATION_ID_FIELD_NUMBER: builtins.int
     enable_feedback_widget: builtins.bool
     use_changesets: builtins.bool
+    enable_remote_diagnostics: builtins.bool
+    installation_id: builtins.str
     def __init__(
         self,
         *,
         enable_feedback_widget: builtins.bool = ...,
         use_changesets: builtins.bool = ...,
+        enable_remote_diagnostics: builtins.bool = ...,
+        installation_id: builtins.str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing.Literal["enable_feedback_widget", b"enable_feedback_widget", "use_changesets", b"use_changesets"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["enable_feedback_widget", b"enable_feedback_widget", "enable_remote_diagnostics", b"enable_remote_diagnostics", "installation_id", b"installation_id", "use_changesets", b"use_changesets"]) -> None: ...
 
 global___ConsoleSettings = ConsoleSettings
 
