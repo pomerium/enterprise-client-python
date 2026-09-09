@@ -23,6 +23,27 @@ else:
 
 DESCRIPTOR: google.protobuf.descriptor.FileDescriptor
 
+class _LicenseStatus:
+    ValueType = typing.NewType("ValueType", builtins.int)
+    V: typing_extensions.TypeAlias = ValueType
+
+class _LicenseStatusEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_LicenseStatus.ValueType], builtins.type):
+    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
+    LICENSE_STATUS_UNKNOWN: _LicenseStatus.ValueType  # 0
+    LICENSE_STATUS_OK: _LicenseStatus.ValueType  # 1
+    LICENSE_STATUS_MISSING: _LicenseStatus.ValueType  # 2
+    LICENSE_STATUS_EXPIRED: _LicenseStatus.ValueType  # 3
+    LICENSE_STATUS_INVALID: _LicenseStatus.ValueType  # 4
+
+class LicenseStatus(_LicenseStatus, metaclass=_LicenseStatusEnumTypeWrapper): ...
+
+LICENSE_STATUS_UNKNOWN: LicenseStatus.ValueType  # 0
+LICENSE_STATUS_OK: LicenseStatus.ValueType  # 1
+LICENSE_STATUS_MISSING: LicenseStatus.ValueType  # 2
+LICENSE_STATUS_EXPIRED: LicenseStatus.ValueType  # 3
+LICENSE_STATUS_INVALID: LicenseStatus.ValueType  # 4
+global___LicenseStatus = LicenseStatus
+
 class _CodecType:
     ValueType = typing.NewType("ValueType", builtins.int)
     V: typing_extensions.TypeAlias = ValueType
@@ -107,6 +128,95 @@ PATH_WITH_ESCAPED_SLASHES_ACTION_UNESCAPE_AND_FORWARD: PathWithEscapedSlashesAct
 global___PathWithEscapedSlashesAction = PathWithEscapedSlashesAction
 
 @typing.final
+class LicenseOptions(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    READONLY_AFTER_EXPIRY_FIELD_NUMBER: builtins.int
+    ALLOW_OFFLINE_VERIFICATION_FIELD_NUMBER: builtins.int
+    CAN_DISABLE_REMOTE_DIAGNOSTICS_FIELD_NUMBER: builtins.int
+    MAU_FIELD_NUMBER: builtins.int
+    readonly_after_expiry: builtins.bool
+    allow_offline_verification: builtins.bool
+    can_disable_remote_diagnostics: builtins.bool
+    mau: builtins.int
+    def __init__(
+        self,
+        *,
+        readonly_after_expiry: builtins.bool = ...,
+        allow_offline_verification: builtins.bool = ...,
+        can_disable_remote_diagnostics: builtins.bool = ...,
+        mau: builtins.int = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["allow_offline_verification", b"allow_offline_verification", "can_disable_remote_diagnostics", b"can_disable_remote_diagnostics", "mau", b"mau", "readonly_after_expiry", b"readonly_after_expiry"]) -> None: ...
+
+global___LicenseOptions = LicenseOptions
+
+@typing.final
+class License(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ID_FIELD_NUMBER: builtins.int
+    CREATED_AT_FIELD_NUMBER: builtins.int
+    MODIFIED_AT_FIELD_NUMBER: builtins.int
+    DELETED_AT_FIELD_NUMBER: builtins.int
+    ACTIVE_FIELD_NUMBER: builtins.int
+    KEY_FIELD_NUMBER: builtins.int
+    id: builtins.str
+    active: builtins.bool
+    key: builtins.str
+    @property
+    def created_at(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
+    @property
+    def modified_at(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
+    @property
+    def deleted_at(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
+    def __init__(
+        self,
+        *,
+        id: builtins.str = ...,
+        created_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        modified_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        deleted_at: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+        active: builtins.bool = ...,
+        key: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["created_at", b"created_at", "deleted_at", b"deleted_at", "modified_at", b"modified_at"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["active", b"active", "created_at", b"created_at", "deleted_at", b"deleted_at", "id", b"id", "key", b"key", "modified_at", b"modified_at"]) -> None: ...
+
+global___License = License
+
+@typing.final
+class LicenseInfo(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    STATUS_FIELD_NUMBER: builtins.int
+    STATUS_REASON_FIELD_NUMBER: builtins.int
+    OPTIONS_FIELD_NUMBER: builtins.int
+    EXPIRY_FIELD_NUMBER: builtins.int
+    status: global___LicenseStatus.ValueType
+    status_reason: builtins.str
+    @property
+    def options(self) -> global___LicenseOptions: ...
+    @property
+    def expiry(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
+    def __init__(
+        self,
+        *,
+        status: global___LicenseStatus.ValueType = ...,
+        status_reason: builtins.str | None = ...,
+        options: global___LicenseOptions | None = ...,
+        expiry: google.protobuf.timestamp_pb2.Timestamp | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["_expiry", b"_expiry", "_status_reason", b"_status_reason", "expiry", b"expiry", "options", b"options", "status_reason", b"status_reason"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_expiry", b"_expiry", "_status_reason", b"_status_reason", "expiry", b"expiry", "options", b"options", "status", b"status", "status_reason", b"status_reason"]) -> None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_expiry", b"_expiry"]) -> typing.Literal["expiry"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_status_reason", b"_status_reason"]) -> typing.Literal["status_reason"] | None: ...
+
+global___LicenseInfo = LicenseInfo
+
+@typing.final
 class ConsoleSettings(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
@@ -114,10 +224,15 @@ class ConsoleSettings(google.protobuf.message.Message):
     USE_CHANGESETS_FIELD_NUMBER: builtins.int
     ENABLE_REMOTE_DIAGNOSTICS_FIELD_NUMBER: builtins.int
     INSTALLATION_ID_FIELD_NUMBER: builtins.int
+    LICENSE_INFO_FIELD_NUMBER: builtins.int
+    ZERO_BASE_URL_FIELD_NUMBER: builtins.int
     enable_feedback_widget: builtins.bool
     use_changesets: builtins.bool
     enable_remote_diagnostics: builtins.bool
     installation_id: builtins.str
+    zero_base_url: builtins.str
+    @property
+    def license_info(self) -> global___LicenseInfo: ...
     def __init__(
         self,
         *,
@@ -125,8 +240,11 @@ class ConsoleSettings(google.protobuf.message.Message):
         use_changesets: builtins.bool = ...,
         enable_remote_diagnostics: builtins.bool = ...,
         installation_id: builtins.str = ...,
+        license_info: global___LicenseInfo | None = ...,
+        zero_base_url: builtins.str = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing.Literal["enable_feedback_widget", b"enable_feedback_widget", "enable_remote_diagnostics", b"enable_remote_diagnostics", "installation_id", b"installation_id", "use_changesets", b"use_changesets"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["license_info", b"license_info"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["enable_feedback_widget", b"enable_feedback_widget", "enable_remote_diagnostics", b"enable_remote_diagnostics", "installation_id", b"installation_id", "license_info", b"license_info", "use_changesets", b"use_changesets", "zero_base_url", b"zero_base_url"]) -> None: ...
 
 global___ConsoleSettings = ConsoleSettings
 
@@ -926,6 +1044,90 @@ class BlobStorageSettings(google.protobuf.message.Message):
 global___BlobStorageSettings = BlobStorageSettings
 
 @typing.final
+class ActivateLicenseRequest(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    LICENSE_ID_FIELD_NUMBER: builtins.int
+    license_id: builtins.str
+    def __init__(
+        self,
+        *,
+        license_id: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["license_id", b"license_id"]) -> None: ...
+
+global___ActivateLicenseRequest = ActivateLicenseRequest
+
+@typing.final
+class ActivateLicenseResponse(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    def __init__(
+        self,
+    ) -> None: ...
+
+global___ActivateLicenseResponse = ActivateLicenseResponse
+
+@typing.final
+class AddLicenseRequest(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    LICENSE_FIELD_NUMBER: builtins.int
+    @property
+    def license(self) -> global___License: ...
+    def __init__(
+        self,
+        *,
+        license: global___License | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["license", b"license"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["license", b"license"]) -> None: ...
+
+global___AddLicenseRequest = AddLicenseRequest
+
+@typing.final
+class AddLicenseResponse(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    LICENSE_FIELD_NUMBER: builtins.int
+    @property
+    def license(self) -> global___License: ...
+    def __init__(
+        self,
+        *,
+        license: global___License | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["license", b"license"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["license", b"license"]) -> None: ...
+
+global___AddLicenseResponse = AddLicenseResponse
+
+@typing.final
+class DeleteLicenseRequest(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    LICENSE_ID_FIELD_NUMBER: builtins.int
+    license_id: builtins.str
+    def __init__(
+        self,
+        *,
+        license_id: builtins.str = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["license_id", b"license_id"]) -> None: ...
+
+global___DeleteLicenseRequest = DeleteLicenseRequest
+
+@typing.final
+class DeleteLicenseResponse(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    def __init__(
+        self,
+    ) -> None: ...
+
+global___DeleteLicenseResponse = DeleteLicenseResponse
+
+@typing.final
 class GetConsoleSettingsRequest(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
@@ -985,6 +1187,32 @@ class GetSettingsResponse(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["settings", b"settings"]) -> None: ...
 
 global___GetSettingsResponse = GetSettingsResponse
+
+@typing.final
+class ListLicensesRequest(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    def __init__(
+        self,
+    ) -> None: ...
+
+global___ListLicensesRequest = ListLicensesRequest
+
+@typing.final
+class ListLicensesResponse(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    LICENSES_FIELD_NUMBER: builtins.int
+    @property
+    def licenses(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___License]: ...
+    def __init__(
+        self,
+        *,
+        licenses: collections.abc.Iterable[global___License] | None = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["licenses", b"licenses"]) -> None: ...
+
+global___ListLicensesResponse = ListLicensesResponse
 
 @typing.final
 class SetSettingsRequest(google.protobuf.message.Message):
