@@ -35,15 +35,20 @@ class SettingsServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.GetSettings = channel.unary_unary(
-                '/pomerium.dashboard.SettingsService/GetSettings',
-                request_serializer=settings__pb2.GetSettingsRequest.SerializeToString,
-                response_deserializer=settings__pb2.GetSettingsResponse.FromString,
+        self.ActivateLicense = channel.unary_unary(
+                '/pomerium.dashboard.SettingsService/ActivateLicense',
+                request_serializer=settings__pb2.ActivateLicenseRequest.SerializeToString,
+                response_deserializer=settings__pb2.ActivateLicenseResponse.FromString,
                 _registered_method=True)
-        self.SetSettings = channel.unary_unary(
-                '/pomerium.dashboard.SettingsService/SetSettings',
-                request_serializer=settings__pb2.SetSettingsRequest.SerializeToString,
-                response_deserializer=settings__pb2.SetSettingsResponse.FromString,
+        self.AddLicense = channel.unary_unary(
+                '/pomerium.dashboard.SettingsService/AddLicense',
+                request_serializer=settings__pb2.AddLicenseRequest.SerializeToString,
+                response_deserializer=settings__pb2.AddLicenseResponse.FromString,
+                _registered_method=True)
+        self.DeleteLicense = channel.unary_unary(
+                '/pomerium.dashboard.SettingsService/DeleteLicense',
+                request_serializer=settings__pb2.DeleteLicenseRequest.SerializeToString,
+                response_deserializer=settings__pb2.DeleteLicenseResponse.FromString,
                 _registered_method=True)
         self.GetBrandingSettings = channel.unary_unary(
                 '/pomerium.dashboard.SettingsService/GetBrandingSettings',
@@ -55,21 +60,43 @@ class SettingsServiceStub(object):
                 request_serializer=settings__pb2.GetConsoleSettingsRequest.SerializeToString,
                 response_deserializer=settings__pb2.GetConsoleSettingsResponse.FromString,
                 _registered_method=True)
+        self.GetSettings = channel.unary_unary(
+                '/pomerium.dashboard.SettingsService/GetSettings',
+                request_serializer=settings__pb2.GetSettingsRequest.SerializeToString,
+                response_deserializer=settings__pb2.GetSettingsResponse.FromString,
+                _registered_method=True)
+        self.ListLicenses = channel.unary_unary(
+                '/pomerium.dashboard.SettingsService/ListLicenses',
+                request_serializer=settings__pb2.ListLicensesRequest.SerializeToString,
+                response_deserializer=settings__pb2.ListLicensesResponse.FromString,
+                _registered_method=True)
+        self.SetSettings = channel.unary_unary(
+                '/pomerium.dashboard.SettingsService/SetSettings',
+                request_serializer=settings__pb2.SetSettingsRequest.SerializeToString,
+                response_deserializer=settings__pb2.SetSettingsResponse.FromString,
+                _registered_method=True)
 
 
 class SettingsServiceServicer(object):
     """SettingsService manages global pomerium settings
     """
 
-    def GetSettings(self, request, context):
-        """GetSettings retrieves the currently applied settings
+    def ActivateLicense(self, request, context):
+        """ActivateLicense activates a license.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def SetSettings(self, request, context):
-        """SetSettings applies new global settings
+    def AddLicense(self, request, context):
+        """AddLicense adds a license.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def DeleteLicense(self, request, context):
+        """DeleteLicense deletes a license.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -89,18 +116,44 @@ class SettingsServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetSettings(self, request, context):
+        """GetSettings retrieves the currently applied settings
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def ListLicenses(self, request, context):
+        """ListLicenses lists all the licenses.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def SetSettings(self, request, context):
+        """SetSettings applies new global settings
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_SettingsServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'GetSettings': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetSettings,
-                    request_deserializer=settings__pb2.GetSettingsRequest.FromString,
-                    response_serializer=settings__pb2.GetSettingsResponse.SerializeToString,
+            'ActivateLicense': grpc.unary_unary_rpc_method_handler(
+                    servicer.ActivateLicense,
+                    request_deserializer=settings__pb2.ActivateLicenseRequest.FromString,
+                    response_serializer=settings__pb2.ActivateLicenseResponse.SerializeToString,
             ),
-            'SetSettings': grpc.unary_unary_rpc_method_handler(
-                    servicer.SetSettings,
-                    request_deserializer=settings__pb2.SetSettingsRequest.FromString,
-                    response_serializer=settings__pb2.SetSettingsResponse.SerializeToString,
+            'AddLicense': grpc.unary_unary_rpc_method_handler(
+                    servicer.AddLicense,
+                    request_deserializer=settings__pb2.AddLicenseRequest.FromString,
+                    response_serializer=settings__pb2.AddLicenseResponse.SerializeToString,
+            ),
+            'DeleteLicense': grpc.unary_unary_rpc_method_handler(
+                    servicer.DeleteLicense,
+                    request_deserializer=settings__pb2.DeleteLicenseRequest.FromString,
+                    response_serializer=settings__pb2.DeleteLicenseResponse.SerializeToString,
             ),
             'GetBrandingSettings': grpc.unary_unary_rpc_method_handler(
                     servicer.GetBrandingSettings,
@@ -111,6 +164,21 @@ def add_SettingsServiceServicer_to_server(servicer, server):
                     servicer.GetConsoleSettings,
                     request_deserializer=settings__pb2.GetConsoleSettingsRequest.FromString,
                     response_serializer=settings__pb2.GetConsoleSettingsResponse.SerializeToString,
+            ),
+            'GetSettings': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetSettings,
+                    request_deserializer=settings__pb2.GetSettingsRequest.FromString,
+                    response_serializer=settings__pb2.GetSettingsResponse.SerializeToString,
+            ),
+            'ListLicenses': grpc.unary_unary_rpc_method_handler(
+                    servicer.ListLicenses,
+                    request_deserializer=settings__pb2.ListLicensesRequest.FromString,
+                    response_serializer=settings__pb2.ListLicensesResponse.SerializeToString,
+            ),
+            'SetSettings': grpc.unary_unary_rpc_method_handler(
+                    servicer.SetSettings,
+                    request_deserializer=settings__pb2.SetSettingsRequest.FromString,
+                    response_serializer=settings__pb2.SetSettingsResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -125,7 +193,7 @@ class SettingsService(object):
     """
 
     @staticmethod
-    def GetSettings(request,
+    def ActivateLicense(request,
             target,
             options=(),
             channel_credentials=None,
@@ -138,9 +206,9 @@ class SettingsService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/pomerium.dashboard.SettingsService/GetSettings',
-            settings__pb2.GetSettingsRequest.SerializeToString,
-            settings__pb2.GetSettingsResponse.FromString,
+            '/pomerium.dashboard.SettingsService/ActivateLicense',
+            settings__pb2.ActivateLicenseRequest.SerializeToString,
+            settings__pb2.ActivateLicenseResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -152,7 +220,7 @@ class SettingsService(object):
             _registered_method=True)
 
     @staticmethod
-    def SetSettings(request,
+    def AddLicense(request,
             target,
             options=(),
             channel_credentials=None,
@@ -165,9 +233,36 @@ class SettingsService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/pomerium.dashboard.SettingsService/SetSettings',
-            settings__pb2.SetSettingsRequest.SerializeToString,
-            settings__pb2.SetSettingsResponse.FromString,
+            '/pomerium.dashboard.SettingsService/AddLicense',
+            settings__pb2.AddLicenseRequest.SerializeToString,
+            settings__pb2.AddLicenseResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def DeleteLicense(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/pomerium.dashboard.SettingsService/DeleteLicense',
+            settings__pb2.DeleteLicenseRequest.SerializeToString,
+            settings__pb2.DeleteLicenseResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -222,6 +317,87 @@ class SettingsService(object):
             '/pomerium.dashboard.SettingsService/GetConsoleSettings',
             settings__pb2.GetConsoleSettingsRequest.SerializeToString,
             settings__pb2.GetConsoleSettingsResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetSettings(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/pomerium.dashboard.SettingsService/GetSettings',
+            settings__pb2.GetSettingsRequest.SerializeToString,
+            settings__pb2.GetSettingsResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def ListLicenses(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/pomerium.dashboard.SettingsService/ListLicenses',
+            settings__pb2.ListLicensesRequest.SerializeToString,
+            settings__pb2.ListLicensesResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def SetSettings(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/pomerium.dashboard.SettingsService/SetSettings',
+            settings__pb2.SetSettingsRequest.SerializeToString,
+            settings__pb2.SetSettingsResponse.FromString,
             options,
             channel_credentials,
             insecure,

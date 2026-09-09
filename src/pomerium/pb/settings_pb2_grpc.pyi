@@ -21,17 +21,23 @@ class SettingsServiceStub:
     """SettingsService manages global pomerium settings"""
 
     def __init__(self, channel: typing.Union[grpc.Channel, grpc.aio.Channel]) -> None: ...
-    GetSettings: grpc.UnaryUnaryMultiCallable[
-        settings_pb2.GetSettingsRequest,
-        settings_pb2.GetSettingsResponse,
+    ActivateLicense: grpc.UnaryUnaryMultiCallable[
+        settings_pb2.ActivateLicenseRequest,
+        settings_pb2.ActivateLicenseResponse,
     ]
-    """GetSettings retrieves the currently applied settings"""
+    """ActivateLicense activates a license."""
 
-    SetSettings: grpc.UnaryUnaryMultiCallable[
-        settings_pb2.SetSettingsRequest,
-        settings_pb2.SetSettingsResponse,
+    AddLicense: grpc.UnaryUnaryMultiCallable[
+        settings_pb2.AddLicenseRequest,
+        settings_pb2.AddLicenseResponse,
     ]
-    """SetSettings applies new global settings"""
+    """AddLicense adds a license."""
+
+    DeleteLicense: grpc.UnaryUnaryMultiCallable[
+        settings_pb2.DeleteLicenseRequest,
+        settings_pb2.DeleteLicenseResponse,
+    ]
+    """DeleteLicense deletes a license."""
 
     GetBrandingSettings: grpc.UnaryUnaryMultiCallable[
         settings_pb2.GetSettingsRequest,
@@ -45,20 +51,44 @@ class SettingsServiceStub:
     ]
     """GetConsoleSettings retrieves the console settings."""
 
-class SettingsServiceAsyncStub:
-    """SettingsService manages global pomerium settings"""
-
-    GetSettings: grpc.aio.UnaryUnaryMultiCallable[
+    GetSettings: grpc.UnaryUnaryMultiCallable[
         settings_pb2.GetSettingsRequest,
         settings_pb2.GetSettingsResponse,
     ]
     """GetSettings retrieves the currently applied settings"""
 
-    SetSettings: grpc.aio.UnaryUnaryMultiCallable[
+    ListLicenses: grpc.UnaryUnaryMultiCallable[
+        settings_pb2.ListLicensesRequest,
+        settings_pb2.ListLicensesResponse,
+    ]
+    """ListLicenses lists all the licenses."""
+
+    SetSettings: grpc.UnaryUnaryMultiCallable[
         settings_pb2.SetSettingsRequest,
         settings_pb2.SetSettingsResponse,
     ]
     """SetSettings applies new global settings"""
+
+class SettingsServiceAsyncStub:
+    """SettingsService manages global pomerium settings"""
+
+    ActivateLicense: grpc.aio.UnaryUnaryMultiCallable[
+        settings_pb2.ActivateLicenseRequest,
+        settings_pb2.ActivateLicenseResponse,
+    ]
+    """ActivateLicense activates a license."""
+
+    AddLicense: grpc.aio.UnaryUnaryMultiCallable[
+        settings_pb2.AddLicenseRequest,
+        settings_pb2.AddLicenseResponse,
+    ]
+    """AddLicense adds a license."""
+
+    DeleteLicense: grpc.aio.UnaryUnaryMultiCallable[
+        settings_pb2.DeleteLicenseRequest,
+        settings_pb2.DeleteLicenseResponse,
+    ]
+    """DeleteLicense deletes a license."""
 
     GetBrandingSettings: grpc.aio.UnaryUnaryMultiCallable[
         settings_pb2.GetSettingsRequest,
@@ -72,24 +102,50 @@ class SettingsServiceAsyncStub:
     ]
     """GetConsoleSettings retrieves the console settings."""
 
+    GetSettings: grpc.aio.UnaryUnaryMultiCallable[
+        settings_pb2.GetSettingsRequest,
+        settings_pb2.GetSettingsResponse,
+    ]
+    """GetSettings retrieves the currently applied settings"""
+
+    ListLicenses: grpc.aio.UnaryUnaryMultiCallable[
+        settings_pb2.ListLicensesRequest,
+        settings_pb2.ListLicensesResponse,
+    ]
+    """ListLicenses lists all the licenses."""
+
+    SetSettings: grpc.aio.UnaryUnaryMultiCallable[
+        settings_pb2.SetSettingsRequest,
+        settings_pb2.SetSettingsResponse,
+    ]
+    """SetSettings applies new global settings"""
+
 class SettingsServiceServicer(metaclass=abc.ABCMeta):
     """SettingsService manages global pomerium settings"""
 
     @abc.abstractmethod
-    def GetSettings(
+    def ActivateLicense(
         self,
-        request: settings_pb2.GetSettingsRequest,
+        request: settings_pb2.ActivateLicenseRequest,
         context: _ServicerContext,
-    ) -> typing.Union[settings_pb2.GetSettingsResponse, collections.abc.Awaitable[settings_pb2.GetSettingsResponse]]:
-        """GetSettings retrieves the currently applied settings"""
+    ) -> typing.Union[settings_pb2.ActivateLicenseResponse, collections.abc.Awaitable[settings_pb2.ActivateLicenseResponse]]:
+        """ActivateLicense activates a license."""
 
     @abc.abstractmethod
-    def SetSettings(
+    def AddLicense(
         self,
-        request: settings_pb2.SetSettingsRequest,
+        request: settings_pb2.AddLicenseRequest,
         context: _ServicerContext,
-    ) -> typing.Union[settings_pb2.SetSettingsResponse, collections.abc.Awaitable[settings_pb2.SetSettingsResponse]]:
-        """SetSettings applies new global settings"""
+    ) -> typing.Union[settings_pb2.AddLicenseResponse, collections.abc.Awaitable[settings_pb2.AddLicenseResponse]]:
+        """AddLicense adds a license."""
+
+    @abc.abstractmethod
+    def DeleteLicense(
+        self,
+        request: settings_pb2.DeleteLicenseRequest,
+        context: _ServicerContext,
+    ) -> typing.Union[settings_pb2.DeleteLicenseResponse, collections.abc.Awaitable[settings_pb2.DeleteLicenseResponse]]:
+        """DeleteLicense deletes a license."""
 
     @abc.abstractmethod
     def GetBrandingSettings(
@@ -106,5 +162,29 @@ class SettingsServiceServicer(metaclass=abc.ABCMeta):
         context: _ServicerContext,
     ) -> typing.Union[settings_pb2.GetConsoleSettingsResponse, collections.abc.Awaitable[settings_pb2.GetConsoleSettingsResponse]]:
         """GetConsoleSettings retrieves the console settings."""
+
+    @abc.abstractmethod
+    def GetSettings(
+        self,
+        request: settings_pb2.GetSettingsRequest,
+        context: _ServicerContext,
+    ) -> typing.Union[settings_pb2.GetSettingsResponse, collections.abc.Awaitable[settings_pb2.GetSettingsResponse]]:
+        """GetSettings retrieves the currently applied settings"""
+
+    @abc.abstractmethod
+    def ListLicenses(
+        self,
+        request: settings_pb2.ListLicensesRequest,
+        context: _ServicerContext,
+    ) -> typing.Union[settings_pb2.ListLicensesResponse, collections.abc.Awaitable[settings_pb2.ListLicensesResponse]]:
+        """ListLicenses lists all the licenses."""
+
+    @abc.abstractmethod
+    def SetSettings(
+        self,
+        request: settings_pb2.SetSettingsRequest,
+        context: _ServicerContext,
+    ) -> typing.Union[settings_pb2.SetSettingsResponse, collections.abc.Awaitable[settings_pb2.SetSettingsResponse]]:
+        """SetSettings applies new global settings"""
 
 def add_SettingsServiceServicer_to_server(servicer: SettingsServiceServicer, server: typing.Union[grpc.Server, grpc.aio.Server]) -> None: ...
