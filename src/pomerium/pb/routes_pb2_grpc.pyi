@@ -39,11 +39,23 @@ class RouteServiceStub:
     ]
     """GetRoute retrieves an existing route"""
 
+    GetUnmanagedRoute: grpc.UnaryUnaryMultiCallable[
+        routes_pb2.GetUnmanagedRouteRequest,
+        routes_pb2.GetUnmanagedRouteResponse,
+    ]
+    """GetUnmanagedRoute retrieves an unmanaged route."""
+
     ListRoutes: grpc.UnaryUnaryMultiCallable[
         routes_pb2.ListRoutesRequest,
         routes_pb2.ListRoutesResponse,
     ]
     """ListRoutes lists routes based on ListRoutesRequest"""
+
+    ListUnmanagedRoutes: grpc.UnaryUnaryMultiCallable[
+        routes_pb2.ListUnmanagedRoutesRequest,
+        routes_pb2.ListUnmanagedRoutesResponse,
+    ]
+    """ListUnmanagedRoutes lists routes based on ListUnmanagedRoutesRequest"""
 
     LoadRoutes: grpc.UnaryUnaryMultiCallable[
         routes_pb2.LoadRoutesRequest,
@@ -90,11 +102,23 @@ class RouteServiceAsyncStub:
     ]
     """GetRoute retrieves an existing route"""
 
+    GetUnmanagedRoute: grpc.aio.UnaryUnaryMultiCallable[
+        routes_pb2.GetUnmanagedRouteRequest,
+        routes_pb2.GetUnmanagedRouteResponse,
+    ]
+    """GetUnmanagedRoute retrieves an unmanaged route."""
+
     ListRoutes: grpc.aio.UnaryUnaryMultiCallable[
         routes_pb2.ListRoutesRequest,
         routes_pb2.ListRoutesResponse,
     ]
     """ListRoutes lists routes based on ListRoutesRequest"""
+
+    ListUnmanagedRoutes: grpc.aio.UnaryUnaryMultiCallable[
+        routes_pb2.ListUnmanagedRoutesRequest,
+        routes_pb2.ListUnmanagedRoutesResponse,
+    ]
+    """ListUnmanagedRoutes lists routes based on ListUnmanagedRoutesRequest"""
 
     LoadRoutes: grpc.aio.UnaryUnaryMultiCallable[
         routes_pb2.LoadRoutesRequest,
@@ -148,12 +172,28 @@ class RouteServiceServicer(metaclass=abc.ABCMeta):
         """GetRoute retrieves an existing route"""
 
     @abc.abstractmethod
+    def GetUnmanagedRoute(
+        self,
+        request: routes_pb2.GetUnmanagedRouteRequest,
+        context: _ServicerContext,
+    ) -> typing.Union[routes_pb2.GetUnmanagedRouteResponse, collections.abc.Awaitable[routes_pb2.GetUnmanagedRouteResponse]]:
+        """GetUnmanagedRoute retrieves an unmanaged route."""
+
+    @abc.abstractmethod
     def ListRoutes(
         self,
         request: routes_pb2.ListRoutesRequest,
         context: _ServicerContext,
     ) -> typing.Union[routes_pb2.ListRoutesResponse, collections.abc.Awaitable[routes_pb2.ListRoutesResponse]]:
         """ListRoutes lists routes based on ListRoutesRequest"""
+
+    @abc.abstractmethod
+    def ListUnmanagedRoutes(
+        self,
+        request: routes_pb2.ListUnmanagedRoutesRequest,
+        context: _ServicerContext,
+    ) -> typing.Union[routes_pb2.ListUnmanagedRoutesResponse, collections.abc.Awaitable[routes_pb2.ListUnmanagedRoutesResponse]]:
+        """ListUnmanagedRoutes lists routes based on ListUnmanagedRoutesRequest"""
 
     @abc.abstractmethod
     def LoadRoutes(

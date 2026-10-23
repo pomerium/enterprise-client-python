@@ -65,10 +65,20 @@ class SettingsServiceStub(object):
                 request_serializer=settings__pb2.GetSettingsRequest.SerializeToString,
                 response_deserializer=settings__pb2.GetSettingsResponse.FromString,
                 _registered_method=True)
+        self.GetUnmanagedSettings = channel.unary_unary(
+                '/pomerium.dashboard.SettingsService/GetUnmanagedSettings',
+                request_serializer=settings__pb2.GetUnmanagedSettingsRequest.SerializeToString,
+                response_deserializer=settings__pb2.GetUnmanagedSettingsResponse.FromString,
+                _registered_method=True)
         self.ListLicenses = channel.unary_unary(
                 '/pomerium.dashboard.SettingsService/ListLicenses',
                 request_serializer=settings__pb2.ListLicensesRequest.SerializeToString,
                 response_deserializer=settings__pb2.ListLicensesResponse.FromString,
+                _registered_method=True)
+        self.ListUnmanagedSettings = channel.unary_unary(
+                '/pomerium.dashboard.SettingsService/ListUnmanagedSettings',
+                request_serializer=settings__pb2.ListUnmanagedSettingsRequest.SerializeToString,
+                response_deserializer=settings__pb2.ListUnmanagedSettingsResponse.FromString,
                 _registered_method=True)
         self.SetSettings = channel.unary_unary(
                 '/pomerium.dashboard.SettingsService/SetSettings',
@@ -123,8 +133,22 @@ class SettingsServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetUnmanagedSettings(self, request, context):
+        """GetUnmanagedSettings retrieves the unmanaged settings for a cluster.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def ListLicenses(self, request, context):
         """ListLicenses lists all the licenses.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def ListUnmanagedSettings(self, request, context):
+        """ListUnmanagedSettings lists all the unmanaged settings for a cluster.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -170,10 +194,20 @@ def add_SettingsServiceServicer_to_server(servicer, server):
                     request_deserializer=settings__pb2.GetSettingsRequest.FromString,
                     response_serializer=settings__pb2.GetSettingsResponse.SerializeToString,
             ),
+            'GetUnmanagedSettings': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetUnmanagedSettings,
+                    request_deserializer=settings__pb2.GetUnmanagedSettingsRequest.FromString,
+                    response_serializer=settings__pb2.GetUnmanagedSettingsResponse.SerializeToString,
+            ),
             'ListLicenses': grpc.unary_unary_rpc_method_handler(
                     servicer.ListLicenses,
                     request_deserializer=settings__pb2.ListLicensesRequest.FromString,
                     response_serializer=settings__pb2.ListLicensesResponse.SerializeToString,
+            ),
+            'ListUnmanagedSettings': grpc.unary_unary_rpc_method_handler(
+                    servicer.ListUnmanagedSettings,
+                    request_deserializer=settings__pb2.ListUnmanagedSettingsRequest.FromString,
+                    response_serializer=settings__pb2.ListUnmanagedSettingsResponse.SerializeToString,
             ),
             'SetSettings': grpc.unary_unary_rpc_method_handler(
                     servicer.SetSettings,
@@ -355,6 +389,33 @@ class SettingsService(object):
             _registered_method=True)
 
     @staticmethod
+    def GetUnmanagedSettings(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/pomerium.dashboard.SettingsService/GetUnmanagedSettings',
+            settings__pb2.GetUnmanagedSettingsRequest.SerializeToString,
+            settings__pb2.GetUnmanagedSettingsResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
     def ListLicenses(request,
             target,
             options=(),
@@ -371,6 +432,33 @@ class SettingsService(object):
             '/pomerium.dashboard.SettingsService/ListLicenses',
             settings__pb2.ListLicensesRequest.SerializeToString,
             settings__pb2.ListLicensesResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def ListUnmanagedSettings(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/pomerium.dashboard.SettingsService/ListUnmanagedSettings',
+            settings__pb2.ListUnmanagedSettingsRequest.SerializeToString,
+            settings__pb2.ListUnmanagedSettingsResponse.FromString,
             options,
             channel_credentials,
             insecure,

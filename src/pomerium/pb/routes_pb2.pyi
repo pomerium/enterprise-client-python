@@ -922,6 +922,43 @@ class GetRouteResponse(google.protobuf.message.Message):
 global___GetRouteResponse = GetRouteResponse
 
 @typing.final
+class GetUnmanagedRouteRequest(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    CLUSTER_ID_FIELD_NUMBER: builtins.int
+    ID_FIELD_NUMBER: builtins.int
+    cluster_id: builtins.str
+    id: builtins.str
+    def __init__(
+        self,
+        *,
+        cluster_id: builtins.str | None = ...,
+        id: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["_cluster_id", b"_cluster_id", "cluster_id", b"cluster_id"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_cluster_id", b"_cluster_id", "cluster_id", b"cluster_id", "id", b"id"]) -> None: ...
+    def WhichOneof(self, oneof_group: typing.Literal["_cluster_id", b"_cluster_id"]) -> typing.Literal["cluster_id"] | None: ...
+
+global___GetUnmanagedRouteRequest = GetUnmanagedRouteRequest
+
+@typing.final
+class GetUnmanagedRouteResponse(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ROUTE_FIELD_NUMBER: builtins.int
+    @property
+    def route(self) -> global___Route: ...
+    def __init__(
+        self,
+        *,
+        route: global___Route | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["route", b"route"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["route", b"route"]) -> None: ...
+
+global___GetUnmanagedRouteResponse = GetUnmanagedRouteResponse
+
+@typing.final
 class ListRoutesRequest(google.protobuf.message.Message):
     """ListRoutesRequest defines the routes to list"""
 
@@ -989,6 +1026,58 @@ class ListRoutesResponse(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["routes", b"routes", "total_count", b"total_count"]) -> None: ...
 
 global___ListRoutesResponse = ListRoutesResponse
+
+@typing.final
+class ListUnmanagedRoutesRequest(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    CLUSTER_ID_FIELD_NUMBER: builtins.int
+    OFFSET_FIELD_NUMBER: builtins.int
+    LIMIT_FIELD_NUMBER: builtins.int
+    ORDER_BY_FIELD_NUMBER: builtins.int
+    cluster_id: builtins.str
+    offset: builtins.int
+    limit: builtins.int
+    order_by: builtins.str
+    def __init__(
+        self,
+        *,
+        cluster_id: builtins.str | None = ...,
+        offset: builtins.int | None = ...,
+        limit: builtins.int | None = ...,
+        order_by: builtins.str | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["_cluster_id", b"_cluster_id", "_limit", b"_limit", "_offset", b"_offset", "_order_by", b"_order_by", "cluster_id", b"cluster_id", "limit", b"limit", "offset", b"offset", "order_by", b"order_by"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_cluster_id", b"_cluster_id", "_limit", b"_limit", "_offset", b"_offset", "_order_by", b"_order_by", "cluster_id", b"cluster_id", "limit", b"limit", "offset", b"offset", "order_by", b"order_by"]) -> None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_cluster_id", b"_cluster_id"]) -> typing.Literal["cluster_id"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_limit", b"_limit"]) -> typing.Literal["limit"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_offset", b"_offset"]) -> typing.Literal["offset"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_order_by", b"_order_by"]) -> typing.Literal["order_by"] | None: ...
+
+global___ListUnmanagedRoutesRequest = ListUnmanagedRoutesRequest
+
+@typing.final
+class ListUnmanagedRoutesResponse(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ROUTES_FIELD_NUMBER: builtins.int
+    TOTAL_COUNT_FIELD_NUMBER: builtins.int
+    total_count: builtins.int
+    @property
+    def routes(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___Route]: ...
+    def __init__(
+        self,
+        *,
+        routes: collections.abc.Iterable[global___Route] | None = ...,
+        total_count: builtins.int = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["routes", b"routes", "total_count", b"total_count"]) -> None: ...
+
+global___ListUnmanagedRoutesResponse = ListUnmanagedRoutesResponse
 
 @typing.final
 class LoadRoutesRequest(google.protobuf.message.Message):
