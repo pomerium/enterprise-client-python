@@ -57,11 +57,23 @@ class SettingsServiceStub:
     ]
     """GetSettings retrieves the currently applied settings"""
 
+    GetUnmanagedSettings: grpc.UnaryUnaryMultiCallable[
+        settings_pb2.GetUnmanagedSettingsRequest,
+        settings_pb2.GetUnmanagedSettingsResponse,
+    ]
+    """GetUnmanagedSettings retrieves the unmanaged settings for a cluster."""
+
     ListLicenses: grpc.UnaryUnaryMultiCallable[
         settings_pb2.ListLicensesRequest,
         settings_pb2.ListLicensesResponse,
     ]
     """ListLicenses lists all the licenses."""
+
+    ListUnmanagedSettings: grpc.UnaryUnaryMultiCallable[
+        settings_pb2.ListUnmanagedSettingsRequest,
+        settings_pb2.ListUnmanagedSettingsResponse,
+    ]
+    """ListUnmanagedSettings lists all the unmanaged settings for a cluster."""
 
     SetSettings: grpc.UnaryUnaryMultiCallable[
         settings_pb2.SetSettingsRequest,
@@ -108,11 +120,23 @@ class SettingsServiceAsyncStub:
     ]
     """GetSettings retrieves the currently applied settings"""
 
+    GetUnmanagedSettings: grpc.aio.UnaryUnaryMultiCallable[
+        settings_pb2.GetUnmanagedSettingsRequest,
+        settings_pb2.GetUnmanagedSettingsResponse,
+    ]
+    """GetUnmanagedSettings retrieves the unmanaged settings for a cluster."""
+
     ListLicenses: grpc.aio.UnaryUnaryMultiCallable[
         settings_pb2.ListLicensesRequest,
         settings_pb2.ListLicensesResponse,
     ]
     """ListLicenses lists all the licenses."""
+
+    ListUnmanagedSettings: grpc.aio.UnaryUnaryMultiCallable[
+        settings_pb2.ListUnmanagedSettingsRequest,
+        settings_pb2.ListUnmanagedSettingsResponse,
+    ]
+    """ListUnmanagedSettings lists all the unmanaged settings for a cluster."""
 
     SetSettings: grpc.aio.UnaryUnaryMultiCallable[
         settings_pb2.SetSettingsRequest,
@@ -172,12 +196,28 @@ class SettingsServiceServicer(metaclass=abc.ABCMeta):
         """GetSettings retrieves the currently applied settings"""
 
     @abc.abstractmethod
+    def GetUnmanagedSettings(
+        self,
+        request: settings_pb2.GetUnmanagedSettingsRequest,
+        context: _ServicerContext,
+    ) -> typing.Union[settings_pb2.GetUnmanagedSettingsResponse, collections.abc.Awaitable[settings_pb2.GetUnmanagedSettingsResponse]]:
+        """GetUnmanagedSettings retrieves the unmanaged settings for a cluster."""
+
+    @abc.abstractmethod
     def ListLicenses(
         self,
         request: settings_pb2.ListLicensesRequest,
         context: _ServicerContext,
     ) -> typing.Union[settings_pb2.ListLicensesResponse, collections.abc.Awaitable[settings_pb2.ListLicensesResponse]]:
         """ListLicenses lists all the licenses."""
+
+    @abc.abstractmethod
+    def ListUnmanagedSettings(
+        self,
+        request: settings_pb2.ListUnmanagedSettingsRequest,
+        context: _ServicerContext,
+    ) -> typing.Union[settings_pb2.ListUnmanagedSettingsResponse, collections.abc.Awaitable[settings_pb2.ListUnmanagedSettingsResponse]]:
+        """ListUnmanagedSettings lists all the unmanaged settings for a cluster."""
 
     @abc.abstractmethod
     def SetSettings(

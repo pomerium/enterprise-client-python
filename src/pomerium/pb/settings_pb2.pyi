@@ -1189,6 +1189,43 @@ class GetSettingsResponse(google.protobuf.message.Message):
 global___GetSettingsResponse = GetSettingsResponse
 
 @typing.final
+class GetUnmanagedSettingsRequest(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    CLUSTER_ID_FIELD_NUMBER: builtins.int
+    ID_FIELD_NUMBER: builtins.int
+    cluster_id: builtins.str
+    id: builtins.str
+    def __init__(
+        self,
+        *,
+        cluster_id: builtins.str | None = ...,
+        id: builtins.str = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["_cluster_id", b"_cluster_id", "cluster_id", b"cluster_id"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_cluster_id", b"_cluster_id", "cluster_id", b"cluster_id", "id", b"id"]) -> None: ...
+    def WhichOneof(self, oneof_group: typing.Literal["_cluster_id", b"_cluster_id"]) -> typing.Literal["cluster_id"] | None: ...
+
+global___GetUnmanagedSettingsRequest = GetUnmanagedSettingsRequest
+
+@typing.final
+class GetUnmanagedSettingsResponse(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    SETTINGS_FIELD_NUMBER: builtins.int
+    @property
+    def settings(self) -> global___Settings: ...
+    def __init__(
+        self,
+        *,
+        settings: global___Settings | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["settings", b"settings"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["settings", b"settings"]) -> None: ...
+
+global___GetUnmanagedSettingsResponse = GetUnmanagedSettingsResponse
+
+@typing.final
 class ListLicensesRequest(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
@@ -1213,6 +1250,58 @@ class ListLicensesResponse(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["licenses", b"licenses"]) -> None: ...
 
 global___ListLicensesResponse = ListLicensesResponse
+
+@typing.final
+class ListUnmanagedSettingsRequest(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    CLUSTER_ID_FIELD_NUMBER: builtins.int
+    OFFSET_FIELD_NUMBER: builtins.int
+    LIMIT_FIELD_NUMBER: builtins.int
+    ORDER_BY_FIELD_NUMBER: builtins.int
+    cluster_id: builtins.str
+    offset: builtins.int
+    limit: builtins.int
+    order_by: builtins.str
+    def __init__(
+        self,
+        *,
+        cluster_id: builtins.str | None = ...,
+        offset: builtins.int | None = ...,
+        limit: builtins.int | None = ...,
+        order_by: builtins.str | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["_cluster_id", b"_cluster_id", "_limit", b"_limit", "_offset", b"_offset", "_order_by", b"_order_by", "cluster_id", b"cluster_id", "limit", b"limit", "offset", b"offset", "order_by", b"order_by"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_cluster_id", b"_cluster_id", "_limit", b"_limit", "_offset", b"_offset", "_order_by", b"_order_by", "cluster_id", b"cluster_id", "limit", b"limit", "offset", b"offset", "order_by", b"order_by"]) -> None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_cluster_id", b"_cluster_id"]) -> typing.Literal["cluster_id"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_limit", b"_limit"]) -> typing.Literal["limit"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_offset", b"_offset"]) -> typing.Literal["offset"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_order_by", b"_order_by"]) -> typing.Literal["order_by"] | None: ...
+
+global___ListUnmanagedSettingsRequest = ListUnmanagedSettingsRequest
+
+@typing.final
+class ListUnmanagedSettingsResponse(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    SETTINGS_FIELD_NUMBER: builtins.int
+    TOTAL_COUNT_FIELD_NUMBER: builtins.int
+    total_count: builtins.int
+    @property
+    def settings(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___Settings]: ...
+    def __init__(
+        self,
+        *,
+        settings: collections.abc.Iterable[global___Settings] | None = ...,
+        total_count: builtins.int = ...,
+    ) -> None: ...
+    def ClearField(self, field_name: typing.Literal["settings", b"settings", "total_count", b"total_count"]) -> None: ...
+
+global___ListUnmanagedSettingsResponse = ListUnmanagedSettingsResponse
 
 @typing.final
 class SetSettingsRequest(google.protobuf.message.Message):

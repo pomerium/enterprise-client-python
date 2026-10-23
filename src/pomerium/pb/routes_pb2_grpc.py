@@ -50,10 +50,20 @@ class RouteServiceStub(object):
                 request_serializer=routes__pb2.GetRouteRequest.SerializeToString,
                 response_deserializer=routes__pb2.GetRouteResponse.FromString,
                 _registered_method=True)
+        self.GetUnmanagedRoute = channel.unary_unary(
+                '/pomerium.dashboard.RouteService/GetUnmanagedRoute',
+                request_serializer=routes__pb2.GetUnmanagedRouteRequest.SerializeToString,
+                response_deserializer=routes__pb2.GetUnmanagedRouteResponse.FromString,
+                _registered_method=True)
         self.ListRoutes = channel.unary_unary(
                 '/pomerium.dashboard.RouteService/ListRoutes',
                 request_serializer=routes__pb2.ListRoutesRequest.SerializeToString,
                 response_deserializer=routes__pb2.ListRoutesResponse.FromString,
+                _registered_method=True)
+        self.ListUnmanagedRoutes = channel.unary_unary(
+                '/pomerium.dashboard.RouteService/ListUnmanagedRoutes',
+                request_serializer=routes__pb2.ListUnmanagedRoutesRequest.SerializeToString,
+                response_deserializer=routes__pb2.ListUnmanagedRoutesResponse.FromString,
                 _registered_method=True)
         self.LoadRoutes = channel.unary_unary(
                 '/pomerium.dashboard.RouteService/LoadRoutes',
@@ -102,8 +112,22 @@ class RouteServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetUnmanagedRoute(self, request, context):
+        """GetUnmanagedRoute retrieves an unmanaged route.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def ListRoutes(self, request, context):
         """ListRoutes lists routes based on ListRoutesRequest
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def ListUnmanagedRoutes(self, request, context):
+        """ListUnmanagedRoutes lists routes based on ListUnmanagedRoutesRequest
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -155,10 +179,20 @@ def add_RouteServiceServicer_to_server(servicer, server):
                     request_deserializer=routes__pb2.GetRouteRequest.FromString,
                     response_serializer=routes__pb2.GetRouteResponse.SerializeToString,
             ),
+            'GetUnmanagedRoute': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetUnmanagedRoute,
+                    request_deserializer=routes__pb2.GetUnmanagedRouteRequest.FromString,
+                    response_serializer=routes__pb2.GetUnmanagedRouteResponse.SerializeToString,
+            ),
             'ListRoutes': grpc.unary_unary_rpc_method_handler(
                     servicer.ListRoutes,
                     request_deserializer=routes__pb2.ListRoutesRequest.FromString,
                     response_serializer=routes__pb2.ListRoutesResponse.SerializeToString,
+            ),
+            'ListUnmanagedRoutes': grpc.unary_unary_rpc_method_handler(
+                    servicer.ListUnmanagedRoutes,
+                    request_deserializer=routes__pb2.ListUnmanagedRoutesRequest.FromString,
+                    response_serializer=routes__pb2.ListUnmanagedRoutesResponse.SerializeToString,
             ),
             'LoadRoutes': grpc.unary_unary_rpc_method_handler(
                     servicer.LoadRoutes,
@@ -274,6 +308,33 @@ class RouteService(object):
             _registered_method=True)
 
     @staticmethod
+    def GetUnmanagedRoute(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/pomerium.dashboard.RouteService/GetUnmanagedRoute',
+            routes__pb2.GetUnmanagedRouteRequest.SerializeToString,
+            routes__pb2.GetUnmanagedRouteResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
     def ListRoutes(request,
             target,
             options=(),
@@ -290,6 +351,33 @@ class RouteService(object):
             '/pomerium.dashboard.RouteService/ListRoutes',
             routes__pb2.ListRoutesRequest.SerializeToString,
             routes__pb2.ListRoutesResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def ListUnmanagedRoutes(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/pomerium.dashboard.RouteService/ListUnmanagedRoutes',
+            routes__pb2.ListUnmanagedRoutesRequest.SerializeToString,
+            routes__pb2.ListUnmanagedRoutesResponse.FromString,
             options,
             channel_credentials,
             insecure,
