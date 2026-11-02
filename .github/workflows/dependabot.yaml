@@ -11,14 +11,14 @@ jobs:
     steps:
       - name: Create CI token
         id: ci-token
-        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
         with:
           client-id: ${{ secrets.POMERIUM_CI_APP_CLIENT_ID }}
           private-key: ${{ secrets.POMERIUM_CI_APP_PRIVATE_KEY }}
           permission-contents: read
 
       - name: Checkout
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with:
           ref: ${{ github.head_ref }}
           submodules: "true"
@@ -30,7 +30,7 @@ jobs:
 
       - name: Create CI write token
         id: ci-write-token
-        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
         with:
           client-id: ${{ secrets.POMERIUM_CI_APP_CLIENT_ID }}
           private-key: ${{ secrets.POMERIUM_CI_APP_PRIVATE_KEY }}
@@ -38,7 +38,7 @@ jobs:
           permission-workflows: write
 
       - name: Commit
-        uses: devops-infra/action-commit-push@68b7fc222377cf66850ef50a6fd6a1be983d176d
+        uses: devops-infra/action-commit-push@68b7fc222377cf66850ef50a6fd6a1be983d176d # v1.0.0
         with:
           github_token: ${{ steps.ci-write-token.outputs.token }}
           commit_message: "dependabot: generate"
