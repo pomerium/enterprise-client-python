@@ -400,7 +400,7 @@ global___OAuth2Endpoint = OAuth2Endpoint
 @typing.final
 class Route(google.protobuf.message.Message):
     """Route defines a proxy route's settings and policy associations
-    Next ID: 80
+    Next ID: 82
     """
 
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
@@ -504,10 +504,6 @@ class Route(google.protobuf.message.Message):
     ORIGINATOR_ID_FIELD_NUMBER: builtins.int
     POLICY_IDS_FIELD_NUMBER: builtins.int
     DEPENDS_ON_FIELD_NUMBER: builtins.int
-    POLICY_NAMES_FIELD_NUMBER: builtins.int
-    NAMESPACE_NAME_FIELD_NUMBER: builtins.int
-    ENFORCED_POLICY_IDS_FIELD_NUMBER: builtins.int
-    ENFORCED_POLICY_NAMES_FIELD_NUMBER: builtins.int
     IDP_ACCESS_TOKEN_ALLOWED_AUDIENCES_FIELD_NUMBER: builtins.int
     LOAD_BALANCING_POLICY_FIELD_NUMBER: builtins.int
     HEALTH_CHECKS_FIELD_NUMBER: builtins.int
@@ -518,6 +514,12 @@ class Route(google.protobuf.message.Message):
     ALLOW_UPGRADES_FIELD_NUMBER: builtins.int
     SESSION_RECORDING_FIELD_NUMBER: builtins.int
     IDENTITY_PROVIDERS_FIELD_NUMBER: builtins.int
+    OIDC_BRIDGE_FIELD_NUMBER: builtins.int
+    POLICY_NAMES_FIELD_NUMBER: builtins.int
+    NAMESPACE_NAME_FIELD_NUMBER: builtins.int
+    ENFORCED_POLICY_IDS_FIELD_NUMBER: builtins.int
+    ENFORCED_POLICY_NAMES_FIELD_NUMBER: builtins.int
+    INLINE_PPL_POLICIES_FIELD_NUMBER: builtins.int
     id: builtins.str
     namespace_id: builtins.str
     name: builtins.str
@@ -556,10 +558,9 @@ class Route(google.protobuf.message.Message):
     idp_client_secret: builtins.str
     show_error_details: builtins.bool
     originator_id: builtins.str
-    namespace_name: builtins.str
-    """computed"""
     load_balancing_policy: global___LoadBalancingPolicy.ValueType
     healthy_panic_threshold: builtins.int
+    namespace_name: builtins.str
     @property
     def created_at(self) -> google.protobuf.timestamp_pb2.Timestamp: ...
     @property
@@ -595,16 +596,6 @@ class Route(google.protobuf.message.Message):
         """multi-route login additional hosts"""
 
     @property
-    def policy_names(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
-        """computed properties (may be nil)"""
-
-    @property
-    def enforced_policy_ids(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
-        """computed"""
-
-    @property
-    def enforced_policy_names(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
-    @property
     def idp_access_token_allowed_audiences(self) -> global___Route.StringList: ...
     @property
     def health_checks(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[route_health_check_pb2.HealthCheck]: ...
@@ -625,6 +616,20 @@ class Route(google.protobuf.message.Message):
         key in Settings.identity_providers. When empty, all configured providers
         are accepted.
         """
+
+    @property
+    def oidc_bridge(self) -> global___OIDCBridge: ...
+    @property
+    def policy_names(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
+        """computed properties (may be nil)"""
+
+    @property
+    def enforced_policy_ids(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
+    @property
+    def enforced_policy_names(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]: ...
+    @property
+    def inline_ppl_policies(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
+        """Configure OIDC bridge support for this route."""
 
     def __init__(
         self,
@@ -681,10 +686,6 @@ class Route(google.protobuf.message.Message):
         originator_id: builtins.str = ...,
         policy_ids: collections.abc.Iterable[builtins.str] | None = ...,
         depends_on: collections.abc.Iterable[builtins.str] | None = ...,
-        policy_names: collections.abc.Iterable[builtins.str] | None = ...,
-        namespace_name: builtins.str = ...,
-        enforced_policy_ids: collections.abc.Iterable[builtins.str] | None = ...,
-        enforced_policy_names: collections.abc.Iterable[builtins.str] | None = ...,
         idp_access_token_allowed_audiences: global___Route.StringList | None = ...,
         load_balancing_policy: global___LoadBalancingPolicy.ValueType | None = ...,
         health_checks: collections.abc.Iterable[route_health_check_pb2.HealthCheck] | None = ...,
@@ -695,9 +696,15 @@ class Route(google.protobuf.message.Message):
         allow_upgrades: global___Route.StringList | None = ...,
         session_recording: global___SessionRecording | None = ...,
         identity_providers: collections.abc.Iterable[builtins.str] | None = ...,
+        oidc_bridge: global___OIDCBridge | None = ...,
+        policy_names: collections.abc.Iterable[builtins.str] | None = ...,
+        namespace_name: builtins.str = ...,
+        enforced_policy_ids: collections.abc.Iterable[builtins.str] | None = ...,
+        enforced_policy_names: collections.abc.Iterable[builtins.str] | None = ...,
+        inline_ppl_policies: collections.abc.Iterable[builtins.str] | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["_allow_spdy", b"_allow_spdy", "_allow_upgrades", b"_allow_upgrades", "_allow_websockets", b"_allow_websockets", "_bearer_token_format", b"_bearer_token_format", "_circuit_breaker_thresholds", b"_circuit_breaker_thresholds", "_description", b"_description", "_healthy_panic_threshold", b"_healthy_panic_threshold", "_host_path_regex_rewrite_pattern", b"_host_path_regex_rewrite_pattern", "_host_path_regex_rewrite_substitution", b"_host_path_regex_rewrite_substitution", "_host_rewrite", b"_host_rewrite", "_host_rewrite_header", b"_host_rewrite_header", "_idle_timeout", b"_idle_timeout", "_idp_access_token_allowed_audiences", b"_idp_access_token_allowed_audiences", "_idp_client_id", b"_idp_client_id", "_idp_client_secret", b"_idp_client_secret", "_jwt_issuer_format", b"_jwt_issuer_format", "_kubernetes_service_account_token", b"_kubernetes_service_account_token", "_kubernetes_service_account_token_file", b"_kubernetes_service_account_token_file", "_load_balancing_policy", b"_load_balancing_policy", "_logo_url", b"_logo_url", "_mcp", b"_mcp", "_pass_identity_headers", b"_pass_identity_headers", "_path", b"_path", "_prefix", b"_prefix", "_prefix_rewrite", b"_prefix_rewrite", "_preserve_host_header", b"_preserve_host_header", "_regex", b"_regex", "_regex_priority_order", b"_regex_priority_order", "_regex_rewrite_pattern", b"_regex_rewrite_pattern", "_regex_rewrite_substitution", b"_regex_rewrite_substitution", "_timeout", b"_timeout", "_tls_client_key_pair_id", b"_tls_client_key_pair_id", "_tls_custom_ca_key_pair_id", b"_tls_custom_ca_key_pair_id", "_tls_downstream_client_ca_key_pair_id", b"_tls_downstream_client_ca_key_pair_id", "_tls_downstream_server_name", b"_tls_downstream_server_name", "_tls_skip_verify", b"_tls_skip_verify", "_tls_upstream_allow_renegotiation", b"_tls_upstream_allow_renegotiation", "_tls_upstream_server_name", b"_tls_upstream_server_name", "_upstream_tunnel", b"_upstream_tunnel", "allow_spdy", b"allow_spdy", "allow_upgrades", b"allow_upgrades", "allow_websockets", b"allow_websockets", "bearer_token_format", b"bearer_token_format", "circuit_breaker_thresholds", b"circuit_breaker_thresholds", "created_at", b"created_at", "deleted_at", b"deleted_at", "description", b"description", "healthy_panic_threshold", b"healthy_panic_threshold", "host_path_regex_rewrite_pattern", b"host_path_regex_rewrite_pattern", "host_path_regex_rewrite_substitution", b"host_path_regex_rewrite_substitution", "host_rewrite", b"host_rewrite", "host_rewrite_header", b"host_rewrite_header", "idle_timeout", b"idle_timeout", "idp_access_token_allowed_audiences", b"idp_access_token_allowed_audiences", "idp_client_id", b"idp_client_id", "idp_client_secret", b"idp_client_secret", "jwt_groups_filter", b"jwt_groups_filter", "jwt_issuer_format", b"jwt_issuer_format", "kubernetes_service_account_token", b"kubernetes_service_account_token", "kubernetes_service_account_token_file", b"kubernetes_service_account_token_file", "load_balancing_policy", b"load_balancing_policy", "logo_url", b"logo_url", "mcp", b"mcp", "modified_at", b"modified_at", "pass_identity_headers", b"pass_identity_headers", "path", b"path", "prefix", b"prefix", "prefix_rewrite", b"prefix_rewrite", "preserve_host_header", b"preserve_host_header", "redirect", b"redirect", "regex", b"regex", "regex_priority_order", b"regex_priority_order", "regex_rewrite_pattern", b"regex_rewrite_pattern", "regex_rewrite_substitution", b"regex_rewrite_substitution", "response", b"response", "session_recording", b"session_recording", "timeout", b"timeout", "tls_client_key_pair_id", b"tls_client_key_pair_id", "tls_custom_ca_key_pair_id", b"tls_custom_ca_key_pair_id", "tls_downstream_client_ca_key_pair_id", b"tls_downstream_client_ca_key_pair_id", "tls_downstream_server_name", b"tls_downstream_server_name", "tls_skip_verify", b"tls_skip_verify", "tls_upstream_allow_renegotiation", b"tls_upstream_allow_renegotiation", "tls_upstream_server_name", b"tls_upstream_server_name", "upstream_tunnel", b"upstream_tunnel"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["_allow_spdy", b"_allow_spdy", "_allow_upgrades", b"_allow_upgrades", "_allow_websockets", b"_allow_websockets", "_bearer_token_format", b"_bearer_token_format", "_circuit_breaker_thresholds", b"_circuit_breaker_thresholds", "_description", b"_description", "_healthy_panic_threshold", b"_healthy_panic_threshold", "_host_path_regex_rewrite_pattern", b"_host_path_regex_rewrite_pattern", "_host_path_regex_rewrite_substitution", b"_host_path_regex_rewrite_substitution", "_host_rewrite", b"_host_rewrite", "_host_rewrite_header", b"_host_rewrite_header", "_idle_timeout", b"_idle_timeout", "_idp_access_token_allowed_audiences", b"_idp_access_token_allowed_audiences", "_idp_client_id", b"_idp_client_id", "_idp_client_secret", b"_idp_client_secret", "_jwt_issuer_format", b"_jwt_issuer_format", "_kubernetes_service_account_token", b"_kubernetes_service_account_token", "_kubernetes_service_account_token_file", b"_kubernetes_service_account_token_file", "_load_balancing_policy", b"_load_balancing_policy", "_logo_url", b"_logo_url", "_mcp", b"_mcp", "_pass_identity_headers", b"_pass_identity_headers", "_path", b"_path", "_prefix", b"_prefix", "_prefix_rewrite", b"_prefix_rewrite", "_preserve_host_header", b"_preserve_host_header", "_regex", b"_regex", "_regex_priority_order", b"_regex_priority_order", "_regex_rewrite_pattern", b"_regex_rewrite_pattern", "_regex_rewrite_substitution", b"_regex_rewrite_substitution", "_timeout", b"_timeout", "_tls_client_key_pair_id", b"_tls_client_key_pair_id", "_tls_custom_ca_key_pair_id", b"_tls_custom_ca_key_pair_id", "_tls_downstream_client_ca_key_pair_id", b"_tls_downstream_client_ca_key_pair_id", "_tls_downstream_server_name", b"_tls_downstream_server_name", "_tls_skip_verify", b"_tls_skip_verify", "_tls_upstream_allow_renegotiation", b"_tls_upstream_allow_renegotiation", "_tls_upstream_server_name", b"_tls_upstream_server_name", "_upstream_tunnel", b"_upstream_tunnel", "allow_spdy", b"allow_spdy", "allow_upgrades", b"allow_upgrades", "allow_websockets", b"allow_websockets", "bearer_token_format", b"bearer_token_format", "circuit_breaker_thresholds", b"circuit_breaker_thresholds", "created_at", b"created_at", "deleted_at", b"deleted_at", "depends_on", b"depends_on", "description", b"description", "enable_google_cloud_serverless_authentication", b"enable_google_cloud_serverless_authentication", "enforced_policy_ids", b"enforced_policy_ids", "enforced_policy_names", b"enforced_policy_names", "from", b"from", "health_checks", b"health_checks", "healthy_panic_threshold", b"healthy_panic_threshold", "host_path_regex_rewrite_pattern", b"host_path_regex_rewrite_pattern", "host_path_regex_rewrite_substitution", b"host_path_regex_rewrite_substitution", "host_rewrite", b"host_rewrite", "host_rewrite_header", b"host_rewrite_header", "id", b"id", "identity_providers", b"identity_providers", "idle_timeout", b"idle_timeout", "idp_access_token_allowed_audiences", b"idp_access_token_allowed_audiences", "idp_client_id", b"idp_client_id", "idp_client_secret", b"idp_client_secret", "jwt_groups_filter", b"jwt_groups_filter", "jwt_issuer_format", b"jwt_issuer_format", "kubernetes_service_account_token", b"kubernetes_service_account_token", "kubernetes_service_account_token_file", b"kubernetes_service_account_token_file", "load_balancing_policy", b"load_balancing_policy", "logo_url", b"logo_url", "mcp", b"mcp", "modified_at", b"modified_at", "name", b"name", "namespace_id", b"namespace_id", "namespace_name", b"namespace_name", "originator_id", b"originator_id", "pass_identity_headers", b"pass_identity_headers", "path", b"path", "policy_ids", b"policy_ids", "policy_names", b"policy_names", "prefix", b"prefix", "prefix_rewrite", b"prefix_rewrite", "preserve_host_header", b"preserve_host_header", "redirect", b"redirect", "regex", b"regex", "regex_priority_order", b"regex_priority_order", "regex_rewrite_pattern", b"regex_rewrite_pattern", "regex_rewrite_substitution", b"regex_rewrite_substitution", "remove_request_headers", b"remove_request_headers", "response", b"response", "rewrite_response_headers", b"rewrite_response_headers", "session_recording", b"session_recording", "set_request_headers", b"set_request_headers", "set_response_headers", b"set_response_headers", "show_error_details", b"show_error_details", "stat_name", b"stat_name", "timeout", b"timeout", "tls_client_key_pair_id", b"tls_client_key_pair_id", "tls_custom_ca_key_pair_id", b"tls_custom_ca_key_pair_id", "tls_downstream_client_ca_key_pair_id", b"tls_downstream_client_ca_key_pair_id", "tls_downstream_server_name", b"tls_downstream_server_name", "tls_skip_verify", b"tls_skip_verify", "tls_upstream_allow_renegotiation", b"tls_upstream_allow_renegotiation", "tls_upstream_server_name", b"tls_upstream_server_name", "to", b"to", "upstream_tunnel", b"upstream_tunnel"]) -> None: ...
+    def HasField(self, field_name: typing.Literal["_allow_spdy", b"_allow_spdy", "_allow_upgrades", b"_allow_upgrades", "_allow_websockets", b"_allow_websockets", "_bearer_token_format", b"_bearer_token_format", "_circuit_breaker_thresholds", b"_circuit_breaker_thresholds", "_description", b"_description", "_healthy_panic_threshold", b"_healthy_panic_threshold", "_host_path_regex_rewrite_pattern", b"_host_path_regex_rewrite_pattern", "_host_path_regex_rewrite_substitution", b"_host_path_regex_rewrite_substitution", "_host_rewrite", b"_host_rewrite", "_host_rewrite_header", b"_host_rewrite_header", "_idle_timeout", b"_idle_timeout", "_idp_access_token_allowed_audiences", b"_idp_access_token_allowed_audiences", "_idp_client_id", b"_idp_client_id", "_idp_client_secret", b"_idp_client_secret", "_jwt_issuer_format", b"_jwt_issuer_format", "_kubernetes_service_account_token", b"_kubernetes_service_account_token", "_kubernetes_service_account_token_file", b"_kubernetes_service_account_token_file", "_load_balancing_policy", b"_load_balancing_policy", "_logo_url", b"_logo_url", "_mcp", b"_mcp", "_oidc_bridge", b"_oidc_bridge", "_pass_identity_headers", b"_pass_identity_headers", "_path", b"_path", "_prefix", b"_prefix", "_prefix_rewrite", b"_prefix_rewrite", "_preserve_host_header", b"_preserve_host_header", "_regex", b"_regex", "_regex_priority_order", b"_regex_priority_order", "_regex_rewrite_pattern", b"_regex_rewrite_pattern", "_regex_rewrite_substitution", b"_regex_rewrite_substitution", "_timeout", b"_timeout", "_tls_client_key_pair_id", b"_tls_client_key_pair_id", "_tls_custom_ca_key_pair_id", b"_tls_custom_ca_key_pair_id", "_tls_downstream_client_ca_key_pair_id", b"_tls_downstream_client_ca_key_pair_id", "_tls_downstream_server_name", b"_tls_downstream_server_name", "_tls_skip_verify", b"_tls_skip_verify", "_tls_upstream_allow_renegotiation", b"_tls_upstream_allow_renegotiation", "_tls_upstream_server_name", b"_tls_upstream_server_name", "_upstream_tunnel", b"_upstream_tunnel", "allow_spdy", b"allow_spdy", "allow_upgrades", b"allow_upgrades", "allow_websockets", b"allow_websockets", "bearer_token_format", b"bearer_token_format", "circuit_breaker_thresholds", b"circuit_breaker_thresholds", "created_at", b"created_at", "deleted_at", b"deleted_at", "description", b"description", "healthy_panic_threshold", b"healthy_panic_threshold", "host_path_regex_rewrite_pattern", b"host_path_regex_rewrite_pattern", "host_path_regex_rewrite_substitution", b"host_path_regex_rewrite_substitution", "host_rewrite", b"host_rewrite", "host_rewrite_header", b"host_rewrite_header", "idle_timeout", b"idle_timeout", "idp_access_token_allowed_audiences", b"idp_access_token_allowed_audiences", "idp_client_id", b"idp_client_id", "idp_client_secret", b"idp_client_secret", "jwt_groups_filter", b"jwt_groups_filter", "jwt_issuer_format", b"jwt_issuer_format", "kubernetes_service_account_token", b"kubernetes_service_account_token", "kubernetes_service_account_token_file", b"kubernetes_service_account_token_file", "load_balancing_policy", b"load_balancing_policy", "logo_url", b"logo_url", "mcp", b"mcp", "modified_at", b"modified_at", "oidc_bridge", b"oidc_bridge", "pass_identity_headers", b"pass_identity_headers", "path", b"path", "prefix", b"prefix", "prefix_rewrite", b"prefix_rewrite", "preserve_host_header", b"preserve_host_header", "redirect", b"redirect", "regex", b"regex", "regex_priority_order", b"regex_priority_order", "regex_rewrite_pattern", b"regex_rewrite_pattern", "regex_rewrite_substitution", b"regex_rewrite_substitution", "response", b"response", "session_recording", b"session_recording", "timeout", b"timeout", "tls_client_key_pair_id", b"tls_client_key_pair_id", "tls_custom_ca_key_pair_id", b"tls_custom_ca_key_pair_id", "tls_downstream_client_ca_key_pair_id", b"tls_downstream_client_ca_key_pair_id", "tls_downstream_server_name", b"tls_downstream_server_name", "tls_skip_verify", b"tls_skip_verify", "tls_upstream_allow_renegotiation", b"tls_upstream_allow_renegotiation", "tls_upstream_server_name", b"tls_upstream_server_name", "upstream_tunnel", b"upstream_tunnel"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_allow_spdy", b"_allow_spdy", "_allow_upgrades", b"_allow_upgrades", "_allow_websockets", b"_allow_websockets", "_bearer_token_format", b"_bearer_token_format", "_circuit_breaker_thresholds", b"_circuit_breaker_thresholds", "_description", b"_description", "_healthy_panic_threshold", b"_healthy_panic_threshold", "_host_path_regex_rewrite_pattern", b"_host_path_regex_rewrite_pattern", "_host_path_regex_rewrite_substitution", b"_host_path_regex_rewrite_substitution", "_host_rewrite", b"_host_rewrite", "_host_rewrite_header", b"_host_rewrite_header", "_idle_timeout", b"_idle_timeout", "_idp_access_token_allowed_audiences", b"_idp_access_token_allowed_audiences", "_idp_client_id", b"_idp_client_id", "_idp_client_secret", b"_idp_client_secret", "_jwt_issuer_format", b"_jwt_issuer_format", "_kubernetes_service_account_token", b"_kubernetes_service_account_token", "_kubernetes_service_account_token_file", b"_kubernetes_service_account_token_file", "_load_balancing_policy", b"_load_balancing_policy", "_logo_url", b"_logo_url", "_mcp", b"_mcp", "_oidc_bridge", b"_oidc_bridge", "_pass_identity_headers", b"_pass_identity_headers", "_path", b"_path", "_prefix", b"_prefix", "_prefix_rewrite", b"_prefix_rewrite", "_preserve_host_header", b"_preserve_host_header", "_regex", b"_regex", "_regex_priority_order", b"_regex_priority_order", "_regex_rewrite_pattern", b"_regex_rewrite_pattern", "_regex_rewrite_substitution", b"_regex_rewrite_substitution", "_timeout", b"_timeout", "_tls_client_key_pair_id", b"_tls_client_key_pair_id", "_tls_custom_ca_key_pair_id", b"_tls_custom_ca_key_pair_id", "_tls_downstream_client_ca_key_pair_id", b"_tls_downstream_client_ca_key_pair_id", "_tls_downstream_server_name", b"_tls_downstream_server_name", "_tls_skip_verify", b"_tls_skip_verify", "_tls_upstream_allow_renegotiation", b"_tls_upstream_allow_renegotiation", "_tls_upstream_server_name", b"_tls_upstream_server_name", "_upstream_tunnel", b"_upstream_tunnel", "allow_spdy", b"allow_spdy", "allow_upgrades", b"allow_upgrades", "allow_websockets", b"allow_websockets", "bearer_token_format", b"bearer_token_format", "circuit_breaker_thresholds", b"circuit_breaker_thresholds", "created_at", b"created_at", "deleted_at", b"deleted_at", "depends_on", b"depends_on", "description", b"description", "enable_google_cloud_serverless_authentication", b"enable_google_cloud_serverless_authentication", "enforced_policy_ids", b"enforced_policy_ids", "enforced_policy_names", b"enforced_policy_names", "from", b"from", "health_checks", b"health_checks", "healthy_panic_threshold", b"healthy_panic_threshold", "host_path_regex_rewrite_pattern", b"host_path_regex_rewrite_pattern", "host_path_regex_rewrite_substitution", b"host_path_regex_rewrite_substitution", "host_rewrite", b"host_rewrite", "host_rewrite_header", b"host_rewrite_header", "id", b"id", "identity_providers", b"identity_providers", "idle_timeout", b"idle_timeout", "idp_access_token_allowed_audiences", b"idp_access_token_allowed_audiences", "idp_client_id", b"idp_client_id", "idp_client_secret", b"idp_client_secret", "inline_ppl_policies", b"inline_ppl_policies", "jwt_groups_filter", b"jwt_groups_filter", "jwt_issuer_format", b"jwt_issuer_format", "kubernetes_service_account_token", b"kubernetes_service_account_token", "kubernetes_service_account_token_file", b"kubernetes_service_account_token_file", "load_balancing_policy", b"load_balancing_policy", "logo_url", b"logo_url", "mcp", b"mcp", "modified_at", b"modified_at", "name", b"name", "namespace_id", b"namespace_id", "namespace_name", b"namespace_name", "oidc_bridge", b"oidc_bridge", "originator_id", b"originator_id", "pass_identity_headers", b"pass_identity_headers", "path", b"path", "policy_ids", b"policy_ids", "policy_names", b"policy_names", "prefix", b"prefix", "prefix_rewrite", b"prefix_rewrite", "preserve_host_header", b"preserve_host_header", "redirect", b"redirect", "regex", b"regex", "regex_priority_order", b"regex_priority_order", "regex_rewrite_pattern", b"regex_rewrite_pattern", "regex_rewrite_substitution", b"regex_rewrite_substitution", "remove_request_headers", b"remove_request_headers", "response", b"response", "rewrite_response_headers", b"rewrite_response_headers", "session_recording", b"session_recording", "set_request_headers", b"set_request_headers", "set_response_headers", b"set_response_headers", "show_error_details", b"show_error_details", "stat_name", b"stat_name", "timeout", b"timeout", "tls_client_key_pair_id", b"tls_client_key_pair_id", "tls_custom_ca_key_pair_id", b"tls_custom_ca_key_pair_id", "tls_downstream_client_ca_key_pair_id", b"tls_downstream_client_ca_key_pair_id", "tls_downstream_server_name", b"tls_downstream_server_name", "tls_skip_verify", b"tls_skip_verify", "tls_upstream_allow_renegotiation", b"tls_upstream_allow_renegotiation", "tls_upstream_server_name", b"tls_upstream_server_name", "to", b"to", "upstream_tunnel", b"upstream_tunnel"]) -> None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_allow_spdy", b"_allow_spdy"]) -> typing.Literal["allow_spdy"] | None: ...
     @typing.overload
@@ -741,6 +748,8 @@ class Route(google.protobuf.message.Message):
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_mcp", b"_mcp"]) -> typing.Literal["mcp"] | None: ...
     @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_oidc_bridge", b"_oidc_bridge"]) -> typing.Literal["oidc_bridge"] | None: ...
+    @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_pass_identity_headers", b"_pass_identity_headers"]) -> typing.Literal["pass_identity_headers"] | None: ...
     @typing.overload
     def WhichOneof(self, oneof_group: typing.Literal["_path", b"_path"]) -> typing.Literal["path"] | None: ...
@@ -778,6 +787,45 @@ class Route(google.protobuf.message.Message):
     def WhichOneof(self, oneof_group: typing.Literal["_upstream_tunnel", b"_upstream_tunnel"]) -> typing.Literal["upstream_tunnel"] | None: ...
 
 global___Route = Route
+
+@typing.final
+class OIDCBridge(google.protobuf.message.Message):
+    """OIDC bridge settings control whether Pomerium can serve as an OpenID
+    provider for upstream applications.
+    """
+
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    ENABLED_FIELD_NUMBER: builtins.int
+    CLIENT_SECRET_FIELD_NUMBER: builtins.int
+    REDIRECT_URIS_FIELD_NUMBER: builtins.int
+    enabled: builtins.bool
+    """Whether the OIDC bridge feature should be enabled."""
+    client_secret: builtins.str
+    """Client secret to use for upstream applications that do not support
+    public clients / PKCE.
+    """
+    @property
+    def redirect_uris(self) -> google.protobuf.internal.containers.RepeatedScalarFieldContainer[builtins.str]:
+        """List of allowed redirect_uris. By default allows any subpath of the
+        configured route's `to` address.
+        """
+
+    def __init__(
+        self,
+        *,
+        enabled: builtins.bool | None = ...,
+        client_secret: builtins.str | None = ...,
+        redirect_uris: collections.abc.Iterable[builtins.str] | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["_client_secret", b"_client_secret", "_enabled", b"_enabled", "client_secret", b"client_secret", "enabled", b"enabled"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["_client_secret", b"_client_secret", "_enabled", b"_enabled", "client_secret", b"client_secret", "enabled", b"enabled", "redirect_uris", b"redirect_uris"]) -> None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_client_secret", b"_client_secret"]) -> typing.Literal["client_secret"] | None: ...
+    @typing.overload
+    def WhichOneof(self, oneof_group: typing.Literal["_enabled", b"_enabled"]) -> typing.Literal["enabled"] | None: ...
+
+global___OIDCBridge = OIDCBridge
 
 @typing.final
 class SessionRecording(google.protobuf.message.Message):
